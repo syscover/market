@@ -1,0 +1,23 @@
+{
+    "name": "syscover/marketplace",
+    "version": "2.0.0",
+    "description": "Markletplace package",
+    "keywords": ["syscover","pulsar","laravel","marketplace"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SYSCOVER SL",
+            "email": "info@syscover.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "paypal/rest-api-sdk-php": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Syscover\\Marketplace\\": "src/Syscover/Marketplace"
+        }
+    },
+    "minimum-stability": "dev"
+}
