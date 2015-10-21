@@ -11,7 +11,7 @@
                             <li{!! Miscellaneous::setCurrentPage('market-customer-tax') !!}><a href="{{ route('CustomerTax') }}"><i class="icomoon-icon-factory"></i>Categorías</a></li>
                         @endif
                         @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-product-tax', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-product-tax') !!}><a href="{{ route('CustomerTax') }}"><i class="icomoon-icon-factory"></i>Categorías</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-product-tax') !!}><a href="{{ route('MarketplaceCustomerTax') }}"><i class="icomoon-icon-factory"></i>{{ trans_choice('marketplace::pulsar.customer_tax') }}</a></li>
                         @endif
                     </ul>
                 </li>
