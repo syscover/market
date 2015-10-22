@@ -14,4 +14,5 @@ return [
     */
     'package_name'                          => 'Marketplace',
     'tax'                                   => 'Impuesto|Impuestos',
+    'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario'
 ];
