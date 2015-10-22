@@ -7,7 +7,6 @@
                 <li{!! Miscellaneous::setCurrentOpenPage(['market-customer-tax','market-product-tax']) !!}>
                     <a href="javascript:void(0);"><i class="icomoon-icon-grid"></i>{{ trans_choice('marketplace::pulsar.tax', 2) }}</a>
                     <ul class="sub-menu">
-
                         @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-product-tax', 'access'))
                             <li{!! Miscellaneous::setCurrentPage('market-product-tax') !!}><a href="{{ route('MarketplaceCustomerTax') }}"><i class="a fa-users"></i>{{ trans_choice('marketplace::pulsar.customer_tax', 2) }}</a></li>
                         @endif
