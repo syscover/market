@@ -28,7 +28,7 @@ class Categorias extends Controller {
     protected $icon         = 'icomoon-icon-power';
     protected $objectTrans  = 'category';
 
-    public function storeCustomRecord()
+    public function storeCustomRecord($request, $parameters)
     {
         Categoria::create([
             'id_200'    => Request::input('id'),
@@ -36,7 +36,7 @@ class Categorias extends Controller {
         ]);
     }
     
-    public function updateCustomRecord($parameters)
+    public function updateCustomRecord($request, $parameters)
     {
         Categoria::where('id_200', $parameters['id'])->update([
             'id_200'    => Request::input('id'),
