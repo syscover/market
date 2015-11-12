@@ -1,8 +1,8 @@
-<?php namespace Syscover\Plantilla;
+<?php namespace Syscover\Market;
 
 use Illuminate\Support\ServiceProvider;
 
-class MarketplaceServiceProvider extends ServiceProvider
+class MarketServiceProvider extends ServiceProvider
 {
 	/**
 	 * Bootstrap the application services.
@@ -15,10 +15,10 @@ class MarketplaceServiceProvider extends ServiceProvider
 		include realpath(__DIR__ . '/../../routes.php');
 
 		// register views
-		$this->loadViewsFrom(realpath(__DIR__ . '/../../views'), 'marketplace');
+		$this->loadViewsFrom(realpath(__DIR__ . '/../../views'), 'market');
 
         // register translations
-        $this->loadTranslationsFrom(realpath(__DIR__ . '/../../lang'), 'marketplace');
+        $this->loadTranslationsFrom(realpath(__DIR__ . '/../../lang'), 'market');
 
         // register migrations
         $this->publishes([

@@ -1,42 +1,36 @@
-# Comunik App to Laravel 5
+# Marketplace to Laravel 5
 
 ## Installation
 
 **1 - After install Laravel framework, insert on file composer.json, inside require object this value**
 ```
-"syscover/marketplace": "dev-master"
+"syscover/market": "dev-master"
 
+and execute on console:
+```
+composer update
 ```
 
 **2 - Register service provider, on file config/app.php add to providers array**
 
 ```
-'Syscover\Pulsar\MarketplaceServiceProvider',
+Syscover\Marketplace\MarketServiceProvider::class,
 
 ```
 
-**3 - To publish package, you must type on console**
+**3 - To publish package and migrate**
 
+and execute composer update again:
 ```
-php artisan vendor:publish --force
-
-```
-
-**7 - Optimized class loader**
-
-```
-php artisan optimize
-
+composer update
 ```
 
-**8 - Run migrate database**
+**4 - Run seed database**
 
 ```
-php artisan migrate
+php artisan db:seed --class="MarketTableSeeder"
 ```
 
-**9 - Run seed database**
+**5 - Activate package**
 
-```
-php artisan db:seed
-```
+Access to Pulsar Panel, and go to Administration -> Permissions -> Profiles, and set all permissions to your profile by clicking on the open lock.

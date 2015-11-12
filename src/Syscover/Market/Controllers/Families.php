@@ -1,4 +1,4 @@
-<?php namespace Syscover\Plantilla\Controllers;
+<?php namespace Syscover\Market\Controllers;
 
 /**
  * @package	    Pulsar

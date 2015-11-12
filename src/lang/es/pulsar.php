@@ -12,7 +12,7 @@ return [
     | If you come up with something more exciting, let us know.
     |
     */
-    'package_name'                          => 'Marketplace',
+    'package_name'                          => 'Market',
     'tax'                                   => 'Impuesto|Impuestos',
     'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario'
 ];
