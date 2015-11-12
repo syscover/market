@@ -14,7 +14,7 @@ composer update
 **2 - Register service provider, on file config/app.php add to providers array**
 
 ```
-Syscover\Marketplace\MarketServiceProvider::class,
+Syscover\Market\MarketServiceProvider::class,
 
 ```
 
