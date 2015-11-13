@@ -61,6 +61,7 @@
     @include('pulsar::includes.html.form_text_group', ['labelSize' => 1, 'fieldSize' => 11, 'label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => Input::old('name', isset($object->name_112)? $object->name_112 : null), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
 
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('hotels::pulsar.service', 2), 'icon' => 'fa fa-star'])
+    @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 1, 'fieldSize' => 11, 'label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => Input::old('active', isset($object)? $object->active_111 : null), 'disabled' => isset($object->id_111)? true : null])
     <!-- /market::products.create -->
 @stop
 
