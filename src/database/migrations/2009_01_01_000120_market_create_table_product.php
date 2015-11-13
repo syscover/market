@@ -15,7 +15,7 @@ class MarketCreateTableProduct extends Migration
                 $table->engine = 'InnoDB';
                 $table->increments('id_111')->unsigned();
 
-				$table->boolean('active_112');
+				$table->boolean('active_111');
             });
 	}
 

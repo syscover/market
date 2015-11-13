@@ -2,7 +2,7 @@
             <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
             <ul class="sub-menu">
                 @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-product', 'access'))
-                    <li{{ Miscellaneous::setCurrentPage('market-product') }}><a href="#"><i class="icomoon-icon-truck"></i>Productos</a></li>
+                    <li{{ Miscellaneous::setCurrentPage('market-product') }}><a href="{{ route('MarketProduct') }}"><i class="fa fa-cube"></i>{{ trans_choice('market::pulsar.product', 2) }}</a></li>
                 @endif
                 @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-product', 'access'))
                     <li{{ Miscellaneous::setCurrentPage('market-product') }}><a href="#"><i class="icomoon-icon-truck"></i>Productos</a></li>

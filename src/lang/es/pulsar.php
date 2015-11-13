@@ -12,7 +12,9 @@ return [
     | If you come up with something more exciting, let us know.
     |
     */
+    'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario',
     'package_name'                          => 'Market',
+    'product'                               => 'Producto|Productos',
     'tax'                                   => 'Impuesto|Impuestos',
-    'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario'
+
 ];

@@ -2,7 +2,7 @@
 
 @section('script')
     @parent
-    <!-- octopus::octopus.index -->
+    <!-- market::products.index -->
     <script type="text/javascript">
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -10,9 +10,9 @@
                 $('.datatable-pulsar').dataTable({
                     'iDisplayStart' : {{ $offset }},
                     'aoColumnDefs': [
-                        { 'bSortable': false, 'aTargets': [2,3]},
-                        { 'sClass': 'checkbox-column', 'aTargets': [2]},
-                        { 'sClass': 'align-center', 'aTargets': [3]}
+                        { 'bSortable': false, 'aTargets': [3,4]},
+                        { 'sClass': 'checkbox-column', 'aTargets': [3]},
+                        { 'sClass': 'align-center', 'aTargets': [4]}
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
@@ -21,16 +21,17 @@
             }
         });
     </script>
-    <!-- octopus::octopus.index -->
+    <!-- market::products.index -->
 @stop
 
 @section('tHead')
-    <!-- octopus::octopus.index -->
+    <!-- market::products.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
+        <th data-class="expand">{{ trans('pulsar::pulsar.active') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /octopus::octopus.index -->
+    <!-- /market::products.index -->
 @stop

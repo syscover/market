@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Syscover\\Marketplace\\": "src/Syscover/Market"
+            "Syscover\\Market\\": "src/Syscover/Market"
         }
     },
     "minimum-stability": "dev"
