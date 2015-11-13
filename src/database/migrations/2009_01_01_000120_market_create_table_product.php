@@ -16,6 +16,9 @@ class MarketCreateTableProduct extends Migration
                 $table->increments('id_111')->unsigned();
 
 				$table->boolean('active_111');
+
+				$table->string('data_lang_111',255)->nullable();
+				$table->text('data_111')->nullable();
             });
 	}
 

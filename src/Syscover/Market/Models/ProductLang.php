@@ -20,6 +20,7 @@ class ProductLang extends Model {
 
 	protected $table        = '012_112_product_lang';
     protected $primaryKey   = 'id_112';
+    protected $sufix        = '112';
     public $timestamps      = false;
     protected $fillable     = ['id_112', 'lang_112', 'name_112'];
     private static $rules   = [];
@@ -28,4 +29,9 @@ class ProductLang extends Model {
     {
         return Validator::make($data, static::$rules);
 	}
+
+    public function lang()
+    {
+        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_112');
+    }
 }

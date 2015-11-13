@@ -15,7 +15,7 @@ class ProductController extends Controller {
     protected $routeSuffix  = 'MarketProduct';
     protected $folder       = 'products';
     protected $package      = 'market';
-    protected $aColumns     = ['id_111', 'name_112', 'active_111'];
+    protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active']];
     protected $nameM        = 'name_112';
     protected $model        = '\Syscover\Market\Models\Product';
     protected $icon         = 'fa fa-cube';
@@ -49,6 +49,10 @@ class ProductController extends Controller {
     {
         $product = Product::create([
             'active_111'    => $request->input('active', false)
+        ]);
+
+        Product::where('id_111', $product->id_111)->update([
+            'data_lang_111' => Product::addLangDataRecord( $product->id_111, $request->input('lang'))
         ]);
 
         ProductLang::create([

@@ -12,11 +12,11 @@
                     'aoColumnDefs': [
                         { 'bSortable': false, 'aTargets': [3,4]},
                         { 'sClass': 'checkbox-column', 'aTargets': [3]},
-                        { 'sClass': 'align-center', 'aTargets': [4]}
+                        { 'sClass': 'align-center', 'aTargets': [2,4]}
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
-                    "sAjaxSource": "{{ route('jsonData' . $routeSuffix) }}"
+                    "sAjaxSource": "{{ route('jsonData' . $routeSuffix, [session('baseLang')]) }}"
                 }).fnSetFilteringDelay();
             }
         });
