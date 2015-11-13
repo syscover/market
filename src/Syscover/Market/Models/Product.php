@@ -1,7 +1,7 @@
 <?php namespace Syscover\Market\Models;
 
 /**
- * @package	    Pulsar
+ * @package	    Market
  * @author	    Jose Carlos Rodríguez Palacín
  * @copyright   Copyright (c) 2015, SYSCOVER, SL
  * @license
@@ -14,16 +14,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
 
-class Family extends Model {
+class Product extends Model {
 
     use TraitModel;
 
-	protected $table        = '008_070_family';
-    protected $primaryKey   = 'id_070';
+	protected $table        = '012_111_product';
+    protected $primaryKey   = 'id_111';
     public $timestamps      = false;
-    protected $fillable     = ['id_070', 'name_070'];
+    protected $fillable     = ['id_111', 'active_111'];
     private static $rules   = [
-        'name'  => 'required|between:2,50'
+
     ];
 
     public static function validate($data)
