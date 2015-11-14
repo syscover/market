@@ -23,7 +23,7 @@
     @include('pulsar::includes.js.attachment', [
         'action'            => 'create',
         'resource'          => 'market-product',
-        'routesConfigFile'  => 'hotels'])
+        'routesConfigFile'  => 'market'])
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -76,7 +76,7 @@
 @section('box_tab4')
     @include('pulsar::includes.html.attachment', [
         'action'            => 'create',
-        'routesConfigFile'  => 'hotels'])
+        'routesConfigFile'  => 'market'])
 @stop
 
 @section('endBody')

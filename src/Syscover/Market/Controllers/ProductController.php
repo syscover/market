@@ -18,13 +18,14 @@ class ProductController extends Controller {
     protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active']];
     protected $nameM        = 'name_112';
     protected $model        = '\Syscover\Market\Models\Product';
+    protected $langModel    = '\Syscover\Market\Models\ProductLang';
     protected $icon         = 'fa fa-cube';
     protected $objectTrans  = 'product';
 
     public function indexCustom($parameters)
     {
         $parameters['urlParameters']['lang']    = session('baseLang');
-        // init record on tap 1
+        // init record on tap 3
         $parameters['urlParameters']['tab']     = 3;
 
         return $parameters;
@@ -42,21 +43,41 @@ class ProductController extends Controller {
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters['attachmentsInput']     = json_encode([]);
 
+        if(isset($parameters['id']))
+        {
+            // get attachments from base lang
+            $attachments = AttachmentLibrary::getAttachments($this->package, 'market-product', $parameters['id'], session('baseLang')->id_001, true);
+
+            // merge parameters and attachments array
+            $parameters  = array_merge($parameters, $attachments);
+        }
+
         return $parameters;
     }
 
     public function storeCustomRecord($request, $parameters)
     {
-        $product = Product::create([
-            'active_111'    => $request->input('active', false)
-        ]);
+        if(!$request->has('id'))
+        {
+            // create new product
+            $product = Product::create([
+                'active_111' => $request->input('active', false)
+            ]);
 
-        Product::where('id_111', $product->id_111)->update([
-            'data_lang_111' => Product::addLangDataRecord( $product->id_111, $request->input('lang'))
+            $id = $product->id_111;
+        }
+        else
+        {
+            // create product language
+            $id = $request->input('id');
+        }
+
+        Product::where('id_111', $id)->update([
+            'data_lang_111' => Product::addLangDataRecord($id, $request->input('lang'))
         ]);
 
         ProductLang::create([
-            'id_112'        => $product->id_111,
+            'id_112'        => $id,
             'lang_112'      => $request->input('lang'),
             'name_112'      => $request->input('name')
         ]);
@@ -64,16 +85,48 @@ class ProductController extends Controller {
         // set attachments
         $attachments = json_decode($request->input('attachments'));
 
-        AttachmentLibrary::storeAttachments($attachments, 'market', 'market-product', $product->id_111, $request->input('lang'));
+        AttachmentLibrary::storeAttachments($attachments, $this->package, 'market-product', $id, $request->input('lang'));
+    }
+
+    public function editCustomRecord($request, $parameters)
+    {
+        // get attachments elements
+        $attachments = AttachmentLibrary::getAttachments($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
+
+        $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
+        $parameters                         = array_merge($parameters, $attachments);
+
+        return $parameters;
     }
     
     public function updateCustomRecord($request, $parameters)
     {
-        /*
-        Categoria::where('id_200', $parameters['id'])->update([
-            'id_200'    => Request::input('id'),
-            'name_200'  => Request::input('name')
+        Product::where('id_111', $parameters['id'])->update([
+            'active_111'    => $request->input('active', false),
         ]);
-        */
+
+        ProductLang::where('id_112', $parameters['id'])->update([
+            'name_112'      => $request->input('name')
+        ]);
+    }
+
+    public function deleteCustomRecord($request, $object)
+    {
+        // delete all attachments
+        AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $object->id_111);
+    }
+
+    public function deleteCustomTranslationRecord($request, $object)
+    {
+        // delete all attachments from lang object
+        AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
+    }
+
+    public function deleteCustomRecords($request, $ids)
+    {
+        foreach($ids as $id)
+        {
+            AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $id);
+        }
     }
 }

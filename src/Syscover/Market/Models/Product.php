@@ -32,6 +32,11 @@ class Product extends Model {
         return Validator::make($data, static::$rules);
 	}
 
+    public function lang()
+    {
+        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_112');
+    }
+
     public static function getCustomRecordsLimit($parameters)
     {
         $query =  Product::join('012_112_product_lang', '012_111_product.id_111', '=', '012_112_product_lang.id_112')
@@ -41,5 +46,13 @@ class Product extends Model {
         if(isset($parameters['lang'])) $query->where('lang_112', $parameters['lang']);
 
         return $query;
+    }
+
+    public static function getCustomTranslationRecord($parameters)
+    {
+        return Product::join('012_112_product_lang', '012_111_product.id_111', '=', '012_112_product_lang.id_112')
+            ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001')
+            ->where('id_111', $parameters['id'])->where('lang_112', $parameters['lang'])
+            ->first();
     }
 }
