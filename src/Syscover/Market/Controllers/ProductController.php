@@ -1,6 +1,6 @@
 <?php namespace Syscover\Market\Controllers;
 
-
+use Illuminate\Http\Request;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\AttachmentFamily;
@@ -12,7 +12,7 @@ class ProductController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'MarketProduct';
+    protected $routeSuffix  = 'marketProduct';
     protected $folder       = 'products';
     protected $package      = 'market';
     protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active']];
@@ -128,5 +128,13 @@ class ProductController extends Controller {
         {
             AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $id);
         }
+    }
+
+    public function apiCheckSlug(Request $request)
+    {
+        return response()->json([
+            'status'    => 'success',
+            'slug'      => ProductLang::checkSlug('slug_112', $request->input('slug'), $request->input('id'))
+        ]);
     }
 }

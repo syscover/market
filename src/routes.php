@@ -17,7 +17,7 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     | PRODUCT
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/products/{lang}/{offset?}',                              ['as'=>'MarketProduct',                         'uses'=>'Syscover\Market\Controllers\ProductController@index',                          'resource' => 'market-product',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/products/{lang}/{offset?}',                              ['as'=>'marketProduct',                         'uses'=>'Syscover\Market\Controllers\ProductController@index',                          'resource' => 'market-product',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/market/products/json/data/{lang}',                              ['as'=>'jsonDataMarketProduct',                 'uses'=>'Syscover\Market\Controllers\ProductController@jsonData',                       'resource' => 'market-product',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/market/products/create/{lang}/{offset}/{tab}/{id?}',            ['as'=>'createMarketProduct',                   'uses'=>'Syscover\Market\Controllers\ProductController@createRecord',                   'resource' => 'market-product',        'action' => 'create']);
     Route::post(config('pulsar.appName') . '/market/products/store/{lang}/{offset}/{tab}/{id?}',            ['as'=>'storeMarketProduct',                    'uses'=>'Syscover\Market\Controllers\ProductController@storeRecord',                    'resource' => 'market-product',        'action' => 'create']);
@@ -26,14 +26,14 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     Route::get(config('pulsar.appName') . '/market/products/delete/{lang}/{id}/{offset}',                   ['as'=>'deleteMarketProduct',                   'uses'=>'Syscover\Market\Controllers\ProductController@deleteRecord',                   'resource' => 'market-product',        'action' => 'delete']);
     Route::get(config('pulsar.appName') . '/market/products/delete/translation/{lang}/{id}/{offset}',       ['as'=>'deleteTranslationMarketProduct',        'uses'=>'Syscover\Market\Controllers\ProductController@deleteTranslationRecord',        'resource' => 'market-product',        'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/market/products/delete/select/records/{lang}',               ['as'=>'deleteSelectMarketProduct',             'uses'=>'Syscover\Market\Controllers\ProductController@deleteRecordsSelect',            'resource' => 'market-product',        'action' => 'delete']);
-
+    Route::post(config('pulsar.appName') . '/market/products/check/product/slug',                           ['as'=>'apiCheckSlugMarketProduct',             'uses'=>'Syscover\Market\Controllers\ProductController@apiCheckSlug',                   'resource' => 'market-product',        'action' => 'access']);
 
     /*
     |--------------------------------------------------------------------------
     | CUSTOMER TAX
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/customer/tax/{offset?}',                                 ['as'=>'MarketCustomerTax',                     'uses'=>'Syscover\Market\Controllers\CustomerTaxController@index',                      'resource' => 'market-customer-tax',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/customer/tax/{offset?}',                                 ['as'=>'marketCustomerTax',                     'uses'=>'Syscover\Market\Controllers\CustomerTaxController@index',                      'resource' => 'market-customer-tax',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/market/customer/tax/json/data',                                 ['as'=>'jsonDataMarketCustomerTax',             'uses'=>'Syscover\Market\Controllers\CustomerTaxController@jsonData',                   'resource' => 'market-customer-tax',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/market/customer/tax/create/{offset}',                           ['as'=>'createMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@createRecord',               'resource' => 'market-customer-tax',        'action' => 'create']);
     Route::post(config('pulsar.appName') . '/market/customer/tax/store/{offset}',                           ['as'=>'storeMarketCustomerTax',                'uses'=>'Syscover\Market\Controllers\CustomerTaxController@storeRecord',                'resource' => 'market-customer-tax',        'action' => 'create']);

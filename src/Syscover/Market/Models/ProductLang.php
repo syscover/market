@@ -22,7 +22,7 @@ class ProductLang extends Model {
     protected $primaryKey   = 'id_112';
     protected $sufix        = '112';
     public $timestamps      = false;
-    protected $fillable     = ['id_112', 'lang_112', 'name_112'];
+    protected $fillable     = ['id_112', 'lang_112', 'name_112', 'slug_112'];
     private static $rules   = [];
 
     public static function validate($data)
