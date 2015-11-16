@@ -79,7 +79,8 @@ class ProductController extends Controller {
         ProductLang::create([
             'id_112'        => $id,
             'lang_112'      => $request->input('lang'),
-            'name_112'      => $request->input('name')
+            'name_112'      => $request->input('name'),
+            'slug_112'      => $request->input('slug'),
         ]);
 
         // set attachments
@@ -105,8 +106,9 @@ class ProductController extends Controller {
             'active_111'    => $request->input('active', false),
         ]);
 
-        ProductLang::where('id_112', $parameters['id'])->update([
-            'name_112'      => $request->input('name')
+        ProductLang::where('id_112', $parameters['id'])->where('lang_112', $request->input('lang'))->update([
+            'name_112'      => $request->input('name'),
+            'slug_112'      => $request->input('slug'),
         ]);
     }
 

@@ -19,14 +19,25 @@
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/js/jquery.getfile.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/attachment/js/attachment-library.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/speakingurl/speakingurl.min.js') }}"></script>
 
     @include('pulsar::includes.js.attachment', [
         'action'            => 'create',
         'resource'          => 'market-product',
         'routesConfigFile'  => 'market'])
+    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct'])
 
     <script type="text/javascript">
         $(document).ready(function() {
+            // launch slug function when change name and slug
+            $("[name=name], [name=slug]").on('change', function(){
+                $("[name=slug]").val(getSlug($(this).val(),{
+                    separator: '-',
+                    lang: '{{ $lang->id_001 }}'
+                }));
+                $.checkSlug();
+            });
+
             // set tab active
             @if($tab == 0)
             $('.tabbable li:eq(0) a').tab('show');
@@ -59,6 +70,7 @@
         </div>
     </div>
     @include('pulsar::includes.html.form_text_group', ['labelSize' => 1, 'fieldSize' => 11, 'label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => Input::old('name', isset($object->name_112)? $object->name_112 : null), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
+    @include('pulsar::includes.html.form_text_group', ['labelSize' => 1, 'fieldSize' => 11, 'label' => trans('pulsar::pulsar.slug'), 'name' => 'slug', 'value' => Input::old('slug', isset($object->slug_112)? $object->slug_112 : null), 'maxLength' => '255', 'rangeLength' => '2,255', 'required' => true])
 
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('hotels::pulsar.service', 2), 'icon' => 'fa fa-star'])
     @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 1, 'fieldSize' => 11, 'label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => Input::old('active', isset($object)? $object->active_111 : null), 'disabled' => isset($object->id_111)? true : null])
