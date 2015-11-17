@@ -46,7 +46,7 @@ class ProductController extends Controller {
         if(isset($parameters['id']))
         {
             // get attachments from base lang
-            $attachments = AttachmentLibrary::getAttachments($this->package, 'market-product', $parameters['id'], session('baseLang')->id_001, true);
+            $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['id'], session('baseLang')->id_001, true);
 
             // merge parameters and attachments array
             $parameters  = array_merge($parameters, $attachments);
@@ -92,7 +92,7 @@ class ProductController extends Controller {
     public function editCustomRecord($request, $parameters)
     {
         // get attachments elements
-        $attachments = AttachmentLibrary::getAttachments($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
+        $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
 
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters                         = array_merge($parameters, $attachments);
