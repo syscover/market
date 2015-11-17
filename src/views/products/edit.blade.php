@@ -24,7 +24,8 @@
     @include('pulsar::includes.js.attachment', [
         'action'            => 'edit',
         'resource'          => 'market-product',
-        'routesConfigFile'  => 'market'])
+        'routesConfigFile'  => 'market',
+        'objectId'          => $object->id_111])])
     @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct'])
     @include('pulsar::includes.js.delete_translation_record')
 
