@@ -20,6 +20,16 @@ class MarketServiceProvider extends ServiceProvider
         // register translations
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../../lang'), 'market');
 
+		// register public files
+		$this->publishes([
+			realpath(__DIR__ . '/../../../public') => public_path('/packages/syscover/market')
+		]);
+
+		// register config files
+		$this->publishes([
+			realpath(__DIR__ . '/../../config/market.php') => config_path('market.php')
+		]);
+
         // register migrations
         $this->publishes([
             __DIR__.'/../../database/migrations/' => base_path('/database/migrations'),

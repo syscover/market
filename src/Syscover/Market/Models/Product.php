@@ -55,4 +55,17 @@ class Product extends Model {
             ->where('id_111', $parameters['id'])->where('lang_112', $parameters['lang'])
             ->first();
     }
+
+    public static function getRecords($parameters)
+    {
+        $query = Product::join('012_112_product_lang', '012_111_product.id_111', '=', '012_112_product_lang.id_112')
+            ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001')
+            ->newQuery();
+
+        if(isset($parameters['active_111'])) $query->where('active_111', $parameters['active_111']);
+        if(isset($parameters['slug_112'])) $query->where('slug_112', $parameters['slug_112']);
+        if(isset($parameters['lang_112'])) $query->where('lang_112', $parameters['lang_112']);
+
+        return $query->get();
+    }
 }
