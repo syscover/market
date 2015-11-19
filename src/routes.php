@@ -28,6 +28,24 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     Route::delete(config('pulsar.appName') . '/market/products/delete/select/records/{lang}',               ['as'=>'deleteSelectMarketProduct',             'uses'=>'Syscover\Market\Controllers\ProductController@deleteRecordsSelect',            'resource' => 'market-product',        'action' => 'delete']);
     Route::post(config('pulsar.appName') . '/market/products/check/product/slug',                           ['as'=>'apiCheckSlugMarketProduct',             'uses'=>'Syscover\Market\Controllers\ProductController@apiCheckSlug',                   'resource' => 'market-product',        'action' => 'access']);
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | CATEGORY
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/categories/{lang}/{offset?}',                            ['as'=>'marketCategory',                         'uses'=>'Syscover\Market\Controllers\CategoryController@index',                          'resource' => 'market-category',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/categories/json/data/{lang}',                            ['as'=>'jsonDataMarketCategory',                 'uses'=>'Syscover\Market\Controllers\CategoryController@jsonData',                       'resource' => 'market-category',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/categories/create/{lang}/{offset}/{id?}',                ['as'=>'createMarketCategory',                   'uses'=>'Syscover\Market\Controllers\CategoryController@createRecord',                   'resource' => 'market-category',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/categories/store/{lang}/{offset}/{id?}',                ['as'=>'storeMarketCategory',                    'uses'=>'Syscover\Market\Controllers\CategoryController@storeRecord',                    'resource' => 'market-category',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/categories/{id}/edit/{lang}/{offset}',                   ['as'=>'editMarketCategory',                     'uses'=>'Syscover\Market\Controllers\CategoryController@editRecord',                     'resource' => 'market-category',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/categories/update/{lang}/{id}/{offset}',                 ['as'=>'updateMarketCategory',                   'uses'=>'Syscover\Market\Controllers\CategoryController@updateRecord',                   'resource' => 'market-category',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/categories/delete/{lang}/{id}/{offset}',                 ['as'=>'deleteMarketCategory',                   'uses'=>'Syscover\Market\Controllers\CategoryController@deleteRecord',                   'resource' => 'market-category',        'action' => 'delete']);
+    Route::get(config('pulsar.appName') . '/market/categories/delete/translation/{lang}/{id}/{offset}',     ['as'=>'deleteTranslationMarketCategory',        'uses'=>'Syscover\Market\Controllers\CategoryController@deleteTranslationRecord',        'resource' => 'market-category',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/categories/delete/select/records/{lang}',             ['as'=>'deleteSelectMarketCategory',             'uses'=>'Syscover\Market\Controllers\CategoryController@deleteRecordsSelect',            'resource' => 'market-category',        'action' => 'delete']);
+    Route::post(config('pulsar.appName') . '/market/categories/check/product/slug',                         ['as'=>'apiCheckSlugMarketCategory',             'uses'=>'Syscover\Market\Controllers\CategoryController@apiCheckSlug',                   'resource' => 'market-category',        'action' => 'access']);
+
+
     /*
     |--------------------------------------------------------------------------
     | CUSTOMER TAX

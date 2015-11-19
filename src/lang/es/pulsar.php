@@ -12,8 +12,10 @@ return [
     | If you come up with something more exciting, let us know.
     |
     */
+    'category'                              => 'Categoría|Categorias',
     'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario',
     'package_name'                          => 'Market',
+    'parent_category'                       => 'Categoría pagre|Categorias padres',
     'product'                               => 'Producto|Productos',
     'tax'                                   => 'Impuesto|Impuestos',
 
