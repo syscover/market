@@ -120,7 +120,7 @@ class ProductController extends Controller {
         AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $object->id_111);
     }
 
-    public function deleteCustomTranslationRecord($request, $object)
+    public function addToDeleteTranslationRecord($request, $object)
     {
         // delete all attachments from lang object
         AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
