@@ -64,16 +64,18 @@ class ProductController extends Controller {
                 'active_111' => $request->input('active', false)
             ]);
 
-            $id = $product->id_111;
+            $id     = $product->id_111;
+            $idLang = null;
         }
         else
         {
             // create product language
-            $id = $request->input('id');
+            $id     = $request->input('id');
+            $idLang = $id;
         }
 
         Product::where('id_111', $id)->update([
-            'data_lang_111' => Product::addLangDataRecord($id, $request->input('lang'))
+            'data_lang_111' => Product::addLangDataRecord($request->input('lang'), $idLang)
         ]);
 
         ProductLang::create([
