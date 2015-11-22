@@ -45,7 +45,7 @@ class Category extends Model {
         return $query;
     }
 
-    public static function getCustomTranslationRecord($parameters)
+    public static function getTranslationRecord($parameters)
     {
         return Category::join('001_001_lang', '012_110_category.lang_110', '=', '001_001_lang.id_001')
             ->where('id_110', $parameters['id'])->where('lang_110', $parameters['lang'])

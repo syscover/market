@@ -48,7 +48,7 @@ class Product extends Model {
         return $query;
     }
 
-    public static function getCustomTranslationRecord($parameters)
+    public static function getTranslationRecord($parameters)
     {
         return Product::join('012_112_product_lang', '012_111_product.id_111', '=', '012_112_product_lang.id_112')
             ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001')
