@@ -35,7 +35,7 @@ class Category extends Model {
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_110');
     }
 
-    public static function getCustomRecordsLimit($parameters)
+    public static function addToGetRecordsLimit($parameters)
     {
         $query =  Category::join('001_001_lang', '012_110_category.lang_110', '=', '001_001_lang.id_001')
             ->newQuery();
