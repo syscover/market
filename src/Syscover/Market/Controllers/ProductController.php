@@ -126,7 +126,7 @@ class ProductController extends Controller {
         AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
     }
 
-    public function deleteCustomRecords($request, $ids)
+    public function addToDeleteRecordsSelect($request, $ids)
     {
         foreach($ids as $id)
         {
