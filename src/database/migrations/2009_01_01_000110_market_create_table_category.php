@@ -26,7 +26,7 @@ class MarketCreateTableCategory extends Migration
 			$table->text('data_110')->nullable();
 
 			$table->primary(['id_110', 'lang_110']);
-			$table->foreign('lang_110')->references('id_001')->on('001_001_lang')
+			$table->foreign('lang_110', 'fk01_012_110_category')->references('id_001')->on('001_001_lang')
 				->onDelete('restrict')->onUpdate('cascade');
 		});
 	}

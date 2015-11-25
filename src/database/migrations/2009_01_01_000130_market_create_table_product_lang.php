@@ -21,9 +21,9 @@ class MarketCreateTableProductLang extends Migration
 			$table->string('slug_112', 255);
 
 			$table->primary(['id_112', 'lang_112']);
-			$table->foreign('id_112')->references('id_111')->on('012_111_product')
+			$table->foreign('id_112', 'fk01_012_112_product_lang')->references('id_111')->on('012_111_product')
 				->onDelete('cascade')->onUpdate('cascade');
-			$table->foreign('lang_112')->references('id_001')->on('001_001_lang')
+			$table->foreign('lang_112', 'fk02_012_112_product_lang')->references('id_001')->on('001_001_lang')
 				->onDelete('restrict')->onUpdate('cascade');
 		});
 	}
