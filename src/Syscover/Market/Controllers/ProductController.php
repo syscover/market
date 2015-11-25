@@ -114,7 +114,7 @@ class ProductController extends Controller {
         ]);
     }
 
-    public function deleteCustomRecord($request, $object)
+    public function addToDeleteRecord($request, $object)
     {
         // delete all attachments
         AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $object->id_111);
