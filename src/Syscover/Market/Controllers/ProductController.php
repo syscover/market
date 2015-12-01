@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
 use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
 use Syscover\Pulsar\Models\AttachmentFamily;
+use Syscover\Pulsar\Models\CustomFieldGroup;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
@@ -41,6 +43,7 @@ class ProductController extends Controller {
     public function createCustomRecord($request, $parameters)
     {
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
+        $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
         $parameters['attachmentsInput']     = json_encode([]);
 
         if(isset($parameters['id']))
@@ -75,7 +78,8 @@ class ProductController extends Controller {
         }
 
         Product::where('id_111', $id)->update([
-            'data_lang_111' => Product::addLangDataRecord($request->input('lang'), $idLang)
+            'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
+            'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang)
         ]);
 
         ProductLang::create([
@@ -87,15 +91,18 @@ class ProductController extends Controller {
 
         // set attachments
         $attachments = json_decode($request->input('attachments'));
-
         AttachmentLibrary::storeAttachments($attachments, $this->package, 'market-product', $id, $request->input('lang'));
+
+        // set custom fields
+        if(!empty($request->input('customFieldGroup')))
+            CustomFieldResultLibrary::storeCustomFieldResults($request, $request->input('customFieldGroup'), 'market-product', $id, $request->input('lang'));
     }
 
     public function editCustomRecord($request, $parameters)
     {
         // get attachments elements
         $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
-
+        $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters                         = array_merge($parameters, $attachments);
 
@@ -105,13 +112,21 @@ class ProductController extends Controller {
     public function updateCustomRecord($request, $parameters)
     {
         Product::where('id_111', $parameters['id'])->update([
-            'active_111'    => $request->input('active', false),
+            'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
+            'active_111'                => $request->input('active', false),
         ]);
 
         ProductLang::where('id_112', $parameters['id'])->where('lang_112', $request->input('lang'))->update([
             'name_112'      => $request->input('name'),
             'slug_112'      => $request->input('slug'),
         ]);
+
+        // set custom fields
+        if(!empty($request->input('customFieldGroup')))
+        {
+            CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $parameters['id'], $request->input('lang'));
+            CustomFieldResultLibrary::storeCustomFieldResults($request, $request->input('customFieldGroup'), 'market-product', $parameters['id'], $request->input('lang'));
+        }
     }
 
     public function addToDeleteRecord($request, $object)

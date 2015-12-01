@@ -20,7 +20,7 @@ class Category extends Model {
 
 	protected $table        = '012_110_category';
     protected $primaryKey   = 'id_110';
-    protected $sufix        = '110';
+    protected $suffix        = '110';
     public $timestamps      = false;
     protected $fillable     = ['id_110', 'lang_110', 'parent_110', 'name_110', 'slug_110', 'active_110', 'description_110', 'data_lang_110', 'data_110'];
     private static $rules   = [];

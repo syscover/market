@@ -20,9 +20,9 @@ class Product extends Model {
 
 	protected $table        = '012_111_product';
     protected $primaryKey   = 'id_111';
-    protected $sufix        = '111';
+    protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'active_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'custom_field_group_111', 'active_111', 'data_lang_111', 'data_111'];
     private static $rules   = [
 
     ];
