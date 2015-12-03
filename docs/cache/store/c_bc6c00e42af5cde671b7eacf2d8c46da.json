@@ -1,0 +1,203 @@
+{
+    "name": "Syscover\\Market\\Models\\Product",
+    "line": 18,
+    "short_desc": "Class Product",
+    "long_desc": "Model with properties\n<br><b>[id, custom_field_group , active, data_lang, data]<\/b>",
+    "hint": null,
+    "tags": {
+        "package": [
+            [
+                "Syscover\\Market\\Models"
+            ]
+        ]
+    },
+    "namespace": "Syscover\\Market\\Models",
+    "file": "src\/Syscover\/Market\/Models\/Product.php",
+    "relative_file": "\/Syscover\/Market\/Models\/Product.php",
+    "hash": "fe639a6926a5e5231d9369f9cd1cfa7c46e5602f",
+    "parent": "Syscover\\Pulsar\\Models\\Model",
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Model": "Syscover\\Pulsar\\Models\\Model",
+        "Validator": "Illuminate\\Support\\Facades\\Validator",
+        "TraitModel": "Syscover\\Pulsar\\Traits\\TraitModel",
+        "Eloquence": "Sofa\\Eloquence\\Eloquence",
+        "Mappable": "Sofa\\Eloquence\\Mappable"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Syscover\\Pulsar\\Traits\\TraitModel": "Syscover\\Pulsar\\Traits\\TraitModel",
+        "Sofa\\Eloquence\\Eloquence": "Sofa\\Eloquence\\Eloquence",
+        "Sofa\\Eloquence\\Mappable": "Sofa\\Eloquence\\Mappable"
+    },
+    "properties": {
+        "timestamps": {
+            "name": "timestamps",
+            "line": 26,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "default": {
+                "name": {
+                    "parts": [
+                        "false"
+                    ]
+                }
+            },
+            "errors": []
+        }
+    },
+    "methods": {
+        "validate": {
+            "name": "validate",
+            "line": 35,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "data": {
+                    "name": "data",
+                    "line": 35,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "scopeBuilder": {
+            "name": "scopeBuilder",
+            "line": 40,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "query": {
+                    "name": "query",
+                    "line": 40,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getLang": {
+            "name": "getLang",
+            "line": 46,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "addToGetRecordsLimit": {
+            "name": "addToGetRecordsLimit",
+            "line": 51,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parameters": {
+                    "name": "parameters",
+                    "line": 51,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getTranslationRecord": {
+            "name": "getTranslationRecord",
+            "line": 60,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parameters": {
+                    "name": "parameters",
+                    "line": 60,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getRecords": {
+            "name": "getRecords",
+            "line": 67,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parameters": {
+                    "name": "parameters",
+                    "line": 67,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

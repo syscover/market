@@ -1,28 +1,34 @@
 <?php namespace Syscover\Market\Models;
 
-/**
- * @package	    Market
- * @author	    Jose Carlos Rodríguez Palacín
- * @copyright   Copyright (c) 2015, SYSCOVER, SL
- * @license
- * @link		http://www.syscover.com
- * @since		Version 2.0
- * @filesource
- */
-
-use Illuminate\Database\Eloquent\Model;
+use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
 
-class ProductLang extends Model {
+/**
+ * Class Product
+ *
+ * Model with properties
+ * <br><b>[id, lang, name, slug]</b>
+ *
+ * @package     Syscover\Market\Models
+ */
 
+class ProductLang extends Model
+{
     use TraitModel;
+    use Eloquence, Mappable;
 
 	protected $table        = '012_112_product_lang';
     protected $primaryKey   = 'id_112';
     protected $suffix        = '112';
     public $timestamps      = false;
     protected $fillable     = ['id_112', 'lang_112', 'name_112', 'slug_112'];
+    protected $maps         = [];
+    protected $relationMaps = [
+        'lang' => \Syscover\Pulsar\Models\Lang::class,
+    ];
     private static $rules   = [];
 
     public static function validate($data)
@@ -30,7 +36,7 @@ class ProductLang extends Model {
         return Validator::make($data, static::$rules);
 	}
 
-    public function lang()
+    public function getLang()
     {
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_112');
     }
