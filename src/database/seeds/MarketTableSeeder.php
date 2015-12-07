@@ -16,5 +16,5 @@ class MarketTableSeeder extends Seeder
 
 /*
  * Command to run:
- * php artisan db:seed --class="MarketTableSeeder.php"
+ * php artisan db:seed --class="MarketTableSeeder"
  */
