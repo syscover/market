@@ -8,7 +8,7 @@
     "namespace": "Syscover\\Market\\Controllers",
     "file": "src\/Syscover\/Market\/Controllers\/ProductController.php",
     "relative_file": "\/Syscover\/Market\/Controllers\/ProductController.php",
-    "hash": "8971da382a829b01aadeb2b59d2753f93a61971f",
+    "hash": "34f1dc3c76deb6dffb6788d6f3c8c786b6c5ffd1",
     "parent": "Syscover\\Pulsar\\Controllers\\Controller",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -133,7 +133,7 @@
         },
         "storeCustomRecord": {
             "name": "storeCustomRecord",
-            "line": 61,
+            "line": 65,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -146,7 +146,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 61,
+                    "line": 65,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -157,7 +157,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 61,
+                    "line": 65,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -170,7 +170,7 @@
         },
         "editCustomRecord": {
             "name": "editCustomRecord",
-            "line": 101,
+            "line": 109,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -183,7 +183,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 101,
+                    "line": 109,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -194,7 +194,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 101,
+                    "line": 109,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -207,7 +207,7 @@
         },
         "updateCustomRecord": {
             "name": "updateCustomRecord",
-            "line": 112,
+            "line": 124,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -220,7 +220,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 112,
+                    "line": 124,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -231,7 +231,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 112,
+                    "line": 124,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -244,7 +244,7 @@
         },
         "addToDeleteRecord": {
             "name": "addToDeleteRecord",
-            "line": 132,
+            "line": 148,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -257,7 +257,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 132,
+                    "line": 148,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -268,7 +268,7 @@
                 },
                 "object": {
                     "name": "object",
-                    "line": 132,
+                    "line": 148,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -281,7 +281,7 @@
         },
         "addToDeleteTranslationRecord": {
             "name": "addToDeleteTranslationRecord",
-            "line": 138,
+            "line": 154,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -294,7 +294,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 138,
+                    "line": 154,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -305,7 +305,7 @@
                 },
                 "object": {
                     "name": "object",
-                    "line": 138,
+                    "line": 154,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -318,7 +318,7 @@
         },
         "addToDeleteRecordsSelect": {
             "name": "addToDeleteRecordsSelect",
-            "line": 144,
+            "line": 160,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -331,7 +331,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 144,
+                    "line": 160,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -342,7 +342,7 @@
                 },
                 "ids": {
                     "name": "ids",
-                    "line": 144,
+                    "line": 160,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -355,7 +355,7 @@
         },
         "apiCheckSlug": {
             "name": "apiCheckSlug",
-            "line": 152,
+            "line": 168,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -368,7 +368,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 152,
+                    "line": 168,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": [

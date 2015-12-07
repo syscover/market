@@ -42,6 +42,10 @@ class ProductController extends Controller {
 
     public function createCustomRecord($request, $parameters)
     {
+        $parameters['priceTypes']           = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        },config('market.priceTypes'));
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
         $parameters['attachmentsInput']     = json_encode([]);
@@ -79,14 +83,18 @@ class ProductController extends Controller {
 
         Product::where('id_111', $id)->update([
             'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
-            'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang)
+            'price_type_111'            => $request->input('priceType'),
+            'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
+            'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
+            'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang),
         ]);
 
         ProductLang::create([
-            'id_112'        => $id,
-            'lang_112'      => $request->input('lang'),
-            'name_112'      => $request->input('name'),
-            'slug_112'      => $request->input('slug'),
+            'id_112'            => $id,
+            'lang_112'          => $request->input('lang'),
+            'name_112'          => $request->input('name'),
+            'slug_112'          => $request->input('slug'),
+            'description_112'   => $request->input('description'),
         ]);
 
         // set attachments
@@ -101,6 +109,10 @@ class ProductController extends Controller {
     public function editCustomRecord($request, $parameters)
     {
         // get attachments elements
+        $parameters['priceTypes']           = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        },config('market.priceTypes'));
         $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
         $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
@@ -113,12 +125,16 @@ class ProductController extends Controller {
     {
         Product::where('id_111', $parameters['id'])->update([
             'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
+            'price_type_111'            => $request->input('priceType'),
+            'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
+            'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'active_111'                => $request->input('active', false),
         ]);
 
         ProductLang::where('id_112', $parameters['id'])->where('lang_112', $request->input('lang'))->update([
-            'name_112'      => $request->input('name'),
-            'slug_112'      => $request->input('slug'),
+            'name_112'          => $request->input('name'),
+            'slug_112'          => $request->input('slug'),
+            'description_112'   => $request->input('description'),
         ]);
 
         // set custom fields

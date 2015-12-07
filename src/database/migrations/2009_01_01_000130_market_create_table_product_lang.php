@@ -16,11 +16,11 @@ class MarketCreateTableProductLang extends Migration
 
 			$table->integer('id_112')->unsigned();
 			$table->string('lang_112', 2);
-
 			$table->string('name_112', 100);
-			$table->string('slug_112', 255);
+			$table->string('slug_112');
+			$table->text('description_112');
 
-			$table->primary(['id_112', 'lang_112']);
+			$table->primary(['id_112', 'lang_112'], 'pk01_012_112_product_lang');
 			$table->foreign('id_112', 'fk01_012_112_product_lang')->references('id_111')->on('012_111_product')
 				->onDelete('cascade')->onUpdate('cascade');
 			$table->foreign('lang_112', 'fk02_012_112_product_lang')->references('id_001')->on('001_001_lang')

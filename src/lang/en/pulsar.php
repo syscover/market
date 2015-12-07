@@ -16,7 +16,10 @@ return [
     'customer_tax'                          => 'Customer tax|Customers tax',
     'package_name'                          => 'Market',
     'parent_category'                       => 'Parent category|Parent categories',
+    'price_types'                           => 'Price types',
     'product'                               => 'Product|Products',
+    'single_price'                          => 'Single price',
     'tax'                                   => 'Tax|Taxes',
+    'undefined_price'                       => 'Undefined price',
 
 ];

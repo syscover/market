@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/Product.php",
     "relative_file": "\/Syscover\/Market\/Models\/Product.php",
-    "hash": "fe639a6926a5e5231d9369f9cd1cfa7c46e5602f",
+    "hash": "d505292bbedd265ae3e2bb2c35e016991edaed92",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -56,7 +56,7 @@
     "methods": {
         "validate": {
             "name": "validate",
-            "line": 35,
+            "line": 37,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -69,7 +69,7 @@
             "parameters": {
                 "data": {
                     "name": "data",
-                    "line": 35,
+                    "line": 37,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -82,7 +82,7 @@
         },
         "scopeBuilder": {
             "name": "scopeBuilder",
-            "line": 40,
+            "line": 42,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -95,7 +95,7 @@
             "parameters": {
                 "query": {
                     "name": "query",
-                    "line": 40,
+                    "line": 42,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -108,7 +108,7 @@
         },
         "getLang": {
             "name": "getLang",
-            "line": 46,
+            "line": 48,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -122,7 +122,7 @@
         },
         "addToGetRecordsLimit": {
             "name": "addToGetRecordsLimit",
-            "line": 51,
+            "line": 53,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -135,7 +135,7 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 51,
+                    "line": 53,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -148,7 +148,7 @@
         },
         "getTranslationRecord": {
             "name": "getTranslationRecord",
-            "line": 60,
+            "line": 62,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -161,7 +161,7 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 60,
+                    "line": 62,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -174,7 +174,7 @@
         },
         "getRecords": {
             "name": "getRecords",
-            "line": 67,
+            "line": 69,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -187,7 +187,7 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 67,
+                    "line": 69,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,

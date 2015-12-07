@@ -24,7 +24,7 @@ class ProductLang extends Model
     protected $primaryKey   = 'id_112';
     protected $suffix        = '112';
     public $timestamps      = false;
-    protected $fillable     = ['id_112', 'lang_112', 'name_112', 'slug_112'];
+    protected $fillable     = ['id_112', 'lang_112', 'name_112', 'slug_112', 'description_112'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang' => \Syscover\Pulsar\Models\Lang::class,

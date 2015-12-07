@@ -16,7 +16,10 @@ return [
     'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario',
     'package_name'                          => 'Market',
     'parent_category'                       => 'Categoría pagre|Categorias padres',
+    'price_types'                           => 'Tipo de precios',
     'product'                               => 'Producto|Productos',
+    'single_price'                          => 'Precio único',
     'tax'                                   => 'Impuesto|Impuestos',
+    'undefined_price'                       => 'Precio no definido',
 
 ];

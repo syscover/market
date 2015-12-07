@@ -24,13 +24,15 @@ class Product extends Model
     protected $primaryKey   = 'id_111';
     protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'custom_field_group_111', 'active_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'custom_field_group_111', 'price_type_111', 'price_111', 'weight_111', 'active_111', 'data_lang_111', 'data_111'];
     protected $maps         = [];
     protected $relationMaps = [
-        //'lang'          => \Syscover\Pulsar\Models\Lang::class,
+        'lang'          => \Syscover\Pulsar\Models\Lang::class,
         'product_lang'  => \Syscover\Market\Models\ProductLang::class
     ];
-    private static $rules   = [];
+    private static $rules   = [
+        'priceType' => 'required'
+    ];
 
     public static function validate($data)
     {

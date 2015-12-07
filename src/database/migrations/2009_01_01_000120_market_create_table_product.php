@@ -15,6 +15,9 @@ class MarketCreateTableProduct extends Migration
                 $table->engine = 'InnoDB';
                 $table->increments('id_111')->unsigned();
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
+				$table->tinyInteger('price_type_111')->unsigned();
+				$table->decimal('price_111', 10, 2)->nullable();
+				$table->decimal('weight_111', 10, 3)->nullable();
 				$table->boolean('active_111');
 
 				$table->string('data_lang_111',255)->nullable();

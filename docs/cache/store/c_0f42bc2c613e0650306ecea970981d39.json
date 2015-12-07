@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/ProductLang.php",
     "relative_file": "\/Syscover\/Market\/Models\/ProductLang.php",
-    "hash": "082986120b6732237ef0bc815118d3fc15062a05",
+    "hash": "890ff7ed22f8475cc68765123628193cbb7701eb",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
