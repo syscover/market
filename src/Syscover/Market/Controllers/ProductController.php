@@ -149,12 +149,14 @@ class ProductController extends Controller {
     {
         // delete all attachments
         AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $object->id_111);
+        CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_111);
     }
 
     public function addToDeleteTranslationRecord($request, $object)
     {
         // delete all attachments from lang object
         AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
+        CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->id_112);
     }
 
     public function addToDeleteRecordsSelect($request, $ids)
@@ -162,6 +164,7 @@ class ProductController extends Controller {
         foreach($ids as $id)
         {
             AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $id);
+            CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $id);
         }
     }
 

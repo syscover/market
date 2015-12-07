@@ -28,7 +28,8 @@
 
         // on change family show fields and custom fields
         $("[name=customFieldGroup]").on('change', function() {
-            if($("[name=customFieldGroup]").val()) {
+            if($("[name=customFieldGroup]").val())
+            {
                 // get html doing a request to controller to render the views
                 @if($action == 'edit' || isset($id))
                     var request = {
@@ -52,8 +53,14 @@
                     url: '{{ route('apiGetCustomFields') }}',
                     data: request,
                     success: function (data) {
-                        // add html custom fields section
-                        $('#wrapperCustomFields').prepend(data.html)
+                        // set html custom fields section
+                        $('#wrapperCustomFields').html(data.html)
+
+                        if ($.fn.select2)
+                            $('.select2').each(function() {
+                                var self = $(this);
+                                $(self).select2(self.data());
+                            })
 
                         if (data.html != '')
                         {
