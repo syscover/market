@@ -47,7 +47,7 @@ class ProductController extends Controller {
             return $object;
         },config('market.priceTypes'));
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
-        $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
+        $parameters['customFieldGroups']    = CustomFieldGroup::where('resource_025', 'market-product')->get();
         $parameters['attachmentsInput']     = json_encode([]);
 
         if(isset($parameters['id']))
