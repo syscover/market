@@ -103,7 +103,7 @@
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.field_group', 1), 'name' => 'customFieldGroup', 'value' => $object->custom_field_group_111, 'objects' => $customFieldGroups, 'idSelect' => 'id_025', 'nameSelect' => 'name_025', 'fieldSize' => 5])
     @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => $object->active_111])
 
-    @include('pulsar::includes.html.form_section_header', ['label' => trans('cms::pulsar.custom_fields'), 'icon' => 'fa fa-align-left', 'containerId' => 'headerCustomFields'])
+    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.custom_fields', 2), 'icon' => 'fa fa-align-left', 'containerId' => 'headerCustomFields'])
     <div id="wrapperCustomFields"></div>
     <!-- /market::products.create -->
 @stop
