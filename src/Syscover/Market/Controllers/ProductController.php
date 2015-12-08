@@ -17,7 +17,7 @@ class ProductController extends Controller {
     protected $routeSuffix  = 'marketProduct';
     protected $folder       = 'products';
     protected $package      = 'market';
-    protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active']];
+    protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'price_111'];
     protected $nameM        = 'name_112';
     protected $model        = '\Syscover\Market\Models\Product';
     protected $langModel    = '\Syscover\Market\Models\ProductLang';
