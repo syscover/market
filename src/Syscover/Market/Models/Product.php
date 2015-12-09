@@ -66,6 +66,11 @@ class Product extends Model
             ->first();
     }
 
+    /**
+     * @deprecated
+     * @param $parameters
+     * @return mixed
+     */
     public static function getRecords($parameters)
     {
         $query = Product::builder();

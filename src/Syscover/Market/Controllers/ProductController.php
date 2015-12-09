@@ -10,6 +10,11 @@ use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
 
+/**
+ * Class ProductController
+ * @package Syscover\Market\Controllers
+ */
+
 class ProductController extends Controller {
 
     use TraitController;
