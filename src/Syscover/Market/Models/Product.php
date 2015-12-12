@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class Product
@@ -42,7 +43,9 @@ class Product extends Model
     public function scopeBuilder($query)
     {
         return $query->join('012_112_product_lang', '012_111_product.id_111', '=', '012_112_product_lang.id_112')
-            ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001');
+            ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001')
+            ->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
+            ->leftJoin('012_110_category', '012_113_products_categories.category_113', '=', '012_110_category.id_110');
     }
 
     public function getLang()
@@ -62,6 +65,12 @@ class Product extends Model
         if(isset($parameters['lang'])) $query->where('lang_112', $parameters['lang']);
 
         return $query;
+    }
+
+    public static function getCustomReturnRecordsLimit($query)
+    {
+        return $query->groupBy('id_111')
+            ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')]);
     }
 
     public static function getTranslationRecord($parameters)
