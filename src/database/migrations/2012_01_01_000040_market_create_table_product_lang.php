@@ -18,7 +18,7 @@ class MarketCreateTableProductLang extends Migration
 
 				$table->integer('id_112')->unsigned();
 				$table->string('lang_112', 2);
-				$table->string('name_112', 100);
+				$table->string('name_112');
 				$table->string('slug_112');
 				$table->text('description_112');
 
