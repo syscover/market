@@ -95,6 +95,7 @@
             @include('pulsar::includes.html.form_image_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans_choice('pulsar::pulsar.language', 1), 'name' => 'lang', 'nameImage' => $lang->name_001, 'value' => $lang->id_001, 'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)])
         </div>
     </div>
+    @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.category', 2), 'containerId' => 'categoriesContent', 'name' => 'categories[]', 'value' => $object->getCategories, 'objects' => $categories, 'idSelect' => 'id_110', 'nameSelect' => 'name_110', 'multiple' => true, 'class' => 'col-md-12 select2', 'fieldSize' => 10, 'data' => ['placeholder' => trans('cms::pulsar.select_category'), 'width' => '100%']])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => $object->name_112, 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.slug'), 'name' => 'slug', 'value' => $object->slug_112, 'maxLength' => '255', 'rangeLength' => '2,255', 'required' => true])
     @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_types'), 'name' => 'priceType', 'value' => $object->price_type_111, 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])

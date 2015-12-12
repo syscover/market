@@ -50,6 +50,11 @@ class Product extends Model
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_112');
     }
 
+    public function getCategories()
+    {
+        return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_113', 'category_113');
+    }
+
     public static function addToGetRecordsLimit($parameters)
     {
         $query =  Product::builder();

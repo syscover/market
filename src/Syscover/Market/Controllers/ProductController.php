@@ -9,6 +9,7 @@ use Syscover\Pulsar\Models\CustomFieldGroup;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
+use Syscover\Market\Models\Category;
 
 /**
  * Class ProductController
@@ -47,6 +48,7 @@ class ProductController extends Controller {
 
     public function createCustomRecord($request, $parameters)
     {
+        $parameters['categories']           = Category::where('lang_110', $parameters['lang'])->get();
         $parameters['priceTypes']           = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
@@ -102,6 +104,14 @@ class ProductController extends Controller {
             'description_112'   => $request->input('description'),
         ]);
 
+        $product = Product::where('id_111', $id)->first();
+
+        // set categories
+        if(is_array($request->input('categories')))
+        {
+            $product->getCategories()->sync($request->input('categories'));
+        }
+
         // set attachments
         $attachments = json_decode($request->input('attachments'));
         AttachmentLibrary::storeAttachments($attachments, $this->package, 'market-product', $id, $request->input('lang'));
@@ -113,7 +123,7 @@ class ProductController extends Controller {
 
     public function editCustomRecord($request, $parameters)
     {
-        // get attachments elements
+        $parameters['categories']           = Category::where('lang_110', $parameters['lang']->id_001)->get();
         $parameters['priceTypes']           = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
@@ -141,6 +151,18 @@ class ProductController extends Controller {
             'slug_112'          => $request->input('slug'),
             'description_112'   => $request->input('description'),
         ]);
+
+        $product = Product::where('id_111', $parameters['id'])->first();
+
+        // categories
+        if(is_array($request->input('categories')))
+        {
+            $product->getCategories()->sync($request->input('categories'));
+        }
+        else
+        {
+            $product->getCategories()->detach();
+        }
 
         // set custom fields
         if(!empty($request->input('customFieldGroup')))

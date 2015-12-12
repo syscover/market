@@ -11,26 +11,26 @@ class MarketCreateTableRow extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_114_row'))
+		if (!Schema::hasTable('012_115_row'))
 		{
-			Schema::create('012_114_row', function ($table) {
+			Schema::create('012_115_row', function ($table) {
 				$table->engine = 'InnoDB';
 
-				$table->increments('id_114')->unsigned();
-				$table->integer('order_114')->unsigned();
+				$table->increments('id_115')->unsigned();
+				$table->integer('order_115')->unsigned();
 
 
-				$table->integer('product_114')->unsigned();
-				$table->string('name_114');
+				$table->integer('product_115')->unsigned();
+				$table->string('name_115');
 
 
 
-				$table->decimal('discount_114', 10, 2)->nullable();
-				$table->decimal('price_114', 10, 2)->nullable();
-				$table->smallInteger('quantity_114')->unsigned();
+				$table->decimal('discount_115', 10, 2)->nullable();
+				$table->decimal('price_115', 10, 2)->nullable();
+				$table->smallInteger('quantity_115')->unsigned();
 
 
-				$table->text('data_114');
+				$table->text('data_115');
 
 
 
@@ -58,9 +58,9 @@ class MarketCreateTableRow extends Migration
 	 */
 	public function down()
 	{
-		if (Schema::hasTable('012_114_row'))
+		if (Schema::hasTable('012_115_row'))
 		{
-			Schema::drop('012_114_row');
+			Schema::drop('012_115_row');
 		}
 	}
 }
