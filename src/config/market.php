@@ -24,4 +24,13 @@ return [
         (object)['id' => 1,      'name' => 'market::pulsar.single_price'],
         (object)['id' => 2,      'name' => 'market::pulsar.undefined_price']
     ],
+
+    //******************************************************************************************************************
+    //***   Type of prduct
+    //******************************************************************************************************************
+    'productTypes'                 => [
+        (object)['id' => 1,      'name' => 'market::pulsar.downloadable'],
+        (object)['id' => 2,      'name' => 'market::pulsar.transportable'],
+        (object)['id' => 3,      'name' => 'market::pulsar.transportable_downloadable']
+    ],
 ];

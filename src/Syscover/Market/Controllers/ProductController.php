@@ -53,6 +53,10 @@ class ProductController extends Controller {
             $object->name = trans($object->name);
             return $object;
         },config('market.priceTypes'));
+        $parameters['productTypes']         = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        },config('market.productTypes'));
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters['customFieldGroups']    = CustomFieldGroup::where('resource_025', 'market-product')->get();
         $parameters['attachmentsInput']     = json_encode([]);
@@ -91,6 +95,7 @@ class ProductController extends Controller {
         Product::where('id_111', $id)->update([
             'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
             'price_type_111'            => $request->input('priceType'),
+            'product_type_111'          => $request->input('productType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang),
@@ -128,6 +133,10 @@ class ProductController extends Controller {
             $object->name = trans($object->name);
             return $object;
         },config('market.priceTypes'));
+        $parameters['productTypes']         = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        },config('market.productTypes'));
         $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
         $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
@@ -141,6 +150,7 @@ class ProductController extends Controller {
         Product::where('id_111', $parameters['id'])->update([
             'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
             'price_type_111'            => $request->input('priceType'),
+            'product_type_111'          => $request->input('productType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'active_111'                => $request->input('active', false),

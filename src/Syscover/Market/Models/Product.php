@@ -32,7 +32,8 @@ class Product extends Model
         'product_lang'  => \Syscover\Market\Models\ProductLang::class
     ];
     private static $rules   = [
-        'priceType' => 'required'
+        'priceType'     => 'required',
+        'productType'   => 'required'
     ];
 
     public static function validate($data)

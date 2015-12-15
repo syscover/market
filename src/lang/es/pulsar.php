@@ -14,12 +14,16 @@ return [
     */
     'category'                              => 'Categoría|Categorias',
     'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario',
+    'downloadable'                          => 'Descargable',
     'package_name'                          => 'Market',
     'parent_category'                       => 'Categoría pagre|Categorias padres',
     'price_types'                           => 'Tipo de precios',
     'product'                               => 'Producto|Productos',
+    'product_types'                         => 'Tipo de producto|Tipos de productos',
     'single_price'                          => 'Precio único',
     'tax'                                   => 'Impuesto|Impuestos',
+    'transportable'                         => 'Transportable',
+    'transportable_downloadable'            => 'Transportable y descargable',
     'undefined_price'                       => 'Precio no definido',
 
 ];
