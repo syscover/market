@@ -22,7 +22,7 @@ class MarketCreateTableOrder extends Migration
 
 				$table->string('ip_114', 100);
 
-
+				// datos de facturación
 				$table->string('customer_company_114')->nullable();
 				$table->string('customer_tin_114', 50)->nullable();
 				$table->string('customer_name_114', 50)->nullable();
@@ -32,14 +32,35 @@ class MarketCreateTableOrder extends Migration
 				$table->string('customer_mobile_114', 50)->nullable();
 
 				// dirección de facturación
+				$table->string('invoice_country_170', 2);
+				$table->string('invoice_territorial_area_1_170', 6)->nullable();
+				$table->string('invoice_territorial_area_2_170', 10)->nullable();
+				$table->string('invoice_territorial_area_3_170', 10)->nullable();
+				$table->string('invoice_cp_170', 10)->nullable();
+				$table->string('invoice_locality_170', 100)->nullable();
+				$table->string('invoice_address_170', 150)->nullable();
+				$table->string('invoice_latitude_170', 50)->nullable();
+				$table->string('invoice_longitude_170', 50)->nullable();
+				
+				// datos de envío
+				$table->string('shipping_company_114')->nullable();
+				$table->string('shipping_name_114', 50)->nullable();
+				$table->string('shipping_surname_114', 50)->nullable();
+				$table->string('shipping_email_114', 50);
+				$table->string('shipping_phone_114', 50)->nullable();
+				$table->string('shipping_mobile_114', 50)->nullable();
+				$table->string('shipping_shipping_country_170', 2);
+				$table->string('shipping_territorial_area_1_170', 6)->nullable();
+				$table->string('shipping_territorial_area_2_170', 10)->nullable();
+				$table->string('shipping_territorial_area_3_170', 10)->nullable();
+				$table->string('shipping_cp_170', 10)->nullable();
+				$table->string('shipping_locality_170', 100)->nullable();
+				$table->string('shipping_address_170', 150)->nullable();
+				$table->string('shipping_latitude_170', 50)->nullable();
+				$table->string('shipping_longitude_170', 50)->nullable();
 
-				// dirección de envío
 
 
-				$table->foreign('id_112', 'fk01_012_112_product_lang')->references('id_111')->on('012_111_product')
-						->onDelete('cascade')->onUpdate('cascade');
-				$table->foreign('lang_112', 'fk02_012_112_product_lang')->references('id_001')->on('001_001_lang')
-						->onDelete('restrict')->onUpdate('cascade');
 			});
 		}
 	}
