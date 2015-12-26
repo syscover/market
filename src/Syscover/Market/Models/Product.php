@@ -57,7 +57,7 @@ class Product extends Model
         return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_113', 'category_113');
     }
 
-    public static function addToGetRecordsLimit($parameters)
+    public static function addToGetIndexRecords($parameters)
     {
         $query =  Product::builder();
 
@@ -66,7 +66,7 @@ class Product extends Model
         return $query;
     }
 
-    public static function getCustomReturnRecordsLimit($query)
+    public static function getCustomReturnIndexRecords($query, $parameters)
     {
         return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
             ->leftJoin('012_110_category', '012_113_products_categories.category_113', '=', '012_110_category.id_110')
