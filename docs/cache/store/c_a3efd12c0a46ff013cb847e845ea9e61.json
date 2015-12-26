@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/Category.php",
     "relative_file": "\/Syscover\/Market\/Models\/Category.php",
-    "hash": "790103f3aa0ccef56a2169b496692ae757cebb7f",
+    "hash": "69678b1d6ffde2dfd95360d6736a6cda25e5ae6f",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -120,8 +120,8 @@
             "errors": [],
             "parameters": []
         },
-        "addToGetRecordsLimit": {
-            "name": "addToGetRecordsLimit",
+        "addToGetIndexRecords": {
+            "name": "addToGetIndexRecords",
             "line": 49,
             "short_desc": "",
             "long_desc": "",

@@ -1,6 +1,6 @@
 {
     "name": "Syscover\\Market\\Models\\Product",
-    "line": 18,
+    "line": 19,
     "short_desc": "Class Product",
     "long_desc": "Model with properties\n<br><b>[id, custom_field_group , active, data_lang, data]<\/b>",
     "hint": null,
@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/Product.php",
     "relative_file": "\/Syscover\/Market\/Models\/Product.php",
-    "hash": "d505292bbedd265ae3e2bb2c35e016991edaed92",
+    "hash": "0a6303b25741f5173979cb3797c66581dbf9e221",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -24,7 +24,8 @@
         "Validator": "Illuminate\\Support\\Facades\\Validator",
         "TraitModel": "Syscover\\Pulsar\\Traits\\TraitModel",
         "Eloquence": "Sofa\\Eloquence\\Eloquence",
-        "Mappable": "Sofa\\Eloquence\\Mappable"
+        "Mappable": "Sofa\\Eloquence\\Mappable",
+        "DB": "Illuminate\\Support\\Facades\\DB"
     },
     "errors": [],
     "interfaces": [],
@@ -36,7 +37,7 @@
     "properties": {
         "timestamps": {
             "name": "timestamps",
-            "line": 26,
+            "line": 27,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -56,7 +57,7 @@
     "methods": {
         "validate": {
             "name": "validate",
-            "line": 37,
+            "line": 39,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -69,7 +70,7 @@
             "parameters": {
                 "data": {
                     "name": "data",
-                    "line": 37,
+                    "line": 39,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -82,7 +83,7 @@
         },
         "scopeBuilder": {
             "name": "scopeBuilder",
-            "line": 42,
+            "line": 44,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -95,7 +96,7 @@
             "parameters": {
                 "query": {
                     "name": "query",
-                    "line": 42,
+                    "line": 44,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -108,7 +109,7 @@
         },
         "getLang": {
             "name": "getLang",
-            "line": 48,
+            "line": 50,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -120,9 +121,23 @@
             "errors": [],
             "parameters": []
         },
-        "addToGetRecordsLimit": {
-            "name": "addToGetRecordsLimit",
-            "line": 53,
+        "getCategories": {
+            "name": "getCategories",
+            "line": 55,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "addToGetIndexRecords": {
+            "name": "addToGetIndexRecords",
+            "line": 60,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -135,7 +150,44 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 53,
+                    "line": 60,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getCustomReturnIndexRecords": {
+            "name": "getCustomReturnIndexRecords",
+            "line": 69,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "query": {
+                    "name": "query",
+                    "line": 69,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "parameters": {
+                    "name": "parameters",
+                    "line": 69,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -148,7 +200,7 @@
         },
         "getTranslationRecord": {
             "name": "getTranslationRecord",
-            "line": 62,
+            "line": 77,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -161,7 +213,7 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 62,
+                    "line": 77,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -174,12 +226,23 @@
         },
         "getRecords": {
             "name": "getRecords",
-            "line": 69,
+            "line": 89,
             "short_desc": "",
             "long_desc": "",
-            "hint": null,
-            "hint_desc": null,
-            "tags": [],
+            "hint": [
+                [
+                    "mixed",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "deprecated": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": "9",
             "is_by_ref": "",
             "exceptions": [],
@@ -187,10 +250,10 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 69,
-                    "short_desc": null,
+                    "line": 89,
+                    "short_desc": "",
                     "long_desc": null,
-                    "hint": null,
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,

@@ -1,14 +1,20 @@
 {
     "name": "Syscover\\Market\\Controllers\\ProductController",
-    "line": 13,
-    "short_desc": "",
+    "line": 19,
+    "short_desc": "Class ProductController",
     "long_desc": "",
     "hint": null,
-    "tags": [],
+    "tags": {
+        "package": [
+            [
+                "Syscover\\Market\\Controllers"
+            ]
+        ]
+    },
     "namespace": "Syscover\\Market\\Controllers",
     "file": "src\/Syscover\/Market\/Controllers\/ProductController.php",
     "relative_file": "\/Syscover\/Market\/Controllers\/ProductController.php",
-    "hash": "34f1dc3c76deb6dffb6788d6f3c8c786b6c5ffd1",
+    "hash": "058a21d7d47a6b04946a69186ec10664e93cf01e",
     "parent": "Syscover\\Pulsar\\Controllers\\Controller",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -22,7 +28,8 @@
         "CustomFieldGroup": "Syscover\\Pulsar\\Models\\CustomFieldGroup",
         "TraitController": "Syscover\\Pulsar\\Traits\\TraitController",
         "Product": "Syscover\\Market\\Models\\Product",
-        "ProductLang": "Syscover\\Market\\Models\\ProductLang"
+        "ProductLang": "Syscover\\Market\\Models\\ProductLang",
+        "Category": "Syscover\\Market\\Models\\Category"
     },
     "errors": [],
     "interfaces": [],
@@ -33,7 +40,7 @@
     "methods": {
         "indexCustom": {
             "name": "indexCustom",
-            "line": 27,
+            "line": 33,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -46,7 +53,7 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 27,
+                    "line": 33,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -59,7 +66,7 @@
         },
         "customActionUrlParameters": {
             "name": "customActionUrlParameters",
-            "line": 36,
+            "line": 42,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -72,7 +79,7 @@
             "parameters": {
                 "actionUrlParameters": {
                     "name": "actionUrlParameters",
-                    "line": 36,
+                    "line": 42,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -83,7 +90,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 36,
+                    "line": 42,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -96,7 +103,7 @@
         },
         "createCustomRecord": {
             "name": "createCustomRecord",
-            "line": 43,
+            "line": 49,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -109,7 +116,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 43,
+                    "line": 49,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -120,7 +127,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 43,
+                    "line": 49,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -133,7 +140,7 @@
         },
         "storeCustomRecord": {
             "name": "storeCustomRecord",
-            "line": 65,
+            "line": 76,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -146,7 +153,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 65,
+                    "line": 76,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -157,7 +164,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 65,
+                    "line": 76,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -170,7 +177,7 @@
         },
         "editCustomRecord": {
             "name": "editCustomRecord",
-            "line": 109,
+            "line": 129,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -183,7 +190,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 109,
+                    "line": 129,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -194,7 +201,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 109,
+                    "line": 129,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -207,43 +214,6 @@
         },
         "updateCustomRecord": {
             "name": "updateCustomRecord",
-            "line": 124,
-            "short_desc": "",
-            "long_desc": "",
-            "hint": null,
-            "hint_desc": null,
-            "tags": [],
-            "modifiers": "1",
-            "is_by_ref": "",
-            "exceptions": [],
-            "errors": [],
-            "parameters": {
-                "request": {
-                    "name": "request",
-                    "line": 124,
-                    "short_desc": null,
-                    "long_desc": null,
-                    "hint": null,
-                    "tags": [],
-                    "modifiers": "",
-                    "default": null,
-                    "is_by_ref": false
-                },
-                "parameters": {
-                    "name": "parameters",
-                    "line": 124,
-                    "short_desc": null,
-                    "long_desc": null,
-                    "hint": null,
-                    "tags": [],
-                    "modifiers": "",
-                    "default": null,
-                    "is_by_ref": false
-                }
-            }
-        },
-        "addToDeleteRecord": {
-            "name": "addToDeleteRecord",
             "line": 148,
             "short_desc": "",
             "long_desc": "",
@@ -266,9 +236,46 @@
                     "default": null,
                     "is_by_ref": false
                 },
+                "parameters": {
+                    "name": "parameters",
+                    "line": 148,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "addToDeleteRecord": {
+            "name": "addToDeleteRecord",
+            "line": 185,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 185,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
                 "object": {
                     "name": "object",
-                    "line": 148,
+                    "line": 185,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -281,7 +288,7 @@
         },
         "addToDeleteTranslationRecord": {
             "name": "addToDeleteTranslationRecord",
-            "line": 154,
+            "line": 192,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -294,7 +301,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 154,
+                    "line": 192,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -305,7 +312,7 @@
                 },
                 "object": {
                     "name": "object",
-                    "line": 154,
+                    "line": 192,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -318,7 +325,7 @@
         },
         "addToDeleteRecordsSelect": {
             "name": "addToDeleteRecordsSelect",
-            "line": 160,
+            "line": 199,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -331,7 +338,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 160,
+                    "line": 199,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -342,7 +349,7 @@
                 },
                 "ids": {
                     "name": "ids",
-                    "line": 160,
+                    "line": 199,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -355,7 +362,7 @@
         },
         "apiCheckSlug": {
             "name": "apiCheckSlug",
-            "line": 168,
+            "line": 208,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -368,7 +375,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 168,
+                    "line": 208,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": [
