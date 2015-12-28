@@ -55,6 +55,11 @@ class Category extends Model {
         return $query;
     }
 
+    public static function customCount($parameters)
+    {
+        return Category::where('lang_110', $parameters['lang'])->getQuery();
+    }
+
     public static function getTranslationRecord($parameters)
     {
         return Category::builder()
