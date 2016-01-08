@@ -18,6 +18,8 @@ class MarketCreateTableProduct extends Migration
 				$table->increments('id_111')->unsigned();
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
 				$table->tinyInteger('price_type_111')->unsigned();
+				// 1 single price
+				// 2 undefined price
 				$table->tinyInteger('product_type_111')->unsigned();
 				$table->decimal('price_111', 10, 2)->nullable();
 				$table->decimal('weight_111', 10, 3)->nullable();
