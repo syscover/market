@@ -48,6 +48,22 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
 
     /*
     |--------------------------------------------------------------------------
+    | PAYMENT METHOD
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/payment/methods/{lang}/{offset?}',                              ['as'=>'marketPaymentMethod',                     'uses'=>'Syscover\Market\Controllers\PaymentMethodController@index',                      'resource' => 'market-payment-method',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/payment/methods/json/data/{lang}',                              ['as'=>'jsonDataMarketPaymentMethod',             'uses'=>'Syscover\Market\Controllers\PaymentMethodController@jsonData',                   'resource' => 'market-payment-method',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/payment/methods/create/{lang}/{offset}/{id?}',                  ['as'=>'createMarketPaymentMethod',               'uses'=>'Syscover\Market\Controllers\PaymentMethodController@createRecord',               'resource' => 'market-payment-method',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/payment/methods/store/{lang}/{offset}/{id?}',                  ['as'=>'storeMarketPaymentMethod',                'uses'=>'Syscover\Market\Controllers\PaymentMethodController@storeRecord',                'resource' => 'market-payment-method',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/payment/methods/{id}/edit/{lang}/{offset}',                     ['as'=>'editMarketPaymentMethod',                 'uses'=>'Syscover\Market\Controllers\PaymentMethodController@editRecord',                 'resource' => 'market-payment-method',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/payment/methods/update/{lang}/{id}/{offset}',                   ['as'=>'updateMarketPaymentMethod',               'uses'=>'Syscover\Market\Controllers\PaymentMethodController@updateRecord',               'resource' => 'market-payment-method',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/payment/methods/delete/{lang}/{id}/{offset}',                   ['as'=>'deleteMarketPaymentMethod',               'uses'=>'Syscover\Market\Controllers\PaymentMethodController@deleteRecord',               'resource' => 'market-payment-method',        'action' => 'delete']);
+    Route::get(config('pulsar.appName') . '/market/payment/methods/delete/translation/{lang}/{id}/{offset}',       ['as'=>'deleteTranslationMarketPaymentMethod',    'uses'=>'Syscover\Market\Controllers\PaymentMethodController@deleteTranslationRecord',    'resource' => 'market-payment-method',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/payment/methods/delete/select/records/{lang}',               ['as'=>'deleteSelectMarketPaymentMethod',         'uses'=>'Syscover\Market\Controllers\PaymentMethodController@deleteRecordsSelect',        'resource' => 'market-payment-method',        'action' => 'delete']);
+
+
+    /*
+    |--------------------------------------------------------------------------
     | CUSTOMER TAX
     |--------------------------------------------------------------------------
     */

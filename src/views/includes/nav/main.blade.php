@@ -1,4 +1,4 @@
-        <li{!! Miscellaneous::setCurrentOpenPage(['market-product','market-category','market-product-tax']) !!}>
+        <li{!! Miscellaneous::setCurrentOpenPage(['market-product','market-category','market-product-tax','market-payment-method']) !!}>
             <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
             <ul class="sub-menu">
                 @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-product', 'access'))
@@ -15,5 +15,8 @@
                         @endif
                     </ul>
                 </li>
+                @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-payment-method', 'access'))
+                    <li{!! Miscellaneous::setCurrentPage('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [session('baseLang')]) }}"><i class="fa fa-credit-card"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
+                @endif
             </ul>
         </li>
