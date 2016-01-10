@@ -19,7 +19,7 @@ class OrderController extends Controller {
     use TraitController;
 
     protected $routeSuffix  = 'marketOrder';
-    protected $folder       = 'orders';
+    protected $folder       = 'order';
     protected $package      = 'market';
     protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'price_111', 'name_110'];
     protected $nameM        = 'name_112';

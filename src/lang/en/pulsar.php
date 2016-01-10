@@ -19,6 +19,7 @@ return [
     'maximum_price'                         => 'Maximum price',
     'minimum_price'                         => 'Minimum price',
     'order'                                 => 'Order|Orders',
+    'order_status'                          => 'Order status',
     'package_name'                          => 'Market',
     'parent_category'                       => 'Parent category|Parent categories',
     'payment_method'                        => 'Payment method|Payment methods',

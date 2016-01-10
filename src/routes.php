@@ -48,6 +48,22 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
 
     /*
     |--------------------------------------------------------------------------
+    | ORDER STATUS
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/order/status/{lang}/{offset?}',                              ['as'=>'marketOrderStatus',                         'uses'=>'Syscover\Market\Controllers\OrderStatusController@index',                      'resource' => 'market-order-status',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/order/status/json/data/{lang}',                              ['as'=>'jsonDataMarketOrderStatus',                 'uses'=>'Syscover\Market\Controllers\OrderStatusController@jsonData',                   'resource' => 'market-order-status',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/order/status/create/{lang}/{offset}/{id?}',                  ['as'=>'createMarketOrderStatus',                   'uses'=>'Syscover\Market\Controllers\OrderStatusController@createRecord',               'resource' => 'market-order-status',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/order/status/store/{lang}/{offset}/{id?}',                  ['as'=>'storeMarketOrderStatus',                    'uses'=>'Syscover\Market\Controllers\OrderStatusController@storeRecord',                'resource' => 'market-order-status',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/order/status/{id}/edit/{lang}/{offset}',                     ['as'=>'editMarketOrderStatus',                     'uses'=>'Syscover\Market\Controllers\OrderStatusController@editRecord',                 'resource' => 'market-order-status',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/order/status/update/{lang}/{id}/{offset}',                   ['as'=>'updateMarketOrderStatus',                   'uses'=>'Syscover\Market\Controllers\OrderStatusController@updateRecord',               'resource' => 'market-order-status',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/order/status/delete/{lang}/{id}/{offset}',                   ['as'=>'deleteMarketOrderStatus',                   'uses'=>'Syscover\Market\Controllers\OrderStatusController@deleteRecord',               'resource' => 'market-order-status',        'action' => 'delete']);
+    Route::get(config('pulsar.appName') . '/market/order/status/delete/translation/{lang}/{id}/{offset}',       ['as'=>'deleteTranslationMarketOrderStatus',        'uses'=>'Syscover\Market\Controllers\OrderStatusController@deleteTranslationRecord',    'resource' => 'market-order-status',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/order/status/delete/select/records/{lang}',               ['as'=>'deleteSelectMarketOrderStatus',             'uses'=>'Syscover\Market\Controllers\OrderStatusController@deleteRecordsSelect',        'resource' => 'market-order-status',        'action' => 'delete']);
+
+
+    /*
+    |--------------------------------------------------------------------------
     | PAYMENT METHOD
     |--------------------------------------------------------------------------
     */

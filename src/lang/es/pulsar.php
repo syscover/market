@@ -19,6 +19,7 @@ return [
     'maximum_price'                         => 'Precio máximo',
     'minimum_price'                         => 'Precio mínimo',
     'order'                                 => 'Pedido|Pedidos',
+    'order_status'                          => 'Estrado dle pedido',
     'package_name'                          => 'Market',
     'parent_category'                       => 'Categoría pagre|Categorias padres',
     'payment_method'                        => 'Forma de pago|Formas de pago',

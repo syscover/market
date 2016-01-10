@@ -1,5 +1,6 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Market\Models\OrderStatus;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Market\Models\PaymentMethod;
@@ -16,8 +17,8 @@ class PaymentMethodController extends Controller {
     protected $routeSuffix  = 'marketPaymentMethod';
     protected $folder       = 'payment_method';
     protected $package      = 'market';
-    protected $aColumns     = ['id_114', 'name_001', 'name_114', 'sorting_114', ['data' => 'active_114', 'type' => 'active']];
-    protected $nameM        = 'name_114';
+    protected $aColumns     = ['id_115', 'name_001', 'name_115', 'sorting_115', ['data' => 'active_115', 'type' => 'active']];
+    protected $nameM        = 'name_115';
     protected $model        = '\Syscover\Market\Models\PaymentMethod';
     protected $icon         = 'fa fa-credit-card';
     protected $objectTrans  = 'payment_method';
@@ -25,6 +26,13 @@ class PaymentMethodController extends Controller {
     public function indexCustom($parameters)
     {
         $parameters['urlParameters']['lang'] = session('baseLang');
+
+        return $parameters;
+    }
+
+    public function createCustomRecord($request, $parameters)
+    {
+        $parameters['orderStatus'] = OrderStatus::builder()->where('lang_114', $parameters['lang'])->where('active_114', true)->get();
 
         return $parameters;
     }
@@ -39,33 +47,42 @@ class PaymentMethodController extends Controller {
         }
         else
         {
-            $id = PaymentMethod::max('id_114');
+            $id = PaymentMethod::max('id_115');
             $id++;
             $idLang = null;
         }
 
         PaymentMethod::create([
-            'id_114'                => $id,
-            'lang_114'              => $request->input('lang'),
-            'name_114'              => $request->input('name'),
-            'minimum_price_114'     => empty($request->has('minimumPrice'))? null : $request->input('minimumPrice'),
-            'maximum_price_114'     => empty($request->has('maximumPrice'))? null : $request->input('maximumPrice'),
-            'instructions_114'      => empty($request->has('instructions'))? null : $request->input('instructions'),
-            'sorting_114'           => empty($request->has('sorting'))? null : $request->input('sorting'),
-            'active_114'            => $request->has('active'),
-            'data_lang_114'         => PaymentMethod::addLangDataRecord($request->input('lang'), $idLang)
+            'id_115'                => $id,
+            'lang_115'              => $request->input('lang'),
+            'name_115'              => $request->input('name'),
+            'order_status_115'      => empty($request->input('orderStatus'))? null : $request->input('orderStatus'),
+            'minimum_price_115'     => empty($request->input('minimumPrice'))? null : $request->input('minimumPrice'),
+            'maximum_price_115'     => empty($request->input('maximumPrice'))? null : $request->input('maximumPrice'),
+            'instructions_115'      => empty($request->input('instructions'))? null : $request->input('instructions'),
+            'sorting_115'           => empty($request->input('sorting'))? null : $request->input('sorting'),
+            'active_115'            => $request->has('active'),
+            'data_lang_115'         => PaymentMethod::addLangDataRecord($request->input('lang'), $idLang)
         ]);
+    }
+
+    public function editCustomRecord($request, $parameters)
+    {
+        $parameters['orderStatus'] = OrderStatus::builder()->where('lang_114', $parameters['object']->lang_id)->where('active_114', true)->get();
+
+        return $parameters;
     }
 
     public function updateCustomRecord($request, $parameters)
     {
-        PaymentMethod::where('id_114', $parameters['id'])->where('lang_114', $request->input('lang'))->update([
-            'name_114'              => $request->input('name'),
-            'minimum_price_114'     => empty($request->has('minimumPrice'))? null : $request->input('minimumPrice'),
-            'maximum_price_114'     => empty($request->has('maximumPrice'))? null : $request->input('maximumPrice'),
-            'instructions_114'      => empty($request->has('instructions'))? null : $request->input('instructions'),
-            'sorting_114'           => empty($request->has('sorting'))? null : $request->input('sorting'),
-            'active_114'            => $request->has('active'),
+        PaymentMethod::where('id_115', $parameters['id'])->where('lang_115', $request->input('lang'))->update([
+            'name_115'              => $request->input('name'),
+            'order_status_115'      => empty($request->input('orderStatus'))? null : $request->input('orderStatus'),
+            'minimum_price_115'     => empty($request->input('minimumPrice'))? null : $request->input('minimumPrice'),
+            'maximum_price_115'     => empty($request->input('maximumPrice'))? null : $request->input('maximumPrice'),
+            'instructions_115'      => empty($request->input('instructions'))? null : $request->input('instructions'),
+            'sorting_115'           => empty($request->input('sorting'))? null : $request->input('sorting'),
+            'active_115'            => $request->has('active'),
         ]);
     }
 }
