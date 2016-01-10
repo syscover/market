@@ -17,6 +17,7 @@ class MarketResourceTableSeeder extends Seeder {
             ['id_007' => 'market-category',         'name_007' => 'Categories',             'package_007' => '9'],
             ['id_007' => 'market-product',          'name_007' => 'Products',               'package_007' => '9'],
             ['id_007' => 'market-payment-method',   'name_007' => 'Payment methods',        'package_007' => '9'],
+            ['id_007' => 'market-order',            'name_007' => 'Orders',                 'package_007' => '9'],
         ]);
     }
 }

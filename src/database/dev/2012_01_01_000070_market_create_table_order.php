@@ -17,9 +17,9 @@ class MarketCreateTableOrder extends Migration
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_115')->unsigned();
+
 				$table->integer('date_115')->unsigned();
 				$table->tinyInteger('state_115')->unsigned();
-
 				$table->string('ip_115', 100);
 
 				// datos de facturación
@@ -58,9 +58,6 @@ class MarketCreateTableOrder extends Migration
 				$table->string('shipping_address_115', 150)->nullable();
 				$table->string('shipping_latitude_115', 50)->nullable();
 				$table->string('shipping_longitude_115', 50)->nullable();
-
-
-
 			});
 		}
 	}
