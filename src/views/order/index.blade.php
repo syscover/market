@@ -28,12 +28,12 @@
     <!-- market::order.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
+        <th data-hide="phone">{{ trans('pulsar::pulsar.date') }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.surname') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
-        <th data-hide="phone">{{ trans_choice('pulsar::pulsar.group', 1) }}</th>
-        <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.active') }}</th>
-        <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.confirmed') }}</th>
+        <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.state') }}</th>
+        <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.amount') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>

@@ -16,6 +16,7 @@ class MarketCreateTableProduct extends Migration
 			Schema::create('012_111_product', function ($table) {
 				$table->engine = 'InnoDB';
 				$table->increments('id_111')->unsigned();
+				$table->string('lang_112', 2);
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
 				$table->tinyInteger('price_type_111')->unsigned();
 				// 1 single price

@@ -173,16 +173,24 @@
 @stop
 
 @section('box_tab1')
-        <!-- crm::customers.create -->
-        @include('pulsar::includes.html.form_text_group', ['label' => 'ID', 'fieldSize' => 2, 'name' => 'id',  'value' => Input::old('id'), 'readOnly' => true])
+        <!-- market::order.create -->
         <div class="row">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 8, 'id' => 'group', 'label' => trans_choice('pulsar::pulsar.group', 1), 'name' => 'group', 'value' => Input::old('group'), 'objects' => $groups, 'idSelect' => 'id_300', 'nameSelect' => 'name_300', 'class' => 'select2', 'data' => ['language' => config('app.locale'), 'width' => '100%', 'error-placement' => 'select2-group-outer-container']])
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => 'ID', 'name' => 'id',  'value' => Input::old('id'), 'readOnly' => true])
             </div>
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_datetimepicker_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.date'), 'containerId' => 'dateContent', 'name' => 'date', 'id' => 'idDate', 'value' => Input::old('date', date(config('pulsar.datePattern'))), 'required' => true, 'data' => ['format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')), 'locale' => config('app.locale')]])
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.date'), 'containerId' => 'dateContent', 'name' => 'date', 'id' => 'idDate', 'value' => Input::old('date', date(config('pulsar.datePattern'))), 'readOnly' => true])
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('market::pulsar.order_status'), 'name' => 'orderStatus', 'value' => Input::old('orderStatus'), 'objects' => $orderStatus, 'idSelect' => 'id_114', 'nameSelect' => 'name_114'])
+            </div>
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.ip'), 'name' => 'ip', 'id' => 'ip', 'value' => 'IP', 'readOnly' => true])
+            </div>
+        </div>
+
         @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.company', 1), 'name' => 'company', 'value' => Input::old('company'), 'maxLength' => '255', 'rangeLength' => '2,255'])
         @include('pulsar::includes.html.form_text_group', ['fieldSize' => 5, 'label' => trans('pulsar::pulsar.tin'), 'name' => 'tin', 'value' => Input::old('tin'), 'maxLength' => '255', 'rangeLength' => '2,255'])
 
@@ -190,7 +198,7 @@
         @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.surname'), 'name' => 'surname', 'value' => Input::old('surname'), 'maxLength' => '50', 'rangeLength' => '2,50'])
         <div class="row">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 8, 'id' => 'gender', 'label' => trans('pulsar::pulsar.gender'), 'name' => 'gender', 'value' => Input::old('gender'), 'objects' => $genres, 'idSelect' => 'id', 'nameSelect' => 'name', 'class' => 'select2', 'data' => ['language' => config('app.locale'), 'width' => '100%', 'error-placement' => 'select2-gender-outer-container']])
+
                 @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.email'), 'name' => 'email', 'value' => Input::old('email'), 'maxLength' => '50', 'rangeLength' => '2,50', 'type' => 'email', 'required' => true])
                 @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.mobile'), 'name' => 'mobile', 'value' => Input::old('mobile'), 'maxLength' => '50', 'rangeLength' => '2,50'])
             </div>
@@ -229,7 +237,7 @@
                 <div id="locationMapWrapper"></div>
             </div>
         </div>
-        <!-- /crm::customers.create -->
+        <!-- ./market::order.create -->
 @stop
 
 @section('box_tab2')
