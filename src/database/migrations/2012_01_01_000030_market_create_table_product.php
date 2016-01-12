@@ -24,8 +24,6 @@ class MarketCreateTableProduct extends Migration
 				// prices, tax and format
 				$table->tinyInteger('price_type_111')->unsigned(); // single price or undefined
 				$table->decimal('price_111', 10, 2)->nullable();
-				$table->tinyInteger('product_prices_111')->unsigned()->nullable(); // excluding tax or including tax
-
 
 				$table->string('data_lang_111', 255)->nullable();
 				$table->text('data_111')->nullable();

@@ -60,12 +60,6 @@ class ProductController extends Controller {
             $object->name = trans($object->name);
             return $object;
         },config('market.priceTypes'));
-        $parameters['productPricesValue']  = Preference::getValue('marketTaxProductPrices', 9);
-
-        $parameters['productPrices']       = array_map(function($object){
-            $object->name = trans($object->name);
-            return $object;
-        }, config('market.productPrices'));
 
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters['customFieldGroups']    = CustomFieldGroup::where('resource_025', 'market-product')->get();
@@ -150,11 +144,6 @@ class ProductController extends Controller {
             $object->name = trans($object->name);
             return $object;
         },config('market.priceTypes'));
-
-        $parameters['productPrices']       = array_map(function($object){
-            $object->name = trans($object->name);
-            return $object;
-        }, config('market.productPrices'));
 
         $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
         $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);

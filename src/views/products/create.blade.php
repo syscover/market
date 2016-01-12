@@ -108,7 +108,6 @@
             @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => Input::old('price', isset($object->price_112)? $object->price_112 : null)])
         </div>
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans('market::pulsar.product_prices'), 'name' => 'productPrices', 'value' => (int)$productPricesValue->value_018, 'objects' => $productPrices, 'idSelect' => 'id', 'nameSelect' => 'name'])
         </div>
     </div>
 
