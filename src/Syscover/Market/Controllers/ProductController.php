@@ -101,7 +101,6 @@ class ProductController extends Controller {
             'product_type_111'          => $request->input('productType'),
             'price_type_111'            => $request->input('priceType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
-            'product_prices_111'        => $request->has('productPrices')? $request->input('productPrices') : null,
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang),
         ]);
@@ -160,7 +159,6 @@ class ProductController extends Controller {
             'product_type_111'          => $request->input('productType'),
             'price_type_111'            => $request->input('priceType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
-            'product_prices_111'        => $request->has('productPrices')? $request->input('productPrices') : null,
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'active_111'                => $request->input('active', false),
         ]);

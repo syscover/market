@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
  * Class Product
  *
  * Model with properties
- * <br><b>[id, custom_field_group, weight, active, price_type, price, product_prices, data_lang, data]</b>
+ * <br><b>[id, custom_field_group, weight, active, price_type, price, data_lang, data]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -25,7 +25,7 @@ class Product extends Model
     protected $primaryKey   = 'id_111';
     protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'custom_field_group_111', 'weight_111', 'active_111', 'price_type_111', 'price_111', 'product_prices_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'custom_field_group_111', 'weight_111', 'active_111', 'price_type_111', 'price_111', 'data_lang_111', 'data_111'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'          => \Syscover\Pulsar\Models\Lang::class,

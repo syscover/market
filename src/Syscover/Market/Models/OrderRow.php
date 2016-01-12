@@ -7,7 +7,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class Order
+ * Class OrderRow
  *
  * Model with properties
  * <br><b>[id, lang, order, product, description, discount, price, quantity, subtotal, discount_percentage, discount_amount, tax_amount, gift, gift_from, gift_to, gift_message]</b>
