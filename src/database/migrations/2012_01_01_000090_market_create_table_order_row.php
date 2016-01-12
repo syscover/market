@@ -26,8 +26,9 @@ class MarketCreateTableOrderRow extends Migration
 				$table->decimal('price_117', 10, 2); 								// unit price
 				$table->decimal('quantity_117', 10, 2); 							// number units
 				$table->decimal('subtotal_117', 10, 2);								// subtotal without tax
-				$table->decimal('discount_percentage_117', 10, 2)->nullable(); 		// without tax
-				$table->decimal('discount_amount_117', 10, 2); 						// without tax
+				$table->decimal('discount_percentage_117', 10, 2)->nullable();
+				$table->decimal('discount_amount_117', 10, 2);
+				$table->decimal('tax_percentage_117', 10, 2);
 				$table->decimal('tax_amount_117', 10, 2);
 
 				// gift
