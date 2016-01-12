@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Syscover\Pulsar\Models\Package;
 
-
 class MarketUpdateV2 extends Migration
 {
 	/**

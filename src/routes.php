@@ -108,4 +108,12 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     Route::delete(config('pulsar.appName') . '/market/order/delete/select/records',                         ['as'=>'deleteSelectMarketOrder',         'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecordsSelect',        'resource' => 'market-order',        'action' => 'delete']);
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | SETTING TAXES
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/tax/settings',                                           ['as'=>'marketTaxSettings',                 'uses'=>'Syscover\Market\Controllers\TaxSettingsController@index',                  'resource' => 'market-tax-setting',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/tax/settings/update',                                    ['as'=>'updateMarketTaxSettings',           'uses'=>'Syscover\Market\Controllers\TaxSettingsController@updateRecord',           'resource' => 'market-tax-setting',        'action' => 'edit']);
+
 });

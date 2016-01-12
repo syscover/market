@@ -16,15 +16,16 @@ class MarketCreateTableProduct extends Migration
 			Schema::create('012_111_product', function ($table) {
 				$table->engine = 'InnoDB';
 				$table->increments('id_111')->unsigned();
-				$table->string('lang_112', 2);
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
-				$table->tinyInteger('price_type_111')->unsigned();
-				// 1 single price
-				// 2 undefined price
 				$table->tinyInteger('product_type_111')->unsigned();
-				$table->decimal('price_111', 10, 2)->nullable();
 				$table->decimal('weight_111', 10, 3)->nullable();
 				$table->boolean('active_111');
+
+				// prices, tax and format
+				$table->tinyInteger('price_type_111')->unsigned(); // single price or undefined
+				$table->decimal('price_111', 10, 2)->nullable();
+				$table->tinyInteger('product_prices_111')->unsigned()->nullable(); // excluding tax or including tax
+
 
 				$table->string('data_lang_111', 255)->nullable();
 				$table->text('data_111')->nullable();

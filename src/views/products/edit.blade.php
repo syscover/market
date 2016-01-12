@@ -98,12 +98,21 @@
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.category', 2), 'containerId' => 'categoriesContent', 'name' => 'categories[]', 'value' => $object->getCategories, 'objects' => $categories, 'idSelect' => 'id_110', 'nameSelect' => 'name_110', 'multiple' => true, 'class' => 'col-md-12 select2', 'fieldSize' => 10, 'data' => ['placeholder' => trans('pulsar::pulsar.select_category'), 'width' => '100%']])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => $object->name_112, 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.slug'), 'name' => 'slug', 'value' => $object->slug_112, 'maxLength' => '255', 'rangeLength' => '2,255', 'required' => true])
-    @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_types'), 'name' => 'priceType', 'value' => $object->price_type_111, 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('market::pulsar.product_types', 1), 'name' => 'productType', 'value' => $object->product_type_111, 'objects' => $productTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => $object->price_111, 'fieldSize' => 3])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.weight', 1), 'name' => 'weight', 'value' => $object->weight_111])
+    @include('pulsar::includes.html.form_text_group', ['fieldSize' => 3, 'label' => trans_choice('pulsar::pulsar.weight', 1), 'name' => 'weight', 'value' => $object->weight_111])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.field_group', 1), 'name' => 'customFieldGroup', 'value' => $object->custom_field_group_111, 'objects' => $customFieldGroups, 'idSelect' => 'id_025', 'nameSelect' => 'name_025', 'fieldSize' => 5])
     @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => $object->active_111])
+
+    @include('pulsar::includes.html.form_section_header', ['label' => trans('market::pulsar.prices_taxes'), 'icon' => 'fa fa-usd'])
+    @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_type'), 'name' => 'priceType', 'value' => $object->price_type_111, 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => $object->price_111])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans('market::pulsar.product_prices'), 'name' => 'productPrices', 'value' => $object->product_prices_111, 'objects' => $productPrices, 'idSelect' => 'id', 'nameSelect' => 'name'])
+        </div>
+    </div>
 
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.custom_field', 2), 'icon' => 'fa fa-align-left', 'containerId' => 'headerCustomFields'])
     <div id="wrapperCustomFields"></div>
@@ -115,15 +124,16 @@
 @stop
 
 @section('box_tab3')
+
 @stop
 
 @section('box_tab4')
     @include('pulsar::includes.html.attachment', [
         'action'            => 'edit',
         'routesConfigFile'  => 'market'])
-    @stop
+@stop
 
-    @section('endBody')
+@section('endBody')
     <!--TODO: Implementar botón para añadir fotografías desde la librería-->
     <div id="attachment-library-mask">
         <div id="attachment-library-content">

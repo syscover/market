@@ -96,12 +96,22 @@
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.category', 2), 'containerId' => 'categoriesContent', 'name' => 'categories[]', 'value' => Input::old('categories', isset($object)? $object->getCategories : null), 'objects' => $categories, 'idSelect' => 'id_110', 'nameSelect' => 'name_110', 'multiple' => true, 'class' => 'col-md-12 select2', 'fieldSize' => 10, 'data' => ['placeholder' => trans('pulsar::pulsar.select_category'), 'width' => '100%']])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => Input::old('name', isset($object->name_112)? $object->name_112 : null), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.slug'), 'name' => 'slug', 'value' => Input::old('slug', isset($object->slug_112)? $object->slug_112 : null), 'maxLength' => '255', 'rangeLength' => '2,255', 'required' => true])
-    @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_types'), 'name' => 'priceType', 'value' => Input::old('priceType', isset($object->price_type_111)? $object->price_type_111 : null), 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('market::pulsar.product_types', 1), 'name' => 'productType', 'value' => Input::old('productType', isset($object->product_type_111)? $object->product_type_111 : null), 'objects' => $productTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
-    @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => Input::old('price', isset($object->price_112)? $object->price_112 : null), 'fieldSize' => 3])
     @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.weight', 1), 'name' => 'weight', 'value' => Input::old('weight', isset($object->weight_112)? $object->weight_112 : null)])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.field_group', 1), 'name' => 'customFieldGroup', 'value' => Input::old('customFieldGroup', isset($object->custom_field_group_111)? $object->custom_field_group_111 : null), 'objects' => $customFieldGroups, 'idSelect' => 'id_025', 'nameSelect' => 'name_025', 'fieldSize' => 5])
     @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => Input::old('active', isset($object->active_111))])
+
+    @include('pulsar::includes.html.form_section_header', ['label' => trans('market::pulsar.prices_taxes'), 'icon' => 'fa fa-usd'])
+    @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_type'), 'name' => 'priceType', 'value' => Input::old('priceType', isset($object->price_type_111)? $object->price_type_111 : null), 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => Input::old('price', isset($object->price_112)? $object->price_112 : null)])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans('market::pulsar.product_prices'), 'name' => 'productPrices', 'value' => (int)$productPricesValue->value_018, 'objects' => $productPrices, 'idSelect' => 'id', 'nameSelect' => 'name'])
+        </div>
+    </div>
+
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.custom_field', 2), 'icon' => 'fa fa-align-left', 'containerId' => 'headerCustomFields'])
     <div id="wrapperCustomFields"></div>
     <!-- /market::products.create -->

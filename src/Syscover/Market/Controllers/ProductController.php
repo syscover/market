@@ -7,6 +7,7 @@ use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
 use Syscover\Pulsar\Models\AttachmentFamily;
 use Syscover\Pulsar\Models\CustomFieldGroup;
 use Syscover\Pulsar\Traits\TraitController;
+use Syscover\Pulsar\Models\Preference;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
 use Syscover\Market\Models\Category;
@@ -48,15 +49,24 @@ class ProductController extends Controller {
 
     public function createCustomRecord($request, $parameters)
     {
-        $parameters['categories']           = Category::where('lang_110', $parameters['lang'])->get();
-        $parameters['priceTypes']           = array_map(function($object){
-            $object->name = trans($object->name);
-            return $object;
-        },config('market.priceTypes'));
-        $parameters['productTypes']         = array_map(function($object){
+        $parameters['categories']          = Category::where('lang_110', $parameters['lang'])->get();
+
+        $parameters['productTypes']        = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         },config('market.productTypes'));
+
+        $parameters['priceTypes']          = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        },config('market.priceTypes'));
+        $parameters['productPricesValue']  = Preference::getValue('marketTaxProductPrices', 9);
+
+        $parameters['productPrices']       = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        }, config('market.productPrices'));
+
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
         $parameters['customFieldGroups']    = CustomFieldGroup::where('resource_025', 'market-product')->get();
         $parameters['attachmentsInput']     = json_encode([]);
@@ -94,9 +104,10 @@ class ProductController extends Controller {
 
         Product::where('id_111', $id)->update([
             'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
-            'price_type_111'            => $request->input('priceType'),
             'product_type_111'          => $request->input('productType'),
+            'price_type_111'            => $request->input('priceType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
+            'product_prices_111'        => $request->has('productPrices')? $request->input('productPrices') : null,
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang),
         ]);
@@ -129,14 +140,22 @@ class ProductController extends Controller {
     public function editCustomRecord($request, $parameters)
     {
         $parameters['categories']           = Category::where('lang_110', $parameters['lang']->id_001)->get();
-        $parameters['priceTypes']           = array_map(function($object){
-            $object->name = trans($object->name);
-            return $object;
-        },config('market.priceTypes'));
+
         $parameters['productTypes']         = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         },config('market.productTypes'));
+
+        $parameters['priceTypes']           = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        },config('market.priceTypes'));
+
+        $parameters['productPrices']       = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        }, config('market.productPrices'));
+
         $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
         $parameters['customFieldGroups']    = CustomFieldGroup::getRecords(['resource_025' => 'market-product']);
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_015' => 'market-product']);
@@ -149,9 +168,10 @@ class ProductController extends Controller {
     {
         Product::where('id_111', $parameters['id'])->update([
             'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
-            'price_type_111'            => $request->input('priceType'),
             'product_type_111'          => $request->input('productType'),
+            'price_type_111'            => $request->input('priceType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
+            'product_prices_111'        => $request->has('productPrices')? $request->input('productPrices') : null,
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'active_111'                => $request->input('active', false),
         ]);

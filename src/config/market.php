@@ -33,4 +33,20 @@ return [
         (object)['id' => 2,      'name' => 'market::pulsar.transportable'],
         (object)['id' => 3,      'name' => 'market::pulsar.transportable_downloadable']
     ],
+
+    //******************************************************************************************************************
+    //***   Product prices tax
+    //******************************************************************************************************************
+    'productPrices'                 => [
+        (object)['id' => 1,      'name' => 'market::pulsar.excluding_tax'],
+        (object)['id' => 2,      'name' => 'market::pulsar.including_tax']
+    ],
+
+    //******************************************************************************************************************
+    //***   Shipping prices tax
+    //******************************************************************************************************************
+    'shippingPrices'                 => [
+        (object)['id' => 1,      'name' => 'market::pulsar.excluding_tax'],
+        (object)['id' => 2,      'name' => 'market::pulsar.including_tax']
+    ],
 ];

@@ -14,6 +14,7 @@ class MarketResourceTableSeeder extends Seeder {
             ['id_007' => 'market-customer-tax',     'name_007' => 'Taxes -- Customer tax',  'package_007' => '9'],
             ['id_007' => 'market-tax-tax',          'name_007' => 'Taxes -- Tax',           'package_007' => '9'],
             ['id_007' => 'market-tax-rule',         'name_007' => 'Taxes -- Tax rule',      'package_007' => '9'],
+            ['id_007' => 'market-tax-setting',      'name_007' => 'Taxes -- Tax setting',   'package_007' => '9'],
             ['id_007' => 'market-category',         'name_007' => 'Categories',             'package_007' => '9'],
             ['id_007' => 'market-product',          'name_007' => 'Products',               'package_007' => '9'],
             ['id_007' => 'market-order-status',     'name_007' => 'Order status',           'package_007' => '9'],

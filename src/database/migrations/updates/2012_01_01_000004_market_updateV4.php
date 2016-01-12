@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class MarketUpdateV3 extends Migration
+
+class MarketUpdateV4 extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -11,10 +12,10 @@ class MarketUpdateV3 extends Migration
 	 */
 	public function up()
 	{
-		if(!Schema::hasColumn('012_111_product', 'product_type_111'))
+		if(!Schema::hasColumn('012_111_product', 'product_prices_111'))
 		{
 			Schema::table('012_111_product', function ($table) {
-				$table->tinyInteger('product_type_111')->unsigned()->after('price_type_111');
+				$table->tinyInteger('product_prices_111')->unsigned()->after('price_111');
 			});
 		}
 	}
