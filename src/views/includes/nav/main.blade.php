@@ -1,7 +1,7 @@
-        <li{!! Miscellaneous::setCurrentOpenPage(['market-product','market-category','market-product-tax','market-payment-method','market-order-status','market-tax-setting']) !!}>
+        <li{!! Miscellaneous::setCurrentOpenPage(['market-product','market-category','market-product-tax','market-payment-method','market-order-status','market-tax-setting','market-order']) !!}>
             <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
             <ul class="sub-menu">
-                <li{!! Miscellaneous::setCurrentOpenPage(['market-customer-tax','market-product-tax']) !!}>
+                <li{!! Miscellaneous::setCurrentOpenPage(['market-order']) !!}>
                     <a href="javascript:void(0)"><i class="fa fa-usd"></i>{{ trans_choice('market::pulsar.sale', 2) }}</a>
                     <ul class="sub-menu">
                         @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-order', 'access'))
