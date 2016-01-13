@@ -117,3 +117,11 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     Route::put(config('pulsar.appName') . '/market/tax/settings/update',                                    ['as'=>'updateMarketTaxSettings',           'uses'=>'Syscover\Market\Controllers\TaxSettingsController@updateRecord',           'resource' => 'market-tax-setting',        'action' => 'edit']);
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| PAYPAL
+|--------------------------------------------------------------------------
+*/
+
+Route::get(config('pulsar.appName') . '/market/tpv/create/paypal/payment',                                  ['as'=>'marketCreatePaypalPayment',         'uses'=>'Syscover\Market\Controllers\PaypalController@createPaypalPayment']);
