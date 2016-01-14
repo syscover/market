@@ -155,7 +155,7 @@ class PayPalController extends Controller
 
         try
         {
-            $result = $payment->execute($execution, $this->apiContext);
+            $response = $payment->execute($execution, $this->apiContext);
         }
         catch(Exception $ex)
         {
@@ -163,12 +163,23 @@ class PayPalController extends Controller
             exit(1);
         }
 
-        $order = Order::builder()->where('payment_id_116', $request->input('paymentId'))->first();
-        // set next status to complete payment method
-        $order->status_116 = $order->order_status_115;
-        $order->save();
+        if($response->getState() == 'approved')
+        {
+            $order = Order::builder()->where('payment_id_116', $request->input('paymentId'))->first();
 
-        return view('home');
+            if(!empty($order->order_status_115))
+            {
+                // set next status to complete payment method
+                $order->status_116 = $order->order_status_115;
+                $order->save();
+            }
+
+            redirect()->route('home');
+        }
+        else
+        {
+            redirect()->route('home');
+        }
     }
 
 
