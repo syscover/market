@@ -16,11 +16,13 @@
     @include('pulsar::includes.html.form_text_group', ['label' => trans('market::pulsar.items_list_description'), 'name' => 'marketPayPalDescriptionItemList', 'value' => $marketPayPalDescriptionItemList, 'required' => true])
 
     @include('pulsar::includes.html.form_section_header', ['label' => 'Sandbox', 'icon' => 'fa fa-flask'])
+    @include('pulsar::includes.html.form_text_group', ['label' => 'Web Profile', 'name' => 'marketPayPalSandboxWebProfile', 'value' => $marketPayPalSandboxWebProfile, 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => 'Client ID', 'name' => 'marketPayPalSandboxClientID', 'value' => $marketPayPalSandboxClientID, 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => 'Secret', 'name' => 'marketPayPalSandboxSecret', 'value' => $marketPayPalSandboxSecret, 'required' => true])
 
     @include('pulsar::includes.html.form_section_header', ['label' => 'Live', 'icon' => 'fa fa-rocket'])
+    @include('pulsar::includes.html.form_text_group', ['label' => 'Web Profile', 'name' => 'marketPayPalLiveWebProfile', 'value' => $marketPayPalLiveWebProfile, 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => 'Client ID', 'name' => 'marketPayPalLiveClientID', 'value' => $marketPayPalLiveClientID, 'required' => true])
-    @include('pulsar::includes.html.form_text_group', ['label' => 'Secret', 'name' => 'marketPayPalPalLiveSecret', 'value' => $marketPayPalPalLiveSecret, 'required' => true])
+    @include('pulsar::includes.html.form_text_group', ['label' => 'Secret', 'name' => 'marketPayPalLiveSecret', 'value' => $marketPayPalLiveSecret, 'required' => true])
     <!-- ./market::paypal_settings.index -->
 @stop

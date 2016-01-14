@@ -92,7 +92,7 @@ class PayPalController extends Controller
         // create payment
         $payment = new Payment();
         $payment->setIntent('sale')
-            //->setExperienceProfileId('XP-M8GR-6H28-68EN-ZB3Y') // web profile sandbox
+            ->setExperienceProfileId('XP-J63U-UBR7-M58H-J47R') // web profile sandbox
             //->setExperienceProfileId('XP-QURY-XR3C-D2EF-CN6X') // web profile live
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)

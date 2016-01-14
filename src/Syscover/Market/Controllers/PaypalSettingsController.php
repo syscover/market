@@ -32,11 +32,13 @@ class PayPalSettingsController extends Controller {
 
         $parameters['marketPayPalDescriptionItemList']  = isset($preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018)? $preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018 : null;
 
+        $parameters['marketPayPalSandboxWebProfile']    = isset($preferences->where('id_018', 'marketPayPalSandboxWebProfile')->first()->value_018)? $preferences->where('id_018', 'marketPayPalSandboxWebProfile')->first()->value_018 : null;
         $parameters['marketPayPalSandboxClientID']      = isset($preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018) : null;
         $parameters['marketPayPalSandboxSecret']        = isset($preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018) : null;
 
+        $parameters['marketPayPalLiveWebProfile']       = isset($preferences->where('id_018', 'marketPayPalLiveWebProfile')->first()->value_018)? $preferences->where('id_018', 'marketPayPalLiveWebProfile')->first()->value_018 : null;
         $parameters['marketPayPalLiveClientID']         = isset($preferences->where('id_018', 'marketPayPalLiveClientID')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalLiveClientID')->first()->value_018) : null;
-        $parameters['marketPayPalPalLiveSecret']        = isset($preferences->where('id_018', 'marketPayPalPalLiveSecret')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalPalLiveSecret')->first()->value_018) : null;
+        $parameters['marketPayPalLiveSecret']           = isset($preferences->where('id_018', 'marketPayPalLiveSecret')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalLiveSecret')->first()->value_018) : null;
 
         return $parameters;
     }
@@ -47,10 +49,12 @@ class PayPalSettingsController extends Controller {
 
         Preference::setValue('marketPayPalDescriptionItemList', 12, $request->input('marketPayPalDescriptionItemList'));
 
+        Preference::setValue('marketPayPalSandboxWebProfile', 12, $request->input('marketPayPalSandboxWebProfile'));
         Preference::setValue('marketPayPalSandboxClientID', 12, Crypt::encrypt($request->input('marketPayPalSandboxClientID')));
         Preference::setValue('marketPayPalSandboxSecret', 12, Crypt::encrypt($request->input('marketPayPalSandboxSecret')));
 
+        Preference::setValue('marketPayPalLiveWebProfile', 12, $request->input('marketPayPalLiveWebProfile'));
         Preference::setValue('marketPayPalLiveClientID', 12, Crypt::encrypt($request->input('marketPayPalLiveClientID')));
-        Preference::setValue('marketPayPalPalLiveSecret', 12, Crypt::encrypt($request->input('marketPayPalPalLiveSecret')));
+        Preference::setValue('marketPayPalLiveSecret', 12, Crypt::encrypt($request->input('marketPayPalLiveSecret')));
     }
 }
