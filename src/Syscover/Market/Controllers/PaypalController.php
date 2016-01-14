@@ -14,6 +14,7 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Syscover\Market\Models\Order;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\Preference;
 
@@ -56,6 +57,18 @@ class PayPalController extends Controller
 
     public function createPayment(Request $request)
     {
+        if($request->has('_order'))
+        {
+            $order     = Order::builder()->where('id_116', $request->input('_order'))->first();
+            $orderRows = $order->rows;
+        }
+        else
+        {
+            // error no hay pedido
+            exit;
+        }
+
+
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
