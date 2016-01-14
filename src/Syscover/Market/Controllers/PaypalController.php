@@ -13,7 +13,6 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Syscover\Market\Models\Order;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\Preference;
@@ -60,7 +59,7 @@ class PayPalController extends Controller
         if($request->has('_order'))
         {
             $order     = Order::builder()->where('id_116', $request->input('_order'))->first();
-            $orderRows = $order->rows;
+            $orderRows = $order->getOrderRows;
         }
         else
         {
@@ -74,13 +73,13 @@ class PayPalController extends Controller
 
         // create products
         $products = [];
-        foreach(Cart::content() as $row)
+        foreach($orderRows as $row)
         {
             $item = new Item();
-            $item->setName($row->name)          // product name
-            ->setCurrency('EUR')                // currency
-            ->setQuantity($row->qty)            // quantity
-            ->setPrice($row->price);            // unit price
+            $item->setName($row->description_117)   // product name
+            ->setCurrency('EUR')                    // currency
+            ->setQuantity($row->quantity_117)       // quantity
+            ->setPrice($row->subtotal);             // unit price
 
             $products[] = $item;
         }
@@ -92,7 +91,7 @@ class PayPalController extends Controller
         // total charge
         $amount = new Amount();
         $amount->setCurrency('EUR')
-            ->setTotal(Cart::total());
+            ->setTotal($order->total_116);
 
         // create transaction
         $transaction = new Transaction();

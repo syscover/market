@@ -42,6 +42,11 @@ class Order extends Model
             ->join('012_115_payment_method', '012_116_order.payment_method_116', '=', '012_115_payment_method.id_115');
     }
 
+    public function getOrderRows()
+    {
+        return $this->hasMany('Syscover\Market\Models\OrderRow', 'order_117');
+    }
+
     /**
      * Get group from user
      *
