@@ -238,14 +238,18 @@ class PayPalController extends Controller
         // For Sample Purposes Only.
         $request = clone $webProfile;
 
-        try {
+        try
+        {
             // Use this call to create a profile.
             $createProfileResponse = $webProfile->create($this->apiContext);
-        } catch (\PayPal\Exception\PPConnectionException $ex) {
+        }
+        catch (\PayPal\Exception\PPConnectionException $ex)
+        {
             ResultPrinter::printError("Created Web Profile", "Web Profile", null, $request, $ex);
             exit(1);
         }
         var_dump($createProfileResponse);
+
         //ResultPrinter::printResult("Created Web Profile", "Web Profile", $createProfileResponse->getId(), $request, $createProfileResponse);
 
         //return $createProfileResponse;
