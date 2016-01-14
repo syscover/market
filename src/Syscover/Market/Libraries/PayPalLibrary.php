@@ -16,11 +16,12 @@ class PayPalLibrary
      *
      * @return string
      */
-    public static function createForm()
+    public static function createForm($order)
     {
         $form='
             <form id="paypal_form" action="' . route('createMarketPayPalPayment') . '" method="post">
                 <input type="hidden" name="_token" value="' . csrf_token() . '"/>
+                <input type="hidden" name="_order" value="' . $order . '"/>
             </form>
         ';
 
