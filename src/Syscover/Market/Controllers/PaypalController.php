@@ -174,11 +174,11 @@ class PayPalController extends Controller
                 $order->save();
             }
 
-            redirect()->route('home');
+            return redirect()->route('home');
         }
         else
         {
-            redirect()->route('home');
+            return redirect()->route('home');
         }
     }
 
