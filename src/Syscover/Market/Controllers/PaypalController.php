@@ -89,7 +89,7 @@ class PayPalController extends Controller
 
         // config URL request
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(route('home'))
+        $redirectUrls->setReturnUrl(route('checkoutMarketPayPalPayment'))
             ->setCancelUrl(route('home'));
 
         // create payment
@@ -134,58 +134,59 @@ class PayPalController extends Controller
 
     public function checkoutPayment(Request $request)
     {
-        if(Session::has('order') && Session::get('order')['paypalPayment'] == $request->input('paymentId'))
+
+        $paymentId  = $request->input('paymentId');
+        $payment    = Payment::get($paymentId, $this->apiContext);
+
+        $execution = new PaymentExecution();
+        $execution->setPayerId($request->input('PayerID'));
+
+        try
         {
-            $paymentId = $request->input('paymentId');
-            $payment = Payment::get($paymentId, $this->apiContext);
-
-            $execution = new PaymentExecution();
-            $execution->setPayerId($request->input('PayerID'));
-
-            try
-            {
-                $result = $payment->execute($execution, $this->apiContext);
-            }
-            catch(Exception $ex)
-            {
-                ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
-                exit(1);
-            }
-
-            $data = Session::get('order');
-
-            Pedido::where('paypal_payment_212', $request->input('paymentId'))->update([
-                'paypal_payer_212'  => $request->input('PayerID'),
-                'paypal_token_212'  => $request->input('token'),
-                'estado_212'        => 1
-            ]);
-
-            $pedido = Pedido::where('paypal_payment_212', $request->input('paymentId'))->first();
-
-            $data['url']            = route('getOrder', ['token' => $pedido->token_212]);
-            $data['email']          = $pedido->email_212;
-            $data['facturacion']    = $pedido->facturacion_212;
-
-            $emailData = [
-                'email'             => $pedido->email_212,
-                'facturacion'       => $data['facturacion'],
-                'nEntidad'          => $data['nEntidad'],
-                'nMultisectorial'   => $data['nMultisectorial'],
-                'nIncubadora'       => $data['nIncubadora'],
-                'url'               => $data['url']
-            ];
-
-            Mail::send('emails.common.order', $emailData, function ($message) use ($emailData) {
-                $message->to($emailData['email'])->subject('MI FINANCIACIÓN - Su pedido');
-
-                $mails = config('web.emailsContact');
-                foreach ($mails as $mail) {
-                    $message->bcc($mail['email'], $mail['nombre']);
-                }
-            });
-
-            return view('www.order-ok', $data);
+            $result = $payment->execute($execution, $this->apiContext);
         }
+        catch(Exception $ex)
+        {
+            ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
+            exit(1);
+        }
+
+        dd($result);
+
+        $data = Session::get('order');
+
+        Pedido::where('paypal_payment_212', $request->input('paymentId'))->update([
+            'paypal_payer_212'  => $request->input('PayerID'),
+            'paypal_token_212'  => $request->input('token'),
+            'estado_212'        => 1
+        ]);
+
+        $pedido = Pedido::where('paypal_payment_212', $request->input('paymentId'))->first();
+
+        $data['url']            = route('getOrder', ['token' => $pedido->token_212]);
+        $data['email']          = $pedido->email_212;
+        $data['facturacion']    = $pedido->facturacion_212;
+
+        $emailData = [
+            'email'             => $pedido->email_212,
+            'facturacion'       => $data['facturacion'],
+            'nEntidad'          => $data['nEntidad'],
+            'nMultisectorial'   => $data['nMultisectorial'],
+            'nIncubadora'       => $data['nIncubadora'],
+            'url'               => $data['url']
+        ];
+
+        Mail::send('emails.common.order', $emailData, function ($message) use ($emailData) {
+            $message->to($emailData['email'])->subject('MI FINANCIACIÓN - Su pedido');
+
+            $mails = config('web.emailsContact');
+            foreach ($mails as $mail) {
+                $message->bcc($mail['email'], $mail['nombre']);
+            }
+        });
+
+        return view('www.order-ok', $data);
+
     }
 
 
@@ -200,7 +201,7 @@ class PayPalController extends Controller
         // landing page type information
         $flowConfig = new \PayPal\Api\FlowConfig();
         // Type of PayPal page to be displayed when a user lands on the PayPal site for checkout. Allowed values: Billing or Login. When set to Billing, the Non-PayPal account landing page is used. When set to Login, the PayPal account login landing page is used.
-        $flowConfig->setLandingPageType("Billing");
+        $flowConfig->setLandingPageType("Login");
         // The URL on the merchant site for transferring to after a bank transfer payment.
         $flowConfig->setBankTxnPendingUrl('http://dev.ruralka.com');
 
