@@ -5,9 +5,9 @@ class PayPalLibrary
     /**
      * Execute redirection to PayPal
      */
-    public function executeRedirection()
+    public static function executeRedirection()
     {
-        echo $this->createForm();
+        echo PayPalLibrary::createForm();
         echo '<script>document.forms["paypal_form"].submit();</script>';
     }
 
@@ -16,7 +16,7 @@ class PayPalLibrary
      *
      * @return string
      */
-    public function createForm()
+    public static function createForm()
     {
         $form='
             <form id="paypal_form" action="' . route('createMarketPayPalPayment') . '" method="post">
