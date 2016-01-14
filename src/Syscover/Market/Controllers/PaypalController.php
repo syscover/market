@@ -21,6 +21,7 @@ class PayPalController extends Controller
 {
     private $apiContext;
     private $preferences;
+    private $webProfile;
 
     public function __construct()
     {
@@ -29,13 +30,15 @@ class PayPalController extends Controller
         // Set mode
         if($this->preferences->where('id_018', 'marketPayPalMode')->first()->value_018 == 'live')
         {
-            $clientID   = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalLiveClientID')->first()->value_018);
-            $secret     = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalPalLiveSecret')->first()->value_018);
+            $this->webProfile   = $this->preferences->where('id_018', 'marketPayPalLiveWebProfile')->first()->value_018;
+            $clientID           = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalLiveClientID')->first()->value_018);
+            $secret             = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalPalLiveSecret')->first()->value_018);
         }
         else
         {
-            $clientID   = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018);
-            $secret     = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018);
+            $this->webProfile   = $this->preferences->where('id_018', 'marketPayPalSandboxWebProfile')->first()->value_018;
+            $clientID           = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018);
+            $secret             = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018);
         }
 
         // init PayPal API Context
@@ -92,8 +95,7 @@ class PayPalController extends Controller
         // create payment
         $payment = new Payment();
         $payment->setIntent('sale')
-            ->setExperienceProfileId('XP-J63U-UBR7-M58H-J47R') // web profile sandbox
-            //->setExperienceProfileId('XP-QURY-XR3C-D2EF-CN6X') // web profile live
+            ->setExperienceProfileId($this->webProfile) // web profile
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
             ->setTransactions([$transaction]);
