@@ -28,9 +28,9 @@ class PayPalSettingsController extends Controller {
         $preferences = Preference::getValues(12);
 
         $parameters['payPalModes']                      = config('market.payPalModes');
-        $parameters['marketPayPalMode']                 = $preferences->where('id_018', 'marketPayPalMode')->first();
+        $parameters['marketPayPalMode']                 = isset($preferences->where('id_018', 'marketPayPalMode')->first()->value_018)? $preferences->where('id_018', 'marketPayPalMode')->first()->value_018 : null;
 
-        $parameters['marketPayPalDescriptionItemList']  = $preferences->where('id_018', 'marketPayPalDescriptionItemList')->first();
+        $parameters['marketPayPalDescriptionItemList']  = isset($preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018)? $preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018 : null;
 
         $parameters['marketPayPalSandboxClientID']      = isset($preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018) : null;
         $parameters['marketPayPalSandboxSecret']        = isset($preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018) : null;
