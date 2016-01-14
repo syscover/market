@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Syscover\Market\Models\Category | Market API</title>
+    <title>Syscover\Market\Models\OrderRow | Market API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Syscover_Market_Models_Category" data-root-path="../../../">
+    <body id="class" data-name="class:Syscover_Market_Models_OrderRow" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -67,22 +67,22 @@
                                         <li><a href="../../../Syscover/Market.html">Market</a></li>
                                         <li><a href="../../../Syscover/Market/Models.html">Models</a></li>
     
-                <li>Category</li>
+                <li>OrderRow</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>Category</h1>
+        <h1>OrderRow</h1>
     </div>
 
     <p>    class
-    <strong>Category</strong>        extends <abbr title="Syscover\Pulsar\Models\Model">Model</abbr>        (<a href="https://github.com/syscover/market/blob/master/Syscover/Market/Models/Category.php">View source</a>)
+    <strong>OrderRow</strong>        extends <abbr title="Syscover\Pulsar\Models\Model">Model</abbr>        (<a href="https://github.com/syscover/market/blob/master/Syscover/Market/Models/OrderRow.php">View source</a>)
 </p>
 
             <div class="description">
-            <p>Class Category</p>            <p>Model with properties
-<br><b>[id, lang , parent, name, slug, active, description, data_lang, data]</b></p>        </div>
+            <p>Class OrderRow</p>            <p>Model with properties
+<br><b>[id, lang, order, product, description, discount, price, quantity, subtotal, discount<em>percentage, discount</em>amount, tax<em>amount, gift, gift</em>from, gift<em>to, gift</em>message]</b></p>        </div>
     
             <h2>Traits</h2>
 
@@ -159,61 +159,6 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getLang">getLang</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addToGetIndexRecords">addToGetIndexRecords</a>($parameters)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_customCount">customCount</a>($parameters)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getTranslationRecord">getTranslationRecord</a>($parameters)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getRecords">getRecords</a>($parameters)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -222,7 +167,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_validate">
-        <div class="location">at line 34</div>
+        <div class="location">at line 36</div>
         <code>        static            
     
     <strong>validate</strong>($data)</code>
@@ -249,7 +194,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_scopeBuilder">
-        <div class="location">at line 39</div>
+        <div class="location">at line 41</div>
         <code>                    
     
     <strong>scopeBuilder</strong>($query)</code>
@@ -262,130 +207,6 @@
                     <tr>
                 <td></td>
                 <td>$query</td>
-                <td>
-</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getLang">
-        <div class="location">at line 44</div>
-        <code>                    
-    
-    <strong>getLang</strong>()</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addToGetIndexRecords">
-        <div class="location">at line 49</div>
-        <code>        static            
-    
-    <strong>addToGetIndexRecords</strong>($parameters)</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$parameters</td>
-                <td>
-</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_customCount">
-        <div class="location">at line 58</div>
-        <code>        static            
-    
-    <strong>customCount</strong>($parameters)</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$parameters</td>
-                <td>
-</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getTranslationRecord">
-        <div class="location">at line 63</div>
-        <code>        static            
-    
-    <strong>getTranslationRecord</strong>($parameters)</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$parameters</td>
-                <td>
-</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getRecords">
-        <div class="location">at line 70</div>
-        <code>        static            
-    
-    <strong>getRecords</strong>($parameters)</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$parameters</td>
                 <td>
 </td>
             </tr>

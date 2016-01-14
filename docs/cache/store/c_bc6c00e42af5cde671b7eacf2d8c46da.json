@@ -2,7 +2,7 @@
     "name": "Syscover\\Market\\Models\\Product",
     "line": 19,
     "short_desc": "Class Product",
-    "long_desc": "Model with properties\n<br><b>[id, custom_field_group , active, data_lang, data]<\/b>",
+    "long_desc": "Model with properties\n<br><b>[id, custom_field_group, weight, active, price_type, price, data_lang, data]<\/b>",
     "hint": null,
     "tags": {
         "package": [
@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/Product.php",
     "relative_file": "\/Syscover\/Market\/Models\/Product.php",
-    "hash": "0a6303b25741f5173979cb3797c66581dbf9e221",
+    "hash": "26e80b00c3f45e974581610faa31e9fded1990ab",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -198,8 +198,8 @@
                 }
             }
         },
-        "getTranslationRecord": {
-            "name": "getTranslationRecord",
+        "customCountIndexRecords": {
+            "name": "customCountIndexRecords",
             "line": 77,
             "short_desc": "",
             "long_desc": "",
@@ -211,6 +211,17 @@
             "exceptions": [],
             "errors": [],
             "parameters": {
+                "query": {
+                    "name": "query",
+                    "line": 77,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
                 "parameters": {
                     "name": "parameters",
                     "line": 77,
@@ -224,9 +235,9 @@
                 }
             }
         },
-        "getRecords": {
-            "name": "getRecords",
-            "line": 89,
+        "getTranslationRecord": {
+            "name": "getTranslationRecord",
+            "line": 91,
             "short_desc": "",
             "long_desc": "",
             "hint": [
@@ -250,7 +261,44 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 89,
+                    "line": 91,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getRecords": {
+            "name": "getRecords",
+            "line": 103,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "mixed",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "deprecated": [
+                    [
+                        ""
+                    ]
+                ]
+            },
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parameters": {
+                    "name": "parameters",
+                    "line": 103,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [],

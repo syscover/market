@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/Category.php",
     "relative_file": "\/Syscover\/Market\/Models\/Category.php",
-    "hash": "69678b1d6ffde2dfd95360d6736a6cda25e5ae6f",
+    "hash": "d45c00a452390a801e0fe42f9adbfc4de50185e1",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -146,8 +146,8 @@
                 }
             }
         },
-        "getTranslationRecord": {
-            "name": "getTranslationRecord",
+        "customCount": {
+            "name": "customCount",
             "line": 58,
             "short_desc": "",
             "long_desc": "",
@@ -172,9 +172,9 @@
                 }
             }
         },
-        "getRecords": {
-            "name": "getRecords",
-            "line": 65,
+        "getTranslationRecord": {
+            "name": "getTranslationRecord",
+            "line": 63,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -187,7 +187,33 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 65,
+                    "line": 63,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getRecords": {
+            "name": "getRecords",
+            "line": 70,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parameters": {
+                    "name": "parameters",
+                    "line": 70,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
