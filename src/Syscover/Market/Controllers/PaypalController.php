@@ -221,7 +221,7 @@ class PayPalController extends Controller
         $presentation = new \PayPal\Api\Presentation();
 
         // A URL to logo image. Allowed vaues: .gif, .jpg, or .png.
-        $presentation->setLogoImage('http://dev.ruralka.com/images/logo-ruralka.png')
+        $presentation->setLogoImage('http://dev.ruralka.com/images/logo-ruralka-paypal.png')
             //	A label that overrides the business name in the PayPal account on the PayPal pages.
             ->setBrandName("ruralka.com")
             //  Locale of pages displayed by PayPal payment experience.
