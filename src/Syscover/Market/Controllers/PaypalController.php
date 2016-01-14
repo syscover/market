@@ -131,8 +131,9 @@ class PayPalController extends Controller
             }
         }
 
-        // resgitrar dato en el pedido
-        //$payment->getId();
+        // record payment id on order
+        $order->payment_id_116 = $payment->getId();
+        $order->save();
 
 
         if(isset($redirectUrl))
@@ -146,7 +147,6 @@ class PayPalController extends Controller
 
     public function checkoutPayment(Request $request)
     {
-
         $paymentId  = $request->input('paymentId');
         $payment    = Payment::get($paymentId, $this->apiContext);
 
@@ -163,42 +163,12 @@ class PayPalController extends Controller
             exit(1);
         }
 
-        dd($result);
+        $order = Order::builder()->where('payment_id_116', $request->input('paymentId'))->first();
+        // set next status to complete payment method
+        $order->status_116 = $order->order_status_115;
+        $order->save();
 
-        $data = Session::get('order');
-
-        Pedido::where('paypal_payment_212', $request->input('paymentId'))->update([
-            'paypal_payer_212'  => $request->input('PayerID'),
-            'paypal_token_212'  => $request->input('token'),
-            'estado_212'        => 1
-        ]);
-
-        $pedido = Pedido::where('paypal_payment_212', $request->input('paymentId'))->first();
-
-        $data['url']            = route('getOrder', ['token' => $pedido->token_212]);
-        $data['email']          = $pedido->email_212;
-        $data['facturacion']    = $pedido->facturacion_212;
-
-        $emailData = [
-            'email'             => $pedido->email_212,
-            'facturacion'       => $data['facturacion'],
-            'nEntidad'          => $data['nEntidad'],
-            'nMultisectorial'   => $data['nMultisectorial'],
-            'nIncubadora'       => $data['nIncubadora'],
-            'url'               => $data['url']
-        ];
-
-        Mail::send('emails.common.order', $emailData, function ($message) use ($emailData) {
-            $message->to($emailData['email'])->subject('MI FINANCIACIÓN - Su pedido');
-
-            $mails = config('web.emailsContact');
-            foreach ($mails as $mail) {
-                $message->bcc($mail['email'], $mail['nombre']);
-            }
-        });
-
-        return view('www.order-ok', $data);
-
+        return view('home');
     }
 
 

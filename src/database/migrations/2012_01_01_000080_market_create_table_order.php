@@ -24,6 +24,7 @@ class MarketCreateTableOrder extends Migration
 
 				$table->integer('customer_116')->unsigned()->nullable();
 				$table->integer('payment_method_116')->unsigned();
+				$table->string('payment_id_116');											// field to record any payment ID transaction
 				$table->text('comments_116')->nullable();
 
 				// gift
@@ -79,6 +80,8 @@ class MarketCreateTableOrder extends Migration
 				$table->string('shipping_latitude_116', 50)->nullable();
 				$table->string('shipping_longitude_116', 50)->nullable();
 
+				$table->index('payment_id_116', 'ix01_012_116_order');
+
 				// customer relations
 				$table->foreign('customer_116', 'fk01_012_116_order')->references('id_301')->on('009_301_customer')
 					->onDelete('restrict')->onUpdate('cascade');
@@ -86,7 +89,6 @@ class MarketCreateTableOrder extends Migration
 					->onDelete('restrict')->onUpdate('cascade');
 				$table->foreign('payment_method_116', 'fk03_012_116_order')->references('id_115')->on('012_115_payment_method')
 					->onDelete('restrict')->onUpdate('cascade');
-
 
 				// invoice relations
 				$table->foreign('invoice_country_116', 'fk04_012_116_order')->references('id_002')->on('001_002_country')
@@ -97,6 +99,7 @@ class MarketCreateTableOrder extends Migration
 					->onDelete('restrict')->onUpdate('cascade');
 				$table->foreign('invoice_territorial_area_3_116', 'fk07_012_116_order')->references('id_005')->on('001_005_territorial_area_3')
 					->onDelete('restrict')->onUpdate('cascade');
+
 				// shipping relations
 				$table->foreign('shipping_country_116', 'fk08_012_116_order')->references('id_002')->on('001_002_country')
 					->onDelete('restrict')->onUpdate('cascade');
