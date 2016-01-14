@@ -1,7 +1,6 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Crypt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -14,6 +13,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\Preference;
 
 class PayPalController extends Controller
