@@ -12,7 +12,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
-use Syscover\Mifinanciacion\Models\Pedido;
+use Syscover\Pulsar\Models\Preference;
 
 class PaypalController extends Controller
 {
@@ -20,13 +20,15 @@ class PaypalController extends Controller
 
     public function __construct()
     {
-        $paypalConf         = config('paypal');
-        $this->apiContext   = new ApiContext(new OAuthTokenCredential($paypalConf['client_id'], $paypalConf['secret']));
-        $this->apiContext->setConfig($paypalConf['settings']);
+        $payPalConf         = config('paypal');
+        $this->apiContext   = new ApiContext(new OAuthTokenCredential($payPalConf['clientId'], $payPalConf['secret']));
+        $this->apiContext->setConfig($payPalConf['settings']);
     }
 
-    public function createPaypalPayment(Request $request)
+    public function createPayment(Request $request)
     {
+        $preferences = Preference::getValues(12);
+
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -56,12 +58,12 @@ class PaypalController extends Controller
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
-            ->setDescription('RURALKA HOTELES');
+            ->setDescription($preferences->where('id_018', 'marketPayPalDescriptionItemList'));
 
         // config URL request
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(route('pedidoFinalizado'))
-            ->setCancelUrl(route('pedidoError'));
+        $redirectUrls->setReturnUrl(route('home'))
+            ->setCancelUrl(route('home'));
 
         // create payment
         $payment = new Payment();
@@ -91,7 +93,8 @@ class PaypalController extends Controller
             }
         }
 
-        $data['paypalPayment'] = $payment->getId();
+        // resgitrar dato en el pedido
+        //$payment->getId();
 
 
         if(isset($redirectUrl))
@@ -103,7 +106,7 @@ class PaypalController extends Controller
             ->with('error', 'Unknown error occurred');
     }
 
-    public function checkoutPaymentPaypal(Request $request)
+    public function checkoutPayment(Request $request)
     {
         if(Session::has('order') && Session::get('order')['paypalPayment'] == $request->input('paymentId'))
         {
@@ -173,15 +176,15 @@ class PaypalController extends Controller
         // Type of PayPal page to be displayed when a user lands on the PayPal site for checkout. Allowed values: Billing or Login. When set to Billing, the Non-PayPal account landing page is used. When set to Login, the PayPal account login landing page is used.
         $flowConfig->setLandingPageType("Billing");
         // The URL on the merchant site for transferring to after a bank transfer payment.
-        $flowConfig->setBankTxnPendingUrl("http://www.mifinanciacion.es/");
+        $flowConfig->setBankTxnPendingUrl('http://dev.ruralka.com');
 
         // Parameters for style and presentation.
         $presentation = new \PayPal\Api\Presentation();
 
         // A URL to logo image. Allowed vaues: .gif, .jpg, or .png.
-        $presentation->setLogoImage("http://www.mifinanciacion.es/img/logo.png")
+        $presentation->setLogoImage('http://dev.ruralka.com/images/logo-ruralka.png')
             //	A label that overrides the business name in the PayPal account on the PayPal pages.
-            ->setBrandName("mifinanciacion.es")
+            ->setBrandName("ruralka.com")
             //  Locale of pages displayed by PayPal payment experience.
             ->setLocaleCode("ES");
 
@@ -198,7 +201,7 @@ class PaypalController extends Controller
         $webProfile = new \PayPal\Api\WebProfile();
 
         // Name of the web experience profile. Required. Must be unique
-        $webProfile->setName("MI FINANCIACION" . uniqid())
+        $webProfile->setName("RURALKA" . uniqid())
             // Parameters for flow configuration.
             ->setFlowConfig($flowConfig)
             // Parameters for style and presentation.

@@ -28,20 +28,20 @@ class TaxSettingsController extends Controller {
             $object->name = trans($object->name);
             return $object;
         }, config('market.productPrices'));
-        $parameters['productPricesValue']      = Preference::getValue('marketTaxProductPrices', 9);
+        $parameters['productPricesValue']      = Preference::getValue('marketTaxProductPrices', 12);
 
         $parameters['shippingPrices']       = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         }, config('market.shippingPrices'));
-        $parameters['shippingPricesValue']      = Preference::getValue('marketTaxShippingPrices', 9);
+        $parameters['shippingPricesValue']      = Preference::getValue('marketTaxShippingPrices', 12);
 
         return $parameters;
     }
     
     public function updateCustomRecord($request, $parameters)
     {
-        Preference::setValue('marketTaxProductPrices', 9, $request->input('productPricesValue'));
-        Preference::setValue('marketTaxShippingPrices', 9, $request->input('shippingPricesValue'));
+        Preference::setValue('marketTaxProductPrices', 12, $request->input('productPricesValue'));
+        Preference::setValue('marketTaxShippingPrices', 12, $request->input('shippingPricesValue'));
     }
 }

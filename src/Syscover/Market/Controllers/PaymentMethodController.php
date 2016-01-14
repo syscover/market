@@ -20,7 +20,7 @@ class PaymentMethodController extends Controller {
     protected $aColumns     = ['id_115', 'name_001', 'name_115', 'sorting_115', ['data' => 'active_115', 'type' => 'active']];
     protected $nameM        = 'name_115';
     protected $model        = '\Syscover\Market\Models\PaymentMethod';
-    protected $icon         = 'fa fa-credit-card';
+    protected $icon         = 'fa fa-random';
     protected $objectTrans  = 'payment_method';
 
     public function indexCustom($parameters)

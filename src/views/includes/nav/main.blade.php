@@ -21,10 +21,10 @@
                     </ul>
                 </li>
                 <li{!! Miscellaneous::setCurrentOpenPage(['market-payment-method','market-order-status','market-customer-tax','market-product-tax','market-tax-setting']) !!}>
-                    <a href="javascript:void(0)"><i class="fa fa-cog"></i>{{ trans_choice('pulsar::pulsar.preference', 2) }}</a>
+                    <a href="javascript:void(0)"><i class="fa fa-cogs"></i>{{ trans_choice('pulsar::pulsar.preference', 2) }}</a>
                     <ul class="sub-menu">
                         @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-payment-method', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [session('baseLang')]) }}"><i class="fa fa-credit-card"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [session('baseLang')]) }}"><i class="fa fa-random"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
                         @endif
                         @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-order-status', 'access'))
                             <li{!! Miscellaneous::setCurrentPage('market-order-status') !!}><a href="{{ route('marketOrderStatus', [session('baseLang')]) }}"><i class="fa fa-refresh"></i>{{ trans_choice('market::pulsar.order_status', 2) }}</a></li>
@@ -37,6 +37,19 @@
                                 @endif
                                 @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-tax-setting', 'access'))
                                     <li{!! Miscellaneous::setCurrentPage('market-tax-setting') !!}><a href="{{ route('marketTaxSettings') }}"><i class="fa fa-cog"></i>{{ trans_choice('pulsar::pulsar.setting', 2) }}</a></li>
+                                @endif
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li{!! Miscellaneous::setCurrentOpenPage(['market-tpv','market-tpv-paypal','market-tpv-paypal-setting']) !!}>
+                    <a href="javascript:void(0)"><i class="fa fa-credit-card"></i>{{ trans_choice('market::pulsar.tpv', 2) }}</a>
+                    <ul class="sub-menu">
+                        <li{!! Miscellaneous::setCurrentOpenPage(['market-tpv-paypal','market-tpv-paypal-setting']) !!}>
+                            <a href="javascript:void(0)"><i class="fa fa-paypal"></i>{{ trans('market::pulsar.paypal') }}</a>
+                            <ul class="sub-menu">
+                                @if(session('userAcl')->isAllowed(Auth::user()->profile_010, 'market-tpv-paypal-setting', 'access'))
+                                    <li{!! Miscellaneous::setCurrentPage('market-tpv-paypal-setting') !!}><a href="{{ route('marketPaypalSettings') }}"><i class="fa fa-cog"></i>{{ trans_choice('pulsar::pulsar.setting', 2) }}</a></li>
                                 @endif
                             </ul>
                         </li>
