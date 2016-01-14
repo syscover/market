@@ -13,6 +13,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\Preference;
 
