@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
+        "sermepa/sermepa": "^1.1",
         "paypal/rest-api-sdk-php": "*",
         "gloudemans/shoppingcart": "~1.3"
     },
