@@ -18,6 +18,7 @@ return [
     'downloadable'                          => 'Downloadable',
     'excluding_tax'                         => 'Excluding tax',
     'including_tax'                         => 'Including tax',
+    'items_list_description'                => 'Items list description',
     'maximum_price'                         => 'Maximum price',
     'minimum_price'                         => 'Minimum price',
     'order'                                 => 'Order|Orders',

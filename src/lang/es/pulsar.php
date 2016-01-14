@@ -18,6 +18,7 @@ return [
     'downloadable'                          => 'Descargable',
     'excluding_tax'                         => 'Sin impuestos',
     'including_tax'                         => 'Con impuestos',
+    'items_list_description'                => 'Descripción lista de elementos',
     'maximum_price'                         => 'Precio máximo',
     'minimum_price'                         => 'Precio mínimo',
     'order'                                 => 'Pedido|Pedidos',

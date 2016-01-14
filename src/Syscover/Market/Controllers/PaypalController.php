@@ -1,6 +1,8 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Crypt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
@@ -14,21 +16,42 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use Syscover\Pulsar\Models\Preference;
 
-class PaypalController extends Controller
+class PayPalController extends Controller
 {
     private $apiContext;
+    private $preferences;
 
     public function __construct()
     {
-        $payPalConf         = config('paypal');
-        $this->apiContext   = new ApiContext(new OAuthTokenCredential($payPalConf['clientId'], $payPalConf['secret']));
-        $this->apiContext->setConfig($payPalConf['settings']);
+        $this->preferences      = Preference::getValues(12);
+
+        // Set mode
+        if($this->preferences->where('id_018', 'marketPayPalMode')->first()->value_018 == 'live')
+        {
+            $clientID   = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalLiveClientID')->first()->value_018);
+            $secret     = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalPalLiveSecret')->first()->value_018);
+        }
+        else
+        {
+            $clientID   = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018);
+            $secret     = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018);
+        }
+
+        // init PayPal API Context
+        $this->apiContext   = new ApiContext(new OAuthTokenCredential($clientID, $secret));
+
+        // SDK configuration
+        $this->apiContext->setConfig([
+            'mode'                      => $this->preferences->where('id_018', 'marketPayPalMode')->first()->value_018,
+            'http.ConnectionTimeOut'    => 30,                                  // Specify the max request time in seconds
+            'log.LogEnabled'            => true,                                // Whether want to log to a file
+            'log.FileName'              => storage_path() . '/logs/paypal.log', // Specify the file that want to write on
+            'log.LogLevel'              => 'FINE'                               // Available option 'FINE', 'INFO', 'WARN' or 'ERROR', Logging is most verbose in the 'FINE' level and decreases as you proceed towards ERROR
+        ]);
     }
 
     public function createPayment(Request $request)
     {
-        $preferences = Preference::getValues(12);
-
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -58,7 +81,7 @@ class PaypalController extends Controller
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
-            ->setDescription($preferences->where('id_018', 'marketPayPalDescriptionItemList'));
+            ->setDescription($this->preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018);
 
         // config URL request
         $redirectUrls = new RedirectUrls();
@@ -69,7 +92,7 @@ class PaypalController extends Controller
         $payment = new Payment();
         $payment->setIntent('sale')
             //->setExperienceProfileId('XP-M8GR-6H28-68EN-ZB3Y') // web profile sandbox
-            ->setExperienceProfileId('XP-QURY-XR3C-D2EF-CN6X') // web profile live
+            //->setExperienceProfileId('XP-QURY-XR3C-D2EF-CN6X') // web profile live
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
             ->setTransactions([$transaction]);

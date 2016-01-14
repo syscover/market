@@ -122,8 +122,8 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
     | PAYPAL
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                        ['as'=>'marketPaypalSettings',              'uses'=>'Syscover\Market\Controllers\PaypalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                 ['as'=>'updateMarketPaypalSettings',        'uses'=>'Syscover\Market\Controllers\PaypalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',        'action' => 'edit']);
+    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                        ['as'=>'marketPayPalSettings',              'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                 ['as'=>'updateMarketPayPalSettings',        'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',        'action' => 'edit']);
 });
 
 /*
@@ -132,6 +132,6 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
 |--------------------------------------------------------------------------
 */
 
-Route::get(config('pulsar.appName') . '/market/tpv/paypal/payment/create',                                  ['as'=>'createMarketPaypalPayment',         'uses'=>'Syscover\Market\Controllers\PaypalController@createPayment']);
+Route::get(config('pulsar.appName') . '/market/tpv/paypal/payment/create',                                  ['as'=>'createMarketPayPalPayment',         'uses'=>'Syscover\Market\Controllers\PayPalController@createPayment']);
 // profile
-Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile/create',                              ['as'=>'createMarketPaypalWebProfile',      'uses'=>'Syscover\Market\Controllers\PaypalController@createWebProfile']);
+Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile/create',                              ['as'=>'createMarketPayPalWebProfile',      'uses'=>'Syscover\Market\Controllers\PayPalController@createWebProfile']);
