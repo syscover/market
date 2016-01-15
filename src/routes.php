@@ -134,5 +134,6 @@ Route::group(['middleware' => ['auth.pulsar','permission.pulsar','locale.pulsar'
 
 Route::post(config('pulsar.appName') . '/market/tpv/paypal/payment/create',                                 ['as'=>'createMarketPayPalPayment',         'uses'=>'Syscover\Market\Controllers\PayPalController@createPayment']);
 Route::get(config('pulsar.appName') . '/market/tpv/paypal/payment/checkout',                                ['as'=>'checkoutMarketPayPalPayment',       'uses'=>'Syscover\Market\Controllers\PayPalController@checkoutPayment']);
+
 // web profile
 Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile/create',                              ['as'=>'createMarketPayPalWebProfile',      'uses'=>'Syscover\Market\Controllers\PayPalController@createWebProfile']);

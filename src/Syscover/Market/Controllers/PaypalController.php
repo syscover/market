@@ -163,10 +163,10 @@ class PayPalController extends Controller
             exit(1);
         }
 
+        $order = Order::builder()->where('payment_id_116', $request->input('paymentId'))->first();
+
         if($response->getState() == 'approved')
         {
-            $order = Order::builder()->where('payment_id_116', $request->input('paymentId'))->first();
-
             if(!empty($order->order_status_115))
             {
                 // set next status to complete payment method
@@ -174,11 +174,11 @@ class PayPalController extends Controller
                 $order->save();
             }
 
-            return redirect()->route('home');
+            return redirect()->route($this->preferences->where('id_018', 'marketPayPalSuccessRoute')->first()->value_018, ['order' => $order->id_116]);
         }
         else
         {
-            return redirect()->route('home');
+            return redirect()->route($this->preferences->where('id_018', 'marketPayPalErrorRoute')->first()->value_018, ['order' => $order->id_116]);
         }
     }
 

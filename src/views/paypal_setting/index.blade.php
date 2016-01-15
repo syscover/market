@@ -14,6 +14,9 @@
     <!-- market::paypal_settings.index -->
     @include('pulsar::includes.html.form_select_group', ['fieldSize' => 5, 'label' => trans_choice('pulsar::pulsar.mode', 1), 'name' => 'marketPayPalMode', 'value' => $marketPayPalMode , 'objects' => $payPalModes, 'idSelect' => 'id', 'nameSelect' => 'name', 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['label' => trans('market::pulsar.items_list_description'), 'name' => 'marketPayPalDescriptionItemList', 'value' => $marketPayPalDescriptionItemList, 'required' => true])
+    @include('pulsar::includes.html.form_text_group', ['fieldSize' => 5, 'label' => trans('market::pulsar.success_route'), 'name' => 'marketPayPalSuccessRoute', 'value' => $marketPayPalSuccessRoute, 'required' => true])
+    @include('pulsar::includes.html.form_text_group', ['fieldSize' => 5, 'label' => trans('market::pulsar.error_route'), 'name' => 'marketPayPalErrorRoute', 'value' => $marketPayPalErrorRoute, 'required' => true])
+
 
     @include('pulsar::includes.html.form_section_header', ['label' => 'Sandbox', 'icon' => 'fa fa-flask'])
     @include('pulsar::includes.html.form_text_group', ['label' => 'Web Profile', 'name' => 'marketPayPalSandboxWebProfile', 'value' => $marketPayPalSandboxWebProfile, 'required' => true])

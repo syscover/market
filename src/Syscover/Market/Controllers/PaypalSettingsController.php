@@ -31,6 +31,9 @@ class PayPalSettingsController extends Controller {
         $parameters['marketPayPalMode']                 = isset($preferences->where('id_018', 'marketPayPalMode')->first()->value_018)? $preferences->where('id_018', 'marketPayPalMode')->first()->value_018 : null;
 
         $parameters['marketPayPalDescriptionItemList']  = isset($preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018)? $preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018 : null;
+        $parameters['marketPayPalSuccessRoute']         = isset($preferences->where('id_018', 'marketPayPalSuccessRoute')->first()->value_018)? $preferences->where('id_018', 'marketPayPalSuccessRoute')->first()->value_018 : null;
+        $parameters['marketPayPalErrorRoute']           = isset($preferences->where('id_018', 'marketPayPalErrorRoute')->first()->value_018)? $preferences->where('id_018', 'marketPayPalErrorRoute')->first()->value_018 : null;
+
 
         $parameters['marketPayPalSandboxWebProfile']    = isset($preferences->where('id_018', 'marketPayPalSandboxWebProfile')->first()->value_018)? $preferences->where('id_018', 'marketPayPalSandboxWebProfile')->first()->value_018 : null;
         $parameters['marketPayPalSandboxClientID']      = isset($preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018)? Crypt::decrypt($preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018) : null;
@@ -48,6 +51,8 @@ class PayPalSettingsController extends Controller {
         Preference::setValue('marketPayPalMode', 12, $request->input('marketPayPalMode'));
 
         Preference::setValue('marketPayPalDescriptionItemList', 12, $request->input('marketPayPalDescriptionItemList'));
+        Preference::setValue('marketPayPalSuccessRoute', 12, $request->input('marketPayPalSuccessRoute'));
+        Preference::setValue('marketPayPalErrorRoute', 12, $request->input('marketPayPalErrorRoute'));
 
         Preference::setValue('marketPayPalSandboxWebProfile', 12, $request->input('marketPayPalSandboxWebProfile'));
         Preference::setValue('marketPayPalSandboxClientID', 12, Crypt::encrypt($request->input('marketPayPalSandboxClientID')));
