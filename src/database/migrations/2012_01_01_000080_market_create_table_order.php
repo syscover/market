@@ -43,7 +43,7 @@ class MarketCreateTableOrder extends Migration
 				$table->decimal('total_116', 10, 2);
 
 
-				// datos de facturación
+				// customer data
 				$table->string('customer_company_116')->nullable();
 				$table->string('customer_tin_116')->nullable();
 				$table->string('customer_name_116')->nullable();
