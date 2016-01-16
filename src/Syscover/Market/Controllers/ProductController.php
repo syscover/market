@@ -24,7 +24,7 @@ class ProductController extends Controller {
     protected $routeSuffix  = 'marketProduct';
     protected $folder       = 'products';
     protected $package      = 'market';
-    protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'price_111', 'name_110'];
+    protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'price_111', 'sorting_111', 'name_110'];
     protected $nameM        = 'name_112';
     protected $model        = '\Syscover\Market\Models\Product';
     protected $langModel    = '\Syscover\Market\Models\ProductLang';
@@ -102,6 +102,7 @@ class ProductController extends Controller {
             'price_type_111'            => $request->input('priceType'),
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
+            'sorting_111'               => empty($request->input('sorting'))? null : $request->input('sorting'),
             'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang),
         ]);
 
@@ -161,6 +162,7 @@ class ProductController extends Controller {
             'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
             'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
             'active_111'                => $request->input('active', false),
+            'sorting_111'               => empty($request->input('sorting'))? null : $request->input('sorting'),
         ]);
 
         ProductLang::where('id_112', $parameters['id'])->where('lang_112', $request->input('lang'))->update([

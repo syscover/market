@@ -101,8 +101,14 @@
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('market::pulsar.product_types', 1), 'name' => 'productType', 'value' => $object->product_type_111, 'objects' => $productTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
     @include('pulsar::includes.html.form_text_group', ['fieldSize' => 3, 'label' => trans_choice('pulsar::pulsar.weight', 1), 'name' => 'weight', 'value' => $object->weight_111])
     @include('pulsar::includes.html.form_select_group', ['label' => trans_choice('pulsar::pulsar.field_group', 1), 'name' => 'customFieldGroup', 'value' => $object->custom_field_group_111, 'objects' => $customFieldGroups, 'idSelect' => 'id_025', 'nameSelect' => 'name_025', 'fieldSize' => 5])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => $object->active_111])
-
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => $object->active_111])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => trans('pulsar::pulsar.sorting'), 'name' => 'sorting', 'type' => 'number', 'value' => $object->sorting_111, 'maxLength' => '3', 'rangeLength' => '1,3', 'min' => '0'])
+        </div>
+    </div>
     @include('pulsar::includes.html.form_section_header', ['label' => trans('market::pulsar.prices_taxes'), 'icon' => 'fa fa-usd'])
     @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_type'), 'name' => 'priceType', 'value' => $object->price_type_111, 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
     <div class="row">
