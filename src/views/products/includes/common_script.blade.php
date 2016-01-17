@@ -81,9 +81,7 @@
 
         // if we have customFieldGroup value, throw event to show or hide elements
         if($("[name=customFieldGroup]").val())
-        {
-            $("[name=customFieldGroup]").trigger('change');
-        }
+             $("[name=customFieldGroup]").trigger('change')
 
         // set tab active
         @if($tab == 0)
