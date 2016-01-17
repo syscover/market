@@ -57,6 +57,19 @@ class Product extends Model
         return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_113', 'category_113');
     }
 
+    public function getProductsByCategories($categories)
+    {
+        return $this->builder()
+            ->whereIn('id_111', function($query) use ($categories) {
+                $query->select('contact_042')
+                    ->from('012_113_products_categories')
+                    ->whereIn('category_113', $categories)
+                    ->groupBy('product_113')
+                    ->get();
+            })
+            ->get();
+    }
+
     public static function addToGetIndexRecords($parameters)
     {
         $query =  Product::builder();
