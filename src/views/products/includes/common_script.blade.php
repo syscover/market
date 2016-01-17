@@ -22,67 +22,6 @@
             $.checkSlug();
         });
 
-        // hide every elements
-        $('#headerCustomFields').hide()
-        $('#wrapperCustomFields').hide()
-
-        // on change family show fields and custom fields
-        $("[name=customFieldGroup]").on('change', function() {
-            if($("[name=customFieldGroup]").val())
-            {
-                // get html doing a request to controller to render the views
-                @if($action == 'edit' || isset($id))
-                    var request = {
-                        customFieldGroup: $("[name=customFieldGroup]").val(),
-                        lang: '{{ $lang->id_001 }}',
-                        object: '{{ $id }}',
-                        resource: 'market-product',
-                        action: '{{ $action }}'
-                    }
-                @else
-                    var request = {
-                        customFieldGroup: $("[name=customFieldGroup]").val(),
-                        lang: '{{ $lang->id_001 }}'
-                    }
-                @endif
-
-                $.ajax({
-                    dataType: 'json',
-                    type: 'POST',
-                    headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
-                    url: '{{ route('apiGetCustomFields') }}',
-                    data: request,
-                    success: function (data) {
-                        // set html custom fields section
-                        $('#wrapperCustomFields').html(data.html)
-
-                        if ($.fn.select2)
-                            $('.select2').each(function() {
-                                var self = $(this);
-                                $(self).select2(self.data());
-                            })
-
-                        if (data.html != '')
-                        {
-                            $(".uniform").uniform()
-                            $('#headerCustomFields').fadeIn()
-                            $('#wrapperCustomFields').fadeIn()
-                        }
-                    }
-                });
-            }
-            else
-            {
-                $('#headerCustomFields').fadeOut()
-                $('#wrapperCustomFields').fadeOut()
-                $('#wrapperCustomFields').html('')
-            }
-        })
-
-        // if we have customFieldGroup value, throw event to show or hide elements
-        if($("[name=customFieldGroup]").val())
-             $("[name=customFieldGroup]").trigger('change')
-
         // set tab active
         @if($tab == 0)
         $('.tabbable li:eq(0) a').tab('show');
