@@ -1,5 +1,6 @@
 <?php namespace Syscover\Market\Models;
 
+use Illuminate\Support\Facades\DB;
 use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
 use Syscover\Pulsar\Traits\TraitModel;
@@ -40,13 +41,21 @@ class Order extends Model
 
     public function scopeBuilder($query)
     {
+        // we not relate to countries, because there are two countries which relate, invoice and shipping, has not been found to create aliases on columns within a join
         return $query->join('012_114_order_status', '012_116_order.status_116', '=', '012_114_order_status.id_114')
             ->join('012_115_payment_method', '012_116_order.payment_method_116', '=', '012_115_payment_method.id_115')
             ->join('009_301_customer', '012_116_order.customer_116', '=', '009_301_customer.id_301');
-//            ->join('001_002_country', function ($join) {
-//                $join->on('012_116_order.invoice_country_116', '=', '001_002_country.id_002')
-//                    ->on('001_002_country.lang_002', '=', '001_001_lang.id_001');
-//            });
+            /*
+            ->join('001_002_country', function ($join) {
+                $join->on('012_116_order.invoice_country_116', '=', '001_002_country.id_002')
+                    ->on('001_002_country.lang_002', '=', '001_001_lang.id_001');
+            })
+            ->join('001_002_country', function ($join) {
+                $join->on('012_116_order.shipping_country_116', '=', '001_002_country.id_002')
+                    ->on('001_002_country.lang_002', '=', '001_001_lang.id_001');
+            });
+            */
+
     }
 
     public function getOrderRows()
