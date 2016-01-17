@@ -112,7 +112,7 @@
     @include('pulsar::includes.html.form_select_group', ['label' => trans('market::pulsar.price_type'), 'name' => 'priceType', 'value' => Input::old('priceType', isset($object->price_type_111)? $object->price_type_111 : null), 'objects' => $priceTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'fieldSize' => 3, 'required' => true])
     <div class="row">
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => Input::old('price', isset($object->price_112)? $object->price_112 : null)])
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 6, 'label' => trans_choice('pulsar::pulsar.price', 1), 'name' => 'price', 'value' => Input::old('price', isset($object->price_111)? $object->price_111 : null)])
         </div>
         <div class="col-md-6">
         </div>
