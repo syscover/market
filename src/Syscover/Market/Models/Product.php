@@ -47,6 +47,18 @@ class Product extends Model
             ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001');
     }
 
+    public function scopeProductsByCategories($query, $categories)
+    {
+        return $query->builder()
+            ->whereIn('id_111', function($query) use ($categories) {
+                $query->select('contact_042')
+                    ->from('012_113_products_categories')
+                    ->whereIn('category_113', $categories)
+                    ->groupBy('product_113')
+                    ->get();
+            });
+    }
+
     public function getLang()
     {
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_112');
@@ -57,18 +69,7 @@ class Product extends Model
         return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_113', 'category_113');
     }
 
-    public function getProductsByCategories($categories)
-    {
-        return $this->builder()
-            ->whereIn('id_111', function($query) use ($categories) {
-                $query->select('contact_042')
-                    ->from('012_113_products_categories')
-                    ->whereIn('category_113', $categories)
-                    ->groupBy('product_113')
-                    ->get();
-            })
-            ->get();
-    }
+
 
     public static function addToGetIndexRecords($parameters)
     {
