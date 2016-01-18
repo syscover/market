@@ -35,13 +35,13 @@ return [
     'product_types'                         => 'Tipo de producto|Tipos de productos',
     'sale'                                  => 'Venta|Ventas',
     'shipping_prices'                       => 'Precios de envíos',
+    'shipping_handling'                     => 'Transporte y manipulación',
     'single_price'                          => 'Precio único',
     'success_route'                         => 'Ruta de éxito (route)',
     'tax'                                   => 'Impuesto|Impuestos',
     'tpv'                                   => 'TPV|TPVs',
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable y descargable',
-    'transport_handling'                    => 'Transporte y manipulación',
     'undefined_price'                       => 'Precio no definido',
 
 ];

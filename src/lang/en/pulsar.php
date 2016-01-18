@@ -34,6 +34,7 @@ return [
     'product_prices'                        => 'Product prices',
     'product_types'                         => 'Product type|Products types',
     'sale'                                  => 'Sale|Sales',
+    'shipping_handling'                     => 'Shipping and handling',
     'shipping_prices'                       => 'Shipping prices',
     'single_price'                          => 'Single price',
     'success_route'                         => 'Success route',
@@ -41,7 +42,6 @@ return [
     'tpv'                                   => 'TPV|TPVs',
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable and downloadable',
-    'transport_handling'                    => 'Transport and handling',
     'undefined_price'                       => 'Undefined price',
 
 ];
