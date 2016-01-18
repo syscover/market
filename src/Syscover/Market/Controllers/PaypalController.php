@@ -188,7 +188,7 @@ class PayPalController extends Controller
             $viewResponse['html'] = '
                 <form id="redirect_paypal_form" action="' . route($this->preferences->where('id_018', 'marketPayPalSuccessRoute')->first()->value_018) . '" method="post">
                     <input type="hidden" name="_token" value="' . csrf_token() . '"/>
-                    <input type="hidden" name="order" value="' . $order . '"/>
+                    <input type="hidden" name="order" value="' . $order->id_116 . '"/>
                 </form>
                 <script>document.getElementById("redirect_paypal_form").submit();</script>
             ';
@@ -200,7 +200,7 @@ class PayPalController extends Controller
             $viewResponse['html'] = '
                 <form id="redirect_paypal_form" action="' . route($this->preferences->where('id_018', 'marketPayPalErrorRoute')->first()->value_018) . '" method="post">
                     <input type="hidden" name="_token" value="' . csrf_token() . '"/>
-                    <input type="hidden" name="order" value="' . $order . '"/>
+                    <input type="hidden" name="order" value="' . $order->id_116 . '"/>
                 </form>
                 <script>document.getElementById("redirect_paypal_form").submit();</script>
             ';
