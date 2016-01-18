@@ -193,7 +193,7 @@ class PayPalController extends Controller
                 <script>document.getElementById("redirect_paypal_form").submit();</script>
             ';
 
-            return view('pulsar::common.views.html_display');
+            return view('pulsar::common.views.html_display', $viewResponse);
         }
         else
         {
