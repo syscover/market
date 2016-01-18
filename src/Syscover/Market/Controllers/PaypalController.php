@@ -197,7 +197,15 @@ class PayPalController extends Controller
         }
         else
         {
-            return redirect()->route($this->preferences->where('id_018', 'marketPayPalErrorRoute')->first()->value_018, ['order' => $order->id_116]);
+            $response['html'] = '
+                <form id="redirect_paypal_form" action="' . route('marketPayPalErrorRoute') . '" method="post">
+                    <input type="hidden" name="_token" value="' . csrf_token() . '"/>
+                    <input type="hidden" name="order" value="' . $order . '"/>
+                </form>
+                <script>document.getElementById("redirect_paypal_form").submit();</script>
+            ';
+
+            return view('pulsar::common.views.html_display');
         }
     }
 
