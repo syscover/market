@@ -35,6 +35,7 @@ return [
     'product_types'                         => 'Tipo de producto|Tipos de productos',
     'sale'                                  => 'Venta|Ventas',
     'shipping_prices'                       => 'Precios de envíos',
+    'shipping_description'                  => 'Descripción de transporte',
     'shipping_handling'                     => 'Transporte y manipulación',
     'single_price'                          => 'Precio único',
     'success_route'                         => 'Ruta de éxito (route)',

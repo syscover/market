@@ -34,6 +34,7 @@ return [
     'product_prices'                        => 'Product prices',
     'product_types'                         => 'Product type|Products types',
     'sale'                                  => 'Sale|Sales',
+    'shipping_description'                  => 'Shipping description',
     'shipping_handling'                     => 'Shipping and handling',
     'shipping_prices'                       => 'Shipping prices',
     'single_price'                          => 'Single price',

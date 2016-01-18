@@ -67,7 +67,6 @@ class PayPalController extends Controller
             exit;
         }
 
-
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -88,7 +87,7 @@ class PayPalController extends Controller
         if($order->shipping_116 > 0)
         {
             $item = new Item();
-            $item->setName(trans('market::pulsar.shipping_handling'))
+            $item->setName(trans($this->preferences->where('id_018', 'marketPayPalShippingDescription')->first()->value_018))
             ->setCurrency('EUR')                        // currency
             ->setQuantity(1)                            // quantity
             ->setPrice($order->shipping_116);           // price
