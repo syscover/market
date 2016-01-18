@@ -84,6 +84,18 @@ class PayPalController extends Controller
             $products[] = $item;
         }
 
+        // shipping
+        if($order->shipping_116 > 0)
+        {
+            $item = new Item();
+            $item->setName(trans('market::pulsar.transport_handling'))
+            ->setCurrency('EUR')                        // currency
+            ->setQuantity(1)                            // quantity
+            ->setPrice($order->shipping_116);           // price
+
+            $products[] = $item;
+        }
+
         // products list
         $itemList = new ItemList();
         $itemList->setItems($products);

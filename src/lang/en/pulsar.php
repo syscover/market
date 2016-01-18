@@ -41,6 +41,7 @@ return [
     'tpv'                                   => 'TPV|TPVs',
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable and downloadable',
+    'transport_handling'                    => 'Transport and handling',
     'undefined_price'                       => 'Undefined price',
 
 ];

@@ -41,6 +41,7 @@ return [
     'tpv'                                   => 'TPV|TPVs',
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable y descargable',
+    'transport_handling'                    => 'Transporte y manipulación',
     'undefined_price'                       => 'Precio no definido',
 
 ];
