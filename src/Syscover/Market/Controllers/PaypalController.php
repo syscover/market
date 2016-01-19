@@ -75,7 +75,7 @@ class PayPalController extends Controller
         foreach($orderRows as $row)
         {
             $item = new Item();
-            $item->setName($row->description_117)       // product name
+            $item->setName($row->name_117)       // product name
             ->setCurrency('EUR')                        // currency
             ->setQuantity(intval($row->quantity_117))   // quantity
             ->setPrice($row->subtotal);                 // unit price
