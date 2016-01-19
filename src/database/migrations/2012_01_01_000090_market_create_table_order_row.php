@@ -20,7 +20,10 @@ class MarketCreateTableOrderRow extends Migration
 				$table->string('lang_117', 2)->nullable();
 				$table->integer('order_117')->unsigned();
 				$table->integer('product_117')->nullable()->unsigned();
-				$table->text('description_117');
+
+				$table->string('name_117')->nullable();
+				$table->text('description_117')->nullable();
+				$table->json('data_117')->nullable();
 
 				// amounts
 				$table->decimal('price_117', 10, 2); 								// unit price
