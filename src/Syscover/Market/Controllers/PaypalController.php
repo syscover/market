@@ -78,7 +78,7 @@ class PayPalController extends Controller
             $item->setName($row->name_117)       // product name
             ->setCurrency('EUR')                        // currency
             ->setQuantity(intval($row->quantity_117))   // quantity
-            ->setPrice($row->subtotal);                 // unit price
+            ->setPrice($row->price_117);                // unit price
 
             $products[] = $item;
         }
