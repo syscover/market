@@ -275,4 +275,27 @@ class PayPalController extends Controller
 
         //return $createProfileResponse;
     }
+
+    public function webProfile()
+    {
+        try
+        {
+            // Use this call to create a profile.
+            $list = \PayPal\Api\WebProfile::get_list($this->apiContext);
+        }
+        catch (\PayPal\Exception\PPConnectionException $ex)
+        {
+            ResultPrinter::printError("Get List of All Web Profiles", "Web Profiles", null, null, $ex);
+            exit(1);
+        }
+
+        $result = '';
+        foreach ($list as $object) {
+            $result .= $object->toJSON(128) . PHP_EOL;
+        }
+
+        ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
+
+        return $list;
+    }
 }

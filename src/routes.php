@@ -136,3 +136,4 @@ Route::get(config('pulsar.appName') . '/market/tpv/paypal/payment/checkout',    
 
 // web profile
 Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile/create',                              ['as'=>'createMarketPayPalWebProfile',      'uses'=>'Syscover\Market\Controllers\PayPalController@createWebProfile']);
+Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile',                                     ['as'=>'marketPayPalWebProfile',            'uses'=>'Syscover\Market\Controllers\PayPalController@webProfile']);
