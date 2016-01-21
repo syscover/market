@@ -62,11 +62,11 @@ class MarketCreateTableOrder extends Migration
 				$table->string('invoice_address_116', 150)->nullable();
 				$table->string('invoice_latitude_116', 50)->nullable();
 				$table->string('invoice_longitude_116', 50)->nullable();
-				$table->boolean('provide_invoice_116');
-				$table->boolean('invoiced_116');
+				$table->boolean('has_invoice_116');
+				$table->boolean('invoiced_116')->default(false);
 				
 				// shipping data
-				$table->boolean('is_shipping_116');
+				$table->boolean('has_shipping_116');
 				$table->string('shipping_company_116')->nullable();
 				$table->string('shipping_name_116')->nullable();
 				$table->string('shipping_surname_116')->nullable();
