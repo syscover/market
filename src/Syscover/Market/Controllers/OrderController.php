@@ -52,7 +52,7 @@ class OrderController extends Controller {
 
     public function storeCustomRecord($request, $parameters)
     {
-        Customer::create([
+        Order::create([
             'group_301'                 => $request->input('group'),
             'date_301'                  => $request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $request->input('date'))->getTimestamp() : null,
             'company_301'               => empty($request->input('company'))? null : $request->input('company'),
@@ -95,7 +95,7 @@ class OrderController extends Controller {
 
     public function updateCustomRecord($request, $parameters)
     {
-        Customer::where('id_301', $parameters['id'])->update([
+        Order::where('id_301', $parameters['id'])->update([
             'group_301'                 => $request->input('group'),
             'date_301'                  => $request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $request->input('date'))->getTimestamp() : null,
             'company_301'               => empty($request->input('company'))? null : $request->input('company'),
