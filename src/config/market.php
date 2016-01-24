@@ -53,7 +53,7 @@ return [
     //******************************************************************************************************************
     //***   PayPal settings
     //******************************************************************************************************************
-    // PAYPAL MODE, sandbox | live
+    // PayPal mode, sandbox | live
     'payPalMode'                    => env('PAYPAL_MODE', ''),
 
     // SANDBOX
@@ -65,4 +65,20 @@ return [
     'payPalLiveWebProfile'          => env('PAYPAL_LIVE_WEB_PROFILE', ''),
     'payPalLiveClientId'            => env('PAYPAL_LIVE_CLIENT_ID', ''),
     'payPalLiveSecret'              => env('PAYPAL_LIVE_SECRET_KEY', ''),
+
+    //******************************************************************************************************************
+    //***   RedSys settings
+    //******************************************************************************************************************
+    // RedSys mode, test | live
+    'redSysEnviroment'              => env('REDSYS_ENVIROMENT', ''),
+
+    // TEST
+    'redSysTestMerchantName'        => env('REDSYS_TEST_MERCHANT_NAME', ''),
+    'redSysTestMerchantCode'        => env('REDSYS_TEST_MERCHANT_CODE', ''),
+    'redSysTestKey'                 => env('REDSYS_TEST_KEY', ''),
+
+    // LIVE
+    'redSysLiveMerchantName'        => env('REDSYS_LIVE_MERCHANT_NAME', ''),
+    'redSysLiveMerchantCode'        => env('REDSYS_LIVE_MERCHANT_CODE', ''),
+    'redSysLiveKey'                 => env('REDSYS_LIVE_KEY', ''),
 ];
