@@ -28,17 +28,17 @@ class PayPalController extends Controller
         $this->preferences      = Preference::getValues(12);
 
         // Set mode
-        if($this->preferences->where('id_018', 'marketPayPalMode')->first()->value_018 == 'live')
+        if(config('market.payPalMode') == 'live')
         {
-            $this->webProfile   = $this->preferences->where('id_018', 'marketPayPalLiveWebProfile')->first()->value_018;
-            $clientID           = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalLiveClientID')->first()->value_018);
-            $secret             = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalPalLiveSecret')->first()->value_018);
+            $this->webProfile   = config('market.payPalLiveWebProfile');
+            $clientID           = config('market.payPalLiveClientId');
+            $secret             = config('market.payPalLiveSecret');
         }
         else
         {
-            $this->webProfile   = $this->preferences->where('id_018', 'marketPayPalSandboxWebProfile')->first()->value_018;
-            $clientID           = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxClientID')->first()->value_018);
-            $secret             = Crypt::decrypt($this->preferences->where('id_018', 'marketPayPalSandboxSecret')->first()->value_018);
+            $this->webProfile   = config('market.payPalSandboxWebProfile');
+            $clientID           = config('market.payPalSandboxClientId');
+            $secret             = config('market.payPalSandboxSecret');
         }
 
         // init PayPal API Context
@@ -46,7 +46,7 @@ class PayPalController extends Controller
 
         // SDK configuration
         $this->apiContext->setConfig([
-            'mode'                      => $this->preferences->where('id_018', 'marketPayPalMode')->first()->value_018,
+            'mode'                      => config('market.payPalMode'),         // Specify mode, sandbox or live
             'http.ConnectionTimeOut'    => 30,                                  // Specify the max request time in seconds
             'log.LogEnabled'            => true,                                // Whether want to log to a file
             'log.FileName'              => storage_path() . '/logs/paypal.log', // Specify the file that want to write on

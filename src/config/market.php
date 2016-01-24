@@ -51,10 +51,18 @@ return [
     ],
 
     //******************************************************************************************************************
-    //***   PayPal modes
+    //***   PayPal settings
     //******************************************************************************************************************
-    'payPalModes'                   => [
-        (object)['id' => 'sandbox',     'name' => 'Sandbox'],
-        (object)['id' => 'live',        'name' => 'Live']
-    ],
+    // PAYPAL MODE, sandbox | live
+    'payPalMode'                    => env('PAYPAL_MODE', ''),
+
+    // SANDBOX
+    'payPalSandboxWebProfile'       => env('PAYPAL_SANDBOX_WEB_PROFILE', ''),
+    'payPalSandboxClientId'         => env('PAYPAL_SANDBOX_CLIENT_ID', ''),
+    'payPalSandboxSecret'           => env('PAYPAL_SANDBOX_SECRET', ''),
+
+    // LIVE
+    'payPalLiveWebProfile'          => env('PAYPAL_LIVE_WEB_PROFILE', ''),
+    'payPalLiveClientId'            => env('PAYPAL_LIVE_CLIENT_ID', ''),
+    'payPalLiveSecret'              => env('PAYPAL_LIVE_SECRET_KEY', ''),
 ];
