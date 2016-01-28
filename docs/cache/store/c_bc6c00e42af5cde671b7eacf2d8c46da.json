@@ -2,7 +2,7 @@
     "name": "Syscover\\Market\\Models\\Product",
     "line": 19,
     "short_desc": "Class Product",
-    "long_desc": "Model with properties\n<br><b>[id, custom_field_group, weight, active, price_type, price, data_lang, data]<\/b>",
+    "long_desc": "Model with properties\n<br><b>[id, custom_field_group, weight, active, sorting, price_type, price, data_lang, data]<\/b>",
     "hint": null,
     "tags": {
         "package": [
@@ -14,7 +14,7 @@
     "namespace": "Syscover\\Market\\Models",
     "file": "src\/Syscover\/Market\/Models\/Product.php",
     "relative_file": "\/Syscover\/Market\/Models\/Product.php",
-    "hash": "26e80b00c3f45e974581610faa31e9fded1990ab",
+    "hash": "e34a3c9a26753206066e7f245f670548e43ef637",
     "parent": "Syscover\\Pulsar\\Models\\Model",
     "modifiers": "Stmt_Class",
     "is_trait": false,
@@ -107,9 +107,46 @@
                 }
             }
         },
+        "scopeProductsByCategories": {
+            "name": "scopeProductsByCategories",
+            "line": 50,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "query": {
+                    "name": "query",
+                    "line": 50,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "categories": {
+                    "name": "categories",
+                    "line": 50,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
         "getLang": {
             "name": "getLang",
-            "line": 50,
+            "line": 62,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -123,7 +160,7 @@
         },
         "getCategories": {
             "name": "getCategories",
-            "line": 55,
+            "line": 67,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -137,7 +174,7 @@
         },
         "addToGetIndexRecords": {
             "name": "addToGetIndexRecords",
-            "line": 60,
+            "line": 72,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -150,7 +187,7 @@
             "parameters": {
                 "parameters": {
                     "name": "parameters",
-                    "line": 60,
+                    "line": 72,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -163,7 +200,7 @@
         },
         "getCustomReturnIndexRecords": {
             "name": "getCustomReturnIndexRecords",
-            "line": 69,
+            "line": 81,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -176,7 +213,7 @@
             "parameters": {
                 "query": {
                     "name": "query",
-                    "line": 69,
+                    "line": 81,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -187,7 +224,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 69,
+                    "line": 81,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -200,7 +237,7 @@
         },
         "customCountIndexRecords": {
             "name": "customCountIndexRecords",
-            "line": 77,
+            "line": 89,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -213,7 +250,7 @@
             "parameters": {
                 "query": {
                     "name": "query",
-                    "line": 77,
+                    "line": 89,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -224,7 +261,7 @@
                 },
                 "parameters": {
                     "name": "parameters",
-                    "line": 77,
+                    "line": 89,
                     "short_desc": null,
                     "long_desc": null,
                     "hint": null,
@@ -237,43 +274,6 @@
         },
         "getTranslationRecord": {
             "name": "getTranslationRecord",
-            "line": 91,
-            "short_desc": "",
-            "long_desc": "",
-            "hint": [
-                [
-                    "mixed",
-                    false
-                ]
-            ],
-            "hint_desc": "",
-            "tags": {
-                "deprecated": [
-                    [
-                        ""
-                    ]
-                ]
-            },
-            "modifiers": "9",
-            "is_by_ref": "",
-            "exceptions": [],
-            "errors": [],
-            "parameters": {
-                "parameters": {
-                    "name": "parameters",
-                    "line": 91,
-                    "short_desc": "",
-                    "long_desc": null,
-                    "hint": [],
-                    "tags": [],
-                    "modifiers": "",
-                    "default": null,
-                    "is_by_ref": false
-                }
-            }
-        },
-        "getRecords": {
-            "name": "getRecords",
             "line": 103,
             "short_desc": "",
             "long_desc": "",
@@ -299,6 +299,43 @@
                 "parameters": {
                     "name": "parameters",
                     "line": 103,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getRecords": {
+            "name": "getRecords",
+            "line": 115,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "mixed",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "deprecated": [
+                    [
+                        ""
+                    ]
+                ]
+            },
+            "modifiers": "9",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "parameters": {
+                    "name": "parameters",
+                    "line": 115,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [],

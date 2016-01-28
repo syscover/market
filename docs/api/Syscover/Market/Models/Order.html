@@ -82,7 +82,7 @@
 
             <div class="description">
             <p>Class Order</p>            <p>Model with properties
-<br><b>[id, date, status, ip, customer, payment<em>method, comments, gift, gift</em>from, gift<em>to, gift</em>message, subtotal, shipping, row<em>discount</em>amount, total<em>discount</em>percentage, total<em>discount</em>amount, tax<em>amount, total, customer</em>company, customer<em>tin, customer</em>name, customer<em>surname, customer</em>email, customer<em>phone, customer</em>mobile, invoice<em>country, invoice</em>territorial<em>area</em>1, invoice<em>territorial</em>area<em>2, invoice</em>territorial<em>area</em>3, invoice<em>cp, invoice</em>locality, invoice<em>address, invoice</em>latitude, invoice<em>longitude, shipping</em>company, shipping<em>name, shipping</em>surname, shipping<em>email, shipping</em>phone, shipping<em>mobile, shipping</em>country, shipping<em>territorial</em>area<em>1, shipping</em>territorial<em>area</em>2, shipping<em>territorial</em>area<em>3, shipping</em>cp, shipping<em>locality, shipping</em>address, shipping<em>latitude, shipping</em>longitude]</b></p>        </div>
+<br><b>[id, date, status, ip, customer, payment<em>method, 'payment</em>id', comments, gift, gift<em>from, gift</em>to, gift<em>message, subtotal, shipping, row</em>discount<em>amount, total</em>discount<em>percentage, total</em>discount<em>amount, tax</em>amount, total, customer<em>company, customer</em>tin, customer<em>name, customer</em>surname, customer<em>email, customer</em>phone, customer<em>mobile, invoice</em>country, invoice<em>territorial</em>area<em>1, invoice</em>territorial<em>area</em>2, invoice<em>territorial</em>area<em>3, invoice</em>cp, invoice<em>locality, invoice</em>address, invoice<em>latitude, invoice</em>longitude, has<em>invoice, invoiced, has</em>shipping, shipping<em>company, shipping</em>name, shipping<em>surname, shipping</em>email, shipping<em>phone, shipping</em>mobile, shipping<em>country, shipping</em>territorial<em>area</em>1, shipping<em>territorial</em>area<em>2, shipping</em>territorial<em>area</em>3, shipping<em>cp, shipping</em>locality, shipping<em>address, shipping</em>latitude, shipping_longitude]</b></p>        </div>
     
             <h2>Traits</h2>
 
@@ -162,6 +162,17 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOrderRows">getOrderRows</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
     <abbr title="Syscover\Crm\Models\Group">Group</abbr>
                 </div>
                 <div class="col-md-8 type">
@@ -177,7 +188,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_validate">
-        <div class="location">at line 34</div>
+        <div class="location">at line 37</div>
         <code>        static            
     
     <strong>validate</strong>($data)</code>
@@ -204,7 +215,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_scopeBuilder">
-        <div class="location">at line 39</div>
+        <div class="location">at line 42</div>
         <code>                    
     
     <strong>scopeBuilder</strong>($query)</code>
@@ -230,8 +241,24 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getOrderRows">
+        <div class="location">at line 61</div>
+        <code>                    
+    
+    <strong>getOrderRows</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getGroup">
-        <div class="location">at line 50</div>
+        <div class="location">at line 71</div>
         <code>                    
     <abbr title="Syscover\Crm\Models\Group">Group</abbr>
     <strong>getGroup</strong>()</code>

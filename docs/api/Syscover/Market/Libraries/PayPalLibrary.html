@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Syscover\Market\Controllers\PayPalSettingsController | Market API</title>
+    <title>Syscover\Market\Libraries\PayPalLibrary | Market API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Syscover_Market_Controllers_PayPalSettingsController" data-root-path="../../../">
+    <body id="class" data-name="class:Syscover_Market_Libraries_PayPalLibrary" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,38 +65,22 @@
                 <li><span class="label label-default">class</span></li>
                                                             <li><a href="../../../Syscover.html">Syscover</a></li>
                                         <li><a href="../../../Syscover/Market.html">Market</a></li>
-                                        <li><a href="../../../Syscover/Market/Controllers.html">Controllers</a></li>
+                                        <li><a href="../../../Syscover/Market/Libraries.html">Libraries</a></li>
     
-                <li>PayPalSettingsController</li>
+                <li>PayPalLibrary</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>PayPalSettingsController</h1>
+        <h1>PayPalLibrary</h1>
     </div>
 
     <p>    class
-    <strong>PayPalSettingsController</strong>        extends <abbr title="Syscover\Pulsar\Controllers\Controller">Controller</abbr>        (<a href="https://github.com/syscover/market/blob/master/Syscover/Market/Controllers/PayPalSettingsController.php">View source</a>)
+    <strong>PayPalLibrary</strong>        (<a href="https://github.com/syscover/market/blob/master/Syscover/Market/Libraries/PayPalLibrary.php">View source</a>)
 </p>
 
-            <div class="description">
-            <p>Class PaypalSettingsController</p>                    </div>
     
-            <h2>Traits</h2>
-
-        
-    <div class="container-fluid underlined">
-                    <div class="row">
-                <div class="col-md-6">
-                                            <abbr title="Syscover\Pulsar\Traits\TraitController">Syscover\Pulsar\Traits\TraitController</abbr>
-                                    </div>
-                <div class="col-md-6">
-                    
-
-                </div>
-            </div>
-            </div>
     
     
     
@@ -105,24 +89,22 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;
     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_indexCustom">indexCustom</a>($parameters)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_executeRedirection">executeRedirection</a>()
+                                            <p>Execute redirection to PayPal</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    
+                    static&nbsp;
+    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_updateCustomRecord">updateCustomRecord</a>($request, $parameters)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_createForm">createForm</a>($order)
+                                            <p>Generate form html</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -132,25 +114,16 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_indexCustom">
-        <div class="location">at line 26</div>
-        <code>                    
+                    <h3 id="method_executeRedirection">
+        <div class="location">at line 8</div>
+        <code>        static            
     
-    <strong>indexCustom</strong>($parameters)</code>
+    <strong>executeRedirection</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Execute redirection to PayPal</p>                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$parameters</td>
-                <td>
-</td>
-            </tr>
-            </table>
-
             
             
             
@@ -159,32 +132,39 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_updateCustomRecord">
-        <div class="location">at line 38</div>
-        <code>                    
-    
-    <strong>updateCustomRecord</strong>($request, $parameters)</code>
+                    <h3 id="method_createForm">
+        <div class="location">at line 19</div>
+        <code>        static            
+    string
+    <strong>createForm</strong>($order)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Generate form html</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
-                <td>$request</td>
-                <td>
-</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$parameters</td>
+                <td>$order</td>
                 <td>
 </td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
