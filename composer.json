@@ -1,6 +1,6 @@
 {
     "name": "syscover/market",
-    "version": "2.0.0",
+    "version": "5.2",
     "description": "Marklet package",
     "keywords": ["syscover","pulsar","laravel","marketplace","market"],
     "license": "MIT",
@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.9",
         "sermepa/sermepa": "^1.1",
         "paypal/rest-api-sdk-php": "*",
         "gloudemans/shoppingcart": "~1.3"
