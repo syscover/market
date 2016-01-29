@@ -83,14 +83,14 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | CUSTOMER TAX
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/customer/tax/{offset?}',                                 ['as'=>'marketCustomerTax',                     'uses'=>'Syscover\Market\Controllers\CustomerTaxController@index',                      'resource' => 'market-customer-tax',        'action' => 'access']);
-    Route::any(config('pulsar.appName') . '/market/customer/tax/json/data',                                 ['as'=>'jsonDataMarketCustomerTax',             'uses'=>'Syscover\Market\Controllers\CustomerTaxController@jsonData',                   'resource' => 'market-customer-tax',        'action' => 'access']);
-    Route::get(config('pulsar.appName') . '/market/customer/tax/create/{offset}',                           ['as'=>'createMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@createRecord',               'resource' => 'market-customer-tax',        'action' => 'create']);
-    Route::post(config('pulsar.appName') . '/market/customer/tax/store/{offset}',                           ['as'=>'storeMarketCustomerTax',                'uses'=>'Syscover\Market\Controllers\CustomerTaxController@storeRecord',                'resource' => 'market-customer-tax',        'action' => 'create']);
-    Route::get(config('pulsar.appName') . '/market/customer/tax/{id}/edit/{offset}',                        ['as'=>'editMarketCustomerTax',                 'uses'=>'Syscover\Market\Controllers\CustomerTaxController@editRecord',                 'resource' => 'market-customer-tax',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/customer/tax/update/{id}/{offset}',                      ['as'=>'updateMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@updateRecord',               'resource' => 'market-customer-tax',        'action' => 'edit']);
-    Route::get(config('pulsar.appName') . '/market/customer/tax/delete/{id}/{offset}',                      ['as'=>'deleteMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@deleteRecord',               'resource' => 'market-customer-tax',        'action' => 'delete']);
-    Route::delete(config('pulsar.appName') . '/market/customer/tax/delete/select/records',                  ['as'=>'deleteSelectMarketCustomerTax',         'uses'=>'Syscover\Market\Controllers\CustomerTaxController@deleteRecordsSelect',        'resource' => 'market-customer-tax',        'action' => 'delete']);
+    Route::any(config('pulsar.appName') . '/market/customer/tax/{offset?}',                                     ['as'=>'marketCustomerTax',                     'uses'=>'Syscover\Market\Controllers\CustomerTaxController@index',                      'resource' => 'market-customer-tax',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/customer/tax/json/data',                                     ['as'=>'jsonDataMarketCustomerTax',             'uses'=>'Syscover\Market\Controllers\CustomerTaxController@jsonData',                   'resource' => 'market-customer-tax',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/customer/tax/create/{offset}',                               ['as'=>'createMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@createRecord',               'resource' => 'market-customer-tax',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/customer/tax/store/{offset}',                               ['as'=>'storeMarketCustomerTax',                'uses'=>'Syscover\Market\Controllers\CustomerTaxController@storeRecord',                'resource' => 'market-customer-tax',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/customer/tax/{id}/edit/{offset}',                            ['as'=>'editMarketCustomerTax',                 'uses'=>'Syscover\Market\Controllers\CustomerTaxController@editRecord',                 'resource' => 'market-customer-tax',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/customer/tax/update/{id}/{offset}',                          ['as'=>'updateMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@updateRecord',               'resource' => 'market-customer-tax',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/customer/tax/delete/{id}/{offset}',                          ['as'=>'deleteMarketCustomerTax',               'uses'=>'Syscover\Market\Controllers\CustomerTaxController@deleteRecord',               'resource' => 'market-customer-tax',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/customer/tax/delete/select/records',                      ['as'=>'deleteSelectMarketCustomerTax',         'uses'=>'Syscover\Market\Controllers\CustomerTaxController@deleteRecordsSelect',        'resource' => 'market-customer-tax',        'action' => 'delete']);
 
 
     /*
@@ -98,14 +98,14 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | ORDER
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/order/{offset?}',                                        ['as'=>'marketOrder',                     'uses'=>'Syscover\Market\Controllers\OrderController@index',                      'resource' => 'market-order',        'action' => 'access']);
-    Route::any(config('pulsar.appName') . '/market/order/json/data',                                        ['as'=>'jsonDataMarketOrder',             'uses'=>'Syscover\Market\Controllers\OrderController@jsonData',                   'resource' => 'market-order',        'action' => 'access']);
-    Route::get(config('pulsar.appName') . '/market/order/create/{offset}/{tab}',                            ['as'=>'createMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@createRecord',               'resource' => 'market-order',        'action' => 'create']);
-    Route::post(config('pulsar.appName') . '/market/order/store/{offset}/{tab}',                            ['as'=>'storeMarketOrder',                'uses'=>'Syscover\Market\Controllers\OrderController@storeRecord',                'resource' => 'market-order',        'action' => 'create']);
-    Route::get(config('pulsar.appName') . '/market/order/{id}/edit/{offset}/{tab}',                         ['as'=>'editMarketOrder',                 'uses'=>'Syscover\Market\Controllers\OrderController@editRecord',                 'resource' => 'market-order',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/order/update/{id}/{offset}/{tab}',                       ['as'=>'updateMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@updateRecord',               'resource' => 'market-order',        'action' => 'edit']);
-    Route::get(config('pulsar.appName') . '/market/order/delete/{id}/{offset}',                             ['as'=>'deleteMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecord',               'resource' => 'market-order',        'action' => 'delete']);
-    Route::delete(config('pulsar.appName') . '/market/order/delete/select/records',                         ['as'=>'deleteSelectMarketOrder',         'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecordsSelect',        'resource' => 'market-order',        'action' => 'delete']);
+    Route::any(config('pulsar.appName') . '/market/order/{offset?}',                                            ['as'=>'marketOrder',                     'uses'=>'Syscover\Market\Controllers\OrderController@index',                      'resource' => 'market-order',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/order/json/data',                                            ['as'=>'jsonDataMarketOrder',             'uses'=>'Syscover\Market\Controllers\OrderController@jsonData',                   'resource' => 'market-order',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/order/create/{offset}/{tab}',                                ['as'=>'createMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@createRecord',               'resource' => 'market-order',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/order/store/{offset}/{tab}',                                ['as'=>'storeMarketOrder',                'uses'=>'Syscover\Market\Controllers\OrderController@storeRecord',                'resource' => 'market-order',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/order/{id}/edit/{offset}/{tab}',                             ['as'=>'editMarketOrder',                 'uses'=>'Syscover\Market\Controllers\OrderController@editRecord',                 'resource' => 'market-order',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/order/update/{id}/{offset}/{tab}',                           ['as'=>'updateMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@updateRecord',               'resource' => 'market-order',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/order/delete/{id}/{offset}',                                 ['as'=>'deleteMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecord',               'resource' => 'market-order',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/order/delete/select/records',                             ['as'=>'deleteSelectMarketOrder',         'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecordsSelect',        'resource' => 'market-order',        'action' => 'delete']);
 
 
     /*
@@ -113,8 +113,8 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | SETTING TAXES
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/tax/settings',                                           ['as'=>'marketTaxSettings',                 'uses'=>'Syscover\Market\Controllers\TaxSettingsController@index',                  'resource' => 'market-tax-setting',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/tax/settings/update',                                    ['as'=>'updateMarketTaxSettings',           'uses'=>'Syscover\Market\Controllers\TaxSettingsController@updateRecord',           'resource' => 'market-tax-setting',        'action' => 'edit']);
+    Route::any(config('pulsar.appName') . '/market/tax/settings',                                               ['as'=>'marketTaxSettings',                 'uses'=>'Syscover\Market\Controllers\TaxSettingsController@index',                  'resource' => 'market-tax-setting',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/tax/settings/update',                                        ['as'=>'updateMarketTaxSettings',           'uses'=>'Syscover\Market\Controllers\TaxSettingsController@updateRecord',           'resource' => 'market-tax-setting',        'action' => 'edit']);
 
 
     /*
@@ -122,18 +122,22 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | PAYPAL
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                        ['as'=>'marketPayPalSettings',              'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                 ['as'=>'updateMarketPayPalSettings',        'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',        'action' => 'edit']);
+    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                            ['as'=>'marketPayPalSettings',              'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                     ['as'=>'updateMarketPayPalSettings',        'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',        'action' => 'edit']);
 });
 
-/*
-|--------------------------------------------------------------------------
-| PAYPAL
-|--------------------------------------------------------------------------
-*/
-Route::post(config('pulsar.appName') . '/market/tpv/paypal/payment/create',                                 ['as'=>'createMarketPayPalPayment',         'uses'=>'Syscover\Market\Controllers\PayPalController@createPayment']);
-Route::get(config('pulsar.appName') . '/market/tpv/paypal/payment/checkout',                                ['as'=>'checkoutMarketPayPalPayment',       'uses'=>'Syscover\Market\Controllers\PayPalController@checkoutPayment']);
+Route::group(['middleware' => ['webNoCrs']], function() {
 
-// web profile
-Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile/create',                              ['as'=>'createMarketPayPalWebProfile',      'uses'=>'Syscover\Market\Controllers\PayPalController@createWebProfile']);
-Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile',                                     ['as'=>'marketPayPalWebProfile',            'uses'=>'Syscover\Market\Controllers\PayPalController@webProfile']);
+    /*
+    |--------------------------------------------------------------------------
+    | PAYPAL
+    |--------------------------------------------------------------------------
+    */
+    Route::post(config('pulsar.appName') . '/market/tpv/paypal/payment/create',                                 ['as'=>'createMarketPayPalPayment',         'uses'=>'Syscover\Market\Controllers\PayPalController@createPayment']);
+    Route::get(config('pulsar.appName') . '/market/tpv/paypal/payment/checkout',                                ['as'=>'checkoutMarketPayPalPayment',       'uses'=>'Syscover\Market\Controllers\PayPalController@checkoutPayment']);
+
+    // web profile
+    Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile/create',                              ['as'=>'createMarketPayPalWebProfile',      'uses'=>'Syscover\Market\Controllers\PayPalController@createWebProfile']);
+    Route::get(config('pulsar.appName') . '/market/tpv/paypal/web/profile',                                     ['as'=>'marketPayPalWebProfile',            'uses'=>'Syscover\Market\Controllers\PayPalController@webProfile']);
+
+});
