@@ -23,7 +23,6 @@ class PayPalController extends Controller
     private $preferences;
     private $webProfile;
 
-
     public function __construct()
     {
         $this->preferences      = Preference::getValues(12);
