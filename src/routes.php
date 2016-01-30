@@ -126,7 +126,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                     ['as'=>'updateMarketPayPalSettings',        'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',        'action' => 'edit']);
 });
 
-Route::group(['middleware' => ['webNoCrs']], function() {
+Route::group(['middleware' => ['noCsrWeb']], function() {
 
     /*
     |--------------------------------------------------------------------------
