@@ -187,9 +187,11 @@
                 @include('pulsar::includes.html.form_select_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('market::pulsar.order_status'), 'name' => 'orderStatus', 'value' => old('orderStatus'), 'objects' => $orderStatus, 'idSelect' => 'id_114', 'nameSelect' => 'name_114'])
             </div>
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.ip'), 'name' => 'ip', 'id' => 'ip', 'value' => 'IP', 'readOnly' => true])
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 8, 'label' => trans('pulsar::pulsar.ip'), 'name' => 'ip', 'id' => 'ip', 'value' => '', 'readOnly' => true])
             </div>
         </div>
+
+        @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.company', 1), 'name' => 'company', 'value' => old('company'), 'maxLength' => '255', 'rangeLength' => '2,255'])
 
         @include('pulsar::includes.html.form_text_group', ['label' => trans_choice('pulsar::pulsar.company', 1), 'name' => 'company', 'value' => old('company'), 'maxLength' => '255', 'rangeLength' => '2,255'])
         @include('pulsar::includes.html.form_text_group', ['fieldSize' => 5, 'label' => trans('pulsar::pulsar.tin'), 'name' => 'tin', 'value' => old('tin'), 'maxLength' => '255', 'rangeLength' => '2,255'])
