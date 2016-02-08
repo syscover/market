@@ -15,7 +15,7 @@ class MarketUpdateV6 extends Migration
 		{
 			Schema::table('012_117_order_row', function ($table) {
 				$table->string('name_117')->nullable()->after('product_117');
-				$table->json('data_117')->nullable()->after('description_117');
+				$table->text('data_117')->nullable()->after('description_117');
 			});
 		}
 	}
