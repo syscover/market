@@ -20,7 +20,7 @@ class CategoryController extends Controller {
 
     public function indexCustom($parameters)
     {
-        $parameters['urlParameters']['lang']    = session('baseLang');
+        $parameters['urlParameters']['lang']    = session('baseLang')->id_001;
 
         return $parameters;
     }

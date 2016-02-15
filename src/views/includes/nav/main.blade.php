@@ -13,10 +13,10 @@
                     <a href="javascript:void(0)"><i class="fa fa-cube"></i>{{ trans('market::pulsar.catalog') }}</a>
                     <ul class="sub-menu">
                         @if(session('userAcl')->allows('market-product', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-product') !!}><a href="{{ route('marketProduct', [session('baseLang')]) }}"><i class="fa fa-barcode"></i>{{ trans_choice('market::pulsar.product', 2) }}</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-product') !!}><a href="{{ route('marketProduct', [session('baseLang')->id_001]) }}"><i class="fa fa-barcode"></i>{{ trans_choice('market::pulsar.product', 2) }}</a></li>
                         @endif
                         @if(session('userAcl')->allows('market-category', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-category') !!}><a href="{{ route('marketCategory', [session('baseLang')]) }}"><i class="fa fa-cubes"></i>{{ trans_choice('market::pulsar.category', 2) }}</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-category') !!}><a href="{{ route('marketCategory', [session('baseLang')->id_001]) }}"><i class="fa fa-cubes"></i>{{ trans_choice('market::pulsar.category', 2) }}</a></li>
                         @endif
                     </ul>
                 </li>
@@ -24,10 +24,10 @@
                     <a href="javascript:void(0)"><i class="fa fa-cogs"></i>{{ trans_choice('pulsar::pulsar.preference', 2) }}</a>
                     <ul class="sub-menu">
                         @if(session('userAcl')->allows('market-payment-method', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [session('baseLang')]) }}"><i class="fa fa-random"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [session('baseLang')->id_001]) }}"><i class="fa fa-random"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
                         @endif
                         @if(session('userAcl')->allows('market-order-status', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-order-status') !!}><a href="{{ route('marketOrderStatus', [session('baseLang')]) }}"><i class="fa fa-refresh"></i>{{ trans_choice('market::pulsar.order_status', 2) }}</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-order-status') !!}><a href="{{ route('marketOrderStatus', [session('baseLang')->id_001]) }}"><i class="fa fa-refresh"></i>{{ trans_choice('market::pulsar.order_status', 2) }}</a></li>
                         @endif
                         <li{!! Miscellaneous::setCurrentOpenPage(['market-customer-tax','market-product-tax','market-tax-setting']) !!}>
                             <a href="javascript:void(0)"><i class="fa fa-user-secret"></i>{{ trans_choice('market::pulsar.tax', 2) }}</a>
