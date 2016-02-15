@@ -14,7 +14,7 @@ class MarketUpdateV2 extends Migration
 	{
 		$crmPackage = Package::where('folder_012', 'crm')->first();
 
-		if($crmPackage != null && $crmPackage->id_012 == 12)
+		if(isset($crmPackage) && $crmPackage != null && $crmPackage->id_012 == 12)
 		{
 			Package::where('folder_012', 'crm')->update([
 					'id_012'		=> 14,
@@ -24,7 +24,7 @@ class MarketUpdateV2 extends Migration
 
 		$marketPackage = Package::where('folder_012', 'market')->first();
 
-		if($marketPackage->id_012 == 9)
+		if(isset($marketPackage) && $marketPackage->id_012 == 9)
 		{
 			Package::where('folder_012', 'market')->update([
 					'id_012'		=> 12,
@@ -34,7 +34,7 @@ class MarketUpdateV2 extends Migration
 
 		$crmPackage = Package::where('folder_012', 'crm')->first();
 
-		if($crmPackage != null && $crmPackage->id_012 == 14)
+		if(isset($crmPackage) && $crmPackage != null && $crmPackage->id_012 == 14)
 		{
 			Package::where('folder_012', 'crm')->update([
 					'id_012'		=> 9,
