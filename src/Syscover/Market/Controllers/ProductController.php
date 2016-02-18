@@ -191,21 +191,21 @@ class ProductController extends Controller {
         }
     }
 
-    public function addToDeleteRecord($request, $object)
+    public function deleteCustomRecord($request, $object)
     {
         // delete all attachments
         AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $object->id_111);
         CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_111);
     }
 
-    public function addToDeleteTranslationRecord($request, $object)
+    public function deleteCustomTranslationRecord($request, $object)
     {
         // delete all attachments from lang object
         AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
         CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->id_112);
     }
 
-    public function addToDeleteRecordsSelect($request, $ids)
+    public function deleteCustomRecordsSelect($request, $ids)
     {
         foreach($ids as $id)
         {
