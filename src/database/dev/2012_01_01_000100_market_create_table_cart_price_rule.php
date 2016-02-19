@@ -26,9 +26,15 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->string('coupon_code_120');
 
 				$table->boolean('combinable_120');
+				// veces que el cupon se puede usar
 				$table->integer('uses_coupon_120')->unsigned()->nullable();
+				// veces que el cupon se puede usar por usuario
 				$table->integer('uses_customer_120')->unsigned()->nullable();
 
+				// total de veces que el descuento ha sido usado
+				$table->integer('total_used_120')->unsigned();
+
+				// fechas de validez
 				$table->integer('enable_from_120')->unsigned()->nullable();
 				$table->integer('enable_to_120')->unsigned()->nullable();
 
@@ -37,10 +43,14 @@ class MarketCreateTableCartPriceRule extends Migration
 				// 3 - Importe fijo de descuento para todo el carrito
 				// 4 - Compre X y consigua Y gratis
 				$table->smallInteger('apply_120')->unsigned()->nullable();
+
 				$table->decimal('discount_amount_120', 10, 2)->nullable();
 				$table->decimal('maximum_discount_amount_120', 10, 2)->nullable();
 				$table->boolean('apply_shipping_amount_120');
 				$table->boolean('free_shipping_120');
+
+				// reglas, campo para una futura implementación de reglas
+				$table->text('rules_120')->nullable();
 
 			});
 		}

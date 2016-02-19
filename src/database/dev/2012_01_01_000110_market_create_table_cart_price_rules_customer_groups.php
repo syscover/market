@@ -18,6 +18,7 @@ class MarketCreateTableCartPriceRulesCustomerGroups extends Migration
 
 				$table->integer('cart_price_rule_121')->unsigned();
 				$table->integer('customer_group_121')->unsigned();
+				$table->integer('used_120')->unsigned();
 
 				$table->primary(['cart_price_rule_121', 'customer_group_121']);
 			});
