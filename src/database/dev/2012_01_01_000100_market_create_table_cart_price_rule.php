@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 class MarketCreateTableCartPriceRule extends Migration
 {
 	/**
-	 * Run the migrations.
+	 * Tabla que establece las reglas de precios que se aplican al carro de compra
 	 *
 	 * @return void
 	 */
@@ -20,14 +20,19 @@ class MarketCreateTableCartPriceRule extends Migration
 
 				$table->string('name_120');
 				$table->text('description_120')->nullable();
+
 				$table->boolean('status_120');
+
 
 				$table->boolean('has_coupon_120');
 				$table->string('coupon_code_120');
 
+				// define si este regla se puede combiar con otras
 				$table->boolean('combinable_120');
+
 				// veces que el cupon se puede usar
 				$table->integer('uses_coupon_120')->unsigned()->nullable();
+
 				// veces que el cupon se puede usar por usuario
 				$table->integer('uses_customer_120')->unsigned()->nullable();
 
@@ -44,9 +49,15 @@ class MarketCreateTableCartPriceRule extends Migration
 				// 4 - Compre X y consigua Y gratis
 				$table->smallInteger('apply_120')->unsigned()->nullable();
 
+				// cantidad fija de descuento
 				$table->decimal('discount_amount_120', 10, 2)->nullable();
+				// Porcentaje de descuento sobre una cantidad
+				$table->decimal('discount_percentage_120', 10, 2)->nullable();
+				// máxima cantidad a descontar
 				$table->decimal('maximum_discount_amount_120', 10, 2)->nullable();
+				// se aplica el descuento al precio de transporte
 				$table->boolean('apply_shipping_amount_120');
+				// este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_120');
 
 				// reglas, campo para una futura implementación de reglas
