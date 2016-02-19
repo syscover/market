@@ -3,9 +3,6 @@
 @section('script')
     @parent
     <!-- market::tax_settings.index -->
-    <link href="{{ asset('packages/syscover/pulsar/vendor/pnotify/pnotify.custom.min.css') }}" type="text/css" rel="stylesheet">
-
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/pnotify/pnotify.custom.min.js') }}"></script>
     @include('pulsar::includes.js.success_message')
     <!-- ./market::tax_settings.index -->
 @stop
