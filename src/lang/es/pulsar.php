@@ -20,6 +20,7 @@ return [
     'error_route'                           => 'Ruta de error (route)',
     'including_tax'                         => 'Con impuestos',
     'items_list_description'                => 'Descripción lista de elementos',
+    'marketing'                             => 'Marketing',
     'maximum_price'                         => 'Precio máximo',
     'minimum_price'                         => 'Precio mínimo',
     'order'                                 => 'Pedido|Pedidos',
