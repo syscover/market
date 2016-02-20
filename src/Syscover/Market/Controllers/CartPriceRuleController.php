@@ -1,22 +1,22 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Illuminate\Http\Request;
-use Syscover\Market\Models\Category;
+use Syscover\Market\Models\CartPriceRule;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 
-class CategoryController extends Controller {
+class CartPriceRuleController extends Controller {
 
     use TraitController;
 
-    protected $routeSuffix  = 'marketCategory';
-    protected $folder       = 'category';
+    protected $routeSuffix  = 'cartPriceRule';
+    protected $folder       = 'cart_price_rule';
     protected $package      = 'market';
-    protected $aColumns     = ['id_110', 'name_110', ['data' => 'active_110', 'type' => 'active']];
+    protected $aColumns     = ['id_120'];
     protected $nameM        = 'name_110';
-    protected $model        = '\Syscover\Market\Models\Category';
-    protected $icon         = 'fa fa-cubes';
-    protected $objectTrans  = 'category';
+    protected $model        = CartPriceRule::class;
+    protected $icon         = 'fa fa-shopping-cart';
+    protected $objectTrans  = 'cart_price_rule';
 
     public function indexCustom($parameters)
     {
@@ -27,8 +27,6 @@ class CategoryController extends Controller {
 
     public function createCustomRecord($request, $parameters)
     {
-        $parameters['categories'] = Category::all();
-
         return $parameters;
     }
 

@@ -27,8 +27,9 @@ class MarketCreateTableCustomerDiscount extends Migration
 				// creación del descuento
 				$table->integer('date_125')->unsigned();
 
-				$table->string('name_125');
-				$table->text('description_125')->nullable();
+				// referencia a la tabla 001_017_text
+				$table->integer('name_text_125')->unsigned();
+				$table->integer('description_text_125')->nullable()->unsigned();
 
 				// activo o no
 				$table->boolean('status_125');

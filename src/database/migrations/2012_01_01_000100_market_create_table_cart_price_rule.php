@@ -18,11 +18,11 @@ class MarketCreateTableCartPriceRule extends Migration
 
 				$table->increments('id_120')->unsigned();
 
-				$table->string('name_120');
-				$table->text('description_120')->nullable();
+				// referencia a la tabla 001_017_text
+				$table->integer('name_text_120')->unsigned();
+				$table->integer('description_text_120')->unsigned()->nullable();
 
 				$table->boolean('status_120');
-
 
 				$table->boolean('has_coupon_120');
 				$table->string('coupon_code_120');
@@ -62,6 +62,9 @@ class MarketCreateTableCartPriceRule extends Migration
 
 				// reglas, campo para una futura implementación de reglas
 				$table->text('rules_120')->nullable();
+
+				// campo que contiene json con la información de idiomas creados
+				$table->string('data_lang_120')->nullable();
 
 			});
 		}

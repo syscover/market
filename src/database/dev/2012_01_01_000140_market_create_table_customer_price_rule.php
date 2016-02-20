@@ -20,8 +20,9 @@ class MarketCreateTableCustomerPriceRule extends Migration
 
 				$table->increments('id_124')->unsigned();
 
-				$table->string('name_124');
-				$table->text('description_124')->nullable();
+				// referencia a la tabla 001_017_text
+				$table->integer('name_text_124')->unsigned();
+				$table->integer('description_text_124')->unsigned()->nullable();
 
 				// activada o no
 				$table->boolean('status_124');

@@ -33,8 +33,15 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				// id del decuento en el caso de proceder de customer discount
 				$table->integer('discount_126')->unsigned()->nullable();
 
-				$table->string('name_126');
-				$table->text('description_126');
+				// referencia a la tabla 001_017_text
+				$table->integer('name_text_126')->unsigned();
+				$table->integer('description_text_126')->nullable()->unsigned();
+
+				// valores de la tabla 001_017_text en el idioma en que ha canjeado el descuento
+				// se recoje el valor en el idioma del usuario para tener una referencia en caso de borrado
+				// del registro de la tabla 001_017_text
+				$table->string('name_text_value_126');
+				$table->text('description_text_value_126')->nullable();
 
 				// 1 - Porcentaje de descuento del precio del producto
 				// 2 - Importe fijo de descuento

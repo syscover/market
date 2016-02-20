@@ -18,8 +18,9 @@ class MarketCreateTableCatalogPriceRule extends Migration
 
 				$table->increments('id_122')->unsigned();
 
-				$table->string('name_122');
-				$table->text('description_122')->nullable();
+				// referencia a la tabla 001_017_text
+				$table->integer('name_text_122')->unsigned();
+				$table->integer('description_text_122')->unsigned()->nullable();
 
 				$table->boolean('status_122');
 

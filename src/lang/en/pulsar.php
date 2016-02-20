@@ -13,6 +13,7 @@ return [
     |
     */
     'catalog'                               => 'Catalog',
+    'cart_price_rule'                       => 'Cart price rule|Cart price rules',
     'category'                              => 'Category|Categories',
     'customer_tax'                          => 'Customer tax|Customers tax',
     'downloadable'                          => 'Downloadable',

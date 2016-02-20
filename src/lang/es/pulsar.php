@@ -13,6 +13,7 @@ return [
     |
     */
     'catalog'                               => 'Catálogo',
+    'cart_price_rule'                       => 'Regla de carro de compra|Reglas de carro de compra',
     'category'                              => 'Categoría|Categorias',
     'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario',
     'downloadable'                          => 'Descargable',

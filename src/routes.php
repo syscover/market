@@ -110,6 +110,22 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | CART PRICE RULES
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/cart/price/rules/{lang}/{offset?}',                          ['as'=>'cartPriceRule',                     'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@index',                      'resource' => 'market-cart-price-rule',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/cart/price/rules/json/data/{lang}',                          ['as'=>'jsonDataCartPriceRule',             'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@jsonData',                   'resource' => 'market-cart-price-rule',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/cart/price/rules/create/{lang}/{offset}/{id?}',              ['as'=>'createCartPriceRule',               'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@createRecord',               'resource' => 'market-cart-price-rule',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/cart/price/rules/store/{lang}/{offset}/{id?}',              ['as'=>'storeCartPriceRule',                'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@storeRecord',                'resource' => 'market-cart-price-rule',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/cart/price/rules/{id}/edit/{lang}/{offset}',                 ['as'=>'editCartPriceRule',                 'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@editRecord',                 'resource' => 'market-cart-price-rule',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/cart/price/rules/update/{lang}/{id}/{offset}',               ['as'=>'updateCartPriceRule',               'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@updateRecord',               'resource' => 'market-cart-price-rule',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/cart/price/rules/delete/{lang}/{id}/{offset}',               ['as'=>'deleteCartPriceRule',               'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteRecord',               'resource' => 'market-cart-price-rule',        'action' => 'delete']);
+    Route::get(config('pulsar.appName') . '/market/cart/price/rules/delete/translation/{lang}/{id}/{offset}',   ['as'=>'deleteTranslationCartPriceRule',    'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteTranslationRecord',    'resource' => 'market-cart-price-rule',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/cart/price/rules/delete/select/records/{lang}',           ['as'=>'deleteSelectCartPriceRule',         'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteRecordsSelect',        'resource' => 'market-cart-price-rule',        'action' => 'delete']);
+
+
+    /*
+    |--------------------------------------------------------------------------
     | SETTING TAXES
     |--------------------------------------------------------------------------
     */
