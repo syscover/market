@@ -15,10 +15,13 @@ return [
     'catalog'                               => 'Catálogo',
     'cart_price_rule'                       => 'Regla de carro de compra|Reglas de carro de compra',
     'category'                              => 'Categoría|Categorias',
+    'combinable'                            => 'Combinable',
+    'coupon'                                => 'Cupón|Cupones',
     'customer_tax'                          => 'Impuesto de usuario|Impuestos de usuario',
     'downloadable'                          => 'Descargable',
     'excluding_tax'                         => 'Sin impuestos',
     'error_route'                           => 'Ruta de error (route)',
+    'has_coupon'                            => '¿Tiene cupón?',
     'including_tax'                         => 'Con impuestos',
     'items_list_description'                => 'Descripción lista de elementos',
     'marketing'                             => 'Marketing',
@@ -46,5 +49,6 @@ return [
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable y descargable',
     'undefined_price'                       => 'Precio no definido',
+    'uses_coupon'                           => 'Usos por cupón'
 
 ];

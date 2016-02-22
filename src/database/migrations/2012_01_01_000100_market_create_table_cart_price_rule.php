@@ -22,20 +22,16 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->integer('name_text_120')->unsigned();
 				$table->integer('description_text_120')->unsigned()->nullable();
 
-				$table->boolean('status_120');
+				$table->boolean('active_120');
 
 				$table->boolean('has_coupon_120');
 				$table->string('coupon_code_120');
-
 				// define si este regla se puede combiar con otras
 				$table->boolean('combinable_120');
-
 				// veces que el cupon se puede usar
 				$table->integer('uses_coupon_120')->unsigned()->nullable();
-
 				// veces que el cupon se puede usar por usuario
 				$table->integer('uses_customer_120')->unsigned()->nullable();
-
 				// total de veces que el descuento ha sido usado
 				$table->integer('total_used_120')->unsigned();
 

@@ -15,10 +15,13 @@ return [
     'catalog'                               => 'Catalog',
     'cart_price_rule'                       => 'Cart price rule|Cart price rules',
     'category'                              => 'Category|Categories',
+    'combinable'                            => 'Combinable',
+    'coupon'                                => 'Coupon|Coupons',
     'customer_tax'                          => 'Customer tax|Customers tax',
     'downloadable'                          => 'Downloadable',
     'error_route'                           => 'Error route',
     'excluding_tax'                         => 'Excluding tax',
+    'has_coupon'                            => 'Has coupon?',
     'including_tax'                         => 'Including tax',
     'items_list_description'                => 'Items list description',
     'marketing'                             => 'Marketing',
@@ -46,5 +49,7 @@ return [
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable and downloadable',
     'undefined_price'                       => 'Undefined price',
+    'uses_coupon'                           => 'Uses per coupon',
+    'uses_customer'                         => 'Uses per customer',
 
 ];
