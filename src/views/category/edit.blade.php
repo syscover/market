@@ -1,14 +1,12 @@
 @extends('pulsar::layouts.form', ['action' => 'update'])
 
-@section('css')
+@section('head')
+    @parent
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/attachment/css/attachment-library.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/css/getfile.css') }}">
-@stop
 
-@section('script')
-    @parent
     @include('pulsar::includes.js.delete_translation_record')
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/mobiledetect/mdetect.min.js') }}"></script>
@@ -37,10 +35,10 @@
     <!-- market::products.edit -->
     <div class="row">
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'label' => 'ID', 'fieldSize' => 4, 'name' => 'id',  'value' => $object->id_110, 'readOnly' => true])
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => 'ID', 'name' => 'id',  'value' => $object->id_110, 'readOnly' => true])
         </div>
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_image_group', ['labelSize' => 4, 'label' => 'ID', 'fieldSize' => 4, 'label' => trans_choice('pulsar::pulsar.language', 1), 'name' => 'lang', 'nameImage' => $lang->name_001, 'value' => $lang->id_001, 'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)])
+            @include('pulsar::includes.html.form_image_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => trans_choice('pulsar::pulsar.language', 1), 'name' => 'lang', 'nameImage' => $lang->name_001, 'value' => $lang->id_001, 'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)])
         </div>
     </div>
     @include('pulsar::includes.html.form_select_group', ['fieldSize' => 5, 'label' => trans_choice('market::pulsar.parent_category', 1), 'name' => 'parent', 'value' => $object->parent_110, 'objects' => $categories, 'idSelect' => 'id_110', 'nameSelect' => 'name_110', 'class' => 'select2', 'data' => ['language' => config('app.locale'), 'width' => '100%', 'error-placement' => 'select2-section-outer-container', 'disabled' => isset($object->id_110)? true : null]])

@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.index', ['newTrans' => 'new', 'firstColSize' => 8, 'secondColSize' => 4])
 
-@section('script')
+@section('head')
     @parent
     <!-- market::categories.index -->
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/nestable/jquery.nestable.min.js') }}"></script>

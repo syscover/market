@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.form', ['action' => 'update', 'cancelButton' => false])
 
-@section('script')
+@section('head')
     @parent
     <!-- market::tax_settings.index -->
     @include('pulsar::includes.js.success_message')
