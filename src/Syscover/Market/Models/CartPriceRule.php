@@ -6,7 +6,6 @@ use Syscover\Pulsar\Models\Text;
 use Syscover\Pulsar\Traits\TraitModel;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class CartPriceRule

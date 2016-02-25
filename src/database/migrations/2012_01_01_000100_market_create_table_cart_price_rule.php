@@ -28,10 +28,10 @@ class MarketCreateTableCartPriceRule extends Migration
 
 				$table->boolean('has_coupon_120');
 				$table->string('coupon_code_120');
-				// veces que el cupon se puede usar
-				$table->integer('uses_coupon_120')->unsigned()->nullable();
 				// veces que el cupon se puede usar por usuario
 				$table->integer('uses_customer_120')->unsigned()->nullable();
+				// veces que el cupon se puede usar
+				$table->integer('uses_coupon_120')->unsigned()->nullable();
 				// total de veces que el descuento ha sido usado
 				$table->integer('total_used_120')->unsigned();
 
@@ -63,6 +63,9 @@ class MarketCreateTableCartPriceRule extends Migration
 
 				// campo que contiene json con la información de idiomas creados
 				$table->string('data_lang_120')->nullable();
+
+				// índice para mejorar las búsquedas de los códigos de cupón
+				$table->index('coupon_code_120', 'ix01_012_120_cart_price_rule');
 
 			});
 		}
