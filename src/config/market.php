@@ -85,4 +85,14 @@ return [
     'redSysLiveMerchantName'        => env('REDSYS_LIVE_MERCHANT_NAME', ''),
     'redSysLiveMerchantCode'        => env('REDSYS_LIVE_MERCHANT_CODE', ''),
     'redSysLiveKey'                 => env('REDSYS_LIVE_KEY', ''),
+
+    //******************************************************************************************************************
+    //***   Discount type on shopping cart
+    //******************************************************************************************************************
+    'discountTypes'                => [
+        (object)['id' => 1,      'name' => 'market::pulsar.discount_type_percentage'],
+        (object)['id' => 2,      'name' => 'market::pulsar.discount_fixed_amount'],
+        (object)['id' => 3,      'name' => 'market::pulsar.discount_fixed_amount_whole_cart'],
+        (object)['id' => 4,      'name' => 'market::pulsar.discount_buy_and_get'],
+    ],
 ];

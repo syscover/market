@@ -7,57 +7,18 @@
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/css/getfile.css') }}">
+    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
 
-    <!-- Froala -->
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/froala_editor.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/froala_style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/char_counter.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/code_view.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/colors.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/emoticons.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/file.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/fullscreen.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/image_manager.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/image.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/line_breaker.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/table.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/css/plugins/video.css') }}">
+    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/mobiledetect/mdetect.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/js/jquery.getfile.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/attachment/js/attachment-library.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/speakingurl/speakingurl.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/mobiledetect/mdetect.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/getfile/js/jquery.getfile.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/attachment/js/attachment-library.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/speakingurl/speakingurl.min.js') }}"></script>
-    <!-- Froala -->
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/froala_editor.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/char_counter.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/align.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/code_view.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/colors.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/emoticons.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/entities.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/file.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/font_family.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/font_size.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/fullscreen.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/image.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/image_manager.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/inline_style.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/line_breaker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/link.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/lists.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/paragraph_format.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/paragraph_style.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/quote.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/table.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/save.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/url.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/plugins/video.min.js') }}"></script>
-    @if(config('app.locale') != 'en')
-        <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/wysiwyg.froala/js/languages/' . config('app.locale') . '.js') }}"></script>
-    @endif
-    <!-- ./Froala -->
+    @include('pulsar::includes.html.froala_references')
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -106,14 +67,39 @@
                     console.log ('image delete problem');
                 })
             })
+
+            $("[name=hasCoupon]").on('click', function() {
+
+                if($(this).is(":checked"))
+                {
+                    $('#couponSection').fadeIn()
+                    $.getCouponCode()
+                }
+                else
+                {
+                    $('#couponSection').fadeOut()
+                }
+            })
+
+            $("#couponSection").hide();
         })
 
-        $.stringGen = function(len) {
-            var text = " ";
-            var charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            for( var i=0; i < len; i++ )
-                text += charset.charAt(Math.floor(Math.random() * charset.length));
-            return text;
+        $.getCouponCode = function() {
+            $.ajax({
+                dataType:   'json',
+                type:       'POST',
+                headers:  {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                url:        '{{ route('apiGetCouponCodeCartPriceRule') }}',
+                data:       {
+                    length: 8
+                },
+                success:  function(data)
+                {
+                    $("[name=couponCode]").val(data.couponCode)
+                }
+            });
         }
     </script>
 @stop
@@ -122,37 +108,80 @@
     <!-- market::cart_price_rule.create -->
     <div class="row">
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => 'ID', 'name' => 'id',  'value' => old('id', isset($object->id_110)? $object->id_110 : null), 'readOnly' => true])
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => 'ID', 'name' => 'id',  'value' => old('id', isset($object->id_120)? $object->id_120 : null), 'readOnly' => true])
         </div>
         <div class="col-md-6">
             @include('pulsar::includes.html.form_image_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => trans_choice('pulsar::pulsar.language', 1), 'name' => 'lang', 'nameImage' => $lang->name_001, 'value' => $lang->id_001, 'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)])
         </div>
     </div>
-
-    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => old('name', isset($object->name_110)? $object->name_110 : null), 'maxLength' => '100', 'rangeLength' => '2,100', 'required' => true])
-    @include('pulsar::includes.html.form_wysiwyg_group', ['label' => trans_choice('pulsar::pulsar.description', 1), 'name' => 'wysiwyg', 'labelSize' => 2, 'fieldSize' => 10])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => old('active', isset($object)? $object->active_110 : null)])
+    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => old('name', isset($object->name_120)? $object->name_120 : null), 'maxLength' => '255', 'rangeLength' => '2,255', 'required' => true])
+    @include('pulsar::includes.html.form_hidden', ['name' => 'idName', 'value' => isset($object->name_text_120)? $object->name_text_120 : null])
+    @include('pulsar::includes.html.form_wysiwyg_group', ['label' => trans_choice('pulsar::pulsar.description', 1), 'name' => 'description', 'labelSize' => 2, 'fieldSize' => 10])
+    @include('pulsar::includes.html.form_hidden', ['name' => 'idDescription', 'value' => isset($object->description_text_120)? $object->description_text_120 : null])
+    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => old('active', isset($object)? $object->active_120 : null)])
+    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.combinable'), 'name' => 'combinable', 'value' => 1, 'checked' => old('combinable', isset($object)? $object->combinable_120 : null)])
 
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.coupon', 1), 'icon' => 'fa fa-ticket'])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.has_coupon'), 'name' => 'hasCoupon', 'value' => 1, 'checked' => old('hasCoupon', isset($object)? $object->active_110 : null)])
-    <div class="row">
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => trans_choice('market::pulsar.coupon', 1), 'name' => 'coupon',  'value' => old('coupon')])
+    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.has_coupon'), 'name' => 'hasCoupon', 'value' => 1, 'checked' => old('hasCoupon', isset($object)? $object->has_coupon_120 : null)])
+    <div id="couponSection">
+        <div class="row">
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans_choice('market::pulsar.coupon', 1), 'name' => 'couponCode',  'value' => old('couponCode', isset($object)? $object->coupon_code_120 : null)])
+            </div>
+            <div class="col-md-6"></div>
         </div>
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.combinable'), 'name' => 'combinable', 'value' => 1, 'checked' => old('combinable', isset($object)? $object->active_110 : null)])
+        <div class="row">
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.uses_coupon'), 'name' => 'usesCoupon', 'value' => old('usesCoupon', isset($object->uses_coupon_120)? $object->uses_coupon_120 : null)])
+            </div>
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.uses_customer'), 'name' => 'usesCustomer', 'value' => old('usesCustomer', isset($object->uses_customer_120)? $object->uses_customer_120 : null)])
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.total_used'), 'name' => 'totalUsed',  'value' => old('totalUsed', isset($object->total_used_120)? $object->total_used_120 : null), 'readOnly' => true])
+            </div>
+            <div class="col-md-6"></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'type' => 'number', 'label' => trans('market::pulsar.uses_coupon'), 'name' => 'usesCoupon',  'value' => old('usesCoupon')])
-        </div>
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'type' => 'number', 'label' => trans('market::pulsar.uses_customer'), 'name' => 'usesCustomer',  'value' => old('usesCustomer')])
-        </div>
-    </div>
-    @include('pulsar::includes.html.form_text_group', ['fieldSize' => 2, 'label' => 'ID', 'name' => 'id',  'value' => old('id', isset($object->id_110)? $object->id_110 : null), 'readOnly' => true])
 
-    @include('pulsar::includes.html.form_section_header', ['label' => trans('pulsar::pulsar.access'), 'icon' => 'fa fa-check-circle-o'])
+    @include('pulsar::includes.html.form_section_header', ['label' => trans('pulsar::pulsar.access'), 'icon' => 'fa fa-calendar-check-o'])
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_datetimepicker_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.enable_from'), 'name' => 'enableFrom', 'value' => old('enableFrom', isset($object->enable_from_120)? date(config('pulsar.datePattern') . ' HH:mm', $object->enable_from_120) : null), 'data' => ['format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')) . ' HH:mm', 'locale' => config('app.locale')]])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_datetimepicker_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.enable_to'), 'name' => 'enableTo', 'value' => old('enableTo', isset($object->enable_to_120)? date(config('pulsar.datePattern') . ' HH:mm', $object->enable_to_120) : null), 'data' => ['format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')) . ' HH:mm', 'locale' => config('app.locale')]])
+        </div>
+    </div>
+
+    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.amount', 2), 'icon' => 'fa fa-gavel'])
+    @include('pulsar::includes.html.form_select_group', ['fieldSize' => 4, 'label' => trans_choice('market::pulsar.discount_type', 1), 'name' => 'discountType', 'value' => old('discountType', isset($object)? $object->discount_type_120 : null), 'required' => true, 'objects' => $discountTypes, 'idSelect' => 'id', 'nameSelect' => 'name'])
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_amount'), 'name' => 'discountAmount',  'value' => old('discountAmount', isset($object)? $object->discount_amount_120 : null)])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_percentage'), 'name' => 'discountPercentage',  'value' => old('discountPercentage', isset($object)? $object->discount_percentage_120 : null)])
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.maximum_discount_amount'), 'name' => 'maximumDiscountAmount',  'value' => old('maximumDiscountAmount', isset($object)? $object->maximum_discount_amount_120 : null)])
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+
+    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.transport', 1), 'icon' => 'fa fa-truck'])
+    <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.apply_shipping_amount'), 'name' => 'applyShippingAmount', 'value' => 1, 'checked' => old('applyShippingAmount', isset($object)? $object->apply_shipping_amount_120 : null)])
+        </div>
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.free_shipping'), 'name' => 'freeShipping', 'value' => 1, 'checked' => old('freeShipping', isset($object)? $object->free_shipping_120 : null)])
+        </div>
+    </div>
     <!-- /market::cart_price_rule.create -->
 @stop

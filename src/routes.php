@@ -122,6 +122,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::get(config('pulsar.appName') . '/market/cart/price/rules/delete/{lang}/{id}/{offset}',               ['as'=>'deleteCartPriceRule',               'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteRecord',               'resource' => 'market-cart-price-rule',        'action' => 'delete']);
     Route::get(config('pulsar.appName') . '/market/cart/price/rules/delete/translation/{lang}/{id}/{offset}',   ['as'=>'deleteTranslationCartPriceRule',    'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteTranslationRecord',    'resource' => 'market-cart-price-rule',        'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/market/cart/price/rules/delete/select/records/{lang}',           ['as'=>'deleteSelectCartPriceRule',         'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteRecordsSelect',        'resource' => 'market-cart-price-rule',        'action' => 'delete']);
+    Route::post(config('pulsar.appName') . '/market/cart/price/get/coupon/code',                                ['as'=>'apiGetCouponCodeCartPriceRule',     'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@apiGetCouponCode',           'resource' => 'market-cart-price-rule',        'action' => 'access']);
 
 
     /*

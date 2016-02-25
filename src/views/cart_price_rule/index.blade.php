@@ -10,9 +10,9 @@
                 $('.datatable-pulsar').dataTable({
                     'iDisplayStart' : {{ $offset }},
                     'aoColumnDefs': [
-                        { 'bSortable': false, 'aTargets': [3,4]},
-                        { 'sClass': 'checkbox-column', 'aTargets': [3]},
-                        { 'sClass': 'align-center', 'aTargets': [2,4]}
+                        { 'bSortable': false, 'aTargets': [7,8]},
+                        { 'sClass': 'checkbox-column', 'aTargets': [7]},
+                        { 'sClass': 'align-center', 'aTargets': [6,8]}
                     ],
                     "bProcessing": true,
                     "bServerSide": true,
@@ -29,7 +29,11 @@
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
-        <th data-hide="phone">{{ trans('pulsar::pulsar.active') }}</th>
+        <th>{{ trans_choice('market::pulsar.coupon', 1) }}</th>
+        <th data-hide="phone,tablet">{{ trans('market::pulsar.enable_from') }}</th>
+        <th data-hide="phone,tablet">{{ trans('market::pulsar.enable_to') }}</th>
+        <th data-hide="phone">{{ trans('market::pulsar.total_used') }}</th>
+        <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.active') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
