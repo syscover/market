@@ -32,7 +32,7 @@ class CartPriceRule extends Model
         'name_text' => \Syscover\Pulsar\Models\Text::class
     ];
     private static $rules   = [
-        'name'          => 'required'
+        'name' => 'required'
     ];
 
     public static function validate($data)
@@ -54,7 +54,7 @@ class CartPriceRule extends Model
 
         // al haber dos referencia a la misma tabla (001_017_text), menos la primera que la obtenemos por relación,
         // el resto la insertamos en el objeto de forma manual, realizando una consulta
-        $cartPriceRule->description_text_text = Text::where('id_017', $cartPriceRule->description_text_120)->first()->text_017;
+        $cartPriceRule->description_text_text = Text::where('id_017', $cartPriceRule->description_text_120)->where('lang_017', $parameters['lang'])->first()->text_017;
 
         return $cartPriceRule;
     }
@@ -74,5 +74,14 @@ class CartPriceRule extends Model
         $query =  CartPriceRule::builder($parameters['lang']);
 
         return $query;
+    }
+
+    /**
+     * Override deleteTranslationRecord,
+     * to avoid the deletion of language in the table 012_120_cart_price_rule, as it has no record of language
+     */
+    public static function deleteTranslationRecord($parameters)
+    {
+        CartPriceRule::deleteLangDataRecord($parameters);
     }
 }

@@ -18,6 +18,7 @@
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    @include('pulsar::includes.js.delete_translation_record')
     @include('pulsar::includes.html.froala_references')
 
     <script type="text/javascript">
