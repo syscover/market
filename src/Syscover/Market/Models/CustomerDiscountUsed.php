@@ -2,17 +2,15 @@
 
 use Syscover\Pulsar\Models\Model;
 use Illuminate\Support\Facades\Validator;
-use Syscover\Pulsar\Models\Text;
 use Syscover\Pulsar\Traits\TraitModel;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Illuminate\Support\Facades\DB;
 
 /**
- * Class CartPriceRule
+ * Class CustomerDiscountUsed
  *
  * Model with properties
- * <br><b>[id, name_text, description_text, status, has_coupon, coupon_code, combinable, uses_coupon, uses_customer, total_used, enable_from, enable_to, apply, discount_amount, discount_percentage, maximum_discount_amount, apply_shipping_amount, free_shipping, rules, data_lang]</b>
+ * <br><b>[id, date, customer, order, type_discount, rule, discount, name_text, description_text, name_text_value, description_text_value, apply, discount_amount, discount_percentage, maximum_discount_amount, apply_shipping_amount, free_shipping, rules]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -23,65 +21,30 @@ class CustomerDiscountUsed extends Model
     use Eloquence, Mappable;
 
 	protected $table        = '012_126_customer_discount_used';
-    protected $primaryKey   = 'id_120';
-    protected $suffix       = '120';
+    protected $primaryKey   = 'id_126';
+    protected $suffix       = '126';
     public $timestamps      = false;
-    protected $fillable     = ['id_120', 'name_text_120', 'description_text_120', 'active_120', 'has_coupon_120', 'coupon_code_120', 'combinable_120', 'uses_coupon_120', 'uses_customer_120', 'total_used_120', 'enable_from_120', 'enable_from_text_120', 'enable_to_120', 'enable_to_text_120', 'apply_120', 'discount_type_120', 'discount_amount_120', 'discount_percentage_120', 'maximum_discount_amount_120', 'apply_shipping_amount_120', 'free_shipping_120', 'rules_120', 'data_lang_120'];
+    protected $fillable     = ['id_126', 'date_126', 'customer_126', 'order_126', 'type_discount_126', 'rule_126', 'discount_126', 'name_text_126', 'description_text_126', 'name_text_value_126', 'description_text_value_126', 'apply_126', 'discount_amount_126', 'discount_percentage_126', 'maximum_discount_amount_126', 'apply_shipping_amount_126', 'free_shipping_126', 'rules_126'];
     protected $maps         = [];
     protected $relationMaps = [
-        'name_text' => \Syscover\Pulsar\Models\Text::class
+        'customer_126'  => \Syscover\Crm\Models\Customer::class,
+        'order_126'     => \Syscover\Market\Models\Order::class
     ];
-    private static $rules   = [
-        'name' => 'required'
-    ];
+    private static $rules   = [];
 
     public static function validate($data)
     {
         return Validator::make($data, static::$rules);
 	}
 
-    public function scopeBuilder($query, $lang = null)
+    public function scopeBuilder($query)
     {
-        return $query->join('001_017_text', function ($join) use ($lang) {
-                $join->on('012_120_cart_price_rule.name_text_120', '=', '001_017_text.id_017');
-                if($lang !== null)  $join->where('001_017_text.lang_017', '=', $lang);
-            });
-    }
-
-    public static function getTranslationRecord($parameters)
-    {
-        $cartPriceRule = CartPriceRule::builder($parameters['lang'])->where('id_120', $parameters['id'])->first();
-
-        // al haber dos referencia a la misma tabla (001_017_text), menos la primera que la obtenemos por relación,
-        // el resto la insertamos en el objeto de forma manual, realizando una consulta
-        $cartPriceRule->description_text_text = Text::where('id_017', $cartPriceRule->description_text_120)->where('lang_017', $parameters['lang'])->first()->text_017;
-
-        return $cartPriceRule;
-    }
-
-    /**
-     * Get lang from Text object, that it has relation with name_text_120
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function getLang()
-    {
-        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_017');
+        return $query->join('009_301_customer', '012_126_customer_discount_used.customer_126', '=', '009_301_customer.id_301')
+            ->join('012_116_order', '012_126_customer_discount_used.order_126', '=', '012_116_order.id_116');
     }
 
     public static function addToGetIndexRecords($parameters)
     {
-        $query =  CartPriceRule::builder($parameters['lang']);
-
-        return $query;
-    }
-
-    /**
-     * Override deleteTranslationRecord,
-     * to avoid the deletion of language in the table 012_120_cart_price_rule, as it has no record of language
-     */
-    public static function deleteTranslationRecord($parameters)
-    {
-        CartPriceRule::deleteLangDataRecord($parameters);
+        return  CustomerDiscountUsed::builder();
     }
 }
