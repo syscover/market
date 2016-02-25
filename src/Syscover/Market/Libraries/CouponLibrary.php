@@ -23,7 +23,7 @@ class CouponLibrary
             ];
         }
 
-        if($sessionGuard != null && $cartPriceRule->uses_customer_120 != null && $cartPriceRule->uses_customer_120 > 0)
+        if($cartPriceRule != null && $sessionGuard != null && $cartPriceRule->uses_customer_120 != null && $cartPriceRule->uses_customer_120 > 0)
         {
             // se requiere que el usuario está autentificado para comprobar el número de usos por cupon
             if($sessionGuard->guest())
@@ -36,7 +36,7 @@ class CouponLibrary
             }
         }
 
-        if($cartPriceRule->uses_coupon_120 != null && $cartPriceRule->uses_coupon_120 >= $cartPriceRule->total_used_120)
+        if($cartPriceRule != null && $cartPriceRule->uses_coupon_120 != null && $cartPriceRule->uses_coupon_120 >= $cartPriceRule->total_used_120)
         {
             $errors[] = [
                 'status'    => 'error',
@@ -45,7 +45,7 @@ class CouponLibrary
             ];
         }
 
-        if($cartPriceRule->enable_from_120 != null && date('U') < $cartPriceRule->enable_from_120)
+        if($cartPriceRule != null && $cartPriceRule->enable_from_120 != null && date('U') < $cartPriceRule->enable_from_120)
         {
             $errors[] = [
                 'status'    => 'error',
@@ -54,7 +54,7 @@ class CouponLibrary
             ];
         }
 
-        if($cartPriceRule->enable_to_120 != null && date('U') > $cartPriceRule->enable_to_120)
+        if($cartPriceRule != null && $cartPriceRule->enable_to_120 != null && date('U') > $cartPriceRule->enable_to_120)
         {
             $errors[] = [
                 'status'    => 'error',
@@ -63,7 +63,7 @@ class CouponLibrary
             ];
         }
 
-        if($cartPriceRule->active_120 == false)
+        if($cartPriceRule != null && $cartPriceRule->active_120 == false)
         {
             $errors[] = [
                 'status'    => 'error',
@@ -71,7 +71,6 @@ class CouponLibrary
                 'message'   => 'This coupon is inactive'
             ];
         }
-
 
         if(count($errors) > 0)
         {
