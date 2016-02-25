@@ -81,9 +81,9 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 	 */
 	public function down()
 	{
-		if (Schema::hasTable('012_126_cart_price_rules_customer_groups'))
+		if (Schema::hasTable('012_126_customer_discount_used'))
 		{
-			Schema::drop('012_126_cart_price_rules_customer_groups');
+			Schema::drop('012_126_customer_discount_used');
 		}
 	}
 }
