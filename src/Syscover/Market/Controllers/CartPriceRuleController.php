@@ -64,27 +64,27 @@ class CartPriceRuleController extends Controller {
         if(!$request->has('id'))
         {
             CartPriceRule::create([
-                'name_text_120' => $idName,
-                'description_text_120' => $idDescription,
-                'active_120' => $request->has('active'),
-                'has_coupon_120' => $request->has('hasCoupon'),
-                'coupon_code_120' => $request->has('couponCode') ? $request->input('couponCode') : null,
-                'combinable_120' => $request->has('combinable'),
-                'uses_coupon_120' => $request->has('usesCoupon') ? $request->input('usesCoupon') : null,
-                'uses_customer_120' => $request->has('usesCustomer') ? $request->input('usesCustomer') : null,
-                'total_used_120' => 0,
-                'enable_from_120' => $request->has('enableFrom') ? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableFrom'))->getTimestamp() : (integer)date('U'),
-                'enable_from_text_120' => $request->has('enableFrom') ? $request->input('enableFrom') : date(config('pulsar.datePattern') . ' H:i'),
-                'enable_to_120' => $request->has('enableTo') ? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableTo'))->getTimestamp() : (integer)date('U'),
-                'enable_to_text_120' => $request->has('enableTo') ? $request->input('enableTo') : null,
-                'discount_type_120' => $request->has('discountType') ? $request->input('discountType') : null,
-                'discount_amount_120' => $request->has('discountAmount') ? $request->input('discountAmount') : null,
-                'discount_percentage_120' => $request->has('discountPercentage') ? $request->input('discountPercentage') : null,
-                'maximum_discount_amount_120' => $request->has('maximumDiscountAmount') ? $request->input('maximumDiscountAmount') : null,
-                'apply_shipping_amount_120' => $request->has('applyShippingAmount'),
-                'free_shipping_120' => $request->has('freeShipping'),
-                'rules_120' => null,
-                'data_lang_120' => CartPriceRule::addLangDataRecord($request->input('lang'), $idLang)
+                'name_text_120'                 => $idName,
+                'description_text_120'          => $idDescription,
+                'active_120'                    => $request->has('active'),
+                'has_coupon_120'                => $request->has('hasCoupon'),
+                'coupon_code_120'               => $request->has('couponCode') ? $request->input('couponCode') : null,
+                'combinable_120'                => $request->has('combinable'),
+                'uses_coupon_120'               => $request->has('usesCoupon') ? $request->input('usesCoupon') : null,
+                'uses_customer_120'             => $request->has('usesCustomer') ? $request->input('usesCustomer') : null,
+                'total_used_120'                => 0,
+                'enable_from_120'               => $request->has('enableFrom')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableFrom'))->getTimestamp() : null,
+                'enable_from_text_120'          => $request->has('enableFrom')? $request->input('enableFrom') : null,
+                'enable_to_120'                 => $request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableTo'))->getTimestamp() : null,
+                'enable_to_text_120'            => $request->has('enableTo')? $request->input('enableTo') : null,
+                'discount_type_120'             => $request->has('discountType') ? $request->input('discountType') : null,
+                'discount_amount_120'           => $request->has('discountAmount') ? $request->input('discountAmount') : null,
+                'discount_percentage_120'       => $request->has('discountPercentage') ? $request->input('discountPercentage') : null,
+                'maximum_discount_amount_120'   => $request->has('maximumDiscountAmount') ? $request->input('maximumDiscountAmount') : null,
+                'apply_shipping_amount_120'     => $request->has('applyShippingAmount'),
+                'free_shipping_120'             => $request->has('freeShipping'),
+                'rules_120'                     => null,
+                'data_lang_120'                 => CartPriceRule::addLangDataRecord($request->input('lang'), $idLang)
             ]);
         }
         else
