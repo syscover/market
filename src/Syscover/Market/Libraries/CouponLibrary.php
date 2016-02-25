@@ -6,8 +6,8 @@ class CouponLibrary
 {
     /**
      * @param   $couponCode
-     * @param   null    $sessionGuard
-     * @return  \Illuminate\Http\JsonResponse
+     * @param   null $sessionGuard
+     * @return  array
      */
     public function checkCouponCode($couponCode, $sessionGuard = null)
     {
@@ -75,17 +75,17 @@ class CouponLibrary
 
         if(count($errors) > 0)
         {
-            return response()->json([
+            return [
                 'status'    => 'error',
                 'errors'    => $errors
-            ]);
+            ];
         }
         else
         {
-            return response()->json([
+            return [
                 'status'        => 'success',
                 'couponCode'    => $couponCode
-            ]);
+            ];
         }
     }
 }
