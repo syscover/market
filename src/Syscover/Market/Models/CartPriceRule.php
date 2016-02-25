@@ -31,7 +31,8 @@ class CartPriceRule extends Model
         'name_text' => \Syscover\Pulsar\Models\Text::class
     ];
     private static $rules   = [
-        'name' => 'required'
+        'name'          => 'required',
+        'discountType'  => 'required'
     ];
 
     public static function validate($data)
