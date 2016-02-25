@@ -9,7 +9,7 @@ class CouponLibrary
      * @param   null $sessionGuard
      * @return  array
      */
-    public function checkCouponCode($couponCode, $sessionGuard = null)
+    public static function checkCouponCode($couponCode, $sessionGuard = null)
     {
         $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
         $errors         = [];
