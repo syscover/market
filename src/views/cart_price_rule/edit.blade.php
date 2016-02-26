@@ -84,10 +84,17 @@
                 }
             })
 
+            $("[name=discountType]").on('change', function() {
+                if($(this).val() != '1' || $(this).val() == '')
+                    $('#amountSection').fadeIn()
+                else
+                    $('#amountSection').fadeOut()
+            })
+
             @if(!$object->has_coupon_120)
                 $("#couponSection").hide();
             @endif
-            @if(!$object->has_coupon_120)
+            @if($object->discount_type_120 === null || $object->discount_type_120 === 1)
                 $("#amountSection").hide()
             @endif
 
