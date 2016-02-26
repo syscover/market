@@ -97,13 +97,13 @@ class CartPriceRuleController extends Controller {
 
         Text::create([
             'id_017'    => $idName,
-            'lang_017'  => $request->input('lang'),
+            'lang_id_017'  => $request->input('lang'),
             'text_017'  => $request->has('name')? $request->input('name') : null,
         ]);
 
         Text::create([
             'id_017'    => $idDescription,
-            'lang_017'  => $request->input('lang'),
+            'lang_id_017'  => $request->input('lang'),
             'text_017'  => $request->has('description')? $request->input('description') : null,
         ]);
     }
@@ -140,11 +140,11 @@ class CartPriceRuleController extends Controller {
             //'rules_120'                     => null
         ]);
 
-        Text::where('id_017', $request->input('idName'))->where('lang_017', $request->input('lang'))->update([
+        Text::where('id_017', $request->input('idName'))->where('lang_id_017', $request->input('lang'))->update([
             'text_017'  => $request->has('name')? $request->input('name') : null,
         ]);
 
-        Text::where('id_017', $request->input('idDescription'))->where('lang_017', $request->input('lang'))->update([
+        Text::where('id_017', $request->input('idDescription'))->where('lang_id_017', $request->input('lang'))->update([
             'text_017'  => $request->has('description')? $request->input('description') : null,
         ]);
     }
@@ -161,8 +161,8 @@ class CartPriceRuleController extends Controller {
         $parameters = $request->route()->parameters();
 
         // delete texts
-        Text::where('id_017', $object->name_text_120)->where('lang_017', $parameters['lang'])->delete();
-        Text::where('id_017', $object->description_text_120)->where('lang_017', $parameters['lang'])->delete();
+        Text::where('id_017', $object->name_text_120)->where('lang_id_017', $parameters['lang'])->delete();
+        Text::where('id_017', $object->description_text_120)->where('lang_id_017', $parameters['lang'])->delete();
     }
 
     public function deleteCustomRecordsSelect($request, $ids)

@@ -44,7 +44,7 @@ class CartPriceRule extends Model
     {
         return $query->join('001_017_text', function ($join) use ($lang) {
                 $join->on('012_120_cart_price_rule.name_text_120', '=', '001_017_text.id_017');
-                if($lang !== null)  $join->where('001_017_text.lang_017', '=', $lang);
+                if($lang !== null)  $join->where('001_017_text.lang_id_017', '=', $lang);
             });
     }
 
@@ -54,7 +54,7 @@ class CartPriceRule extends Model
 
         // al haber dos referencia a la misma tabla (001_017_text), menos la primera que la obtenemos por relación,
         // el resto la insertamos en el objeto de forma manual, realizando una consulta
-        $cartPriceRule->description_text_text = Text::where('id_017', $cartPriceRule->description_text_120)->where('lang_017', $parameters['lang'])->first()->text_017;
+        $cartPriceRule->description_text_text = Text::where('id_017', $cartPriceRule->description_text_120)->where('lang_id_017', $parameters['lang'])->first()->text_017;
 
         return $cartPriceRule;
     }
@@ -66,7 +66,7 @@ class CartPriceRule extends Model
      */
     public function getLang()
     {
-        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_017');
+        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_id_017');
     }
 
     public static function addToGetIndexRecords($parameters)

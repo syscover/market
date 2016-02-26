@@ -87,6 +87,9 @@
             @if(!$object->has_coupon_120)
                 $("#couponSection").hide();
             @endif
+            @if(!$object->has_coupon_120)
+                $("#amountSection").hide()
+            @endif
 
         })
 
@@ -164,19 +167,21 @@
 
     @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.amount', 2), 'icon' => 'fa fa-gavel'])
     @include('pulsar::includes.html.form_select_group', ['fieldSize' => 4, 'label' => trans_choice('market::pulsar.discount_type', 1), 'name' => 'discountType', 'value' => $object->discount_type_120, 'required' => true, 'objects' => $discountTypes, 'idSelect' => 'id', 'nameSelect' => 'name'])
-    <div class="row">
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_amount'), 'name' => 'discountAmount',  'value' => $object->discount_amount_120])
+    <div id="amountSection">
+        <div class="row">
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_amount'), 'name' => 'discountAmount',  'value' => $object->discount_amount_120])
+            </div>
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_percentage'), 'name' => 'discountPercentage',  'value' => $object->discount_percentage_120])
+            </div>
         </div>
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_percentage'), 'name' => 'discountPercentage',  'value' => $object->discount_percentage_120])
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.maximum_discount_amount'), 'name' => 'maximumDiscountAmount',  'value' => $object->maximum_discount_amount_120])
-        </div>
-        <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.maximum_discount_amount'), 'name' => 'maximumDiscountAmount',  'value' => $object->maximum_discount_amount_120])
+            </div>
+            <div class="col-md-6">
+            </div>
         </div>
     </div>
 

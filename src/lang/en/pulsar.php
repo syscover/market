@@ -64,5 +64,6 @@ return [
     'undefined_price'                       => 'Undefined price',
     'uses_coupon'                           => 'Uses per coupon',
     'uses_customer'                         => 'Uses per customer',
+    'without_discount_amount'               => 'Without discount amount',
 
 ];

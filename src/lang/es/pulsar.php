@@ -62,6 +62,7 @@ return [
     'transportable'                         => 'Transportable',
     'transportable_downloadable'            => 'Transportable y descargable',
     'undefined_price'                       => 'Precio no definido',
-    'uses_coupon'                           => 'Usos por cupón'
+    'uses_coupon'                           => 'Usos por cupón',
+    'without_discount_amount'               => 'Sin descuento',
 
 ];

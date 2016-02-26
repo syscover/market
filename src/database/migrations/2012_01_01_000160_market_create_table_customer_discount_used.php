@@ -25,7 +25,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				// 1 - descuento procedente de, cart_price_rule
 				// 2 - descuento procedente de, catalog_price_rule
 				// 3 - descuento procedente de, customer discount
-				$table->tinyInteger('type_discount_126')->unsigned();
+				$table->tinyInteger('discount_family_126')->unsigned();
 
 				// id de la regla que procede el descuento
 				$table->integer('rule_126')->unsigned();
@@ -43,11 +43,11 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				$table->string('name_text_value_126');
 				$table->text('description_text_value_126')->nullable();
 
-				// 1 - Porcentaje de descuento del precio del producto
-				// 2 - Importe fijo de descuento
-				// 3 - Importe fijo de descuento para todo el carrito
-				// 4 - Compre X y consigua Y gratis
-				$table->tinyInteger('apply_126')->unsigned()->nullable();
+				// 1 - Sin descuento
+				// 2 - Porcentaje de descuento del precio del producto
+				// 3 - Importe fijo de descuento
+				// 4 - Importe fijo de descuento para todo el carrito
+				$table->tinyInteger('discount_type_126')->unsigned()->nullable();
 
 				// cantidad fija de descuento
 				$table->decimal('discount_amount_126', 10, 2)->nullable();

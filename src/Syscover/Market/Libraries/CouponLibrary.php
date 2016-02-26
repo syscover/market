@@ -95,7 +95,9 @@ class CouponLibrary
 
         if($response['status'] == 'success')
         {
-            $cart = Cart::content();
+            $cart = Cart::total();
+
+
 
             foreach($cart as $row)
             {
