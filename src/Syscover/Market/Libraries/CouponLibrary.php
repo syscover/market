@@ -1,5 +1,6 @@
 <?php namespace Syscover\Market\Libraries;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Syscover\Market\Models\CartPriceRule;
 
 class CouponLibrary
@@ -85,6 +86,22 @@ class CouponLibrary
                 'status'        => 'success',
                 'couponCode'    => $couponCode
             ];
+        }
+    }
+
+    public static function applyCouponCode($couponCode, $sessionGuard = null)
+    {
+        $response = CouponLibrary::checkCouponCode($couponCode, $sessionGuard);
+
+        if($response['status'] == 'success')
+        {
+            $cart = Cart::content();
+
+            foreach($cart as $row)
+            {
+                if(is_numeric($request->input($row->rowid)))
+                    Cart::update($row->rowid, (int)$request->input($row->rowid));
+            }
         }
     }
 }
