@@ -35,7 +35,7 @@ class MarketCreateTableOrder extends Migration
 
 				// amounts
 				$table->decimal('subtotal_116', 10, 2);
-				$table->decimal('shipping_116', 10, 2);
+				$table->decimal('shipping_116', 10, 2);										// shipping amount
 				$table->decimal('row_discount_amount_116', 10, 2);							// without tax
 				$table->decimal('total_discount_percentage_116', 10, 2)->nullable(); 		// without tax
 				$table->decimal('total_discount_amount_116', 10, 2);						// without tax
