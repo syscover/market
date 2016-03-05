@@ -12,9 +12,9 @@
     ],
     "require": {
         "php": ">=5.5.9",
+        "syscover/shoppingcart": "dev",
         "sermepa/sermepa": "^1.1",
-        "paypal/rest-api-sdk-php": "*",
-        "gloudemans/shoppingcart": "~1.3"
+        "paypal/rest-api-sdk-php": "*"
     },
     "autoload": {
         "psr-4": {
