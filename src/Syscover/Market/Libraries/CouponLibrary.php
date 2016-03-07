@@ -108,6 +108,17 @@ class CouponLibrary
             $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
 
 
+            // Discount by percentage
+            if($cartPriceRule->discount_type_120 == 2)
+            {
+                $cartPriceRule->discount_percentage_120;
+            }
+            // fixed amount
+            else if($cartPriceRule->discount_type_120 == 2)
+            {
+                $cartPriceRule->discount_amount_120;
+            }
+
 
 
             //$cart = Cart::total();
