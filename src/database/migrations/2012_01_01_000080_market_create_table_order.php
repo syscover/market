@@ -42,7 +42,6 @@ class MarketCreateTableOrder extends Migration
 				$table->decimal('tax_amount_116', 10, 2);
 				$table->decimal('total_116', 10, 2);
 
-
 				// customer data
 				$table->string('customer_company_116')->nullable();
 				$table->string('customer_tin_116')->nullable();

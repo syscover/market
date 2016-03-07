@@ -1,13 +1,13 @@
 <?php namespace Syscover\Market\Libraries;
 
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Syscover\Shoppingcart\Facades\CartProvider;
 use Syscover\Market\Models\CartPriceRule;
 
 class CouponLibrary
 {
     /**
-     * @param   $couponCode
-     * @param   null $sessionGuard
+     * @param   string                          $couponCode
+     * @param   \Illuminate\Auth\SessionGuard   $sessionGuard   request session guard to check if user is authenticated, for cases necessary
      * @return  array
      */
     public static function checkCouponCode($couponCode, $sessionGuard = null)
@@ -37,12 +37,16 @@ class CouponLibrary
             }
         }
 
-        if($cartPriceRule != null && $cartPriceRule->uses_coupon_120 != null && $cartPriceRule->uses_coupon_120 >= $cartPriceRule->total_used_120)
+        if($cartPriceRule != null && $cartPriceRule->uses_coupon_120 != null && $cartPriceRule->total_used_120 > $cartPriceRule->uses_coupon_120)
         {
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 3,
-                'message'   => 'This coupon has already been claimed'
+                'message'   => 'This coupon has already been used',
+                'data'      => [
+                    'uses_coupon'   =>  $cartPriceRule->uses_coupon_120,
+                    'total_used'    =>  $cartPriceRule->total_used_120,
+                ]
             ];
         }
 
@@ -89,21 +93,32 @@ class CouponLibrary
         }
     }
 
-    public static function applyCouponCode($couponCode, $sessionGuard = null)
+    /**
+     * @param \Syscover\Shoppingcart\Libraries\Cart $cart
+     * @param string                                $couponCode
+     * @param \Illuminate\Auth\SessionGuard         $sessionGuard   request session guard to check if user is authenticated, for cases necessary
+     */
+    public static function applyCouponCode($cart, $couponCode, $sessionGuard = null)
     {
         $response = CouponLibrary::checkCouponCode($couponCode, $sessionGuard);
 
+        // check that rule its ok
         if($response['status'] == 'success')
         {
-            $cart = Cart::total();
+            $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
 
 
 
-            foreach($cart as $row)
-            {
-                if(is_numeric($request->input($row->rowid)))
-                    Cart::update($row->rowid, (int)$request->input($row->rowid));
-            }
+
+            //$cart = Cart::total();
+
+            //$cart
+
+            //foreach($cart as $row)
+            //{
+                //if(is_numeric($request->input($row->rowid)))
+                   // CartProvider::instance()->update($row->rowid, (int)$request->input($row->rowid));
+            //}
         }
     }
 }

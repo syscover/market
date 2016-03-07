@@ -22,7 +22,7 @@ return [
     'discount_amount'                       => 'Cantidad de descuento',
     'discount_percentage'                   => 'Porcentaje de descuento',
     'discount_type'                         => 'Tipo de descuento',
-    'discount_type_percentage'              => 'Porcentaje de descuento del producto',
+    'discount_type_percentage'              => 'Porcentaje de descuento',
     'discount_fixed_amount'                 => 'Cantidad de descuento fija',
     'discount_fixed_amount_whole_cart'      => 'Cantidad de descuento fija para toda la compra',
     'discount_buy_and_get'                  => 'Compra  y consigue Y gratis (la cantidad de descuento es Y)',

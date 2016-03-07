@@ -22,7 +22,7 @@ return [
     'discount_amount'                       => 'Discount amount',
     'discount_percentage'                   => 'Discount percentage',
     'discount_type'                         => 'Discount type',
-    'discount_type_percentage'              => 'Percent of product price discount',
+    'discount_type_percentage'              => 'Percent discount',
     'discount_fixed_amount'                 => 'Fixed amount discount',
     'discount_fixed_amount_whole_cart'      => 'Fixed amount discount for whole cart',
     'discount_buy_and_get'                  => 'Buy X get Y free (discount amount is Y)',
