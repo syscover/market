@@ -136,7 +136,7 @@
     @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => old('active', isset($object)? $object->active_120 : null), 'disabled' => isset($object->id_120)])
     @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.combinable'), 'name' => 'combinable', 'value' => 1, 'checked' => old('combinable', isset($object)? $object->combinable_120 : null), 'disabled' => isset($object->id_120)])
 
-    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.coupon', 1), 'icon' => 'fa fa-ticket'])
+    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.coupon', 1), 'icon' => 'fa fa-shopping-basket'])
     @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.has_coupon'), 'name' => 'hasCoupon', 'value' => 1, 'checked' => old('hasCoupon', isset($object)? $object->has_coupon_120 : null), 'disabled' => isset($object->id_120)])
     <div id="couponSection">
         <div class="row">

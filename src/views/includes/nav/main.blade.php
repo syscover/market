@@ -5,7 +5,7 @@
                     <a href="javascript:void(0)"><i class="fa fa-usd"></i>{{ trans_choice('market::pulsar.sale', 2) }}</a>
                     <ul class="sub-menu">
                         @if(session('userAcl')->allows('market-order', 'access'))
-                            <li{!! Miscellaneous::setCurrentPage('market-order') !!}><a href="{{ route('marketOrder') }}"><i class="fa fa-ticket"></i>{{ trans_choice('market::pulsar.order', 2) }}</a></li>
+                            <li{!! Miscellaneous::setCurrentPage('market-order') !!}><a href="{{ route('marketOrder') }}"><i class="fa fa-shopping-basket"></i>{{ trans_choice('market::pulsar.order', 2) }}</a></li>
                         @endif
                     </ul>
                 </li>

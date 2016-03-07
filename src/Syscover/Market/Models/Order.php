@@ -63,16 +63,6 @@ class Order extends Model
         return $this->hasMany('Syscover\Market\Models\OrderRow', 'order_117');
     }
 
-    /**
-     * Get group from user
-     *
-     * @return \Syscover\Crm\Models\Group
-     */
-    public function getGroup()
-    {
-        return $this->belongsTo(Group::class, 'group_301');
-    }
-
     protected static function addToGetIndexRecords($parameters)
     {
         return Order::builder();
