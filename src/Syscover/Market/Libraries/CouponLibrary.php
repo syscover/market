@@ -1,6 +1,5 @@
 <?php namespace Syscover\Market\Libraries;
 
-use Syscover\Shoppingcart\Facades\CartProvider;
 use Syscover\Market\Models\CartPriceRule;
 
 class CouponLibrary
@@ -98,7 +97,7 @@ class CouponLibrary
      * @param string                                $couponCode
      * @param \Illuminate\Auth\SessionGuard         $sessionGuard   request session guard to check if user is authenticated, for cases necessary
      */
-    public static function applyCouponCode($cart, $couponCode, $sessionGuard = null)
+    public static function addCouponCode($cart, $couponCode, $sessionGuard = null)
     {
         $response = CouponLibrary::checkCouponCode($couponCode, $sessionGuard);
 
@@ -107,29 +106,19 @@ class CouponLibrary
         {
             $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
 
+            // add discount to cart
+            $cart->addCartPriceRule($cartPriceRule);
 
             // Discount by percentage
-            if($cartPriceRule->discount_type_120 == 2)
-            {
-                $cartPriceRule->discount_percentage_120;
-            }
+//            if($cartPriceRule->discount_type_120 == 2)
+//            {
+//                $cartPriceRule->discount_percentage_120;
+//            }
             // fixed amount
-            else if($cartPriceRule->discount_type_120 == 2)
-            {
-                $cartPriceRule->discount_amount_120;
-            }
-
-
-
-            //$cart = Cart::total();
-
-            //$cart
-
-            //foreach($cart as $row)
-            //{
-                //if(is_numeric($request->input($row->rowid)))
-                   // CartProvider::instance()->update($row->rowid, (int)$request->input($row->rowid));
-            //}
+//            else if($cartPriceRule->discount_type_120 == 2)
+//            {
+//                $cartPriceRule->discount_amount_120;
+//            }
         }
     }
 }
