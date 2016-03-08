@@ -102,7 +102,8 @@ class CouponLibrary
                 'code'      => 7,
                 'message'   => 'This coupon is not combinable with other coupon',
                 'data'      => [
-                    'coupon_code'   =>  $couponCode
+                    'coupon_code'          =>  $couponCode,
+                    'price_rule_in_cart'   =>  $cart->getCartPriceRuleNotCombinable()->toArray()
                 ]
             ];
         }
