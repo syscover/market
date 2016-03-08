@@ -95,7 +95,7 @@ class CouponLibrary
             ];
         }
 
-        if($cartPriceRule != null && $cartPriceRule->combinable_120 == false && $cart->hasCartPriceRuleNotCombinable == true)
+        if($cartPriceRule != null && $cartPriceRule->combinable_120 == false && $cart->hasCartPriceRuleNotCombinable() == true)
         {
             $errors[] = [
                 'status'    => 'error',
