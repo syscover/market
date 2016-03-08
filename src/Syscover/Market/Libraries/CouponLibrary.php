@@ -1,16 +1,19 @@
 <?php namespace Syscover\Market\Libraries;
 
 use Syscover\Market\Models\CartPriceRule;
+use Syscover\Shoppingcart\Facades\CartProvider;
 
 class CouponLibrary
 {
     /**
      * @param   string                          $couponCode
+     * @param   string                          $instance       Cart instance
      * @param   \Illuminate\Auth\SessionGuard   $sessionGuard   request session guard to check if user is authenticated, for cases necessary
-     * @return  array
+     * @return array
      */
-    public static function checkCouponCode($couponCode, $sessionGuard = null)
+    public static function checkCouponCode($couponCode, $sessionGuard = null, $instance = 'main')
     {
+        $cart           = CartProvider::instance($instance);
         $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
         $errors         = [];
 
@@ -19,7 +22,10 @@ class CouponLibrary
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 1,
-                'message'   => 'This coupon code, doesn\'t exist'
+                'message'   => 'This coupon code, doesn\'t exist',
+                'data'      => [
+                    'coupon_code'   =>  $couponCode
+                ]
             ];
         }
 
@@ -31,7 +37,10 @@ class CouponLibrary
                 $errors[] = [
                     'status'    => 'error',
                     'code'      => 2,
-                    'message'   => 'User has to be authenticated to use this coupon code'
+                    'message'   => 'User has to be authenticated to use this coupon code',
+                    'data'      => [
+                        'coupon_code'   =>  $couponCode
+                    ]
                 ];
             }
         }
@@ -43,6 +52,7 @@ class CouponLibrary
                 'code'      => 3,
                 'message'   => 'This coupon has already been used',
                 'data'      => [
+                    'coupon_code'   =>  $couponCode,
                     'uses_coupon'   =>  $cartPriceRule->uses_coupon_120,
                     'total_used'    =>  $cartPriceRule->total_used_120,
                 ]
@@ -54,7 +64,10 @@ class CouponLibrary
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 4,
-                'message'   => 'This coupon is not yet in its period of validity'
+                'message'   => 'This coupon is not yet in its period of validity',
+                'data'      => [
+                    'coupon_code'   =>  $couponCode
+                ]
             ];
         }
 
@@ -63,7 +76,10 @@ class CouponLibrary
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 5,
-                'message'   => 'This coupon is expired'
+                'message'   => 'This coupon is expired',
+                'data'      => [
+                    'coupon_code'   =>  $couponCode
+                ]
             ];
         }
 
@@ -72,7 +88,22 @@ class CouponLibrary
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 6,
-                'message'   => 'This coupon is inactive'
+                'message'   => 'This coupon is inactive',
+                'data'      => [
+                    'coupon_code'   =>  $couponCode
+                ]
+            ];
+        }
+
+        if($cartPriceRule != null && $cartPriceRule->combinable_120 == false && $cart->hasCartPriceRuleNotCombinable == true)
+        {
+            $errors[] = [
+                'status'    => 'error',
+                'code'      => 7,
+                'message'   => 'This coupon is not combinable with other coupon',
+                'data'      => [
+                    'coupon_code'   =>  $couponCode
+                ]
             ];
         }
 
@@ -108,17 +139,6 @@ class CouponLibrary
 
             // add discount to cart
             $cart->addCartPriceRule($cartPriceRule);
-
-            // Discount by percentage
-//            if($cartPriceRule->discount_type_120 == 2)
-//            {
-//                $cartPriceRule->discount_percentage_120;
-//            }
-            // fixed amount
-//            else if($cartPriceRule->discount_type_120 == 2)
-//            {
-//                $cartPriceRule->discount_amount_120;
-//            }
         }
     }
 }
