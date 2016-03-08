@@ -22,9 +22,9 @@ class CouponLibrary
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 1,
-                'message'   => 'This coupon code, doesn\'t exist',
+                'message'   => 'This coupon code, does not exist',
                 'data'      => [
-                    'coupon_code'   =>  $couponCode
+                    'couponCode'   =>  $couponCode
                 ]
             ];
         }
@@ -39,7 +39,7 @@ class CouponLibrary
                     'code'      => 2,
                     'message'   => 'User has to be authenticated to use this coupon code',
                     'data'      => [
-                        'coupon_code'   =>  $couponCode
+                        'couponCode'   =>  $couponCode
                     ]
                 ];
             }
@@ -52,9 +52,9 @@ class CouponLibrary
                 'code'      => 3,
                 'message'   => 'This coupon has already been used',
                 'data'      => [
-                    'coupon_code'   =>  $couponCode,
-                    'uses_coupon'   =>  $cartPriceRule->uses_coupon_120,
-                    'total_used'    =>  $cartPriceRule->total_used_120,
+                    'couponCode'   =>  $couponCode,
+                    'usesCoupon'   =>  $cartPriceRule->uses_coupon_120,
+                    'totalUsed'    =>  $cartPriceRule->total_used_120,
                 ]
             ];
         }
@@ -66,7 +66,7 @@ class CouponLibrary
                 'code'      => 4,
                 'message'   => 'This coupon is not yet in its period of validity',
                 'data'      => [
-                    'coupon_code'   =>  $couponCode
+                    'couponCode'   =>  $couponCode
                 ]
             ];
         }
@@ -78,7 +78,7 @@ class CouponLibrary
                 'code'      => 5,
                 'message'   => 'This coupon is expired',
                 'data'      => [
-                    'coupon_code'   =>  $couponCode
+                    'couponCode'   =>  $couponCode
                 ]
             ];
         }
@@ -90,7 +90,7 @@ class CouponLibrary
                 'code'      => 6,
                 'message'   => 'This coupon is inactive',
                 'data'      => [
-                    'coupon_code'   =>  $couponCode
+                    'couponCode'   =>  $couponCode
                 ]
             ];
         }
@@ -102,8 +102,34 @@ class CouponLibrary
                 'code'      => 7,
                 'message'   => 'This coupon is not combinable with other coupon',
                 'data'      => [
-                    'coupon_code'          =>  $couponCode,
-                    'price_rule_in_cart'   =>  $cart->getCartPriceRuleNotCombinable()->toArray()
+                    'couponCode'                    =>  $couponCode,
+                    'priceRuleInCartNotCombinable'  =>  $cart->getCartPriceRuleNotCombinable()->toArray()
+                ]
+            ];
+        }
+
+        // check if exist this cart price rule in cart
+        if($cartPriceRule != null && $cart->hasCartPriceRule($cartPriceRule))
+        {
+            $errors[] = [
+                'status'    => 'error',
+                'code'      => 8,
+                'message'   => 'This coupon already exist in cart',
+                'data'      => [
+                    'couponCode' =>  $couponCode
+                ]
+            ];
+        }
+
+        // check if is a free shipping and there isn't shipping and cart price rule, haven't any discount
+        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_120 == 1 && $cart->hasShipping())
+        {
+            $errors[] = [
+                'status'    => 'error',
+                'code'      => 9,
+                'message'   => 'there are no shipping costs, this coupon is not necessary',
+                'data'      => [
+                    'couponCode' =>  $couponCode
                 ]
             ];
         }
