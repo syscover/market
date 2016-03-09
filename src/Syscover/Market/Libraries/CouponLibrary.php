@@ -1,6 +1,7 @@
 <?php namespace Syscover\Market\Libraries;
 
 use Syscover\Market\Models\CartPriceRule;
+use Syscover\Market\Models\CustomerDiscountUsed;
 use Syscover\Shoppingcart\Facades\CartProvider;
 
 class CouponLibrary
@@ -31,23 +32,7 @@ class CouponLibrary
             ];
         }
 
-        if($cartPriceRule != null && $sessionGuard != null && $cartPriceRule->uses_customer_120 != null && $cartPriceRule->uses_customer_120 > 0)
-        {
-            // se requiere que el usuario está autentificado para comprobar el número de usos por cupon
-            if($sessionGuard->guest())
-            {
-                $errors[] = [
-                    'status'    => 'error',
-                    'code'      => 2,
-                    'message'   => 'User has to be authenticated to use this coupon code',
-                    'trans'     => trans('market::pulsar.error_coupon_code_02'),
-                    'data'      => [
-                        'couponCode' => $couponCode
-                    ]
-                ];
-            }
-        }
-
+        //check if this coupon has exceeded limit of use
         if($cartPriceRule != null && $cartPriceRule->uses_coupon_120 != null && $cartPriceRule->total_used_120 >= $cartPriceRule->uses_coupon_120)
         {
             $errors[] = [
@@ -61,6 +46,44 @@ class CouponLibrary
                     'totalUsed'     => $cartPriceRule->total_used_120,
                 ]
             ];
+        }
+
+        if($cartPriceRule != null && $sessionGuard != null && $cartPriceRule->uses_customer_120 != null && $cartPriceRule->uses_customer_120 > 0)
+        {
+            // need to be loged to use this coupon
+            if($sessionGuard->guest())
+            {
+                $errors[] = [
+                    'status'    => 'error',
+                    'code'      => 2,
+                    'message'   => 'User has to be authenticated to use this coupon code',
+                    'trans'     => trans('market::pulsar.error_coupon_code_02'),
+                    'data'      => [
+                        'couponCode' => $couponCode
+                    ]
+                ];
+            }
+            elseif(CustomerDiscountUsed::builder()->where('customer_126', auth('crm')->user()->id_301)->where('coupon_code_126')->count() >= $cartPriceRule->uses_customer_120)
+            {
+                $errors[] = [
+                    'status'    => 'error',
+                    'code'      => 10,
+                    'message'   => 'User has exceeded the limit of uses',
+                    'trans'     => trans('market::pulsar.error_coupon_code_10'),
+                    'data'      => [
+                        'couponCode' => $couponCode
+                    ]
+                ];
+            }
+
+
+        }
+
+
+
+        if($cartPriceRule != null && $cartPriceRule->uses_customer_120 != null && $cartPriceRule->total_used_120 >= $cartPriceRule->uses_coupon_120)
+        {
+
         }
 
         if($cartPriceRule != null && $cartPriceRule->enable_from_120 != null && date('U') < $cartPriceRule->enable_from_120)

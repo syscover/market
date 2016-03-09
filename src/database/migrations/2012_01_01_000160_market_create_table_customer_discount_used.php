@@ -28,6 +28,9 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				// 3 - descuento procedente de, customer discount
 				$table->tinyInteger('discount_family_126')->unsigned();
 
+				$table->boolean('has_coupon_126');
+				$table->string('coupon_code_126')->nullable();
+
 				// id de la regla que procede el descuento
 				$table->integer('rule_126')->unsigned();
 
@@ -67,6 +70,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 
 				$table->index('rule_126', 'ix01_012_126_customer_discount_used');
 				$table->index('discount_126', 'ix02_012_126_customer_discount_used');
+				$table->index('coupon_code_126', 'ix03_012_126_customer_discount_used');
 
 				$table->foreign('customer_126', 'fk01_012_126_customer_discount_used')->references('id_301')->on('009_301_customer')
 					->onDelete('restrict')->onUpdate('cascade');

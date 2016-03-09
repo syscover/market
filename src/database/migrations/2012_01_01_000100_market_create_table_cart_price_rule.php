@@ -27,7 +27,7 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->boolean('combinable_120');
 
 				$table->boolean('has_coupon_120');
-				$table->string('coupon_code_120');
+				$table->string('coupon_code_120')->nullable();
 				// veces que el cupon se puede usar por usuario
 				$table->integer('uses_customer_120')->unsigned()->nullable();
 				// veces que el cupon se puede usar
