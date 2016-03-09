@@ -1,8 +1,8 @@
 <?php namespace Syscover\Market\Models;
 
-use Syscover\Pulsar\Models\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Syscover\Pulsar\Models\Text;
+use Syscover\Pulsar\Models\Model;
 use Syscover\Pulsar\Traits\TraitModel;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
