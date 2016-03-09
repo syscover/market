@@ -7,14 +7,15 @@ class CouponLibrary
 {
     /**
      * @param   string                          $couponCode
+     * @param   string                          $lang           Check coupon code from this language
      * @param   string                          $instance       Cart instance
      * @param   \Illuminate\Auth\SessionGuard   $sessionGuard   request session guard to check if user is authenticated, for cases necessary
      * @return array
      */
-    public static function checkCouponCode($couponCode, $sessionGuard = null, $instance = 'main')
+    public static function checkCouponCode($couponCode, $lang, $sessionGuard = null, $instance = 'main')
     {
         $cart           = CartProvider::instance($instance);
-        $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
+        $cartPriceRule  = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
         $errors         = [];
 
         if($cartPriceRule == null)
@@ -162,22 +163,18 @@ class CouponLibrary
     /**
      * @param \Syscover\Shoppingcart\Libraries\Cart $cart
      * @param string                                $couponCode
-     * @param string                                $lang
+     * @param string                                $lang           add coupon code from this language
      * @param \Illuminate\Auth\SessionGuard         $sessionGuard   request session guard to check if user is authenticated, for cases necessary
      * @return null | \Syscover\Market\Models\CartPriceRule
      */
-    public static function addCouponCode($cart, $couponCode, $lang = null, $sessionGuard = null)
+    public static function addCouponCode($cart, $couponCode, $lang, $sessionGuard = null)
     {
-        $response       = CouponLibrary::checkCouponCode($couponCode, $sessionGuard);
-        $cartPriceRule = null;
+        $response       = CouponLibrary::checkCouponCode($couponCode, $lang, $sessionGuard);
+        $cartPriceRule  = null;
 
         // check that rule its ok
         if($response['status'] == 'success')
         {
-            // set lang with base if is null
-            if($lang === null)
-                $lang = base_lang()->id_001;
-
             $cartPriceRule  = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
 
             // add discount to cart
