@@ -23,6 +23,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 1,
                 'message'   => 'This coupon code, does not exist',
+                'trans'     => 'market::pulsar.error_coupon_code_01',
                 'data'      => [
                     'couponCode' => $couponCode
                 ]
@@ -38,6 +39,7 @@ class CouponLibrary
                     'status'    => 'error',
                     'code'      => 2,
                     'message'   => 'User has to be authenticated to use this coupon code',
+                    'trans'     => 'market::pulsar.error_coupon_code_02',
                     'data'      => [
                         'couponCode' => $couponCode
                     ]
@@ -50,7 +52,8 @@ class CouponLibrary
             $errors[] = [
                 'status'    => 'error',
                 'code'      => 3,
-                'message'   => 'This coupon has already been used',
+                'message'   => 'This coupon has exceeded the limit of uses',
+                'trans'     => 'market::pulsar.error_coupon_code_03',
                 'data'      => [
                     'couponCode'    => $couponCode,
                     'usesCoupon'    => $cartPriceRule->uses_coupon_120,
@@ -65,6 +68,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 4,
                 'message'   => 'This coupon is not yet in its period of validity',
+                'trans'     => 'market::pulsar.error_coupon_code_04',
                 'data'      => [
                     'couponCode' => $couponCode
                 ]
@@ -77,6 +81,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 5,
                 'message'   => 'This coupon is expired',
+                'trans'     => 'market::pulsar.error_coupon_code_05',
                 'data'      => [
                     'couponCode' => $couponCode
                 ]
@@ -89,6 +94,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 6,
                 'message'   => 'This coupon is inactive',
+                'trans'     => 'market::pulsar.error_coupon_code_06',
                 'data'      => [
                     'couponCode' => $couponCode
                 ]
@@ -101,6 +107,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 7,
                 'message'   => 'This coupon is not combinable with other coupon',
+                'trans'     => 'market::pulsar.error_coupon_code_07',
                 'data'      => [
                     'couponCode'                    => $couponCode,
                     'priceRuleInCartNotCombinable'  => $cart->getCartPriceRuleNotCombinable()->toArray()
@@ -115,6 +122,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 8,
                 'message'   => 'This coupon already exist in cart',
+                'trans'     => 'market::pulsar.error_coupon_code_08',
                 'data'      => [
                     'couponCode' => $couponCode
                 ]
@@ -128,6 +136,7 @@ class CouponLibrary
                 'status'    => 'error',
                 'code'      => 9,
                 'message'   => 'there are no shipping costs, this coupon is not necessary',
+                'trans'     => 'market::pulsar.error_coupon_code_09',
                 'data'      => [
                     'couponCode' =>  $couponCode
                 ]

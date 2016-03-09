@@ -17,6 +17,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_126')->unsigned();
+				// fecha de registro
 				$table->integer('date_126')->unsigned();
 
 				$table->integer('customer_126')->unsigned();
@@ -44,15 +45,16 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				$table->text('description_text_value_126')->nullable();
 
 				// 1 - Sin descuento
-				// 2 - Porcentaje de descuento del precio del producto
+				// 2 - Porcentaje de descuento
 				// 3 - Importe fijo de descuento
-				// 4 - Importe fijo de descuento para todo el carrito
 				$table->tinyInteger('discount_type_126')->unsigned()->nullable();
 
 				// cantidad fija de descuento
 				$table->decimal('discount_amount_126', 10, 2)->nullable();
 				// Porcentaje de descuento sobre una cantidad
 				$table->decimal('discount_percentage_126', 10, 2)->nullable();
+				// Cantidad de descuento calculado con el procentaje de descuento
+				$table->decimal('discount_percentage_amount_126', 10, 2)->nullable();
 				// máxima cantidad a descontar
 				$table->decimal('maximum_discount_amount_126', 10, 2)->nullable();
 				// se aplica el descuento al precio de transporte
