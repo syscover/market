@@ -162,19 +162,28 @@ class CouponLibrary
     /**
      * @param \Syscover\Shoppingcart\Libraries\Cart $cart
      * @param string                                $couponCode
+     * @param string                                $lang
      * @param \Illuminate\Auth\SessionGuard         $sessionGuard   request session guard to check if user is authenticated, for cases necessary
+     * @return null | \Syscover\Market\Models\CartPriceRule
      */
-    public static function addCouponCode($cart, $couponCode, $sessionGuard = null)
+    public static function addCouponCode($cart, $couponCode, $lang = null, $sessionGuard = null)
     {
-        $response = CouponLibrary::checkCouponCode($couponCode, $sessionGuard);
+        $response       = CouponLibrary::checkCouponCode($couponCode, $sessionGuard);
+        $cartPriceRule = null;
 
         // check that rule its ok
         if($response['status'] == 'success')
         {
-            $cartPriceRule  = CartPriceRule::where('coupon_code_120', 'like', $couponCode)->first();
+            // set lang with base if is null
+            if($lang === null)
+                $lang = base_lang()->id_001;
+
+            $cartPriceRule  = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
 
             // add discount to cart
             $cart->addCartPriceRule($cartPriceRule);
         }
+
+        return $cartPriceRule;
     }
 }
