@@ -92,7 +92,7 @@
                     $('#fixedAmountSection').hide()
             })
 
-            // set disable to false, because is a requered property
+            // set disable to false, because is a required property
             $("#recordForm").on('submit', function() {
                 $("[name=discountType]").prop("disabled", false)
             })
