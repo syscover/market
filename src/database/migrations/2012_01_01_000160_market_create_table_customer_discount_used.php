@@ -50,7 +50,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				$table->tinyInteger('discount_type_126')->unsigned()->nullable();
 
 				// cantidad fija de descuento
-				$table->decimal('discount_amount_126', 10, 2)->nullable();
+				$table->decimal('discount_fixed_amount_126', 10, 2)->nullable();
 				// Porcentaje de descuento sobre una cantidad
 				$table->decimal('discount_percentage_126', 10, 2)->nullable();
 				// Cantidad de descuento calculado con el procentaje de descuento
