@@ -9,7 +9,10 @@
             {
                 $('.datatable-pulsar').dataTable({
                     'iDisplayStart' : {{ $offset }},
+                    'aaSorting': [[ 0, "desc" ]],
                     'aoColumnDefs': [
+                        { 'visible': false, "bSearchable": false, 'aTargets': [1]}, // hidden column 1 and prevents search on column 1
+                        { 'iDataSort': 1, 'aTargets': [2] }, // sort column 2 according hidden column 1 data
                         { 'bSortable': false, 'aTargets': [8,9]},
                         { 'sClass': 'checkbox-column', 'aTargets': [8]},
                         { 'sClass': 'align-center', 'aTargets': [6,7,9]}
@@ -28,6 +31,7 @@
     <!-- market::order.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
+        <th>{{ trans('cms::pulsar.date') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.date') }}</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.surname') }}</th>

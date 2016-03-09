@@ -14,7 +14,7 @@ class OrderController extends BaseController
 	protected $routeSuffix  = 'marketOrder';
 	protected $folder	   = 'order';
 	protected $package	  = 'market';
-	protected $aColumns	 = ['id_116', 'date_116', 'customer_name_116', 'customer_surname_116', 'customer_email_116', 'customer_phone_116', 'name_114', 'total_116'];
+	protected $aColumns	 = ['id_116', 'date_116', 'date_text_116', 'customer_name_116', 'customer_surname_116', 'customer_email_116', 'customer_phone_116', 'name_114', 'total_116'];
 	protected $nameM		= 'name_116';
 	protected $model		= '\Syscover\Market\Models\Order';
 	protected $icon		 = 'fa fa-shopping-basket';
