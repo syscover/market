@@ -75,15 +75,6 @@ class CouponLibrary
                     ]
                 ];
             }
-
-
-        }
-
-
-
-        if($cartPriceRule != null && $cartPriceRule->uses_customer_120 != null && $cartPriceRule->total_used_120 >= $cartPriceRule->uses_coupon_120)
-        {
-
         }
 
         if($cartPriceRule != null && $cartPriceRule->enable_from_120 != null && date('U') < $cartPriceRule->enable_from_120)
