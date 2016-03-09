@@ -92,6 +92,11 @@
                     $('#fixedAmountSection').hide()
             })
 
+            // set disable to false, because is a requered property
+            $("#recordForm").on('submit', function() {
+                $("[name=discountType]").prop("disabled", false)
+            })
+
             @if(!isset($object) || (isset($object) && !$object->has_coupon_120))
                 $("#couponSection").hide()
                 $('#percentageAmountSection').hide()
