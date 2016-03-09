@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Syscover\Pulsar\Models\Resource;
 
 class MarketUpdateV9 extends Migration
 {

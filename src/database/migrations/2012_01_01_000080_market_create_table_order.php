@@ -19,12 +19,14 @@ class MarketCreateTableOrder extends Migration
 				$table->increments('id_116')->unsigned();
 
 				$table->integer('date_116')->unsigned();
+				$table->string('date_text_116');
 				$table->integer('status_116')->unsigned();
 				$table->string('ip_116');
 
 				$table->integer('customer_116')->unsigned()->nullable();
 				$table->integer('payment_method_116')->unsigned();
-				$table->string('payment_id_116');											// field to record any payment ID transaction
+				// code generate by payment platform (PayPal or Bank), field to record any payment ID transaction
+				$table->string('payment_id_116');
 				$table->text('comments_116')->nullable();
 
 				// gift

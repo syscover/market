@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class MarketUpdateV10 extends Migration
+class MarketUpdateV11 extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -11,10 +11,10 @@ class MarketUpdateV10 extends Migration
 	 */
 	public function up()
 	{
-		if(Schema::hasColumn('012_126_customer_discount_used', 'discount_126'))
+		if(!Schema::hasColumn('012_116_order', 'date_text_116'))
 		{
-			Schema::table('012_126_customer_discount_used', function ($table) {
-				$table->dropColumn('discount_126');
+			Schema::table('012_116_order', function ($table) {
+				$table->string('date_text_116')->after('date_116');;
 			});
 		}
 	}
