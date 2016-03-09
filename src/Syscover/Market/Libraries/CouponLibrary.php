@@ -48,7 +48,7 @@ class CouponLibrary
             }
         }
 
-        if($cartPriceRule != null && $cartPriceRule->uses_coupon_120 != null && $cartPriceRule->total_used_120 > $cartPriceRule->uses_coupon_120)
+        if($cartPriceRule != null && $cartPriceRule->uses_coupon_120 != null && $cartPriceRule->total_used_120 >= $cartPriceRule->uses_coupon_120)
         {
             $errors[] = [
                 'status'    => 'error',
