@@ -184,7 +184,7 @@
         </div>
         <div class="row" id="fixedAmountSection">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_amount'), 'name' => 'discountAmount',  'value' => old('discountAmount', isset($object)? $object->discount_amount_120 : null), 'readOnly' => isset($object->id_120)])
+                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_amount'), 'name' => 'discountFixedAmount',  'value' => old('discountFixedAmount', isset($object)? $object->discount_fixed_amount_120 : null), 'readOnly' => isset($object->id_120)])
             </div>
             <div class="col-md-6">
             </div>

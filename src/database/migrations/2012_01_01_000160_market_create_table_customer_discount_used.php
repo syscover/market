@@ -32,7 +32,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				$table->integer('rule_126')->unsigned();
 
 				// id del decuento en el caso de proceder de customer discount
-				$table->integer('discount_126')->unsigned()->nullable();
+				//$table->integer('customer_discount_id_126')->unsigned()->nullable();
 
 				// referencia a la tabla 001_017_text
 				$table->integer('name_text_126')->unsigned();

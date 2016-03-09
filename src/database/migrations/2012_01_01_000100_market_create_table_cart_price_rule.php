@@ -47,7 +47,7 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->smallInteger('discount_type_120')->unsigned()->nullable();
 
 				// cantidad fija de descuento
-				$table->decimal('discount_amount_120', 10, 2)->nullable();
+				$table->decimal('discount_fixed_amount_120', 10, 2)->nullable();
 				// Porcentaje de descuento sobre una cantidad
 				$table->decimal('discount_percentage_120', 10, 2)->nullable();
 				// máxima cantidad a descontar
