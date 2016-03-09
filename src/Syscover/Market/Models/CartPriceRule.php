@@ -42,19 +42,20 @@ class CartPriceRule extends Model
 
     public function scopeBuilder($query, $lang = null)
     {
-        return $query->join('001_017_text', function ($join) use ($lang) {
-                $join->on('012_120_cart_price_rule.name_text_120', '=', '001_017_text.id_017');
-                if($lang !== null)  $join->where('001_017_text.lang_id_017', '=', $lang);
+        return $query->select(DB::raw('*, text1.text_017 AS name_text_text, text2.text_017 AS description_text_text'))
+            ->join('001_017_text as text1', function ($join) use ($lang) {
+                $join->on('012_120_cart_price_rule.name_text_120', '=', 'text1.id_017');
+                if($lang !== null)  $join->where('text1.lang_id_017', '=', $lang);
+            })
+            ->join('001_017_text as text2', function ($join) use ($lang) {
+                $join->on('012_120_cart_price_rule.description_text_120', '=', 'text2.id_017');
+                if($lang !== null)  $join->where('text2.lang_id_017', '=', $lang);
             });
     }
 
     public static function getTranslationRecord($parameters)
     {
         $cartPriceRule = CartPriceRule::builder($parameters['lang'])->where('id_120', $parameters['id'])->first();
-
-        // al haber dos referencia a la misma tabla (001_017_text), menos la primera que la obtenemos por relación,
-        // el resto la insertamos en el objeto de forma manual, realizando una consulta
-        $cartPriceRule->description_text_text = Text::where('id_017', $cartPriceRule->description_text_120)->where('lang_id_017', $parameters['lang'])->first()->text_017;
 
         return $cartPriceRule;
     }
