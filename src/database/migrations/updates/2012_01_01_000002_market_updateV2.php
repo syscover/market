@@ -49,5 +49,4 @@ class MarketUpdateV2 extends Migration
 	 * @return void
 	 */
 	public function down(){}
-
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketUpdateV13 extends Migration
@@ -13,7 +14,7 @@ class MarketUpdateV13 extends Migration
 	{
 		if( ! Schema::hasColumn('012_126_customer_discount_used', 'active_126'))
 		{
-			Schema::table('012_126_customer_discount_used', function ($table) {
+			Schema::table('012_126_customer_discount_used', function (Blueprint $table) {
 				$table->boolean('active_126')->default(true)->after('order_126');
 				$table->index('active_126', 'ix04_012_126_customer_discount_used');
 			});
