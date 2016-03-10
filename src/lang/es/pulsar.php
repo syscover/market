@@ -51,6 +51,7 @@ return [
     'minimum_price'								    => 'Precio mínimo',
     'order'										    => 'Pedido|Pedidos',
     'order_status'								    => 'Estado del pedido',
+    'order_status_successful'                       => 'Estado del pedido en caso de éxito',
     'package_name'								    => 'Market',
     'parent_category'							    => 'Categoría padre|Categorias padres',
     'payment_method'							    => 'Forma de pago|Formas de pago',

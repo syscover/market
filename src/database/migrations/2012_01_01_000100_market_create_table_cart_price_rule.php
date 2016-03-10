@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCartPriceRule extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableCartPriceRule extends Migration
 	{
 		if (!Schema::hasTable('012_120_cart_price_rule'))
 		{
-			Schema::create('012_120_cart_price_rule', function ($table) {
+			Schema::create('012_120_cart_price_rule', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_120')->unsigned();

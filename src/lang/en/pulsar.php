@@ -51,6 +51,7 @@ return [
     'minimum_price'                                 => 'Minimum price',
     'order'                                         => 'Order|Orders',
     'order_status'                                  => 'Order status',
+    'order_status_successful'                       => 'order status successful',
     'package_name'                                  => 'Market',
     'parent_category'                               => 'Parent category|Parent categories',
     'payment_method'                                => 'Payment method|Payment methods',

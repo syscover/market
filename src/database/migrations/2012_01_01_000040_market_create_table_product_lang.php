@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableProductLang extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableProductLang extends Migration
 	{
 		if (!Schema::hasTable('012_112_product_lang'))
 		{
-			Schema::create('012_112_product_lang', function ($table) {
+			Schema::create('012_112_product_lang', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->integer('id_112')->unsigned();

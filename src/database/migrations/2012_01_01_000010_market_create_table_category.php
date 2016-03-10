@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCategory extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableCategory extends Migration
 	{
 		if (!Schema::hasTable('012_110_category'))
 		{
-			Schema::create('012_110_category', function ($table) {
+			Schema::create('012_110_category', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 				$table->integer('id_110')->unsigned();
 				$table->string('lang_110', 2);

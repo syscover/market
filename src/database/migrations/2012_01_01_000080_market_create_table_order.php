@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableOrder extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableOrder extends Migration
 	{
 		if (!Schema::hasTable('012_116_order'))
 		{
-			Schema::create('012_116_order', function ($table) {
+			Schema::create('012_116_order', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_116')->unsigned();

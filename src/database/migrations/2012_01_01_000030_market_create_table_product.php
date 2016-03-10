@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableProduct extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableProduct extends Migration
 	{
 		if (!Schema::hasTable('012_111_product'))
 		{
-			Schema::create('012_111_product', function ($table) {
+			Schema::create('012_111_product', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 				$table->increments('id_111')->unsigned();
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
@@ -47,5 +48,4 @@ class MarketCreateTableProduct extends Migration
 			Schema::drop('012_111_product');
 		}
 	}
-
 }

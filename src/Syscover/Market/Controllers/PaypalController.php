@@ -178,10 +178,10 @@ class PayPalController extends Controller
 
         if($response->getState() == 'approved')
         {
-            if(!empty($order->order_status_115))
+            if(!empty($order->order_status_successful_id_115))
             {
                 // set next status to complete payment method
-                $order->status_116 = $order->order_status_115;
+                $order->status_116 = $order->order_status_successful_id_115;
                 $order->save();
             }
 

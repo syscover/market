@@ -10,7 +10,7 @@ use Sofa\Eloquence\Mappable;
  * Class PaymentMethod
  *
  * Model with properties
- * <br><b>[id, lang, name, order_status, minimum_price, maximum_price, instructions, sorting, active, data_lang]</b>
+ * <br><b>[id, lang, name, order_status_successful_id, minimum_price, maximum_price, instructions, sorting, active, data_lang]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -24,7 +24,7 @@ class PaymentMethod extends Model {
     protected $primaryKey   = 'id_115';
     protected $suffix       = '115';
     public $timestamps      = false;
-    protected $fillable     = ['id_115', 'lang_115', 'name_115', 'order_status_115', 'minimum_price_115', 'maximum_price_115', 'instructions_115', 'sorting_115', 'active_115', 'data_lang_115'];
+    protected $fillable     = ['id_115', 'lang_115', 'name_115', 'order_status_successful_id_115', 'minimum_price_115', 'maximum_price_115', 'instructions_115', 'sorting_115', 'active_115', 'data_lang_115'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'  => \Syscover\Pulsar\Models\Lang::class

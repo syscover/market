@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCustomerDiscountUsed extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 	{
 		if (!Schema::hasTable('012_126_customer_discount_used'))
 		{
-			Schema::create('012_126_customer_discount_used', function ($table) {
+			Schema::create('012_126_customer_discount_used', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_126')->unsigned();

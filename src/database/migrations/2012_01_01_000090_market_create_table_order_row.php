@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableOrderRow extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableOrderRow extends Migration
 	{
 		if (!Schema::hasTable('012_117_order_row'))
 		{
-			Schema::create('012_117_order_row', function ($table) {
+			Schema::create('012_117_order_row', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_117')->unsigned();

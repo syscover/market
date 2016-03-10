@@ -53,16 +53,16 @@ class PaymentMethodController extends Controller {
         }
 
         PaymentMethod::create([
-            'id_115'                => $id,
-            'lang_115'              => $request->input('lang'),
-            'name_115'              => $request->input('name'),
-            'order_status_115'      => empty($request->input('orderStatus'))? null : $request->input('orderStatus'),
-            'minimum_price_115'     => empty($request->input('minimumPrice'))? null : $request->input('minimumPrice'),
-            'maximum_price_115'     => empty($request->input('maximumPrice'))? null : $request->input('maximumPrice'),
-            'instructions_115'      => empty($request->input('instructions'))? null : $request->input('instructions'),
-            'sorting_115'           => empty($request->input('sorting'))? null : $request->input('sorting'),
-            'active_115'            => $request->has('active'),
-            'data_lang_115'         => PaymentMethod::addLangDataRecord($request->input('lang'), $idLang)
+            'id_115'                            => $id,
+            'lang_115'                          => $request->input('lang'),
+            'name_115'                          => $request->input('name'),
+            'order_status_successful_id_115'    => $request->has('orderStatus')? null : $request->input('orderStatus'),
+            'minimum_price_115'                 => $request->has('minimumPrice')? null : $request->input('minimumPrice'),
+            'maximum_price_115'                 => $request->has('maximumPrice')? null : $request->input('maximumPrice'),
+            'instructions_115'                  => $request->has('instructions')? null : $request->input('instructions'),
+            'sorting_115'                       => $request->has('sorting')? null : $request->input('sorting'),
+            'active_115'                        => $request->has('active'),
+            'data_lang_115'                     => PaymentMethod::addLangDataRecord($request->input('lang'), $idLang)
         ]);
     }
 
@@ -76,13 +76,13 @@ class PaymentMethodController extends Controller {
     public function updateCustomRecord($request, $parameters)
     {
         PaymentMethod::where('id_115', $parameters['id'])->where('lang_115', $request->input('lang'))->update([
-            'name_115'              => $request->input('name'),
-            'order_status_115'      => empty($request->input('orderStatus'))? null : $request->input('orderStatus'),
-            'minimum_price_115'     => empty($request->input('minimumPrice'))? null : $request->input('minimumPrice'),
-            'maximum_price_115'     => empty($request->input('maximumPrice'))? null : $request->input('maximumPrice'),
-            'instructions_115'      => empty($request->input('instructions'))? null : $request->input('instructions'),
-            'sorting_115'           => empty($request->input('sorting'))? null : $request->input('sorting'),
-            'active_115'            => $request->has('active'),
+            'name_115'                          => $request->input('name'),
+            'order_status_successful_id_115'    => $request->has('orderStatusSuccessful')? null : $request->input('orderStatusSuccessful'),
+            'minimum_price_115'                 => $request->has('minimumPrice')? null : $request->input('minimumPrice'),
+            'maximum_price_115'                 => $request->has('maximumPrice')? null : $request->input('maximumPrice'),
+            'instructions_115'                  => $request->has('instructions')? null : $request->input('instructions'),
+            'sorting_115'                       => $request->has('sorting')? null : $request->input('sorting'),
+            'active_115'                        => $request->has('active'),
         ]);
     }
 }
