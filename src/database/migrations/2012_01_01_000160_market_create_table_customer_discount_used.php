@@ -73,7 +73,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				$table->text('rules_126')->nullable();
 
 				$table->index('rule_126', 'ix01_012_126_customer_discount_used');
-				$table->index('discount_126', 'ix02_012_126_customer_discount_used');
+				// ix02_012_126 no existe, fue borrado
 				$table->index('coupon_code_126', 'ix03_012_126_customer_discount_used');
 				$table->index('active_126', 'ix04_012_126_customer_discount_used');
 
