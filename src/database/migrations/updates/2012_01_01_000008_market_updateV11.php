@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketUpdateV11 extends Migration
@@ -13,7 +14,7 @@ class MarketUpdateV11 extends Migration
 	{
 		if(!Schema::hasColumn('012_116_order', 'date_text_116'))
 		{
-			Schema::table('012_116_order', function ($table) {
+			Schema::table('012_116_order', function (Blueprint $table) {
 				$table->string('date_text_116')->after('date_116');;
 			});
 		}

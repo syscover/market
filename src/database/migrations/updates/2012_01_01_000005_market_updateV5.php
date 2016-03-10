@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketUpdateV5 extends Migration
@@ -13,7 +14,7 @@ class MarketUpdateV5 extends Migration
 	{
 		if(!Schema::hasColumn('012_111_product', 'sorting_111'))
 		{
-			Schema::table('012_111_product', function ($table) {
+			Schema::table('012_111_product', function (Blueprint $table) {
 				$table->integer('sorting_111')->unsigned()->nullable()->after('active_111');
 			});
 		}
@@ -25,5 +26,4 @@ class MarketUpdateV5 extends Migration
 	 * @return void
 	 */
 	public function down(){}
-
 }

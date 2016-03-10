@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketUpdateV7 extends Migration
@@ -13,7 +14,7 @@ class MarketUpdateV7 extends Migration
 	{
 		if(!Schema::hasColumn('012_116_order', 'has_invoice_116'))
 		{
-			Schema::table('012_116_order', function ($table) {
+			Schema::table('012_116_order', function (Blueprint $table) {
 				$table->boolean('has_invoice_116')->after('invoice_longitude_116');
 				$table->boolean('invoiced_116')->default(false)->after('has_invoice_116');
 				$table->boolean('has_shipping_116')->after('invoiced_116');
@@ -27,5 +28,4 @@ class MarketUpdateV7 extends Migration
 	 * @return void
 	 */
 	public function down(){}
-
 }
