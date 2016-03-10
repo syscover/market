@@ -82,9 +82,9 @@
 
             $("[name=discountType]").on('change', function() {
                 if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '2')
-                    $('#percentageAmountSection').fadeIn()
+                    $('#percentageAmountSection, #applyShippingAmountLayer').fadeIn()
                 else
-                    $('#percentageAmountSection').hide()
+                    $('#percentageAmountSection, #applyShippingAmountLayer').hide()
 
                 if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3')
                     $('#fixedAmountSection').fadeIn()
@@ -99,7 +99,7 @@
 
             @if(!isset($object) || (isset($object) && !$object->has_coupon_120))
                 $("#couponSection").hide()
-                $('#percentageAmountSection').hide()
+                $('#percentageAmountSection, #applyShippingAmountLayer').hide()
                 $('#fixedAmountSection').hide()
             @endif
         })
@@ -121,6 +121,7 @@
                 }
             });
         }
+        // TODO: mediante ajax falta comprobar que el código de cupón no existe
     </script>
 @stop
 
@@ -181,7 +182,15 @@
     <div>
         <div class="row" id="percentageAmountSection">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.discount_percentage'), 'name' => 'discountPercentage',  'value' => old('discountPercentage', isset($object)? $object->discount_percentage_120 : null), 'readOnly' => isset($object->id_120)])
+                @include('pulsar::includes.html.form_text_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 5,
+                    'type' => 'number',
+                    'label' => trans('market::pulsar.discount_percentage'),
+                    'name' => 'discountPercentage',
+                    'value' => old('discountPercentage', isset($object)? $object->discount_percentage_120 : null),
+                    'readOnly' => isset($object->id_120)
+                ])
             </div>
             <div class="col-md-6">
                 @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.maximum_discount_amount'), 'name' => 'maximumDiscountAmount',  'value' => old('maximumDiscountAmount', isset($object)? $object->maximum_discount_amount_120 : null), 'readOnly' => isset($object->id_120)])
@@ -195,15 +204,26 @@
             </div>
         </div>
     </div>
-
-    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.transport', 1), 'icon' => 'fa fa-truck'])
-    <div class="row">
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.apply_shipping_amount'), 'name' => 'applyShippingAmount', 'value' => 1, 'checked' => old('applyShippingAmount', isset($object)? $object->apply_shipping_amount_120 : null), 'disabled' => isset($object->id_120)])
-        </div>
-        <div class="col-md-6">
-            @include('pulsar::includes.html.form_checkbox_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.free_shipping'), 'name' => 'freeShipping', 'value' => 1, 'checked' => old('freeShipping', isset($object)? $object->free_shipping_120 : null), 'disabled' => isset($object->id_120)])
-        </div>
+    <div id="applyShippingAmountLayer">
+        @include('pulsar::includes.html.form_checkbox_group', [
+            'label' => trans('market::pulsar.apply_shipping_amount'),
+            'name' => 'applyShippingAmount',
+            'value' => 1,
+            'checked' => old('applyShippingAmount', isset($object)? $object->apply_shipping_amount_120 : null),
+            'disabled' => isset($object->id_120)
+        ])
     </div>
+
+    @include('pulsar::includes.html.form_section_header', [
+        'label' => trans_choice('pulsar::pulsar.shipping', 1),
+        'icon' => 'fa fa-truck'
+    ])
+    @include('pulsar::includes.html.form_checkbox_group', [
+        'label' => trans('market::pulsar.free_shipping'),
+        'name' => 'freeShipping',
+        'value' => 1,
+        'checked' => old('freeShipping', isset($object)? $object->free_shipping_120 : null),
+        'disabled' => isset($object->id_120)
+    ])
     <!-- /market::cart_price_rule.create -->
 @stop
