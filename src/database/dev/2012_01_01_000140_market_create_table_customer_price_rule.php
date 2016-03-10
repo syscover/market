@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCustomerPriceRule extends Migration
@@ -15,7 +16,7 @@ class MarketCreateTableCustomerPriceRule extends Migration
 	{
 		if (!Schema::hasTable('012_124_customer_price_rule'))
 		{
-			Schema::create('012_124_customer_price_rule', function ($table) {
+			Schema::create('012_124_customer_price_rule', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_124')->unsigned();
@@ -53,7 +54,6 @@ class MarketCreateTableCustomerPriceRule extends Migration
 				$table->boolean('apply_shipping_amount_124');
 				// este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_124');
-
 			});
 		}
 	}

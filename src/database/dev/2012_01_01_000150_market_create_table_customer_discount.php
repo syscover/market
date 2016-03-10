@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCustomerDiscount extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableCustomerDiscount extends Migration
 	{
 		if (!Schema::hasTable('012_125_customer_discount'))
 		{
-			Schema::create('012_125_customer_discount', function ($table) {
+			Schema::create('012_125_customer_discount', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_125')->unsigned();
@@ -58,7 +59,6 @@ class MarketCreateTableCustomerDiscount extends Migration
 				$table->boolean('apply_shipping_amount_125');
 				// este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_125');
-
 			});
 		}
 	}

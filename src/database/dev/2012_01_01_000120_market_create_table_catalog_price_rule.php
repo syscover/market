@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCatalogPriceRule extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableCatalogPriceRule extends Migration
 	{
 		if (!Schema::hasTable('012_122_catalog_price_rule'))
 		{
-			Schema::create('012_122_catalog_price_rule', function ($table) {
+			Schema::create('012_122_catalog_price_rule', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_122')->unsigned();
@@ -50,7 +51,6 @@ class MarketCreateTableCatalogPriceRule extends Migration
 
 				// reglas, campo para una futura implementación de reglas
 				$table->text('rules_122')->nullable();
-
 			});
 		}
 	}

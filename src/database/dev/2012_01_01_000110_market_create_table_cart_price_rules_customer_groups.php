@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MarketCreateTableCartPriceRulesCustomerGroups extends Migration
@@ -13,7 +14,7 @@ class MarketCreateTableCartPriceRulesCustomerGroups extends Migration
 	{
 		if (!Schema::hasTable('012_121_cart_price_rules_customer_groups'))
 		{
-			Schema::create('012_121_cart_price_rules_customer_groups', function ($table) {
+			Schema::create('012_121_cart_price_rules_customer_groups', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->integer('cart_price_rule_121')->unsigned();
