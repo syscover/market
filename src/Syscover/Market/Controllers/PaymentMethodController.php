@@ -56,11 +56,11 @@ class PaymentMethodController extends Controller {
             'id_115'                            => $id,
             'lang_115'                          => $request->input('lang'),
             'name_115'                          => $request->input('name'),
-            'order_status_successful_id_115'    => $request->has('orderStatus')? null : $request->input('orderStatus'),
-            'minimum_price_115'                 => $request->has('minimumPrice')? null : $request->input('minimumPrice'),
-            'maximum_price_115'                 => $request->has('maximumPrice')? null : $request->input('maximumPrice'),
-            'instructions_115'                  => $request->has('instructions')? null : $request->input('instructions'),
-            'sorting_115'                       => $request->has('sorting')? null : $request->input('sorting'),
+            'order_status_successful_id_115'    => $request->has('orderStatusSuccessful')? $request->input('orderStatusSuccessful') : null,
+            'minimum_price_115'                 => $request->has('minimumPrice')? $request->input('minimumPrice') : null,
+            'maximum_price_115'                 => $request->has('maximumPrice')? $request->input('maximumPrice') : null,
+            'instructions_115'                  => $request->has('instructions')? $request->input('instructions') : null,
+            'sorting_115'                       => $request->has('sorting')? $request->input('sorting') : null,
             'active_115'                        => $request->has('active'),
             'data_lang_115'                     => PaymentMethod::addLangDataRecord($request->input('lang'), $idLang)
         ]);
@@ -77,11 +77,11 @@ class PaymentMethodController extends Controller {
     {
         PaymentMethod::where('id_115', $parameters['id'])->where('lang_115', $request->input('lang'))->update([
             'name_115'                          => $request->input('name'),
-            'order_status_successful_id_115'    => $request->has('orderStatusSuccessful')? null : $request->input('orderStatusSuccessful'),
-            'minimum_price_115'                 => $request->has('minimumPrice')? null : $request->input('minimumPrice'),
-            'maximum_price_115'                 => $request->has('maximumPrice')? null : $request->input('maximumPrice'),
-            'instructions_115'                  => $request->has('instructions')? null : $request->input('instructions'),
-            'sorting_115'                       => $request->has('sorting')? null : $request->input('sorting'),
+            'order_status_successful_id_115'    => $request->has('orderStatusSuccessful')? $request->input('orderStatusSuccessful') : null,
+            'minimum_price_115'                 => $request->has('minimumPrice')? $request->input('minimumPrice') : null,
+            'maximum_price_115'                 => $request->has('maximumPrice')? $request->input('maximumPrice') : null,
+            'instructions_115'                  => $request->has('instructions')? $request->input('instructions') : null,
+            'sorting_115'                       => $request->has('sorting')? $request->input('sorting') : null,
             'active_115'                        => $request->has('active'),
         ]);
     }
