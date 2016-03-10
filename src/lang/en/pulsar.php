@@ -38,7 +38,7 @@ return [
     'error_coupon_code_07'                          => 'This coupon is not combinable with one of the coupons introduced',
     'error_coupon_code_08'                          => 'This coupon has already been introduced',
     'error_coupon_code_09'                          => 'Currently no shipping costs in the shopping cart',
-    'error_coupon_code_10'                          => 'Your user has exceeded the limit of uses',
+    'error_coupon_code_10'                          => 'Your user has exceeded the limit of uses for this coupon',
     'error_route'                                   => 'Error route',
     'excluding_tax'                                 => 'Excluding tax',
     'free_shipping'                                 => 'Free shipping',

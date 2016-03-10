@@ -38,7 +38,7 @@ return [
     'error_coupon_code_07'                          => 'Este cupón no es combinable con uno de los cupones introducidos',
     'error_coupon_code_08'                          => 'Este cupón ya ha sido introducido',
     'error_coupon_code_09'                          => 'Actualmente no hay costes de envío en el carro de compra',
-    'error_coupon_code_10'                          => 'Su usuario ha superado del límite de usos',
+    'error_coupon_code_10'                          => 'Su usuario ha superado del límite de usos para este cupón',
     'error_route'								    => 'Ruta de error (route)',
     'excluding_tax'								    => 'Sin impuestos',
     'free_shipping'								    => 'Transporte gratuito',
