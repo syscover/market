@@ -22,7 +22,6 @@
 
     @include('pulsar::includes.html.froala_references')
     @include('pulsar::includes.js.attachment', [
-        'action'            => 'create',
         'resource'          => 'market-product',
         'routesConfigFile'  => 'market'])
     @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct'])

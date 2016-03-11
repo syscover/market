@@ -22,7 +22,6 @@
 
     @include('pulsar::includes.html.froala_references')
     @include('pulsar::includes.js.attachment', [
-        'action'            => 'edit',
         'resource'          => 'market-product',
         'routesConfigFile'  => 'market',
         'objectId'          => $object->id_111])
