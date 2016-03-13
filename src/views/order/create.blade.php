@@ -178,7 +178,7 @@
 				])
 				@include('pulsar::includes.html.form_datetimepicker_group', [
 					'name' => 'date',
-					'label' => trans('pulsar::pulsar.date'),
+					'label' => trans_choice('pulsar::pulsar.date', 1),
 					'value' => old('date', date(config('pulsar.datePattern'))),
 					'labelSize' => 4,
 					'fieldSize' => 8,
@@ -361,7 +361,7 @@
 				])
 				@include('pulsar::includes.html.form_datetimepicker_group', [
 					'name' => 'date',
-					'label' => trans('pulsar::pulsar.date'),
+					'label' => trans_choice('pulsar::pulsar.date', 1),
 					'value' => old('date', date(config('pulsar.datePattern'))),
 					'labelSize' => 4,
 					'fieldSize' => 8,
