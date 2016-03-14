@@ -11,6 +11,7 @@ class MarketTableSeeder extends Seeder
 
         $this->call(MarketPackageTableSeeder::class);
         $this->call(MarketResourceTableSeeder::class);
+        $this->call(MarketAttachmentMimeSeeder::class);
 
         Model::reguard();
     }
