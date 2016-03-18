@@ -1,6 +1,7 @@
-<?php namespace Syscover\Pulsar\Controllers;
+<?php namespace Syscover\Market\Controllers;
 
-use Syscover\Pulsar\Models\Package;
+
+use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 
 /**

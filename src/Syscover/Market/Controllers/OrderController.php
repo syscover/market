@@ -2,15 +2,18 @@
 
 use Syscover\Market\Models\Order;
 use Syscover\Market\Models\OrderStatus;
-use Syscover\Pulsar\Controllers\BaseController;
+use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Traits\TraitController;
 
 /**
  * Class OrderController
  * @package Syscover\Market\Controllers
  */
 
-class OrderController extends BaseController
+class OrderController extends Controller
 {
+	use TraitController;
+
 	protected $routeSuffix  = 'marketOrder';
 	protected $folder	   = 'order';
 	protected $package	  = 'market';
