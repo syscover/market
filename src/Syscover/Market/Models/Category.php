@@ -46,9 +46,9 @@ class Category extends Model {
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_110');
     }
 
-    public static function addToGetIndexRecords($parameters)
+    public function addToGetIndexRecords($parameters)
     {
-        $query =  Category::builder();
+        $query = $this->builder();
 
         if(isset($parameters['lang'])) $query->where('lang_110', $parameters['lang']);
 

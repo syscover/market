@@ -69,9 +69,9 @@ class Product extends Model
         return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_113', 'category_113');
     }
 
-    public static function addToGetIndexRecords($parameters)
+    public function addToGetIndexRecords($parameters)
     {
-        $query =  Product::builder();
+        $query = $this->builder();
 
         if(isset($parameters['lang'])) $query->where('lang_112', $parameters['lang']);
 

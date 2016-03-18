@@ -42,9 +42,4 @@ class CustomerDiscountUsed extends Model
         return $query->join('009_301_customer', '012_126_customer_discount_used.customer_126', '=', '009_301_customer.id_301')
             ->join('012_116_order', '012_126_customer_discount_used.order_126', '=', '012_116_order.id_116');
     }
-
-    public static function addToGetIndexRecords($parameters)
-    {
-        return  CustomerDiscountUsed::builder();
-    }
 }

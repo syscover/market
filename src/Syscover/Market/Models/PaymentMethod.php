@@ -48,9 +48,9 @@ class PaymentMethod extends Model {
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_115');
     }
 
-    public static function addToGetIndexRecords($parameters)
+    public function addToGetIndexRecords($parameters)
     {
-        $query =  PaymentMethod::builder();
+        $query = $this->builder();
 
         if(isset($parameters['lang'])) $query->where('lang_115', $parameters['lang']);
 

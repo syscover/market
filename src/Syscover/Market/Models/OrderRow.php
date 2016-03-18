@@ -42,9 +42,4 @@ class OrderRow extends Model
     {
         return $query->leftJoin('012_111_product', '012_117_order_row.product_117', '=', '012_111_product.id_111');
     }
-
-    protected static function addToGetIndexRecords($parameters)
-    {
-        return OrderRow::builder();
-    }
 }

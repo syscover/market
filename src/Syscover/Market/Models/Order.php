@@ -62,9 +62,4 @@ class Order extends Model
     {
         return $this->hasMany('Syscover\Market\Models\OrderRow', 'order_117');
     }
-
-    protected static function addToGetIndexRecords($parameters)
-    {
-        return Order::builder();
-    }
 }

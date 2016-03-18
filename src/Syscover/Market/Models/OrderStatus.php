@@ -48,9 +48,9 @@ class OrderStatus extends Model {
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_114');
     }
 
-    public static function addToGetIndexRecords($parameters)
+    public function addToGetIndexRecords($parameters)
     {
-        $query =  OrderStatus::builder();
+        $query = $this->builder();
 
         if(isset($parameters['lang'])) $query->where('lang_114', $parameters['lang']);
 
