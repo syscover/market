@@ -70,7 +70,7 @@ class CartPriceRule extends Model
         return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_id_017');
     }
 
-    public function addToGetIndexRecords($parameters)
+    public function addToGetIndexRecords($request, $parameters)
     {
         return  $this->builder($parameters['lang']);
     }
