@@ -1,6 +1,5 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Illuminate\Http\Request;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Pulsar\Traits\TraitController;
@@ -27,7 +26,7 @@ class CartPriceRuleController extends Controller {
         return $parameters;
     }
 
-    public function createCustomRecord($request, $parameters)
+    public function createCustomRecord($parameters)
     {
         $parameters['discountTypes'] = array_map(function($object) {
             $object->name = trans($object->name);
@@ -37,17 +36,17 @@ class CartPriceRuleController extends Controller {
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         // check if there is id
-        if($request->has('id'))
+        if($this->request->has('id'))
         {
             // en el caso de que exista un ID, lo recogemos para crear el JSON dentro del campo data_lang_120
-            $idLang         = $request->input('id');
+            $idLang         = $this->request->input('id');
 
             // recogemos los datos de los TEXT IDs del objeto del idioma base
-            $idName         = $request->input('idName');
-            $idDescription  = $request->input('idDescription');
+            $idName         = $this->request->input('idName');
+            $idDescription  = $this->request->input('idDescription');
         }
         else
         {
@@ -61,54 +60,54 @@ class CartPriceRuleController extends Controller {
             $idDescription  = $id;
         }
 
-        if(!$request->has('id'))
+        if(!$this->request->has('id'))
         {
             CartPriceRule::create([
                 'name_text_120'                 => $idName,
                 'description_text_120'          => $idDescription,
-                'active_120'                    => $request->has('active'),
-                'has_coupon_120'                => $request->has('hasCoupon'),
-                'coupon_code_120'               => $request->has('couponCode') ? $request->input('couponCode') : null,
-                'combinable_120'                => $request->has('combinable'),
-                'uses_coupon_120'               => $request->has('usesCoupon') ? $request->input('usesCoupon') : null,
-                'uses_customer_120'             => $request->has('usesCustomer') ? $request->input('usesCustomer') : null,
+                'active_120'                    => $this->request->has('active'),
+                'has_coupon_120'                => $this->request->has('hasCoupon'),
+                'coupon_code_120'               => $this->request->has('couponCode') ? $this->request->input('couponCode') : null,
+                'combinable_120'                => $this->request->has('combinable'),
+                'uses_coupon_120'               => $this->request->has('usesCoupon') ? $this->request->input('usesCoupon') : null,
+                'uses_customer_120'             => $this->request->has('usesCustomer') ? $this->request->input('usesCustomer') : null,
                 'total_used_120'                => 0,
-                'enable_from_120'               => $request->has('enableFrom')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableFrom'))->getTimestamp() : null,
-                'enable_from_text_120'          => $request->has('enableFrom')? $request->input('enableFrom') : null,
-                'enable_to_120'                 => $request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableTo'))->getTimestamp() : null,
-                'enable_to_text_120'            => $request->has('enableTo')? $request->input('enableTo') : null,
-                'discount_type_120'             => $request->has('discountType') ? $request->input('discountType') : null,
-                'discount_fixed_amount_120'     => $request->has('discountFixedAmount') ? $request->input('discountFixedAmount') : null,
-                'discount_percentage_120'       => $request->has('discountPercentage') ? $request->input('discountPercentage') : null,
-                'maximum_discount_amount_120'   => $request->has('maximumDiscountAmount') ? $request->input('maximumDiscountAmount') : null,
-                'apply_shipping_amount_120'     => $request->has('applyShippingAmount'),
-                'free_shipping_120'             => $request->has('freeShipping'),
+                'enable_from_120'               => $this->request->has('enableFrom')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $this->request->input('enableFrom'))->getTimestamp() : null,
+                'enable_from_text_120'          => $this->request->has('enableFrom')? $this->request->input('enableFrom') : null,
+                'enable_to_120'                 => $this->request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $this->request->input('enableTo'))->getTimestamp() : null,
+                'enable_to_text_120'            => $this->request->has('enableTo')? $this->request->input('enableTo') : null,
+                'discount_type_120'             => $this->request->has('discountType') ? $this->request->input('discountType') : null,
+                'discount_fixed_amount_120'     => $this->request->has('discountFixedAmount') ? $this->request->input('discountFixedAmount') : null,
+                'discount_percentage_120'       => $this->request->has('discountPercentage') ? $this->request->input('discountPercentage') : null,
+                'maximum_discount_amount_120'   => $this->request->has('maximumDiscountAmount') ? $this->request->input('maximumDiscountAmount') : null,
+                'apply_shipping_amount_120'     => $this->request->has('applyShippingAmount'),
+                'free_shipping_120'             => $this->request->has('freeShipping'),
                 'rules_120'                     => null,
-                'data_lang_120'                 => CartPriceRule::addLangDataRecord($request->input('lang'), $idLang)
+                'data_lang_120'                 => CartPriceRule::addLangDataRecord($this->request->input('lang'), $idLang)
             ]);
         }
         else
         {
             // update json lang, to know any languages has this record
-            CartPriceRule::where('id_120', $request->input('id'))->update([
-                'data_lang_120' => CartPriceRule::addLangDataRecord($request->input('lang'), $idLang)
+            CartPriceRule::where('id_120', $this->request->input('id'))->update([
+                'data_lang_120' => CartPriceRule::addLangDataRecord($this->request->input('lang'), $idLang)
             ]);
         }
 
         Text::create([
             'id_017'    => $idName,
-            'lang_id_017'  => $request->input('lang'),
-            'text_017'  => $request->has('name')? $request->input('name') : null,
+            'lang_id_017'  => $this->request->input('lang'),
+            'text_017'  => $this->request->has('name')? $this->request->input('name') : null,
         ]);
 
         Text::create([
             'id_017'    => $idDescription,
-            'lang_id_017'  => $request->input('lang'),
-            'text_017'  => $request->has('description')? $request->input('description') : null,
+            'lang_id_017'  => $this->request->input('lang'),
+            'text_017'  => $this->request->has('description')? $this->request->input('description') : null,
         ]);
     }
 
-    public function editCustomRecord($request, $parameters)
+    public function editCustomRecord($parameters)
     {
         $parameters['discountTypes'] = array_map(function($object) {
             $object->name = trans($object->name);
@@ -118,54 +117,54 @@ class CartPriceRuleController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         CartPriceRule::where('id_120', $parameters['id'])->update([
-            'active_120'                    => $request->has('active'),
-            'has_coupon_120'                => $request->has('hasCoupon'),
-            'coupon_code_120'               => $request->has('couponCode')? $request->input('couponCode') : null,
-            'combinable_120'                => $request->has('combinable'),
-            'uses_coupon_120'               => $request->has('usesCoupon')? $request->input('usesCoupon') : null,
-            'uses_customer_120'             => $request->has('usesCustomer')? $request->input('usesCustomer') : null,
-            'enable_from_120'               => $request->has('enableFrom')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableFrom'))->getTimestamp() : null,
-            'enable_from_text_120'          => $request->has('enableFrom')? $request->input('enableFrom') : null,
-            'enable_to_120'                 => $request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $request->input('enableTo'))->getTimestamp() : null,
-            'enable_to_text_120'            => $request->has('enableTo')? $request->input('enableTo') : null,
-            'discount_type_120'             => $request->has('discountType')? $request->input('discountType') : null,
-            'discount_fixed_amount_120'     => $request->has('discountFixedAmount')? $request->input('discountFixedAmount') : null,
-            'discount_percentage_120'       => $request->has('discountPercentage')? $request->input('discountPercentage') : null,
-            'maximum_discount_amount_120'   => $request->has('maximumDiscountAmount')? $request->input('maximumDiscountAmount') : null,
-            'apply_shipping_amount_120'     => $request->has('applyShippingAmount'),
-            'free_shipping_120'             => $request->has('freeShipping'),
+            'active_120'                    => $this->request->has('active'),
+            'has_coupon_120'                => $this->request->has('hasCoupon'),
+            'coupon_code_120'               => $this->request->has('couponCode')? $this->request->input('couponCode') : null,
+            'combinable_120'                => $this->request->has('combinable'),
+            'uses_coupon_120'               => $this->request->has('usesCoupon')? $this->request->input('usesCoupon') : null,
+            'uses_customer_120'             => $this->request->has('usesCustomer')? $this->request->input('usesCustomer') : null,
+            'enable_from_120'               => $this->request->has('enableFrom')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $this->request->input('enableFrom'))->getTimestamp() : null,
+            'enable_from_text_120'          => $this->request->has('enableFrom')? $this->request->input('enableFrom') : null,
+            'enable_to_120'                 => $this->request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $this->request->input('enableTo'))->getTimestamp() : null,
+            'enable_to_text_120'            => $this->request->has('enableTo')? $this->request->input('enableTo') : null,
+            'discount_type_120'             => $this->request->has('discountType')? $this->request->input('discountType') : null,
+            'discount_fixed_amount_120'     => $this->request->has('discountFixedAmount')? $this->request->input('discountFixedAmount') : null,
+            'discount_percentage_120'       => $this->request->has('discountPercentage')? $this->request->input('discountPercentage') : null,
+            'maximum_discount_amount_120'   => $this->request->has('maximumDiscountAmount')? $this->request->input('maximumDiscountAmount') : null,
+            'apply_shipping_amount_120'     => $this->request->has('applyShippingAmount'),
+            'free_shipping_120'             => $this->request->has('freeShipping'),
             //'rules_120'                     => null
         ]);
 
-        Text::where('id_017', $request->input('idName'))->where('lang_id_017', $request->input('lang'))->update([
-            'text_017'  => $request->has('name')? $request->input('name') : null,
+        Text::where('id_017', $this->request->input('idName'))->where('lang_id_017', $this->request->input('lang'))->update([
+            'text_017'  => $this->request->has('name')? $this->request->input('name') : null,
         ]);
 
-        Text::where('id_017', $request->input('idDescription'))->where('lang_id_017', $request->input('lang'))->update([
-            'text_017'  => $request->has('description')? $request->input('description') : null,
+        Text::where('id_017', $this->request->input('idDescription'))->where('lang_id_017', $this->request->input('lang'))->update([
+            'text_017'  => $this->request->has('description')? $this->request->input('description') : null,
         ]);
     }
 
-    public function deleteCustomRecord($request, $object)
+    public function deleteCustomRecord($object)
     {
         // delete texts
         Text::where('id_017', $object->name_text_120)->delete();
         Text::where('id_017', $object->description_text_120)->delete();
     }
 
-    public function deleteCustomTranslationRecord($request, $object)
+    public function deleteCustomTranslationRecord($object)
     {
-        $parameters = $request->route()->parameters();
+        $parameters = $this->request->route()->parameters();
 
         // delete texts
         Text::where('id_017', $object->name_text_120)->where('lang_id_017', $parameters['lang'])->delete();
         Text::where('id_017', $object->description_text_120)->where('lang_id_017', $parameters['lang'])->delete();
     }
 
-    public function deleteCustomRecordsSelect($request, $ids)
+    public function deleteCustomRecordsSelect($ids)
     {
         $cartPriceRules = CartPriceRule::getRecordsById($ids);
 
@@ -177,13 +176,13 @@ class CartPriceRuleController extends Controller {
         }
     }
 
-    public function apiGetCouponCode(Request $request)
+    public function apiGetCouponCode()
     {
-        $couponCode = Miscellaneous::generateRandomString((int)$request->input('length'), 'uppercase-number');
+        $couponCode = Miscellaneous::generateRandomString((int)$this->request->input('length'), 'uppercase-number');
 
         while(CartPriceRule::where('coupon_code_120', $couponCode)->count() > 0)
         {
-            $couponCode = Miscellaneous::generateRandomString((int)$request->input('length'), 'uppercase-number');
+            $couponCode = Miscellaneous::generateRandomString((int)$this->request->input('length'), 'uppercase-number');
         }
 
         return response()->json([

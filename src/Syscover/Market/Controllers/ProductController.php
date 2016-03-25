@@ -1,13 +1,11 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Illuminate\Http\Request;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
 use Syscover\Pulsar\Models\AttachmentFamily;
 use Syscover\Pulsar\Models\CustomFieldGroup;
 use Syscover\Pulsar\Traits\TraitController;
-use Syscover\Pulsar\Models\Preference;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
 use Syscover\Market\Models\Category;
@@ -47,9 +45,9 @@ class ProductController extends Controller {
         return $actionUrlParameters;
     }
 
-    public function createCustomRecord($request, $parameters)
+    public function createCustomRecord($parameters)
     {
-        $parameters['categories']          = Category::where('lang_110', $parameters['lang'])->get();
+        $parameters['categories']          = Category::where('lang_110', $parameters['lang']->id_001)->get();
 
         $parameters['productTypes']        = array_map(function($object){
             $object->name = trans($object->name);
@@ -77,13 +75,13 @@ class ProductController extends Controller {
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
-        if(!$request->has('id'))
+        if(! $this->request->has('id'))
         {
             // create new product
             $product = Product::create([
-                'active_111' => $request->input('active', false)
+                'active_111' => $this->request->input('active', false)
             ]);
 
             $id     = $product->id_111;
@@ -92,46 +90,46 @@ class ProductController extends Controller {
         else
         {
             // create product language
-            $id     = $request->input('id');
+            $id     = $this->request->input('id');
             $idLang = $id;
         }
 
         Product::where('id_111', $id)->update([
-            'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
-            'product_type_111'          => $request->input('productType'),
-            'price_type_111'            => $request->input('priceType'),
-            'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
-            'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
-            'sorting_111'               => empty($request->input('sorting'))? null : $request->input('sorting'),
-            'data_lang_111'             => Product::addLangDataRecord($request->input('lang'), $idLang),
+            'custom_field_group_111'    => empty($this->request->input('customFieldGroup'))? null : $this->request->input('customFieldGroup'),
+            'product_type_111'          => $this->request->input('productType'),
+            'price_type_111'            => $this->request->input('priceType'),
+            'price_111'                 => empty($this->request->input('price'))? null : $this->request->input('price'),
+            'weight_111'                => empty($this->request->input('weight'))? null : $this->request->input('weight'),
+            'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
+            'data_lang_111'             => Product::addLangDataRecord($this->request->input('lang'), $idLang),
         ]);
 
         ProductLang::create([
             'id_112'            => $id,
-            'lang_112'          => $request->input('lang'),
-            'name_112'          => $request->input('name'),
-            'slug_112'          => $request->input('slug'),
-            'description_112'   => $request->input('description'),
+            'lang_112'          => $this->request->input('lang'),
+            'name_112'          => $this->request->input('name'),
+            'slug_112'          => $this->request->input('slug'),
+            'description_112'   => $this->request->input('description'),
         ]);
 
         $product = Product::where('id_111', $id)->first();
 
         // set categories
-        if(is_array($request->input('categories')))
+        if(is_array($this->request->input('categories')))
         {
-            $product->getCategories()->sync($request->input('categories'));
+            $product->getCategories()->sync($this->request->input('categories'));
         }
 
         // set attachments
-        $attachments = json_decode($request->input('attachments'));
-        AttachmentLibrary::storeAttachments($attachments, $this->package, 'market-product', $id, $request->input('lang'));
+        $attachments = json_decode($this->request->input('attachments'));
+        AttachmentLibrary::storeAttachments($attachments, $this->package, 'market-product', $id, $this->request->input('lang'));
 
         // set custom fields
-        if(!empty($request->input('customFieldGroup')))
-            CustomFieldResultLibrary::storeCustomFieldResults($request, $request->input('customFieldGroup'), 'market-product', $id, $request->input('lang'));
+        if(!empty($this->request->input('customFieldGroup')))
+            CustomFieldResultLibrary::storeCustomFieldResults($this->request, $this->request->input('customFieldGroup'), 'market-product', $id, $this->request->input('lang'));
     }
 
-    public function editCustomRecord($request, $parameters)
+    public function editCustomRecord($parameters)
     {
         $parameters['categories']           = Category::where('lang_110', $parameters['lang']->id_001)->get();
 
@@ -153,30 +151,30 @@ class ProductController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
         Product::where('id_111', $parameters['id'])->update([
-            'custom_field_group_111'    => empty($request->input('customFieldGroup'))? null : $request->input('customFieldGroup'),
-            'product_type_111'          => $request->input('productType'),
-            'price_type_111'            => $request->input('priceType'),
-            'price_111'                 => empty($request->input('price'))? null : $request->input('price'),
-            'weight_111'                => empty($request->input('weight'))? null : $request->input('weight'),
-            'active_111'                => $request->input('active', false),
-            'sorting_111'               => empty($request->input('sorting'))? null : $request->input('sorting'),
+            'custom_field_group_111'    => empty($this->request->input('customFieldGroup'))? null : $this->request->input('customFieldGroup'),
+            'product_type_111'          => $this->request->input('productType'),
+            'price_type_111'            => $this->request->input('priceType'),
+            'price_111'                 => empty($this->request->input('price'))? null : $this->request->input('price'),
+            'weight_111'                => empty($this->request->input('weight'))? null : $this->request->input('weight'),
+            'active_111'                => $this->request->input('active', false),
+            'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
         ]);
 
-        ProductLang::where('id_112', $parameters['id'])->where('lang_112', $request->input('lang'))->update([
-            'name_112'          => $request->input('name'),
-            'slug_112'          => $request->input('slug'),
-            'description_112'   => $request->input('description'),
+        ProductLang::where('id_112', $parameters['id'])->where('lang_112', $this->request->input('lang'))->update([
+            'name_112'          => $this->request->input('name'),
+            'slug_112'          => $this->request->input('slug'),
+            'description_112'   => $this->request->input('description'),
         ]);
 
         $product = Product::where('id_111', $parameters['id'])->first();
 
         // categories
-        if(is_array($request->input('categories')))
+        if(is_array($this->request->input('categories')))
         {
-            $product->getCategories()->sync($request->input('categories'));
+            $product->getCategories()->sync($this->request->input('categories'));
         }
         else
         {
@@ -184,41 +182,41 @@ class ProductController extends Controller {
         }
 
         // set custom fields
-        if(!empty($request->input('customFieldGroup')))
+        if(!empty($this->request->input('customFieldGroup')))
         {
-            CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $parameters['id'], $request->input('lang'));
-            CustomFieldResultLibrary::storeCustomFieldResults($request, $request->input('customFieldGroup'), 'market-product', $parameters['id'], $request->input('lang'));
+            CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $parameters['id'], $this->request->input('lang'));
+            CustomFieldResultLibrary::storeCustomFieldResults($this->request, $this->request->input('customFieldGroup'), 'market-product', $parameters['id'], $this->request->input('lang'));
         }
     }
 
-    public function deleteCustomRecord($request, $object)
+    public function deleteCustomRecord($object)
     {
         // delete all attachments
-        AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $object->id_111);
+        AttachmentLibrary::deleteAttachment($this->package, $this->request->route()->getAction()['resource'], $object->id_111);
         CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_111);
     }
 
-    public function deleteCustomTranslationRecord($request, $object)
+    public function deleteCustomTranslationRecord($object)
     {
         // delete all attachments from lang object
         AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
         CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->id_112);
     }
 
-    public function deleteCustomRecordsSelect($request, $ids)
+    public function deleteCustomRecordsSelect($ids)
     {
         foreach($ids as $id)
         {
-            AttachmentLibrary::deleteAttachment($this->package, $request->route()->getAction()['resource'], $id);
+            AttachmentLibrary::deleteAttachment($this->package, $this->request->route()->getAction()['resource'], $id);
             CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $id);
         }
     }
 
-    public function apiCheckSlug(Request $request)
+    public function apiCheckSlug()
     {
         return response()->json([
             'status'    => 'success',
-            'slug'      => ProductLang::checkSlug('slug_112', $request->input('slug'), $request->input('id'))
+            'slug'      => ProductLang::checkSlug('slug_112', $this->request->input('slug'), $this->request->input('id'))
         ]);
     }
 }

@@ -29,12 +29,12 @@ class OrderStatusController extends Controller {
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         // check if there is id
-        if($request->has('id'))
+        if($this->request->has('id'))
         {
-            $id     = $request->input('id');
+            $id     = $this->request->input('id');
             $idLang = $id;
         }
         else
@@ -46,18 +46,18 @@ class OrderStatusController extends Controller {
 
         OrderStatus::create([
             'id_114'                => $id,
-            'lang_114'              => $request->input('lang'),
-            'name_114'              => $request->input('name'),
-            'active_114'            => $request->has('active'),
-            'data_lang_114'         => OrderStatus::addLangDataRecord($request->input('lang'), $idLang)
+            'lang_114'              => $this->request->input('lang'),
+            'name_114'              => $this->request->input('name'),
+            'active_114'            => $this->request->has('active'),
+            'data_lang_114'         => OrderStatus::addLangDataRecord($this->request->input('lang'), $idLang)
         ]);
     }
 
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
-        OrderStatus::where('id_114', $parameters['id'])->where('lang_114', $request->input('lang'))->update([
-            'name_114'              => $request->input('name'),
-            'active_114'            => $request->has('active'),
+        OrderStatus::where('id_114', $parameters['id'])->where('lang_114', $this->request->input('lang'))->update([
+            'name_114'              => $this->request->input('name'),
+            'active_114'            => $this->request->has('active'),
         ]);
     }
 }

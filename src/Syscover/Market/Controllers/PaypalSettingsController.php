@@ -35,11 +35,11 @@ class PayPalSettingsController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
-        Preference::setValue('marketPayPalDescriptionItemList', 12, $request->input('marketPayPalDescriptionItemList'));
-        Preference::setValue('marketPayPalSuccessRoute', 12, $request->input('marketPayPalSuccessRoute'));
-        Preference::setValue('marketPayPalErrorRoute', 12, $request->input('marketPayPalErrorRoute'));
-        Preference::setValue('marketPayPalShippingDescription', 12, $request->input('marketPayPalShippingDescription'));
+        Preference::setValue('marketPayPalDescriptionItemList', 12, $this->request->input('marketPayPalDescriptionItemList'));
+        Preference::setValue('marketPayPalSuccessRoute', 12, $this->request->input('marketPayPalSuccessRoute'));
+        Preference::setValue('marketPayPalErrorRoute', 12, $this->request->input('marketPayPalErrorRoute'));
+        Preference::setValue('marketPayPalShippingDescription', 12, $this->request->input('marketPayPalShippingDescription'));
     }
 }

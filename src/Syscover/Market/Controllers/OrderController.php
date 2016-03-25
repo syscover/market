@@ -38,44 +38,44 @@ class OrderController extends Controller
 		return $actionUrlParameters;
 	}
 
-	public function createCustomRecord($request, $parameters)
+	public function createCustomRecord($parameters)
 	{
 		$parameters['orderStatus'] = OrderStatus::builder()->where('lang_114', session('baseLang')->id_001)->where('active_114', true)->get();
 
 		return $parameters;
 	}
 
-	public function storeCustomRecord($request, $parameters)
+	public function storeCustomRecord($parameters)
 	{
 		$orderDate = date('U');
 
 		Order::create([
-			'group_116'					=> $request->input('group'),
-			'date_116'					=> $request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $request->input('date'))->getTimestamp() : $orderDate,
-			'date_text_116'				=> $request->has('date')?  $request->input('date') : date(config('pulsar.datePattern') . ' H:i', $orderDate),
-			'company_116'				=> empty($request->input('company'))? null : $request->input('company'),
-			'tin_116'					=> empty($request->input('tin'))? null : $request->input('tin'),
-			'gender_116'				=> empty($request->input('gender'))? null : $request->input('gender'),
-			'name_116'					=> empty($request->input('name'))? null : $request->input('name'),
-			'surname_116'				=> empty($request->input('surname'))? null : $request->input('surname'),
-			'avatar_116'				=> empty($request->input('avatar'))? null : $request->input('avatar'),
-			'birth_date_116'			=> $request->has('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $request->input('birthDate'))->getTimestamp() : null,
-			'email_116'					=> $request->input('email'),
-			'phone_116'					=> empty($request->input('phone'))? null : $request->input('phone'),
-			'mobile_116'				=> empty($request->input('phone'))? null : $request->input('mobile'),
-			'user_116'					=> $request->input('user'),
-			'password_116'				=> Hash::make($request->input('password')),
-			'active_116'				=> $request->has('active'),
+			'group_116'					=> $this->request->input('group'),
+			'date_116'					=> $this->request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('date'))->getTimestamp() : $orderDate,
+			'date_text_116'				=> $this->request->has('date')?  $this->request->input('date') : date(config('pulsar.datePattern') . ' H:i', $orderDate),
+			'company_116'				=> empty($this->request->input('company'))? null : $this->request->input('company'),
+			'tin_116'					=> empty($this->request->input('tin'))? null : $this->request->input('tin'),
+			'gender_116'				=> empty($this->request->input('gender'))? null : $this->request->input('gender'),
+			'name_116'					=> empty($this->request->input('name'))? null : $this->request->input('name'),
+			'surname_116'				=> empty($this->request->input('surname'))? null : $this->request->input('surname'),
+			'avatar_116'				=> empty($this->request->input('avatar'))? null : $this->request->input('avatar'),
+			'birth_date_116'			=> $this->request->has('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('birthDate'))->getTimestamp() : null,
+			'email_116'					=> $this->request->input('email'),
+			'phone_116'					=> empty($this->request->input('phone'))? null : $this->request->input('phone'),
+			'mobile_116'				=> empty($this->request->input('phone'))? null : $this->request->input('mobile'),
+			'user_116'					=> $this->request->input('user'),
+			'password_116'				=> Hash::make($this->request->input('password')),
+			'active_116'				=> $this->request->has('active'),
 			'confirmed_116'				=> false,
-			'country_116'				=> $request->has('country')? $request->input('country') : null,
-			'territorial_area_1_116'	=> $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-			'territorial_area_2_116'	=> $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-			'territorial_area_3_116'	=> $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-			'cp_116'					=> empty($request->input('cp'))? null : $request->input('cp'),
-			'locality_116'				=> empty($request->input('locality'))? null : $request->input('locality'),
-			'address_116'				=> empty($request->input('address'))? null : $request->input('address'),
-			'latitude_116'				=> empty($request->input('latitude'))? null : $request->input('latitude'),
-			'longitude_116'				=> empty($request->input('longitude'))? null : $request->input('longitude'),
+			'country_116'				=> $this->request->has('country')? $this->request->input('country') : null,
+			'territorial_area_1_116'	=> $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+			'territorial_area_2_116'	=> $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+			'territorial_area_3_116'	=> $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+			'cp_116'					=> empty($this->request->input('cp'))? null : $this->request->input('cp'),
+			'locality_116'				=> empty($this->request->input('locality'))? null : $this->request->input('locality'),
+			'address_116'				=> empty($this->request->input('address'))? null : $this->request->input('address'),
+			'latitude_116'				=> empty($this->request->input('latitude'))? null : $this->request->input('latitude'),
+			'longitude_116'				=> empty($this->request->input('longitude'))? null : $this->request->input('longitude'),
 		]);
 
 		OrderRow::create([
@@ -99,7 +99,7 @@ class OrderController extends Controller
 		]);
 	}
 
-	public function editCustomRecord($request, $parameters)
+	public function editCustomRecord($parameters)
 	{
 		$parameters['groups']	   = Group::all();
 
@@ -111,34 +111,34 @@ class OrderController extends Controller
 		return $parameters;
 	}
 
-	public function updateCustomRecord($request, $parameters)
+	public function updateCustomRecord($parameters)
 	{
 		Order::where('id_116', $parameters['id'])->update([
-			'group_116'					=> $request->input('group'),
-			'date_116'					=> $request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $request->input('date'))->getTimestamp() : null,
-			'date_text_116'				=> $request->has('date')?  $request->input('date') : date(config('pulsar.datePattern') . ' H:i'),
-			'company_116'				=> empty($request->input('company'))? null : $request->input('company'),
-			'tin_116'					=> empty($request->input('tin'))? null : $request->input('tin'),
-			'gender_116'				=> empty($request->input('gender'))? null : $request->input('gender'),
-			'name_116'					=> empty($request->input('name'))? null : $request->input('name'),
-			'surname_116'				=> empty($request->input('surname'))? null : $request->input('surname'),
-			'avatar_116'				=> empty($request->input('avatar'))? null : $request->input('avatar'),
-			'birth_date_116'			=> $request->has('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $request->input('birthDate'))->getTimestamp() : null,
-			'email_116'					=> $request->input('email'),
-			'phone_116'					=> empty($request->input('phone'))? null : $request->input('phone'),
-			'mobile_116'				=> empty($request->input('phone'))? null : $request->input('mobile'),
-			'user_116'					=> $request->input('user'),
-			'password_116'				=> Hash::make($request->input('password')),
-			'active_116'				=> $request->has('active'),
-			'country_116'				=> $request->has('country')? $request->input('country') : null,
-			'territorial_area_1_116'	=> $request->has('territorialArea1')? $request->input('territorialArea1') : null,
-			'territorial_area_2_116'	=> $request->has('territorialArea2')? $request->input('territorialArea2') : null,
-			'territorial_area_3_116'	=> $request->has('territorialArea3')? $request->input('territorialArea3') : null,
-			'cp_116'					=> empty($request->input('cp'))? null : $request->input('cp'),
-			'locality_116'				=> empty($request->input('locality'))? null : $request->input('locality'),
-			'address_116'				=> empty($request->input('address'))? null : $request->input('address'),
-			'latitude_116'				=> empty($request->input('latitude'))? null : $request->input('latitude'),
-			'longitude_116'				=> empty($request->input('longitude'))? null : $request->input('longitude'),
+			'group_116'					=> $this->request->input('group'),
+			'date_116'					=> $this->request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('date'))->getTimestamp() : null,
+			'date_text_116'				=> $this->request->has('date')?  $this->request->input('date') : date(config('pulsar.datePattern') . ' H:i'),
+			'company_116'				=> empty($this->request->input('company'))? null : $this->request->input('company'),
+			'tin_116'					=> empty($this->request->input('tin'))? null : $this->request->input('tin'),
+			'gender_116'				=> empty($this->request->input('gender'))? null : $this->request->input('gender'),
+			'name_116'					=> empty($this->request->input('name'))? null : $this->request->input('name'),
+			'surname_116'				=> empty($this->request->input('surname'))? null : $this->request->input('surname'),
+			'avatar_116'				=> empty($this->request->input('avatar'))? null : $this->request->input('avatar'),
+			'birth_date_116'			=> $this->request->has('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('birthDate'))->getTimestamp() : null,
+			'email_116'					=> $this->request->input('email'),
+			'phone_116'					=> empty($this->request->input('phone'))? null : $this->request->input('phone'),
+			'mobile_116'				=> empty($this->request->input('phone'))? null : $this->request->input('mobile'),
+			'user_116'					=> $this->request->input('user'),
+			'password_116'				=> Hash::make($this->request->input('password')),
+			'active_116'				=> $this->request->has('active'),
+			'country_116'				=> $this->request->has('country')? $this->request->input('country') : null,
+			'territorial_area_1_116'	=> $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
+			'territorial_area_2_116'	=> $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
+			'territorial_area_3_116'	=> $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
+			'cp_116'					=> empty($this->request->input('cp'))? null : $this->request->input('cp'),
+			'locality_116'				=> empty($this->request->input('locality'))? null : $this->request->input('locality'),
+			'address_116'				=> empty($this->request->input('address'))? null : $this->request->input('address'),
+			'latitude_116'				=> empty($this->request->input('latitude'))? null : $this->request->input('latitude'),
+			'longitude_116'				=> empty($this->request->input('longitude'))? null : $this->request->input('longitude'),
 		]);
 	}
 }

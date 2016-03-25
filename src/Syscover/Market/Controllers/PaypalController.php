@@ -1,6 +1,5 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -54,11 +53,11 @@ class PayPalController extends Controller
         ]);
     }
 
-    public function createPayment(Request $request)
+    public function createPayment()
     {
-        if($request->has('_order'))
+        if( $this->request->has('_order'))
         {
-            $order     = Order::builder()->where('id_116', $request->input('_order'))->first();
+            $order     = Order::builder()->where('id_116',  $this->request->input('_order'))->first();
             $orderRows = $order->getOrderRows;
         }
         else
@@ -156,13 +155,12 @@ class PayPalController extends Controller
             ->with('error', 'Unknown error occurred');
     }
 
-    public function checkoutPayment(Request $request)
+    public function checkoutPayment()
     {
-        $paymentId  = $request->input('paymentId');
+        $paymentId  =  $this->request->input('paymentId');
         $payment    = Payment::get($paymentId, $this->apiContext);
-
-        $execution = new PaymentExecution();
-        $execution->setPayerId($request->input('PayerID'));
+        $execution  = new PaymentExecution();
+        $execution->setPayerId( $this->request->input('PayerID'));
 
         try
         {
@@ -174,7 +172,7 @@ class PayPalController extends Controller
             exit(1);
         }
 
-        $order = Order::builder()->where('payment_id_116', $request->input('paymentId'))->first();
+        $order = Order::builder()->where('payment_id_116',  $this->request->input('paymentId'))->first();
 
         if($response->getState() == 'approved')
         {
@@ -208,8 +206,6 @@ class PayPalController extends Controller
             return view('pulsar::common.views.html_display', $viewResponse);
         }
     }
-
-
 
     public function createWebProfile()
     {
@@ -257,7 +253,7 @@ class PayPalController extends Controller
             ->setInputFields($inputFields);
 
         // For Sample Purposes Only.
-        $request = clone $webProfile;
+         $this->request = clone $webProfile;
 
         try
         {
@@ -266,12 +262,12 @@ class PayPalController extends Controller
         }
         catch (\PayPal\Exception\PPConnectionException $ex)
         {
-            ResultPrinter::printError("Created Web Profile", "Web Profile", null, $request, $ex);
+            ResultPrinter::printError("Created Web Profile", "Web Profile", null,  $this->request, $ex);
             exit(1);
         }
         var_dump($createProfileResponse);
 
-        //ResultPrinter::printResult("Created Web Profile", "Web Profile", $createProfileResponse->getId(), $request, $createProfileResponse);
+        //ResultPrinter::printResult("Created Web Profile", "Web Profile", $createProfileResponse->getId(),  $this->request, $createProfileResponse);
 
         //return $createProfileResponse;
     }

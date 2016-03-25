@@ -39,9 +39,9 @@ class TaxSettingsController extends Controller {
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
-        Preference::setValue('marketTaxProductPrices', 12, $request->input('productPricesValue'));
-        Preference::setValue('marketTaxShippingPrices', 12, $request->input('shippingPricesValue'));
+        Preference::setValue('marketTaxProductPrices', 12, $this->request->input('productPricesValue'));
+        Preference::setValue('marketTaxShippingPrices', 12, $this->request->input('shippingPricesValue'));
     }
 }

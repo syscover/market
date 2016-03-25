@@ -1,6 +1,5 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Illuminate\Http\Request;
 use Syscover\Market\Models\Category;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
@@ -25,19 +24,19 @@ class CategoryController extends Controller {
         return $parameters;
     }
 
-    public function createCustomRecord($request, $parameters)
+    public function createCustomRecord($parameters)
     {
         $parameters['categories'] = Category::all();
 
         return $parameters;
     }
 
-    public function storeCustomRecord($request, $parameters)
+    public function storeCustomRecord($parameters)
     {
         // check if there is id
-        if($request->has('id'))
+        if($this->request->has('id'))
         {
-            $id     = $request->input('id');
+            $id     = $this->request->input('id');
             $idLang = $id;
         }
         else
@@ -49,39 +48,39 @@ class CategoryController extends Controller {
 
         Category::create([
             'id_110'            => $id,
-            'lang_110'          => $request->input('lang'),
-            'parent_110'        => empty($request->input('parent'))? null : $request->input('parent'),
-            'name_110'          => $request->input('name'),
-            'slug_110'          => $request->input('slug'),
-            'active_110'        => $request->input('active', false),
-            'description_110'   => $request->input('description'),
-            'data_lang_110'     => Category::addLangDataRecord($request->input('lang'), $idLang)
+            'lang_110'          => $this->request->input('lang'),
+            'parent_110'        => empty($this->request->input('parent'))? null : $this->request->input('parent'),
+            'name_110'          => $this->request->input('name'),
+            'slug_110'          => $this->request->input('slug'),
+            'active_110'        => $this->request->input('active', false),
+            'description_110'   => $this->request->input('description'),
+            'data_lang_110'     => Category::addLangDataRecord($this->request->input('lang'), $idLang)
         ]);
     }
 
-    public function editCustomRecord($request, $parameters)
+    public function editCustomRecord($parameters)
     {
         $parameters['categories'] = Category::all();
 
         return $parameters;
     }
     
-    public function updateCustomRecord($request, $parameters)
+    public function updateCustomRecord($parameters)
     {
-        Category::where('id_110', $parameters['id'])->where('lang_110', $request->input('lang'))->update([
-            'parent_110'        => $request->input('parent'),
-            'name_110'          => $request->input('name'),
-            'slug_110'          => $request->input('slug'),
-            'active_110'        => $request->input('active', false),
-            'description_110'   => $request->input('description'),
+        Category::where('id_110', $parameters['id'])->where('lang_110', $this->request->input('lang'))->update([
+            'parent_110'        => $this->request->input('parent'),
+            'name_110'          => $this->request->input('name'),
+            'slug_110'          => $this->request->input('slug'),
+            'active_110'        => $this->request->input('active', false),
+            'description_110'   => $this->request->input('description'),
         ]);
     }
 
-    public function apiCheckSlug(Request $request)
+    public function apiCheckSlug()
     {
         return response()->json([
             'status'    => 'success',
-            'slug'      => Category::checkSlug('slug_110', $request->input('slug'), $request->input('id'))
+            'slug'      => Category::checkSlug('slug_110', $this->request->input('slug'), $this->request->input('id'))
         ]);
     }
 }
