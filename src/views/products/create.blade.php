@@ -24,7 +24,7 @@
     @include('pulsar::includes.js.attachment', [
         'resource'          => 'market-product',
         'routesConfigFile'  => 'market'])
-    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct'])
+    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct', 'lang'  => null])
 
     @include('market::products.includes.common_script', ['action' => 'create'])
     @include('pulsar::includes.js.custom_fields', ['resource' => 'market-product', 'action' => 'create'])

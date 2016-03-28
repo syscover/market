@@ -15,7 +15,7 @@
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/attachment/js/attachment-library.js') }}"></script>
     <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/vendor/speakingurl/speakingurl.min.js') }}"></script>
 
-    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketCategory'])
+    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketCategory', 'lang'  => null])
 
     <script type="text/javascript">
         $(document).ready(function() {

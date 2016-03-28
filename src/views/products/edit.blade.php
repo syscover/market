@@ -25,7 +25,7 @@
         'resource'          => 'market-product',
         'routesConfigFile'  => 'market',
         'objectId'          => $object->id_111])
-    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct'])
+    @include('pulsar::includes.js.check_slug', ['route' => 'apiCheckSlugMarketProduct', 'lang'  => null])
     @include('pulsar::includes.js.delete_translation_record')
 
     @include('market::products.includes.common_script', ['action' => 'edit'])
