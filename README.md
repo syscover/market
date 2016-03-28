@@ -1,4 +1,4 @@
-# Marketplace to Laravel 5
+# Marketplace for Laravel 5
 
 ## Installation
 
