@@ -29,7 +29,7 @@ class ProductController extends Controller {
     protected $icon         = 'fa fa-cube';
     protected $objectTrans  = 'product';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['urlParameters']['lang']    = session('baseLang')->id_001;
         // init record on tap 3

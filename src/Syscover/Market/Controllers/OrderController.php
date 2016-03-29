@@ -23,7 +23,7 @@ class OrderController extends Controller
 	protected $icon		 = 'fa fa-shopping-basket';
 	protected $objectTrans  = 'order';
 
-	public function indexCustom($parameters)
+	public function customIndex($parameters)
 	{
 		// init record on tap 4
 		$parameters['urlParameters']['tab']	 = 4;

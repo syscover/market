@@ -19,7 +19,7 @@ class CartPriceRuleController extends Controller {
     protected $icon         = 'fa fa-shopping-cart';
     protected $objectTrans  = 'cart_price_rule';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['urlParameters']['lang']    = session('baseLang')->id_001;
 

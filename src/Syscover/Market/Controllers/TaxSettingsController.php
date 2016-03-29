@@ -22,7 +22,7 @@ class TaxSettingsController extends Controller {
     protected $icon         = 'fa fa-cog';
     protected $objectTrans  = 'setting';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['productPrices']       = array_map(function($object){
             $object->name = trans($object->name);

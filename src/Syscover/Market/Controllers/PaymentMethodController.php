@@ -23,7 +23,7 @@ class PaymentMethodController extends Controller {
     protected $icon         = 'fa fa-random';
     protected $objectTrans  = 'payment_method';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['urlParameters']['lang'] = session('baseLang')->id_001;
 

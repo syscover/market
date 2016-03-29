@@ -17,7 +17,7 @@ class CategoryController extends Controller {
     protected $icon         = 'fa fa-cubes';
     protected $objectTrans  = 'category';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['urlParameters']['lang']    = session('baseLang')->id_001;
 

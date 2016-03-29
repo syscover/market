@@ -23,7 +23,7 @@ class PayPalSettingsController extends Controller {
     protected $icon         = 'fa fa-paypal';
     protected $objectTrans  = 'paypal';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $preferences = Preference::getValues(12);
 

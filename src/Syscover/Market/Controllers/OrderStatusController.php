@@ -22,7 +22,7 @@ class OrderStatusController extends Controller {
     protected $icon         = 'fa fa-refresh';
     protected $objectTrans  = 'order_status';
 
-    public function indexCustom($parameters)
+    public function customIndex($parameters)
     {
         $parameters['urlParameters']['lang'] = session('baseLang')->id_001;
 
