@@ -95,12 +95,12 @@ class ProductController extends Controller {
         }
 
         Product::where('id_111', $id)->update([
-            'custom_field_group_111'    => empty($this->request->input('customFieldGroup'))? null : $this->request->input('customFieldGroup'),
+            'custom_field_group_111'    => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
             'product_type_111'          => $this->request->input('productType'),
             'price_type_111'            => $this->request->input('priceType'),
-            'price_111'                 => empty($this->request->input('price'))? null : $this->request->input('price'),
-            'weight_111'                => empty($this->request->input('weight'))? null : $this->request->input('weight'),
-            'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
+            'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
+            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
+            'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
             'data_lang_111'             => Product::addLangDataRecord($this->request->input('lang'), $idLang),
         ]);
 
@@ -154,11 +154,11 @@ class ProductController extends Controller {
     public function updateCustomRecord($parameters)
     {
         Product::where('id_111', $parameters['id'])->update([
-            'custom_field_group_111'    => empty($this->request->input('customFieldGroup'))? null : $this->request->input('customFieldGroup'),
+            'custom_field_group_111'    => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
             'product_type_111'          => $this->request->input('productType'),
             'price_type_111'            => $this->request->input('priceType'),
-            'price_111'                 => empty($this->request->input('price'))? null : $this->request->input('price'),
-            'weight_111'                => empty($this->request->input('weight'))? null : $this->request->input('weight'),
+            'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
+            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
             'active_111'                => $this->request->input('active', false),
             'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
         ]);
