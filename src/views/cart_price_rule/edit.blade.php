@@ -21,7 +21,7 @@
     @include('pulsar::includes.js.delete_translation_record')
     @include('pulsar::includes.html.froala_references')
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             $('.wysiwyg').froalaEditor({
                 language: '{{ config('app.locale') }}',

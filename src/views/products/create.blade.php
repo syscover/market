@@ -28,7 +28,7 @@
 
     @include('market::products.includes.common_script', ['action' => 'create'])
     @include('pulsar::includes.js.custom_fields', ['resource' => 'market-product', 'action' => 'create'])
-    <!-- ./market::products.create -->
+    <!-- /.market::products.create -->
 @stop
 
 @section('layoutTabHeader')

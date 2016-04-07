@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- market::cart_price_rule.index -->
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
             {

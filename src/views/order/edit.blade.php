@@ -31,7 +31,7 @@
 
     @include('pulsar::includes.html.froala_references')
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             $.getAddress({
                 id:                         '01',
@@ -155,7 +155,7 @@
             <div id="locationMapWrapper"></div>
         </div>
     </div>
-    <!-- ./crm::customer.create -->
+    <!-- /.crm::customer.create -->
 @stop
 
 @section('box_tab2')

@@ -30,7 +30,7 @@
 
     @include('market::products.includes.common_script', ['action' => 'edit'])
     @include('pulsar::includes.js.custom_fields', ['resource' => 'market-product', 'action' => 'edit'])
-    <!-- ./market::products.edit -->
+    <!-- /.market::products.edit -->
 @stop
 
 @section('layoutTabHeader')
