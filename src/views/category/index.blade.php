@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- market::categories.index -->
-    <script type="text/javascript" src="{{ asset('packages/syscover/pulsar/plugins/nestable/jquery.nestable.min.js') }}"></script>
+    <script src="{{ asset('packages/syscover/pulsar/plugins/nestable/jquery.nestable.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
