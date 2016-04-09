@@ -1,4 +1,4 @@
-@extends('pulsar::layouts.form', ['action' => 'store'])
+@extends('pulsar::layouts.form')
 
 @section('head')
     @parent

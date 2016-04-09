@@ -23,14 +23,6 @@
         });
 
         // set tab active
-        @if($tab == 0)
-        $('.tabbable li:eq(0) a').tab('show');
-        @elseif($tab == 1)
-        $('.tabbable li:eq(1) a').tab('show');
-        @elseif($tab == 2)
-        $('.tabbable li:eq(2) a').tab('show');
-        @elseif($tab == 3)
-        $('.tabbable li:eq(3) a').tab('show');
-        @endif
+        $('.tabbable li:eq({{ $tab }}) a').tab('show');
     });
 </script>

@@ -29,16 +29,16 @@
         'lang'  => null
     ])
 
-    @include('market::products.includes.common_script', ['action' => 'create'])
-    @include('pulsar::includes.js.custom_fields', ['resource' => 'market-product', 'action' => 'create'])
+    @include('market::products.includes.common_script')
+    @include('pulsar::includes.js.custom_fields', ['resource' => 'market-product'])
     <!-- /.market::products.create -->
 @stop
 
 @section('layoutTabHeader')
-    @include('pulsar::includes.html.form_record_header', ['action' => 'store'])
+    @include('pulsar::includes.html.form_record_header')
 @stop
 @section('layoutTabFooter')
-    @include('pulsar::includes.html.form_record_footer', ['action' => 'store'])
+    @include('pulsar::includes.html.form_record_footer')
 @stop
 
 @section('box_tab1')
