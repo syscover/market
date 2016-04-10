@@ -55,7 +55,9 @@ class CartPriceRule extends Model
 
     public static function getTranslationRecord($parameters)
     {
-        $cartPriceRule = CartPriceRule::builder($parameters['lang'])->where('id_120', $parameters['id'])->first();
+        $cartPriceRule = CartPriceRule::builder($parameters['lang'])
+            ->where('id_120', $parameters['id'])
+            ->first();
 
         return $cartPriceRule;
     }
