@@ -47,14 +47,14 @@ class ProductController extends Controller {
 
     public function createCustomRecord($parameters)
     {
-        $parameters['categories']          = Category::where('lang_110', $parameters['lang']->id_001)->get();
+        $parameters['categories'] = Category::where('lang_110', $parameters['lang']->id_001)->get();
 
-        $parameters['productTypes']        = array_map(function($object){
+        $parameters['productTypes'] = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         },config('market.productTypes'));
 
-        $parameters['priceTypes']          = array_map(function($object){
+        $parameters['priceTypes'] = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         },config('market.priceTypes'));
@@ -200,7 +200,7 @@ class ProductController extends Controller {
     {
         // delete all attachments from lang object
         AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
-        CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->id_112);
+        CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->lang_112);
     }
 
     public function deleteCustomRecordsSelect($ids)
