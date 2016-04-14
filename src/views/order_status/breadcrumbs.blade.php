@@ -5,4 +5,4 @@
 <li class="current">
     <a href="{{ route($routeSuffix, [session('baseLang')->id_001]) }}">{{ trans_choice($objectTrans, 2) }}</a>
 </li>
-<!-- /market::order_status.breadcrumbs -->
+<!-- /.market::order_status.breadcrumbs -->
