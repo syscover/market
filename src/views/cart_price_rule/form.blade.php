@@ -17,6 +17,7 @@
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    @include('pulsar::includes.js.delete_translation_record')
     @include('pulsar::includes.html.froala_references')
 
     <script>
@@ -60,10 +61,10 @@
                     }
                 })
                 .done (function (data) {
-                    console.log ('image was deleted');
+                    console.log ('image was deleted')
                 })
                 .fail (function () {
-                    console.log ('image delete problem');
+                    console.log ('image delete problem')
                 })
             })
 
@@ -97,7 +98,25 @@
                 $("[name=discountType]").prop("disabled", false)
             })
 
-            @if(!isset($object) || (isset($object) && !$object->has_coupon_120))
+            // edit option
+            @if(isset($object->has_coupon_120))
+                @if(!$object->has_coupon_120)
+                    $("#couponSection").hide();
+                @endif
+                @if($object->discount_type_120 === null || $object->discount_type_120 === 1)
+                    $("#percentageAmountSection, #applyShippingAmountLayer").hide()
+                    $("#fixedAmountSection").hide()
+                @endif
+                @if($object->discount_type_120 === 2)
+                    $("#fixedAmountSection").hide()
+                @endif
+                @if($object->discount_type_120 === 3)
+                    $("#percentageAmountSection, #applyShippingAmountLayer").hide()
+                @endif
+            @endif
+
+            // create option and create lang
+            @if(! isset($object) || (isset($object) && ! $object->has_coupon_120))
                 $("#couponSection").hide()
                 $('#percentageAmountSection, #applyShippingAmountLayer').hide()
                 $('#fixedAmountSection').hide()
@@ -119,7 +138,7 @@
                 {
                     $("[name=couponCode]").val(data.couponCode)
                 }
-            });
+            })
         }
         // TODO: mediante ajax falta comprobar que el código de cupón no existe
     </script>
@@ -129,56 +148,178 @@
     <!-- market::cart_price_rule.create -->
     <div class="row">
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => 'ID', 'name' => 'id',  'value' => old('id', isset($object->id_120)? $object->id_120 : null), 'readOnly' => true])
+            @include('pulsar::includes.html.form_text_group', [
+                'labelSize' => 4,
+                'fieldSize' => 4,
+                'label' => 'ID',
+                'name' => 'id',
+                'value' => old('id', isset($object->id_120)? $object->id_120 : null),
+                'readOnly' => true
+            ])
         </div>
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_image_group', ['labelSize' => 4, 'fieldSize' => 4, 'label' => trans_choice('pulsar::pulsar.language', 1), 'name' => 'lang', 'nameImage' => $lang->name_001, 'value' => $lang->id_001, 'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)])
+            @include('pulsar::includes.html.form_image_group', [
+                'labelSize' => 4,
+                'fieldSize' => 4,
+                'label' => trans_choice('pulsar::pulsar.language', 1),
+                'name' => 'lang',
+                'nameImage' => $lang->name_001,
+                'value' => $lang->id_001,
+                'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)
+            ])
         </div>
     </div>
-    @include('pulsar::includes.html.form_text_group', ['label' => trans('pulsar::pulsar.name'), 'name' => 'name', 'value' => old('name', isset($object->name_text_text)? $object->name_text_text : null), 'maxLength' => '255', 'rangeLength' => '2,255', 'required' => true])
-    @include('pulsar::includes.html.form_hidden', ['name' => 'idName', 'value' => isset($object->name_text_120)? $object->name_text_120 : null])
-    @include('pulsar::includes.html.form_wysiwyg_group', ['labelSize' => 2, 'fieldSize' => 10, 'label' => trans_choice('pulsar::pulsar.description', 1), 'name' => 'description', 'value' => old('description', isset($object->description_text_text)? $object->description_text_text : null)])
-    @include('pulsar::includes.html.form_hidden', ['name' => 'idDescription', 'value' => isset($object->description_text_120)? $object->description_text_120 : null])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('pulsar::pulsar.active'), 'name' => 'active', 'value' => 1, 'checked' => old('active', isset($object)? $object->active_120 : null), 'disabled' => isset($object->id_120)])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.combinable'), 'name' => 'combinable', 'value' => 1, 'checked' => old('combinable', isset($object)? $object->combinable_120 : null), 'disabled' => isset($object->id_120)])
-
-    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.coupon', 1), 'icon' => 'fa fa-shopping-basket'])
-    @include('pulsar::includes.html.form_checkbox_group', ['label' => trans('market::pulsar.has_coupon'), 'name' => 'hasCoupon', 'value' => 1, 'checked' => old('hasCoupon', isset($object)? $object->has_coupon_120 : null), 'disabled' => isset($object->id_120)])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans('pulsar::pulsar.name'),
+        'name' => 'name',
+        'value' => old('name', isset($object->name_text_text)? $object->name_text_text : null),
+        'maxLength' => '255',
+        'rangeLength' => '2,255',
+        'required' => true
+    ])
+    @include('pulsar::includes.html.form_hidden', [
+        'name' => 'idName',
+        'value' => isset($object->name_text_120)? $object->name_text_120 : null
+    ])
+    @include('pulsar::includes.html.form_wysiwyg_group', [
+        'labelSize' => 2,
+        'fieldSize' => 10,
+        'label' => trans_choice('pulsar::pulsar.description', 1),
+        'name' => 'description',
+        'value' => old('description', isset($object->description_text_text)? $object->description_text_text : null)
+    ])
+    @include('pulsar::includes.html.form_hidden', [
+        'name' => 'idDescription',
+        'value' => isset($object->description_text_120)? $object->description_text_120 : null
+    ])
+    @include('pulsar::includes.html.form_checkbox_group', [
+        'label' => trans('pulsar::pulsar.active'),
+        'name' => 'active',
+        'value' => 1,
+        'checked' => old('active', isset($object)? $object->active_120 : null),
+        'disabled' => $action == 'update' || $action == 'store'? false : true
+    ])
+    @include('pulsar::includes.html.form_checkbox_group', [
+        'label' => trans('market::pulsar.combinable'),
+        'name' => 'combinable',
+        'value' => 1,
+        'checked' => old('combinable', isset($object)? $object->combinable_120 : null),
+        'disabled' => $action == 'update' || $action == 'store'? false : true
+    ])
+    @include('pulsar::includes.html.form_section_header', [
+        'label' => trans_choice('market::pulsar.coupon', 1),
+        'icon' => 'fa fa-shopping-basket'
+    ])
+    @include('pulsar::includes.html.form_checkbox_group', [
+        'label' => trans('market::pulsar.has_coupon'),
+        'name' => 'hasCoupon',
+        'value' => 1,
+        'checked' => old('hasCoupon', isset($object)? $object->has_coupon_120 : null),
+        'disabled' => $action == 'update' || $action == 'store'? false : true
+    ])
     <div id="couponSection">
         <div class="row">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans_choice('market::pulsar.coupon', 1), 'name' => 'couponCode',  'value' => old('couponCode', isset($object)? $object->coupon_code_120 : null), 'readOnly' => isset($object->id_120)])
+                @include('pulsar::includes.html.form_text_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 5,
+                    'label' => trans_choice('market::pulsar.coupon', 1),
+                    'name' => 'couponCode',
+                    'value' => old('couponCode', isset($object)? $object->coupon_code_120 : null),
+                    'readOnly' => $action == 'update' || $action == 'store'? false : true
+                ])
             </div>
             <div class="col-md-6"></div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.uses_coupon'), 'name' => 'usesCoupon', 'value' => old('usesCoupon', isset($object->uses_coupon_120)? $object->uses_coupon_120 : null), 'readOnly' => isset($object->id_120)])
+                @include('pulsar::includes.html.form_text_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 5,
+                    'type' => 'number',
+                    'label' => trans('market::pulsar.uses_coupon'),
+                    'name' => 'usesCoupon',
+                    'value' => old('usesCoupon', isset($object->uses_coupon_120)? $object->uses_coupon_120 : null),
+                    'readOnly' => $action == 'update' || $action == 'store'? false : true
+                ])
             </div>
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.uses_customer'), 'name' => 'usesCustomer', 'value' => old('usesCustomer', isset($object->uses_customer_120)? $object->uses_customer_120 : null), 'readOnly' => isset($object->id_120)])
+                @include('pulsar::includes.html.form_text_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 5,
+                    'type' => 'number',
+                    'label' => trans('market::pulsar.uses_customer'),
+                    'name' => 'usesCustomer',
+                    'value' => old('usesCustomer', isset($object->uses_customer_120)? $object->uses_customer_120 : null),
+                    'readOnly' => $action == 'update' || $action == 'store'? false : true
+                ])
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.total_used'), 'name' => 'totalUsed',  'value' => old('totalUsed', isset($object->total_used_120)? $object->total_used_120 : null), 'readOnly' => true])
+                @include('pulsar::includes.html.form_text_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 5,
+                    'label' => trans('market::pulsar.total_used'),
+                    'name' => 'totalUsed',
+                    'value' => old('totalUsed', isset($object->total_used_120)? $object->total_used_120 : null),
+                    'readOnly' => true
+                ])
             </div>
             <div class="col-md-6"></div>
         </div>
     </div>
 
-    @include('pulsar::includes.html.form_section_header', ['label' => trans('pulsar::pulsar.access'), 'icon' => 'fa fa-calendar-check-o'])
+    @include('pulsar::includes.html.form_section_header', [
+        'label' => trans('pulsar::pulsar.access'),
+        'icon' => 'fa fa-calendar-check-o'
+    ])
     <div class="row">
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_datetimepicker_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.enable_from'), 'name' => 'enableFrom', 'value' => old('enableFrom', isset($object->enable_from_120)? date(config('pulsar.datePattern') . ' HH:mm', $object->enable_from_120) : null), 'readOnly' => isset($object->id_120), 'data' => ['format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')) . ' HH:mm', 'locale' => config('app.locale')]])
+            @include('pulsar::includes.html.form_datetimepicker_group', [
+                'labelSize' => 4,
+                'fieldSize' => 5,
+                'label' => trans('market::pulsar.enable_from'),
+                'name' => 'enableFrom',
+                'value' => old('enableFrom', isset($object->enable_from_120)? date(config('pulsar.datePattern') . ' HH:mm', $object->enable_from_120) : null),
+                'readOnly' => $action == 'update' || $action == 'store'? false : true,
+                'data' => [
+                    'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')) . ' HH:mm',
+                    'locale' => config('app.locale')
+                ]
+            ])
         </div>
         <div class="col-md-6">
-            @include('pulsar::includes.html.form_datetimepicker_group', ['labelSize' => 4, 'fieldSize' => 5, 'label' => trans('market::pulsar.enable_to'), 'name' => 'enableTo', 'value' => old('enableTo', isset($object->enable_to_120)? date(config('pulsar.datePattern') . ' HH:mm', $object->enable_to_120) : null), 'readOnly' => isset($object->id_120), 'data' => ['format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')) . ' HH:mm', 'locale' => config('app.locale')]])
+            @include('pulsar::includes.html.form_datetimepicker_group', [
+                'labelSize' => 4,
+                'fieldSize' => 5,
+                'label' => trans('market::pulsar.enable_to'),
+                'name' => 'enableTo',
+                'value' => old('enableTo', isset($object->enable_to_120)? date(config('pulsar.datePattern') . ' HH:mm', $object->enable_to_120) : null),
+                'readOnly' => $action == 'update' || $action == 'store'? false : true,
+                'data' => [
+                    'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')) . ' HH:mm',
+                    'locale' => config('app.locale')
+                ]
+            ])
         </div>
     </div>
 
-    @include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.amount', 2), 'icon' => 'fa fa-gavel'])
-    @include('pulsar::includes.html.form_select_group', ['fieldSize' => 4, 'label' => trans_choice('market::pulsar.discount_type', 1), 'name' => 'discountType', 'value' => old('discountType', isset($object)? $object->discount_type_120 : null), 'required' => true, 'objects' => $discountTypes, 'idSelect' => 'id', 'nameSelect' => 'name', 'disabled' => isset($object->id_120)])
+    @include('pulsar::includes.html.form_section_header', [
+        'label' => trans_choice('pulsar::pulsar.amount', 2),
+        'icon' => 'fa fa-gavel'
+    ])
+    @include('pulsar::includes.html.form_select_group', [
+        'fieldSize' => 4,
+        'label' => trans_choice('market::pulsar.discount_type', 1),
+        'name' => 'discountType',
+        'value' => old('discountType', isset($object)? $object->discount_type_120 : null),
+        'required' => true,
+        'objects' => $discountTypes,
+        'idSelect' => 'id',
+        'nameSelect' => 'name',
+        'disabled' => $action == 'update' || $action == 'store'? false : true
+    ])
     <div>
         <div class="row" id="percentageAmountSection">
             <div class="col-md-6">
@@ -189,11 +330,19 @@
                     'label' => trans('market::pulsar.discount_percentage'),
                     'name' => 'discountPercentage',
                     'value' => old('discountPercentage', isset($object)? $object->discount_percentage_120 : null),
-                    'readOnly' => isset($object->id_120)
+                    'readOnly' => $action == 'update' || $action == 'store'? false : true
                 ])
             </div>
             <div class="col-md-6">
-                @include('pulsar::includes.html.form_text_group', ['labelSize' => 4, 'fieldSize' => 5, 'type' => 'number', 'label' => trans('market::pulsar.maximum_discount_amount'), 'name' => 'maximumDiscountAmount',  'value' => old('maximumDiscountAmount', isset($object)? $object->maximum_discount_amount_120 : null), 'readOnly' => isset($object->id_120)])
+                @include('pulsar::includes.html.form_text_group', [
+                    'labelSize' => 4,
+                    'fieldSize' => 5,
+                    'type' => 'number',
+                    'label' => trans('market::pulsar.maximum_discount_amount'),
+                    'name' => 'maximumDiscountAmount',
+                    'value' => old('maximumDiscountAmount', isset($object)? $object->maximum_discount_amount_120 : null),
+                    'readOnly' => $action == 'update' || $action == 'store'? false : true
+                ])
             </div>
         </div>
         <div class="row" id="fixedAmountSection">
@@ -205,7 +354,7 @@
                     'label' => trans('market::pulsar.discount_amount'),
                     'name' => 'discountFixedAmount',
                     'value' => old('discountFixedAmount', isset($object)? $object->discount_fixed_amount_120 : null),
-                    'readOnly' => isset($object->id_120)
+                    'readOnly' => $action == 'update' || $action == 'store'? false : true
                 ])
             </div>
             <div class="col-md-6">
@@ -218,10 +367,9 @@
             'name' => 'applyShippingAmount',
             'value' => 1,
             'checked' => old('applyShippingAmount', isset($object)? $object->apply_shipping_amount_120 : null),
-            'disabled' => isset($object->id_120)
+            'disabled' => $action == 'update' || $action == 'store'? false : true
         ])
     </div>
-
     @include('pulsar::includes.html.form_section_header', [
         'label' => trans_choice('pulsar::pulsar.shipping', 1),
         'icon' => 'fa fa-truck'
@@ -231,7 +379,7 @@
         'name' => 'freeShipping',
         'value' => 1,
         'checked' => old('freeShipping', isset($object)? $object->free_shipping_120 : null),
-        'disabled' => isset($object->id_120)
+        'disabled' => $action == 'update' || $action == 'store'? false : true
     ])
-    <!-- /market::cart_price_rule.create -->
+    <!-- /.market::cart_price_rule.create -->
 @stop
