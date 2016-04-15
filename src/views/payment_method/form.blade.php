@@ -79,7 +79,7 @@
         'label' => trans('pulsar::pulsar.active'),
         'name' => 'active',
         'value' => 1,
-        'checked' => old('active',  isset($object->active_115))
+        'checked' => old('active', isset($object->active_115)? $object->active_115 : null)
     ])
     <!-- /.market::payment_method.create -->
 @stop

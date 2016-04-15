@@ -1,6 +1,6 @@
 @extends('pulsar::layouts.tab', ['tabs' => [
-		['id' => 'box_tab1', 'name' => trans('market::pulsar.order_tab_order_data')],
-		['id' => 'box_tab2', 'name' => trans('market::pulsar.order_tab_customer_data')],
+		['id' => 'box_tab1', 'name' => trans('market::pulsar.order_data')],
+		['id' => 'box_tab2', 'name' => trans('market::pulsar.customer_data')],
 	]])
 
 @section('head')
@@ -108,20 +108,7 @@
 				else {$('#gift_fields').slideUp('slow');}
 			});
 
-			<?php $tab = 1; // <=================================================== !! ?>
-
-			// set tab active
-			@if($tab == 0)
-			$('.tabbable li:eq(0) a').tab('show');
-			@elseif($tab == 1)
-			$('.tabbable li:eq(1) a').tab('show');
-			@elseif($tab == 2)
-			$('.tabbable li:eq(2) a').tab('show');
-			@elseif($tab == 3)
-			$('.tabbable li:eq(3) a').tab('show');
-			@elseif($tab == 4)
-			$('.tabbable li:eq(4) a').tab('show');
-			@endif
+			$('.tabbable li:eq({{ $tab }}) a').tab('show');
 		});
 	</script>
 @stop
@@ -138,182 +125,109 @@
 		<div class="row">
 			<div class="col-md-6">
 				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 4,
 					'name' => 'id',
 					'label' => 'ID',
-					'value' => old('id'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'readOnly' => true,
+					'value' => old('id', isset($object->id_116)? $object->id_116 : null),
+					'readOnly' => true
 				])
 				@include('pulsar::includes.html.form_select_group', [
-					'name' => 'orderStatus',
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'name' => 'status',
 					'label' => trans('market::pulsar.order_status'),
-					'value' => old('orderStatus'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'objects' => $orderStatus,
+					'value' => old('status', isset($object->status_116)? $object->status_116 : null),
+					'objects' => $ordersStatus,
 					'idSelect' => 'id_114',
 					'nameSelect' => 'name_114',
 				])
 				@include('pulsar::includes.html.form_select_group', [
-					'name' => 'orderStatus',			// <===================================================== !!
-					'label' => trans('market::pulsar.order_payment_method'),
-					'value' => old('orderStatus'),		// <===================================================== !!
 					'labelSize' => 4,
 					'fieldSize' => 8,
-					'objects' => $orderStatus,
-					'idSelect' => 'id_114',
-					'nameSelect' => 'name_114',
+					'name' => 'paymentMethod',
+					'label' => trans_choice('market::pulsar.payment_method', 1),
+					'value' => old('orderStatus', isset($object->payment_method_116)? $object->payment_method_116 : null),
+					'objects' => $paymentsMethod,
+					'idSelect' => 'id_115',
+					'nameSelect' => 'name_115',
 				])
 			</div>
 			<div class="col-md-6">
 				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'ip',
-					'label' => trans('pulsar::pulsar.ip'),
-					'value' => '',
 					'labelSize' => 4,
 					'fieldSize' => 8,
+					'name' => 'ip',
+					'label' => trans('pulsar::pulsar.ip'),
+					'value' => old('ip', isset($object->ip_116)? $object->ip_116 : null),
 					'id' => 'ip',
 					'readOnly' => true,
 				])
 				@include('pulsar::includes.html.form_datetimepicker_group', [
-					'name' => 'date',
-					'label' => trans_choice('pulsar::pulsar.date', 1),
-					'value' => old('date', date(config('pulsar.datePattern'))),
 					'labelSize' => 4,
-					'fieldSize' => 8,
-					'containerId' => 'dateContent',
-					'id' => 'idDate',
+					'fieldSize' => 6,
+					'label' => trans_choice('pulsar::pulsar.date', 1),
+					'name' => 'date',
 					'data' => [
 						'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')),
-						'locale' => config('app.locale')
+						'locale' => config('app.locale'),
+						'default-date' => old('date', isset($object->date_116)? date('Y-m-d', $object->date_116) : null)
 					]
 				])
 				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'tin',				// <===================================================== !!
-					'label' => trans('market::pulsar.order_number'),
-					'value' => old('tin'),			// <===================================================== !!
 					'labelSize' => 4,
 					'fieldSize' => 8,
+					'name' => 'paymentId',
+					'label' => trans('market::pulsar.payment_id'),
+					'value' => old('paymentId', isset($object->payment_id_116)? $object->payment_id_116 : null),
+					'readOnly' => true,
+				])
+			</div>
+		</div>
+
+
+
+		@include('pulsar::includes.html.form_section_header', [
+			'label' => trans('market::pulsar.gift'),
+			'icon' => 'fa fa-gift'
+		])
+		<div class="row">
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_checkbox_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'name' => 'gift',
+					'label' => trans('market::pulsar.gift'),
+					'value' => 1,
+					'checked' => old('gift', isset($object->gift_116)? $object->gift_116 : null)
+				])
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'name' => 'mobile',
+					'label' => trans('pulsar::pulsar.from'),
+					'value' => old('from', isset($object->gift_from_116)? $object->gift_from_116 : null),
+					'maxLength' => '255',
+					'rangeLength' => '2,255'
+				])
+			</div>
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'name' => 'mobile',
+					'label' => trans('pulsar::pulsar.to'),
+					'value' => old('to', isset($object->gift_to_116)? $object->gift_to_116 : null),
 					'maxLength' => '255',
 					'rangeLength' => '2,255'
 				])
 			</div>
 		</div>
-
-		@include('pulsar::includes.html.form_section_header', ['label' => '&nbsp; ' . trans_choice('pulsar::pulsar.article', 2), 'icon' => 'fa fa-list'])
-		<div class="row">
-			<div class="col-md-12">
-				@include('pulsar::includes.html.form_element_table_group', [
-					'id' => 'order_rows',
-					'label' => trans_choice('pulsar::pulsar.article', 1),
-					'icon'  => 'fa fa-share',
-					'thead' => [
-						(object)[
-							'class' => null,
-							'data' => trans_choice('pulsar::pulsar.article', 1)
-						],
-						(object)[
-							'class' => null,
-							'data' => trans_choice('pulsar::pulsar.price', 1)
-						],
-						(object)[
-							'class' => null,
-							'data' => trans('pulsar::pulsar.units')
-						]
-					],
-					'tbody' => [
-						(object)[
-							'include' => 'pulsar::includes.html.form_text_group',
-							'properties' => [
-								'label' => trans('pulsar::pulsar.name'),
-								'name' => 'name_402',
-								'required' => true,
-								'maxLength' => '100',
-								'rangeLength' => '2,100'
-							]
-						],
-						(object)[
-							'include' => 'pulsar::includes.html.form_text_group',
-							'properties' => [
-								'label' => trans('pulsar::pulsar.email'),
-								'name' => 'email_402', 'type' => 'email',
-								'required' => true,
-								'maxLength' => '50',
-								'rangeLength' => '2,50',
-								'fieldSize' => 5
-							]
-						],
-						(object)[
-							'include' => 'pulsar::includes.html.form_checkbox_group',
-							'class' => 'align-center',
-							'properties' => [
-								'label' => trans_choice('pulsar::pulsar.comment', 2),
-								'name' => 'comments_402', 'value' => 1
-							]
-						],
-						(object)[
-							'include' => 'pulsar::includes.html.form_checkbox_group',
-							'class' => 'align-center',
-							'properties' => [
-								'label' => trans_choice('pulsar::pulsar.state', 2),
-								'name' => 'states_402',
-								'value' => 1
-							]
-						]
-					]
-				])
-			</div>
-		</div>
-
-		@include('pulsar::includes.html.form_section_header', ['label' => '&nbsp; ' . trans('market::pulsar.order_gift'), 'icon' => 'fa fa-gift'])
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_checkbox_group', [
-					'id' => 'chb_isgift',
-					'name' => 'isgift',										// <===================================================== !!
-					'label' => trans('market::pulsar.order_gift_isgift'),
-					'value' => 1,
-					'checked' => old('isgift'),								// <===================================================== !!
-					'labelSize' => 4,
-					'fieldSize' => 8,
-				])
-			</div>
-		</div>
-		<div id="gift_fields" class="hide-default">
-			<div class="row">
-				<div class="col-md-6">
-					@include('pulsar::includes.html.form_text_group', [
-						'name' => 'mobile',										// <===================================================== !!
-						'label' => trans('market::pulsar.order_gift_from'),
-						'value' => old('mobile'),								// <===================================================== !!
-						'labelSize' => 4,
-						'fieldSize' => 8,
-						'maxLength' => '50',
-						'rangeLength' => '2,50'
-					])
-					@include('pulsar::includes.html.form_text_group', [
-						'name' => 'mobile',										// <===================================================== !!
-						'label' => trans('market::pulsar.order_gift_to'),
-						'value' => old('mobile'),								// <===================================================== !!
-						'labelSize' => 4,
-						'fieldSize' => 8,
-						'maxLength' => '50',
-						'rangeLength' => '2,50'
-					])
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					@include('pulsar::includes.html.form_wysiwyg_group', [
-						'name' => 'description',								// <===================================================== !!
-						'label' => trans('market::pulsar.order_gift_message'),
-						'value' => old('description', isset($object->description_112) ? $object->description_112 : null) // <============ !!
-					])
-				</div>
-			</div>
-		</div>
-		<!-- /market::order.create/tab1 -->
+		<!-- /.market::order.create/tab1 -->
 @stop
 
 @section('box_tab2')
@@ -334,7 +248,7 @@
 					'value' => old('orderStatus'),
 					'labelSize' => 4,
 					'fieldSize' => 8,
-					'objects' => $orderStatus,
+					'objects' => $ordersStatus,
 					'idSelect' => 'id_114',
 					'nameSelect' => 'name_114',
 				])
@@ -344,7 +258,7 @@
 					'value' => old('orderStatus'),		// <===================================================== !!
 					'labelSize' => 4,
 					'fieldSize' => 8,
-					'objects' => $orderStatus,
+					'objects' => $ordersStatus,
 					'idSelect' => 'id_114',
 					'nameSelect' => 'name_114',
 				])

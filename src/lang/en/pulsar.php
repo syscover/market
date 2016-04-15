@@ -1,17 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Admin Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used by the paginator library to build
-    | the pagination links. You're free to change them to anything you want.
-    | If you come up with something more exciting, let us know.
-    |
-    */
     'apply_shipping_amount'                         => 'Apply shipping amount',
     'catalog'                                       => 'Catalog',
     'cart_price_rule'                               => 'Cart price rule|Cart price rules',
@@ -42,6 +31,7 @@ return [
     'error_route'                                   => 'Error route',
     'excluding_tax'                                 => 'Excluding tax',
     'free_shipping'                                 => 'Free shipping',
+    'gift'                                          => 'Gift',
     'has_coupon'                                    => 'Has coupon?',
     'including_tax'                                 => 'Including tax',
     'items_list_description'                        => 'Items list description',
@@ -54,6 +44,7 @@ return [
     'order_status_successful'                       => 'Order status successful',
     'package_name'                                  => 'Market',
     'parent_category'                               => 'Parent category|Parent categories',
+    'payment_id'                                    => 'payment ID',
     'payment_method'                                => 'Payment method|Payment methods',
     'paypal'                                        => 'PayPal',
     'prices_taxes'                                  => 'Prices and taxes',
@@ -76,5 +67,4 @@ return [
     'uses_coupon'                                   => 'Uses per coupon',
     'uses_customer'                                 => 'Uses per customer',
     'without_discount_amount'                       => 'Without discount amount',
-
 ];

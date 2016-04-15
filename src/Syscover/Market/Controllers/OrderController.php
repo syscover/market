@@ -2,6 +2,7 @@
 
 use Syscover\Market\Models\Order;
 use Syscover\Market\Models\OrderStatus;
+use Syscover\Market\Models\PaymentMethod;
 use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Traits\TraitController;
 
@@ -26,21 +27,30 @@ class OrderController extends Controller
 	public function customIndex($parameters)
 	{
 		// init record on tap 4
-		$parameters['urlParameters']['tab']	 = 4;
+		$parameters['urlParameters']['tab']	 = 1;
 
 		return $parameters;
 	}
 
 	public function customActionUrlParameters($actionUrlParameters, $parameters)
 	{
-		$actionUrlParameters['tab'] = 4;
+		$actionUrlParameters['tab'] = 1;
 
 		return $actionUrlParameters;
 	}
 
 	public function createCustomRecord($parameters)
 	{
-		$parameters['orderStatus'] = OrderStatus::builder()->where('lang_114', session('baseLang')->id_001)->where('active_114', true)->get();
+		$parameters['ordersStatus'] = OrderStatus::builder()
+			->where('lang_114', session('baseLang')->id_001)
+			->where('active_114', true)
+			->get();
+
+		$parameters['paymentsMethod'] = PaymentMethod::builder()
+			->where('lang_115', session('baseLang')->id_001)
+			->where('active_115', true)
+			->get();
+
 
 		return $parameters;
 	}

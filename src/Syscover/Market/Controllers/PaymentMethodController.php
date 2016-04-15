@@ -32,7 +32,10 @@ class PaymentMethodController extends Controller {
 
     public function createCustomRecord($parameters)
     {
-        $parameters['orderStatus'] = OrderStatus::builder()->where('lang_114', $parameters['lang']->id_001)->where('active_114', true)->get();
+        $parameters['orderStatus'] = OrderStatus::builder()
+            ->where('lang_114', $parameters['lang']->id_001)
+            ->where('active_114', true)
+            ->get();
 
         return $parameters;
     }
@@ -68,7 +71,10 @@ class PaymentMethodController extends Controller {
 
     public function editCustomRecord($parameters)
     {
-        $parameters['orderStatus'] = OrderStatus::builder()->where('lang_114', $parameters['object']->lang_id)->where('active_114', true)->get();
+        $parameters['orderStatus'] = OrderStatus::builder()
+            ->where('lang_114', $parameters['object']->lang_id)
+            ->where('active_114', true)
+            ->get();
 
         return $parameters;
     }
