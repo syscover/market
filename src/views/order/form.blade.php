@@ -253,9 +253,9 @@
 					'nameSelect' => 'name_114',
 				])
 				@include('pulsar::includes.html.form_select_group', [
-					'name' => 'orderStatus',			// <===================================================== !!
+					'name' => 'orderStatus',
 					'label' => trans('market::pulsar.order_payment_method'),
-					'value' => old('orderStatus'),		// <===================================================== !!
+					'value' => old('orderStatus'),
 					'labelSize' => 4,
 					'fieldSize' => 8,
 					'objects' => $ordersStatus,
@@ -287,9 +287,9 @@
 					]
 				])
 				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'tin',				// <===================================================== !!
+					'name' => 'tin',
 					'label' => trans('market::pulsar.order_number'),
-					'value' => old('tin'),			// <===================================================== !!
+					'value' => old('tin'),
 					'labelSize' => 4,
 					'fieldSize' => 8,
 					'maxLength' => '255',
@@ -344,18 +344,18 @@
 					'rangeLength' => '2,50'
 				])
 				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',				// <===================================================== !!
+					'name' => 'surname',
 					'label' => trans_choice('pulsar::pulsar.address', 1),
-					'value' => old('surname'),			// <===================================================== !!
+					'value' => old('surname'),
 					'labelSize' => 4,
 					'fieldSize' => 8,
 					'maxLength' => '50',
 					'rangeLength' => '2,50'
 				])
 				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',				// <===================================================== !!
+					'name' => 'surname',
 					'label' => trans('market::pulsar.order_invoice_shipping_zipcode'),
-					'value' => old('surname'),			// <===================================================== !!
+					'value' => old('surname'),
 					'labelSize' => 4,
 					'fieldSize' => 8,
 					'maxLength' => '50',
