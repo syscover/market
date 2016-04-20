@@ -29,6 +29,8 @@ class PayPalController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
+
         $this->preferences      = Preference::getValues(12);
 
         // Set mode
