@@ -1,6 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -27,9 +28,9 @@ class PayPalController extends Controller
     private $preferences;
     private $webProfile;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        parent::__construct();
+        parent::__construct($request);
 
         $this->preferences      = Preference::getValues(12);
 
