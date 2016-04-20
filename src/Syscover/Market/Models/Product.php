@@ -1,10 +1,9 @@
 <?php namespace Syscover\Market\Models;
 
-use Syscover\Pulsar\Models\Model;
-use Illuminate\Support\Facades\Validator;
-use Syscover\Pulsar\Traits\TraitModel;
+use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
-    use TraitModel;
     use Eloquence, Mappable;
 
 	protected $table        = '012_111_product';

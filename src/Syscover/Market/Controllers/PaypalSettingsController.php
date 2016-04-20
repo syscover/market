@@ -1,19 +1,16 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Illuminate\Support\Facades\Crypt;
-use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Models\Preference;
-use Syscover\Pulsar\Traits\TraitController;
 
 /**
  * Class PaypalSettingsController
  * @package Syscover\Market\Controllers
  */
 
-class PayPalSettingsController extends Controller {
-
-    use TraitController;
-
+class PayPalSettingsController extends Controller
+{
     protected $routeSuffix  = 'marketPayPalSettings';
     protected $folder       = 'paypal_setting';
     protected $package      = 'market';

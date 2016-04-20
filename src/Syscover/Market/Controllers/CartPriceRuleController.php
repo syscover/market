@@ -1,15 +1,17 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Libraries\Miscellaneous;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Market\Models\CartPriceRule;
 use Syscover\Pulsar\Models\Text;
 
-class CartPriceRuleController extends Controller {
+/**
+ * Class CartPriceRuleController
+ * @package Syscover\Market\Controllers
+ */
 
-    use TraitController;
-
+class CartPriceRuleController extends Controller
+{
     protected $routeSuffix  = 'cartPriceRule';
     protected $folder       = 'cart_price_rule';
     protected $package      = 'market';

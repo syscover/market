@@ -1,18 +1,15 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Syscover\Pulsar\Controllers\Controller;
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Models\Preference;
-use Syscover\Pulsar\Traits\TraitController;
 
 /**
  * Class TaxSettingsController
  * @package Syscover\Market\Controllers
  */
 
-class TaxSettingsController extends Controller {
-
-    use TraitController;
-
+class TaxSettingsController extends Controller
+{
     protected $routeSuffix  = 'marketTaxSettings';
     protected $folder       = 'tax_setting';
     protected $package      = 'market';

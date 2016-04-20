@@ -1,13 +1,10 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\Category;
-use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\TraitController;
 
-class CategoryController extends Controller {
-
-    use TraitController;
-
+class CategoryController extends Controller
+{
     protected $routeSuffix  = 'marketCategory';
     protected $folder       = 'category';
     protected $package      = 'market';

@@ -1,10 +1,9 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\Order;
 use Syscover\Market\Models\OrderStatus;
 use Syscover\Market\Models\PaymentMethod;
-use Syscover\Pulsar\Controllers\Controller;
-use Syscover\Pulsar\Traits\TraitController;
 
 /**
  * Class OrderController
@@ -13,8 +12,6 @@ use Syscover\Pulsar\Traits\TraitController;
 
 class OrderController extends Controller
 {
-	use TraitController;
-
 	protected $routeSuffix  = 'marketOrder';
 	protected $folder	   = 'order';
 	protected $package	  = 'market';

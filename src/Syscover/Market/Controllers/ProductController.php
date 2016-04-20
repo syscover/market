@@ -1,11 +1,10 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
-use Syscover\Pulsar\Controllers\Controller;
 use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
 use Syscover\Pulsar\Models\AttachmentFamily;
 use Syscover\Pulsar\Models\CustomFieldGroup;
-use Syscover\Pulsar\Traits\TraitController;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
 use Syscover\Market\Models\Category;
@@ -15,10 +14,8 @@ use Syscover\Market\Models\Category;
  * @package Syscover\Market\Controllers
  */
 
-class ProductController extends Controller {
-
-    use TraitController;
-
+class ProductController extends Controller
+{
     protected $routeSuffix  = 'marketProduct';
     protected $folder       = 'products';
     protected $package      = 'market';
