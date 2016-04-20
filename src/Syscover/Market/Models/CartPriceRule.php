@@ -77,9 +77,9 @@ class CartPriceRule extends Model
 
     /**
      * Override deleteTranslationRecord,
-     * to avoid the deletion of language in the table 012_120_cart_price_rule, as it has no record of language
+     * for avoid the deletion of language in the table 012_120_cart_price_rule, as it has no record of language
      */
-    public static function deleteTranslationRecord($parameters)
+    public static function deleteTranslationRecord($parameters, $deleteLangDataRecord = true)
     {
         CartPriceRule::deleteLangDataRecord($parameters);
     }
