@@ -3,7 +3,7 @@
 @section('head')
     @parent
     <!-- market::paypal_settings.index -->
-    @include('pulsar::includes.js.success_message')
+    @include('pulsar::includes.js.messages')
     <!-- /.market::paypal_settings.index -->
 @stop
 
