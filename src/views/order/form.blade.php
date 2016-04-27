@@ -26,8 +26,8 @@
 	<script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
 	<script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 	<script src="{{ asset('packages/syscover/pulsar/plugins/bootstrap-switch/bootstrap-switch.min.js') }}"></script>
-<!--	<script src="{{ asset('packages/syscover/pulsar/vendor/mappoint/js/jquery.mappoint.js') }}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key={{ config('api.googleMapsApiKey') }}&libraries=places"></script> -->
+	<script src="{{ asset('packages/syscover/pulsar/vendor/mappoint/js/jquery.mappoint.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ config('api.googleMapsApiKey') }}&libraries=places"></script>
 	<script src="{{ asset('packages/syscover/pulsar/vendor/attachment/js/attachment-library.js') }}"></script>
 
 	@include('pulsar::includes.html.froala_references')
@@ -78,7 +78,7 @@
 				territorialArea2Value:	  '{{ old('billingTerritorialArea2') }}',
 				territorialArea3Value:	  '{{ old('billingTerritorialArea3') }}'
 			});
-/*
+
 			$.mapPoint({
 				id: '01',
 				urlPlugin: '/packages/syscover/pulsar/vendor',
@@ -90,7 +90,7 @@
 					anchorY: 71
 				}
 			});
-*/
+
 			$('.wysiwyg').froalaEditor({
 				language: '{{ config('app.locale') }}',
 				toolbarInline: false,
@@ -121,72 +121,9 @@
 @stop
 
 @section('box_tab1')
-		<!-- market::order.create/tab1 -->
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'labelSize' => 4,
-					'fieldSize' => 4,
-					'name' => 'id',
-					'label' => 'ID',
-					'value' => old('id', isset($object->id_116)? $object->id_116 : null),
-					'readOnly' => true
-				])
-				@include('pulsar::includes.html.form_select_group', [
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'name' => 'status',
-					'label' => trans('market::pulsar.order_status'),
-					'value' => old('status', isset($object->status_116)? $object->status_116 : null),
-					'objects' => $ordersStatus,
-					'idSelect' => 'id_114',
-					'nameSelect' => 'name_114',
-				])
-				@include('pulsar::includes.html.form_select_group', [
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'name' => 'paymentMethod',
-					'label' => trans_choice('market::pulsar.payment_method', 1),
-					'value' => old('orderStatus', isset($object->payment_method_116)? $object->payment_method_116 : null),
-					'objects' => $paymentsMethod,
-					'idSelect' => 'id_115',
-					'nameSelect' => 'name_115',
-				])
-			</div>
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'name' => 'ip',
-					'label' => trans('pulsar::pulsar.ip'),
-					'value' => old('ip', isset($object->ip_116)? $object->ip_116 : null),
-					'id' => 'ip',
-					'readOnly' => true,
-				])
-				@include('pulsar::includes.html.form_datetimepicker_group', [
-					'labelSize' => 4,
-					'fieldSize' => 6,
-					'label' => trans_choice('pulsar::pulsar.date', 1),
-					'name' => 'date',
-					'data' => [
-						'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')),
-						'locale' => config('app.locale'),
-						'default-date' => old('date', isset($object->date_116)? date('Y-m-d', $object->date_116) : null)
-					]
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'name' => 'paymentId',
-					'label' => trans('market::pulsar.payment_id'),
-					'value' => old('paymentId', isset($object->payment_id_116)? $object->payment_id_116 : null),
-					'readOnly' => true,
-				])
-			</div>
-		</div>
-
-
-
+		<!-- market::order.form -->
+		@include('market::order.includes.order_header')
+		<!-- market::order.form.gift -->
 		@include('pulsar::includes.html.form_section_header', [
 			'label' => trans('market::pulsar.gift'),
 			'icon' => 'fa fa-gift'
@@ -208,7 +145,7 @@
 				@include('pulsar::includes.html.form_text_group', [
 					'labelSize' => 4,
 					'fieldSize' => 8,
-					'name' => 'mobile',
+					'name' => 'giftFrom',
 					'label' => trans('pulsar::pulsar.from'),
 					'value' => old('from', isset($object->gift_from_116)? $object->gift_from_116 : null),
 					'maxLength' => '255',
@@ -219,7 +156,7 @@
 				@include('pulsar::includes.html.form_text_group', [
 					'labelSize' => 4,
 					'fieldSize' => 8,
-					'name' => 'mobile',
+					'name' => 'giftTo',
 					'label' => trans('pulsar::pulsar.to'),
 					'value' => old('to', isset($object->gift_to_116)? $object->gift_to_116 : null),
 					'maxLength' => '255',
@@ -227,76 +164,18 @@
 				])
 			</div>
 		</div>
-		<!-- /.market::order.create/tab1 -->
+		@include('pulsar::includes.html.form_textarea_group', [
+			'label' => trans('pulsar::pulsar.message'),
+			'name' => 'giftMessage',
+			'value' => old('comments', isset($object->gift_message_116)? $object->gift_message_116 : null),
+			'readOnly' => $action == 'show'
+		])
+		<!-- /.market::order.form.gift -->
 @stop
 
 @section('box_tab2')
 		<!-- market::order.create/tab2 -->
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'id',
-					'label' => 'ID',
-					'value' => old('id'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'readOnly' => true,
-				])
-				@include('pulsar::includes.html.form_select_group', [
-					'name' => 'orderStatus',
-					'label' => trans('market::pulsar.order_status'),
-					'value' => old('orderStatus'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'objects' => $ordersStatus,
-					'idSelect' => 'id_114',
-					'nameSelect' => 'name_114',
-				])
-				@include('pulsar::includes.html.form_select_group', [
-					'name' => 'orderStatus',
-					'label' => trans('market::pulsar.order_payment_method'),
-					'value' => old('orderStatus'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'objects' => $ordersStatus,
-					'idSelect' => 'id_114',
-					'nameSelect' => 'name_114',
-				])
-			</div>
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'ip',
-					'label' => trans('pulsar::pulsar.ip'),
-					'value' => '',
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'id' => 'ip',
-					'readOnly' => true,
-				])
-				@include('pulsar::includes.html.form_datetimepicker_group', [
-					'name' => 'date',
-					'label' => trans_choice('pulsar::pulsar.date', 1),
-					'value' => old('date', date(config('pulsar.datePattern'))),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'containerId' => 'dateContent',
-					'id' => 'idDate',
-					'data' => [
-						'format' => Miscellaneous::convertFormatDate(config('pulsar.datePattern')),
-						'locale' => config('app.locale')
-					]
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'tin',
-					'label' => trans('market::pulsar.order_number'),
-					'value' => old('tin'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '255',
-					'rangeLength' => '2,255'
-				])
-			</div>
-		</div>
+		@include('market::order.includes.order_header')
 
 		@include('pulsar::includes.html.form_section_header', ['label' => '&nbsp; ' . trans('market::pulsar.order_section_invoice_data'), 'icon' => 'fa fa-file-text-o'])
 		<div class="row">

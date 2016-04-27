@@ -40,6 +40,7 @@ return [
     'maximum_price'                                 => 'Maximum price',
     'minimum_price'                                 => 'Minimum price',
     'order'                                         => 'Order|Orders',
+    'order_data'                                    => 'Order data',
     'order_status'                                  => 'Order status',
     'order_status_successful'                       => 'Order status successful',
     'package_name'                                  => 'Market',
