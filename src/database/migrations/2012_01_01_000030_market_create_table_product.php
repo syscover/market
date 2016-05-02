@@ -18,10 +18,16 @@ class MarketCreateTableProduct extends Migration
 				$table->engine = 'InnoDB';
 				$table->increments('id_111')->unsigned();
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
-				$table->tinyInteger('product_type_111')->unsigned();
+
+				$table->tinyInteger('product_type_111')->unsigned(); // downloaded, transportable, downloaded and transportable
+
+				// set parent product and config like subproduct
+				$table->increments('product_id_111')->unsigned()->nullable();
+
 				$table->decimal('weight_111', 10, 3)->nullable();
 				$table->boolean('active_111');
 				$table->integer('sorting_111')->unsigned()->nullable();
+
 
 				// prices, tax and format
 				$table->tinyInteger('price_type_111')->unsigned(); // single price or undefined

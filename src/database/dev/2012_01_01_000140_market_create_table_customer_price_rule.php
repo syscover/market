@@ -14,7 +14,7 @@ class MarketCreateTableCustomerPriceRule extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_124_customer_price_rule'))
+		if (! Schema::hasTable('012_124_customer_price_rule'))
 		{
 			Schema::create('012_124_customer_price_rule', function (Blueprint $table) {
 				$table->engine = 'InnoDB';

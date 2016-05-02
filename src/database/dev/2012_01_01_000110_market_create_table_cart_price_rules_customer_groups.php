@@ -12,7 +12,7 @@ class MarketCreateTableCartPriceRulesCustomerGroups extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_121_cart_price_rules_customer_groups'))
+		if (! Schema::hasTable('012_121_cart_price_rules_customer_groups'))
 		{
 			Schema::create('012_121_cart_price_rules_customer_groups', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
