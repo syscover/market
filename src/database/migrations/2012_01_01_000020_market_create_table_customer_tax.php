@@ -12,7 +12,7 @@ class MarketCreateTableCustomerTax extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('012_100_customer_class_tax'))
+        if (! Schema::hasTable('012_100_customer_class_tax'))
         {
             Schema::create('012_100_customer_class_tax', function (Blueprint $table) {
                 $table->engine = 'InnoDB';

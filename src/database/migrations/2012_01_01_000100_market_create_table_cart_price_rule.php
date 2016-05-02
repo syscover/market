@@ -12,7 +12,7 @@ class MarketCreateTableCartPriceRule extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_120_cart_price_rule'))
+		if (! Schema::hasTable('012_120_cart_price_rule'))
 		{
 			Schema::create('012_120_cart_price_rule', function (Blueprint $table) {
 				$table->engine = 'InnoDB';

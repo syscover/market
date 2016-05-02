@@ -12,7 +12,7 @@ class MarketCreateTableProductLang extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_112_product_lang'))
+		if (! Schema::hasTable('012_112_product_lang'))
 		{
 			Schema::create('012_112_product_lang', function (Blueprint $table) {
 				$table->engine = 'InnoDB';

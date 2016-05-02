@@ -12,7 +12,7 @@ class MarketCreateTableOrder extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_116_order'))
+		if (! Schema::hasTable('012_116_order'))
 		{
 			Schema::create('012_116_order', function (Blueprint $table) {
 				$table->engine = 'InnoDB';

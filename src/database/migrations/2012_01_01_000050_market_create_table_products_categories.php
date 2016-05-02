@@ -12,13 +12,16 @@ class MarketCreateTableProductsCategories extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('012_113_products_categories', function(Blueprint $table){
-            $table->engine = 'InnoDB';
-            $table->integer('product_113')->unsigned();
-            $table->integer('category_113')->unsigned();
+		if (! Schema::hasTable('012_113_products_categories')) 
+		{
+			Schema::create('012_113_products_categories', function (Blueprint $table) {
+				$table->engine = 'InnoDB';
+				$table->integer('product_113')->unsigned();
+				$table->integer('category_113')->unsigned();
 
-            $table->primary(['product_113', 'category_113']);
-        });
+				$table->primary(['product_113', 'category_113']);
+			});
+		}
 	}
 
 	/**
@@ -28,6 +31,9 @@ class MarketCreateTableProductsCategories extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('012_113_products_categories');
+		if (Schema::hasTable('012_113_products_categories')) 
+		{
+			Schema::drop('012_113_products_categories');
+		}
 	}
 }

@@ -12,7 +12,7 @@ class MarketCreateTablePaymentMethod extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_115_payment_method'))
+		if (! Schema::hasTable('012_115_payment_method'))
 		{
 			Schema::create('012_115_payment_method', function (Blueprint $table) {
 				$table->engine = 'InnoDB';

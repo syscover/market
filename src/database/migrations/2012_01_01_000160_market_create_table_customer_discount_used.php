@@ -12,7 +12,7 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 	 */
 	public function up()
 	{
-		if (!Schema::hasTable('012_126_customer_discount_used'))
+		if (! Schema::hasTable('012_126_customer_discount_used'))
 		{
 			Schema::create('012_126_customer_discount_used', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
