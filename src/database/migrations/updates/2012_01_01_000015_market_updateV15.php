@@ -15,7 +15,7 @@ class MarketUpdateV15 extends Migration
 		if(! Schema::hasColumn('012_111_product', 'product_id_111'))
 		{
 			Schema::table('012_111_product', function (Blueprint $table) {
-				$table->increments('product_id_111')->unsigned()->nullable()->after('product_type_111');
+				$table->integer('parent_product_id_111')->unsigned()->nullable()->after('product_type_111');
 			});
 		}
 	}
