@@ -1,7 +1,7 @@
 @extends('pulsar::layouts.tab', ['tabs' => [
         ['id' => 'box_tab1', 'name' => trans_choice('market::pulsar.product', 1)],
         ['id' => 'box_tab2', 'name' => trans_choice('pulsar::pulsar.description', 2)],
-        ['id' => 'box_tab3', 'name' => 'Default'],
+        ['id' => 'box_tab3', 'name' => trans_choice('market::pulsar.grouped_product', 2)],
         ['id' => 'box_tab4', 'name' => trans_choice('pulsar::pulsar.attachment', 2)]
     ]])
 
@@ -36,7 +36,7 @@
             })
 
             // launch slug function when change name and slug
-            $("[name=name], [name=slug]").on('change', function(){
+            $('[name=name], [name=slug]').on('change', function(){
                 $("[name=slug]").val(getSlug($(this).val(),{
                     separator: '-',
                     lang: '{{ $lang->id_001 }}'
@@ -45,12 +45,23 @@
             })
 
             // set disable to false, because is a required property
-            $("#recordForm").on('submit', function() {
+            $('#recordForm').on('submit', function() {
                 $("[name=priceType],[name=productType],[name=customFieldGroup]").prop("disabled", false)
+            })
+
+            $('[name=parentProduct]').on('change', function() {
+                if($(this).val() != '')
+                {
+                    $('#categoriesContent').fadeOut();
+                }
             })
 
             // set tab active
             $('.tabbable li:eq({{ $tab }}) a').tab('show')
+
+            @if(isset($object->parent_product_id_111))
+                $('#categoriesContent').hide();
+            @endif
         })
     </script>
 
@@ -80,6 +91,26 @@
 
 @section('box_tab1')
     <!-- market::products.create -->
+    @include('pulsar::includes.html.form_select_group', [
+        'fieldSize' => 5,
+        'label' => trans('market::pulsar.parent_product'),
+        'name' => 'parentProduct',
+        'value' => old('parentProduct', isset($object->parent_product_id_111)? $object->parent_product_id_111 : null),
+        'objects' => $parentsProducts,
+        'idSelect' => 'id_111',
+        'nameSelect' => 'name_112',
+        'disabled' => $action == 'update' || $action == 'store'? false : true,
+        'class' => 'col-md-12 select2',
+        'data' => [
+            'placeholder' => trans('pulsar::pulsar.select_category'),
+            'width' => '100%'
+        ]
+    ])
+
+    @include('pulsar::includes.html.form_section_header', [
+        'label' => trans('market::pulsar.product_details'),
+        'icon' => 'fa fa-reorder'
+    ])
     <div class="row">
         <div class="col-md-6">
             @include('pulsar::includes.html.form_text_group', [
@@ -196,13 +227,13 @@
         'icon' => 'fa fa-usd'
     ])
     @include('pulsar::includes.html.form_select_group', [
+        'fieldSize' => 3,
         'label' => trans('market::pulsar.price_type'),
         'name' => 'priceType',
         'value' => old('priceType', isset($object->price_type_111)? $object->price_type_111 : null),
         'objects' => $priceTypes,
         'idSelect' => 'id',
         'nameSelect' => 'name',
-        'fieldSize' => 3,
         'required' => true,
         'disabled' => $action == 'update' || $action == 'store'? false : true
     ])

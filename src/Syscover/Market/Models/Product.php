@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
  * Class Product
  *
  * Model with properties
- * <br><b>[id, custom_field_group, weight, active, sorting, price_type, price, data_lang, data]</b>
+ * <br><b>[id, custom_field_group, product_type, parent_product_id, weight, active, sorting, price_type, price, data_lang, data]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -23,7 +23,7 @@ class Product extends Model
     protected $primaryKey   = 'id_111';
     protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'custom_field_group_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_111', 'price_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'custom_field_group_111', 'product_type_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_111', 'price_111', 'data_lang_111', 'data_111'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'          => \Syscover\Pulsar\Models\Lang::class,
@@ -80,6 +80,7 @@ class Product extends Model
     {
         return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
             ->leftJoin('012_110_category', '012_113_products_categories.category_113', '=', '012_110_category.id_110')
+            ->where('lang_110', base_lang()->id_001)
             ->groupBy('id_111')
             ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')]);
     }
