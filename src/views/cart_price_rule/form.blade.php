@@ -173,7 +173,7 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans('pulsar::pulsar.name'),
         'name' => 'name',
-        'value' => old('name', isset($object->name_text_text)? $object->name_text_text : null),
+        'value' => old('name', isset($object->name_text_value)? $object->name_text_value : null),
         'maxLength' => '255',
         'rangeLength' => '2,255',
         'required' => true
@@ -187,7 +187,7 @@
         'fieldSize' => 10,
         'label' => trans_choice('pulsar::pulsar.description', 1),
         'name' => 'description',
-        'value' => old('description', isset($object->description_text_text)? $object->description_text_text : null)
+        'value' => old('description', isset($object->description_text_value)? $object->description_text_value : null)
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'idDescription',

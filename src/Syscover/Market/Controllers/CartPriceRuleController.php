@@ -15,7 +15,7 @@ class CartPriceRuleController extends Controller
     protected $routeSuffix  = 'cartPriceRule';
     protected $folder       = 'cart_price_rule';
     protected $package      = 'market';
-    protected $aColumns     = ['id_120', 'text_017', 'coupon_code_120', 'enable_from_text_120', 'enable_to_text_120', 'total_used_120', ['data' => 'active_120', 'type' => 'active']];
+    protected $aColumns     = ['id_120', ['data' => 'text1.text_017', 'alias' => 'name_text_value', 'type' => 'alias'], 'coupon_code_120', 'enable_from_text_120', 'enable_to_text_120', 'total_used_120', ['data' => 'active_120', 'type' => 'active']];
     protected $nameM        = 'name_110';
     protected $model        = CartPriceRule::class;
     protected $icon         = 'fa fa-shopping-cart';
@@ -97,15 +97,15 @@ class CartPriceRuleController extends Controller
         }
 
         Text::create([
-            'id_017'    => $idName,
-            'lang_id_017'  => $this->request->input('lang'),
-            'text_017'  => $this->request->has('name')? $this->request->input('name') : null,
+            'id_017'        => $idName,
+            'lang_id_017'   => $this->request->input('lang'),
+            'text_017'      => $this->request->has('name')? $this->request->input('name') : null,
         ]);
 
         Text::create([
-            'id_017'    => $idDescription,
-            'lang_id_017'  => $this->request->input('lang'),
-            'text_017'  => $this->request->has('description')? $this->request->input('description') : null,
+            'id_017'        => $idDescription,
+            'lang_id_017'   => $this->request->input('lang'),
+            'text_017'      => $this->request->has('description')? $this->request->input('description') : null,
         ]);
     }
 

@@ -40,12 +40,12 @@ class CartPriceRule extends Model
 
     public function scopeBuilder($query, $lang = null)
     {
-        return $query->select(DB::raw('*, text1.text_017 AS name_text_text, text2.text_017 AS description_text_text'))
-            ->join('001_017_text as text1', function ($join) use ($lang) {
+        return $query->select(DB::raw('*, text1.text_017 AS name_text_value, text2.text_017 AS description_text_value'))
+            ->join('001_017_text AS text1', function ($join) use ($lang) {
                 $join->on('012_120_cart_price_rule.name_text_120', '=', 'text1.id_017');
                 if($lang !== null)  $join->where('text1.lang_id_017', '=', $lang);
             })
-            ->join('001_017_text as text2', function ($join) use ($lang) {
+            ->join('001_017_text AS text2', function ($join) use ($lang) {
                 $join->on('012_120_cart_price_rule.description_text_120', '=', 'text2.id_017');
                 if($lang !== null)  $join->where('text2.lang_id_017', '=', $lang);
             });
