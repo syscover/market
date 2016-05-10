@@ -33,28 +33,28 @@
                 heightMin: 130,
                 enter: $.FroalaEditor.ENTER_BR,
                 key: '{{ config('pulsar.froalaEditorKey') }}'
-            })
+            });
 
             // launch slug function when change name and slug
             $('[name=name], [name=slug]').on('change', function(){
-                $("[name=slug]").val(getSlug($(this).val(),{
+                $('[name=slug]').val(getSlug($(this).val(), {
                     separator: '-',
                     lang: '{{ $lang->id_001 }}'
-                }))
-                $.checkSlug()
-            })
+                }));
+                $.checkSlug();
+            });
 
             // set disable to false, because is a required property
             $('#recordForm').on('submit', function() {
                 $("[name=priceType],[name=productType],[name=customFieldGroup]").prop("disabled", false)
-            })
+            });
 
             $('[name=parentProduct]').on('change', function() {
                 if($(this).val() != '')
                 {
                     $('#categoriesContent').fadeOut();
                 }
-            })
+            });
 
             // set tab active
             $('.tabbable li:eq({{ $tab }}) a').tab('show')

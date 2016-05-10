@@ -28,7 +28,6 @@ class MarketCreateTableProduct extends Migration
 				$table->boolean('active_111');
 				$table->integer('sorting_111')->unsigned()->nullable();
 
-
 				// prices, tax and format
 				$table->tinyInteger('price_type_111')->unsigned(); // single price or undefined
 				$table->decimal('price_111', 10, 2)->nullable();
