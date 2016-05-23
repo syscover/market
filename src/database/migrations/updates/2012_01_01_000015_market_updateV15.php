@@ -12,7 +12,7 @@ class MarketUpdateV15 extends Migration
 	 */
 	public function up()
 	{
-		if(! Schema::hasColumn('012_111_product', 'product_id_111'))
+		if(! Schema::hasColumn('012_111_product', 'parent_product_id_111'))
 		{
 			Schema::table('012_111_product', function (Blueprint $table) {
 				$table->integer('parent_product_id_111')->unsigned()->nullable()->after('product_type_111');
