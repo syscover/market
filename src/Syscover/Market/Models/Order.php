@@ -60,4 +60,9 @@ class Order extends Model
     {
         return $this->hasMany('Syscover\Market\Models\OrderRow', 'order_117');
     }
+
+    public function getCustomer()
+    {
+        return $this->belongsTo('Syscover\Crm\Models\Customer', 'customer_116');
+    }
 }
