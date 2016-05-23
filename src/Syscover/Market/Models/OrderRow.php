@@ -36,8 +36,12 @@ class OrderRow extends Model
         return Validator::make($data, static::$rules);
 	}
 
-    public function scopeBuilder($query)
+    public function scopeBuilder($query, $lang = null)
     {
-        return $query->leftJoin('012_111_product', '012_117_order_row.product_117', '=', '012_111_product.id_111');
+        return $query->leftJoin('012_111_product', '012_117_order_row.product_117', '=', '012_111_product.id_111')
+            ->leftJoin('012_112_product_lang', function($join) use ($lang) {
+                $join->on('012_111_product.id_111', '=', '012_112_product_lang.id_112');
+                if($lang !== null)  $join->where('012_112_product_lang.lang_112', '=', $lang);
+            });
     }
 }
