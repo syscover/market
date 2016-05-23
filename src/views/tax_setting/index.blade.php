@@ -1,4 +1,4 @@
-@extends('pulsar::layouts.form', ['cancelButton' => false])
+@extends('pulsar::layouts.form', ['action' => 'update'])
 
 @section('head')
     @parent

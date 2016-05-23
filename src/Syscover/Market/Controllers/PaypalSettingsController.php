@@ -1,6 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Syscover\Pulsar\Models\Preference;
 
@@ -19,6 +20,13 @@ class PayPalSettingsController extends Controller
     protected $model        = \Syscover\Pulsar\Models\Preference::class;
     protected $icon         = 'fa fa-paypal';
     protected $objectTrans  = 'paypal';
+
+    function __construct(Request $request)
+    {
+        parent::__construct($request);
+
+        $this->viewParameters['cancelButton'] = false;
+    }
 
     public function customIndex($parameters)
     {
