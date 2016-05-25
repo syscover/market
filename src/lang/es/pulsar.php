@@ -7,7 +7,7 @@ return [
     'category'									    => 'Categoría|Categorias',
     'combinable'								    => 'Combinable',
     'coupon'									    => 'Cupón|Cupones',
-    'customer_tax'								    => 'Impuesto de usuario|Impuestos de usuario',
+    'customer_class_tax'							=> 'Impuesto de usuario|Impuestos de usuario',
     'discount_amount'							    => 'Cantidad de descuento',
     'discount_percentage'						    => 'Porcentaje de descuento',
     'discount_type'								    => 'Tipo de descuento',

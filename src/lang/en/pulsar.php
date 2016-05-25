@@ -8,7 +8,7 @@ return [
     'characteristics'                               => 'Characteristics',
     'combinable'                                    => 'Combinable',
     'coupon'                                        => 'Coupon|Coupons',
-    'customer_tax'                                  => 'Customer tax|Customers tax',
+    'customer_class_tax'                            => 'Customer class tax|Customer class taxes',
     'discount_amount'                               => 'Discount amount',
     'discount_percentage'                           => 'Discount percentage',
     'discount_type'                                 => 'Discount type',

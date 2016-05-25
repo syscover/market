@@ -3,6 +3,11 @@
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\Category;
 
+/**
+ * Class CategoryController
+ * @package Syscover\Market\Controllers
+ */
+
 class CategoryController extends Controller
 {
     protected $routeSuffix  = 'marketCategory';

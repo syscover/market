@@ -1,4 +1,4 @@
-<li{!! is_current_resource(['market-product','market-category','market-product-tax','market-payment-method','market-order-status','market-tax-setting','market-order','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
+<li{!! is_current_resource(['market-product','market-category','market-customer-class-tax','market-payment-method','market-order-status','market-tax-setting','market-order','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
     <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
     <ul class="sub-menu">
         <li{!! is_current_resource(['market-order'], true) !!}>
@@ -41,7 +41,7 @@
                 </li>
             </ul>
         </li>
-        <li{!! is_current_resource(['market-payment-method','market-order-status','market-customer-tax','market-product-tax','market-tax-setting'], true) !!}>
+        <li{!! is_current_resource(['market-payment-method','market-order-status','market-customer-tax','market-customer-class-tax','market-tax-setting'], true) !!}>
             <a href="javascript:void(0)"><i class="fa fa-cogs"></i>{{ trans_choice('pulsar::pulsar.preference', 2) }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('market-payment-method', 'access'))
@@ -50,11 +50,11 @@
                 @if(is_allowed('market-order-status', 'access'))
                     <li{!! is_current_resource('market-order-status') !!}><a href="{{ route('marketOrderStatus', [session('baseLang')->id_001]) }}"><i class="fa fa-refresh"></i>{{ trans_choice('market::pulsar.order_status', 2) }}</a></li>
                 @endif
-                <li{!! is_current_resource(['market-customer-tax','market-product-tax','market-tax-setting'], true) !!}>
+                <li{!! is_current_resource(['market-customer-class-tax','market-tax-setting'], true) !!}>
                     <a href="javascript:void(0)"><i class="fa fa-user-secret"></i>{{ trans_choice('market::pulsar.tax', 2) }}</a>
                     <ul class="sub-menu">
-                        @if(is_allowed('market-product-tax', 'access'))
-                            <li{!! is_current_resource('market-product-tax') !!}><a href="{{ route('marketCustomerTax') }}"><i class="fa fa-users"></i>{{ trans_choice('market::pulsar.customer_tax', 2) }}</a></li>
+                        @if(is_allowed('market-customer-class-tax', 'access'))
+                            <li{!! is_current_resource('market-customer-class-tax') !!}><a href="{{ route('marketCustomerClassTax') }}"><i class="fa fa-users"></i>{{ trans_choice('market::pulsar.customer_class_tax', 2) }}</a></li>
                         @endif
                         @if(is_allowed('market-tax-setting', 'access'))
                             <li{!! is_current_resource('market-tax-setting') !!}><a href="{{ route('marketTaxSettings') }}"><i class="fa fa-cog"></i>{{ trans_choice('pulsar::pulsar.setting', 2) }}</a></li>

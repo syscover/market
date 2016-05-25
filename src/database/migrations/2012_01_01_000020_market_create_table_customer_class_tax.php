@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MarketCreateTableCustomerTax extends Migration {
+class MarketCreateTableCustomerClassTax extends Migration {
 
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class MarketCreateTableCustomerTax extends Migration {
             Schema::create('012_100_customer_class_tax', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->increments('id_100')->unsigned();
-                $table->string('name_100', 100);
+                $table->string('name_100');
             });
         }
     }
