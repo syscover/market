@@ -1,7 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Syscover\Market\Models\CustomerClassTax;
 use Syscover\Pulsar\Core\Controller;
+use Syscover\Market\Models\CustomerClassTax;
 
 /**
  * Class CustomerClassTaxController
@@ -16,7 +16,7 @@ class CustomerClassTaxController extends Controller
     protected $aColumns     = ['id_100', 'name_100'];
     protected $nameM        = 'name_100';
     protected $model        = \Syscover\Market\Models\CustomerClassTax::class;
-    protected $icon         = 'cut-icon-grid';
+    protected $icon         = 'fa fa-users';
     protected $objectTrans  = 'customer_class_tax';
 
     public function storeCustomRecord($parameters)
@@ -28,7 +28,7 @@ class CustomerClassTaxController extends Controller
 
     public function updateCustomRecord($parameters)
     {
-        CustomerClassTax::where('id_012', $parameters['id'])->update([
+        CustomerClassTax::where('id_100', $parameters['id'])->update([
             'name_100' => $this->request->input('name')
         ]);
     }

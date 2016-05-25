@@ -53,6 +53,7 @@ return [
     'prices_taxes'								    => 'Precios e impuestos',
     'price_type'								    => 'Tipo de precio',
     'product'									    => 'Producto|Productos',
+    'product_class_tax'                             => 'Impuesto de producto|Impuestos de producto',
     'product_details'                               => 'Detalles de producto',
     'product_prices'							    => 'Precios de producto',
     'product_types'								    => 'Tipo de producto|Tipos de productos',

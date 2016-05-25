@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::customer_class_tax.index -->
+    <!-- market::product_class_tax.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -21,16 +21,16 @@
             }
         });
     </script>
-    <!-- /market::customer_class_tax.index -->
+    <!-- /market::product_class_tax.index -->
 @stop
 
 @section('tHead')
-    <!-- market::customer_class_tax.index -->
+    <!-- market::product_class_tax.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::customer_class_tax.index -->
+    <!-- /market::product_class_tax.index -->
 @stop

@@ -77,22 +77,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::get(config('pulsar.appName') . '/market/payment/methods/delete/{lang}/{id}/{offset}',                   ['as'=>'deleteMarketPaymentMethod',               'uses'=>'Syscover\Market\Controllers\PaymentMethodController@deleteRecord',               'resource' => 'market-payment-method',        'action' => 'delete']);
     Route::get(config('pulsar.appName') . '/market/payment/methods/delete/translation/{lang}/{id}/{offset}',       ['as'=>'deleteTranslationMarketPaymentMethod',    'uses'=>'Syscover\Market\Controllers\PaymentMethodController@deleteTranslationRecord',    'resource' => 'market-payment-method',        'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/market/payment/methods/delete/select/records/{lang}',               ['as'=>'deleteSelectMarketPaymentMethod',         'uses'=>'Syscover\Market\Controllers\PaymentMethodController@deleteRecordsSelect',        'resource' => 'market-payment-method',        'action' => 'delete']);
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | CUSTOMER CLASS TAX
-    |--------------------------------------------------------------------------
-    */
-    Route::any(config('pulsar.appName') . '/market/customer/class/tax/{offset?}',                                     ['as'=>'marketCustomerClassTax',                     'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@index',                      'resource' => 'market-customer-class-tax',        'action' => 'access']);
-    Route::any(config('pulsar.appName') . '/market/customer/class/tax/json/data',                                     ['as'=>'jsonDataMarketCustomerClassTax',             'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@jsonData',                   'resource' => 'market-customer-class-tax',        'action' => 'access']);
-    Route::get(config('pulsar.appName') . '/market/customer/class/tax/create/{offset}',                               ['as'=>'createMarketCustomerClassTax',               'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@createRecord',               'resource' => 'market-customer-class-tax',        'action' => 'create']);
-    Route::post(config('pulsar.appName') . '/market/customer/class/tax/store/{offset}',                               ['as'=>'storeMarketCustomerClassTax',                'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@storeRecord',                'resource' => 'market-customer-class-tax',        'action' => 'create']);
-    Route::get(config('pulsar.appName') . '/market/customer/class/tax/{id}/edit/{offset}',                            ['as'=>'editMarketCustomerClassTax',                 'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@editRecord',                 'resource' => 'market-customer-class-tax',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/customer/class/tax/update/{id}/{offset}',                          ['as'=>'updateMarketCustomerClassTax',               'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@updateRecord',               'resource' => 'market-customer-class-tax',        'action' => 'edit']);
-    Route::get(config('pulsar.appName') . '/market/customer/class/tax/delete/{id}/{offset}',                          ['as'=>'deleteMarketCustomerClassTax',               'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@deleteRecord',               'resource' => 'market-customer-class-tax',        'action' => 'delete']);
-    Route::delete(config('pulsar.appName') . '/market/customer/class/tax/delete/select/records',                      ['as'=>'deleteSelectMarketCustomerClassTax',         'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@deleteRecordsSelect',        'resource' => 'market-customer-class-tax',        'action' => 'delete']);
-
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -124,6 +109,34 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     Route::get(config('pulsar.appName') . '/market/cart/price/rules/delete/translation/{lang}/{id}/{offset}',   ['as'=>'deleteTranslationCartPriceRule',    'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteTranslationRecord',    'resource' => 'market-cart-price-rule',        'action' => 'delete']);
     Route::delete(config('pulsar.appName') . '/market/cart/price/rules/delete/select/records/{lang}',           ['as'=>'deleteSelectCartPriceRule',         'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@deleteRecordsSelect',        'resource' => 'market-cart-price-rule',        'action' => 'delete']);
     Route::post(config('pulsar.appName') . '/market/cart/price/get/coupon/code',                                ['as'=>'apiGetCouponCodeCartPriceRule',     'uses'=>'Syscover\Market\Controllers\CartPriceRuleController@apiGetCouponCode',           'resource' => 'market-cart-price-rule',        'action' => 'access']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | CUSTOMER CLASS TAX
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/customer/class/tax/{offset?}',                                     ['as'=>'marketCustomerClassTax',                     'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@index',                      'resource' => 'market-tax-customer',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/customer/class/tax/json/data',                                     ['as'=>'jsonDataMarketCustomerClassTax',             'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@jsonData',                   'resource' => 'market-tax-customer',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/customer/class/tax/create/{offset}',                               ['as'=>'createMarketCustomerClassTax',               'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@createRecord',               'resource' => 'market-tax-customer',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/customer/class/tax/store/{offset}',                               ['as'=>'storeMarketCustomerClassTax',                'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@storeRecord',                'resource' => 'market-tax-customer',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/customer/class/tax/{id}/edit/{offset}',                            ['as'=>'editMarketCustomerClassTax',                 'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@editRecord',                 'resource' => 'market-tax-customer',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/customer/class/tax/update/{id}/{offset}',                          ['as'=>'updateMarketCustomerClassTax',               'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@updateRecord',               'resource' => 'market-tax-customer',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/customer/class/tax/delete/{id}/{offset}',                          ['as'=>'deleteMarketCustomerClassTax',               'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@deleteRecord',               'resource' => 'market-tax-customer',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/customer/class/tax/delete/select/records',                      ['as'=>'deleteSelectMarketCustomerClassTax',         'uses'=>'Syscover\Market\Controllers\CustomerClassTaxController@deleteRecordsSelect',        'resource' => 'market-tax-customer',        'action' => 'delete']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | PRODUCT CLASS TAX
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/product/class/tax/{offset?}',                                     ['as'=>'marketProductClassTax',                     'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@index',                      'resource' => 'market-tax-product',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/product/class/tax/json/data',                                     ['as'=>'jsonDataMarketProductClassTax',             'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@jsonData',                   'resource' => 'market-tax-product',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/product/class/tax/create/{offset}',                               ['as'=>'createMarketProductClassTax',               'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@createRecord',               'resource' => 'market-tax-product',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/product/class/tax/store/{offset}',                               ['as'=>'storeMarketProductClassTax',                'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@storeRecord',                'resource' => 'market-tax-product',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/product/class/tax/{id}/edit/{offset}',                            ['as'=>'editMarketProductClassTax',                 'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@editRecord',                 'resource' => 'market-tax-product',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/product/class/tax/update/{id}/{offset}',                          ['as'=>'updateMarketProductClassTax',               'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@updateRecord',               'resource' => 'market-tax-product',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/product/class/tax/delete/{id}/{offset}',                          ['as'=>'deleteMarketProductClassTax',               'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@deleteRecord',               'resource' => 'market-tax-product',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/product/class/tax/delete/select/records',                      ['as'=>'deleteSelectMarketProductClassTax',         'uses'=>'Syscover\Market\Controllers\ProductClassTaxController@deleteRecordsSelect',        'resource' => 'market-tax-product',        'action' => 'delete']);
 
 
     /*

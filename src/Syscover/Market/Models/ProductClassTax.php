@@ -6,7 +6,7 @@ use Sofa\Eloquence\Mappable;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Class CustomerClassTax
+ * Class ProductClassTax
  *
  * Model with properties
  * <br><b>[id, name]</b>
@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Validator;
  * @package     Syscover\Market\Models
  */
 
-class CustomerClassTax extends Model
+class ProductClassTax extends Model
 {
     use Eloquence, Mappable;
 
-	protected $table        = '012_100_customer_class_tax';
-    protected $primaryKey   = 'id_100';
-    protected $suffix       = '100';
+	protected $table        = '012_101_product_class_tax';
+    protected $primaryKey   = 'id_101';
+    protected $suffix       = '101';
     public $timestamps      = false;
-    protected $fillable     = ['id_100', 'name_100'];
+    protected $fillable     = ['id_101', 'name_101'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [];

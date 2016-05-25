@@ -54,6 +54,7 @@ return [
     'prices_taxes'                                  => 'Prices and taxes',
     'price_type'                                    => 'Price type',
     'product'                                       => 'Product|Products',
+    'product_class_tax'                             => 'Product class tax|Product class taxes',
     'product_details'                               => 'Product details',
     'product_prices'                                => 'Product prices',
     'product_types'                                 => 'Product type|Products types',
