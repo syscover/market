@@ -383,7 +383,86 @@
 				])
 			</div>
 		</div>
+
 		@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.shipping', 1), 'icon' => 'fa fa-truck'])
+		<div class="row">
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_checkbox_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'name' => 'shipping',
+					'label' => trans_choice('pulsar::pulsar.shipping', 1),
+					'value' => 1,
+					'checked' => old('shipping', isset($object->has_shipping_116)? $object->has_shipping_116 : null)
+				])
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.company', 1),
+					'name' => 'shippingCompany',
+					'value' => old('shippingCompany', isset($object->shipping_company_116)? $object->shipping_company_116 : null)
+				])
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.name', 1),
+					'name' => 'shippingName',
+					'value' => old('shippingName', isset($object->shipping_name_116)? $object->shipping_name_116 : null)
+				])
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'type' => 'email',
+					'label' => trans_choice('pulsar::pulsar.email', 1),
+					'name' => 'shippingEmail',
+					'value' => old('shippingEmail', isset($object->shipping_email_116)? $object->shipping_email_116 : null)
+				])
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.mobile', 1),
+					'name' => 'shippingMobile',
+					'value' => old('shippingMobile', isset($object->shipping_mobile_116)? $object->shipping_mobile_116 : null)
+				])
+			</div>
+			<div class="col-md-6">
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.surname', 1),
+					'name' => 'shippingSurname',
+					'value' => old('shippingSurname', isset($object->shipping_surname_116)? $object->shipping_surname_116 : null)
+				])
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.phone', 1),
+					'name' => 'shippingPhone',
+					'value' => old('shippingPhone', isset($object->shipping_phone_116)? $object->shipping_phone_116 : null)
+				])
+			</div>
+		</div>
+
 		@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.invoice', 1), 'icon' => 'fa fa-file-text-o'])
 		<!-- /market::order.create/tab2 -->
 @stop

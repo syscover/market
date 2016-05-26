@@ -142,6 +142,13 @@ class OrderController extends Controller
 			'customer_email_116'	=> $this->request->input('customerEmail'),
 			'customer_phone_116'	=> $this->request->has('customerPhone')? $this->request->input('customerPhone') : null,
 			'customer_mobile_116'	=> $this->request->has('customerMobile')? $this->request->input('customerMobile') : null,
+			'has_shipping_116'		=> $this->request->has('shipping'),
+			'shipping_company_116'	=> $this->request->has('shippingCompany')? $this->request->input('shippingCompany') : null,
+			'shipping_name_116'		=> $this->request->has('shippingName')? $this->request->input('shippingName') : null,
+			'shipping_surname_116'	=> $this->request->has('shippingSurname')? $this->request->input('shippingSurname') : null,
+			'shipping_email_116'	=> $this->request->has('shippingEmail')? $this->request->input('shippingEmail') : null,
+			'shipping_phone_116'	=> $this->request->has('shippingPhone')? $this->request->input('shippingPhone') : null,
+			'shipping_mobile_116'	=> $this->request->has('shippingMobile')? $this->request->input('shippingMobile') : null,
 		]);
 	}
 }
