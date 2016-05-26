@@ -77,13 +77,6 @@ class MarketUpdateV17 extends Migration
 					->onDelete('restrict')->onUpdate('cascade');
 			});
 		}
-
-		if(! Schema::hasColumn('012_116_order', 'customer_alias_116'))
-		{
-			Schema::table('012_116_order', function (Blueprint $table) {
-				$table->string('customer_alias_116')->nullable()->after('customer_id_116');
-			});
-		}
 	}
 
 	/**
