@@ -13,9 +13,9 @@
                     'aoColumnDefs': [
                         { 'visible': false, "bSearchable": false, 'aTargets': [1]}, // hidden column 1 and prevents search on column 1
                         { 'iDataSort': 1, 'aTargets': [2] }, // sort column 2 according hidden column 1 data
-                        { 'bSortable': false, 'aTargets': [8,9]},
-                        { 'sClass': 'checkbox-column', 'aTargets': [8]},
-                        { 'sClass': 'align-center', 'aTargets': [6,7,9]}
+                        { 'bSortable': false, 'aTargets': [9,10]},
+                        { 'sClass': 'checkbox-column', 'aTargets': [9]},
+                        { 'sClass': 'align-center', 'aTargets': [10]}
                     ],
                     "bProcessing": true,
                     "bServerSide": true,

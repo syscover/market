@@ -108,12 +108,15 @@ class OrderController extends Controller
 
 	public function editCustomRecord($parameters)
 	{
-		$parameters['groups']	   = Group::all();
+		$parameters['ordersStatus'] = OrderStatus::builder()
+			->where('lang_114', session('baseLang')->id_001)
+			->where('active_114', true)
+			->get();
 
-		$parameters['genres']	   = array_map(function($object){
-			$object->name = trans($object->name);
-			return $object;
-		}, config('pulsar.genres'));
+		$parameters['paymentsMethod'] = PaymentMethod::builder()
+			->where('lang_115', session('baseLang')->id_001)
+			->where('active_115', true)
+			->get();
 
 		return $parameters;
 	}
@@ -121,31 +124,17 @@ class OrderController extends Controller
 	public function updateCustomRecord($parameters)
 	{
 		Order::where('id_116', $parameters['id'])->update([
-			'group_116'					=> $this->request->input('group'),
-			'date_116'					=> $this->request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('date'))->getTimestamp() : null,
-			'date_text_116'				=> $this->request->has('date')?  $this->request->input('date') : date(config('pulsar.datePattern') . ' H:i'),
-			'company_116'				=> empty($this->request->input('company'))? null : $this->request->input('company'),
-			'tin_116'					=> empty($this->request->input('tin'))? null : $this->request->input('tin'),
-			'gender_116'				=> empty($this->request->input('gender'))? null : $this->request->input('gender'),
-			'name_116'					=> empty($this->request->input('name'))? null : $this->request->input('name'),
-			'surname_116'				=> empty($this->request->input('surname'))? null : $this->request->input('surname'),
-			'avatar_116'				=> empty($this->request->input('avatar'))? null : $this->request->input('avatar'),
-			'birth_date_116'			=> $this->request->has('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('birthDate'))->getTimestamp() : null,
-			'email_116'					=> $this->request->input('email'),
-			'phone_116'					=> empty($this->request->input('phone'))? null : $this->request->input('phone'),
-			'mobile_116'				=> empty($this->request->input('phone'))? null : $this->request->input('mobile'),
-			'user_116'					=> $this->request->input('user'),
-			'password_116'				=> Hash::make($this->request->input('password')),
-			'active_116'				=> $this->request->has('active'),
-			'country_116'				=> $this->request->has('country')? $this->request->input('country') : null,
-			'territorial_area_1_116'	=> $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-			'territorial_area_2_116'	=> $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-			'territorial_area_3_116'	=> $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-			'cp_116'					=> empty($this->request->input('cp'))? null : $this->request->input('cp'),
-			'locality_116'				=> empty($this->request->input('locality'))? null : $this->request->input('locality'),
-			'address_116'				=> empty($this->request->input('address'))? null : $this->request->input('address'),
-			'latitude_116'				=> empty($this->request->input('latitude'))? null : $this->request->input('latitude'),
-			'longitude_116'				=> empty($this->request->input('longitude'))? null : $this->request->input('longitude'),
+			'status_id_116'			=> $this->request->input('status'),
+			'payment_method_id_116'	=> $this->request->input('paymentMethod'),
+			'comments_116'			=> $this->request->has('comments')? $this->request->input('comments') : null,
+			'gift_116'				=> $this->request->has('gift'),
+			'gift_from_116'			=> $this->request->has('giftFrom')? $this->request->input('giftFrom') : null,
+			'gift_to_116'			=> $this->request->has('giftTo')? $this->request->input('giftTo') : null,
+			'gift_message_116'		=> $this->request->has('giftMessage')? $this->request->input('giftMessage') : null,
+			'customer_company_116'	=> $this->request->has('customerCompany')? $this->request->input('customerCompany') : null,
+			'customer_tin_116'		=> $this->request->has('customerTin')? $this->request->input('customerTin') : null,
+			'customer_name_116'		=> $this->request->has('customerName')? $this->request->input('customerName') : null,
+			'customer_surname_116'	=> $this->request->has('customerSurname')? $this->request->input('customerSurname') : null,
 		]);
 	}
 }

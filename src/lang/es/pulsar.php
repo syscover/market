@@ -41,7 +41,6 @@ return [
     'maximum_price'								    => 'Precio máximo',
     'minimum_price'								    => 'Precio mínimo',
     'order'										    => 'Pedido|Pedidos',
-    'order_data'                                    => 'Datos del pedido',
     'order_status'								    => 'Estado del pedido',
     'order_status_successful'                       => 'Estado del pedido en caso de éxito',
     'package_name'								    => 'Market',

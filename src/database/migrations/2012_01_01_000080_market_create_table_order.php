@@ -21,11 +21,10 @@ class MarketCreateTableOrder extends Migration
 
 				$table->integer('date_116')->unsigned();
 				$table->string('date_text_116');
-				$table->integer('status_116')->unsigned();
+				$table->integer('status_id_116')->unsigned();
 				$table->string('ip_116');
 
-				$table->integer('customer_116')->unsigned()->nullable();
-				$table->integer('payment_method_116')->unsigned();
+				$table->integer('payment_method_id_116')->unsigned();
 				// code generate by payment platform (PayPal or Bank), field to record any payment ID transaction
 				$table->string('payment_id_116');
 				$table->text('comments_116')->nullable();
@@ -47,6 +46,8 @@ class MarketCreateTableOrder extends Migration
 				$table->decimal('total_116', 10, 2);										// amount with tax and shipping
 
 				// customer data
+				$table->integer('customer_id_116')->unsigned()->nullable();
+				$table->string('customer_alias_116')->nullable();
 				$table->string('customer_company_116')->nullable();
 				$table->string('customer_tin_116')->nullable();
 				$table->string('customer_name_116')->nullable();
@@ -89,11 +90,11 @@ class MarketCreateTableOrder extends Migration
 				$table->index('payment_id_116', 'ix01_012_116_order');
 
 				// customer relations
-				$table->foreign('customer_116', 'fk01_012_116_order')->references('id_301')->on('009_301_customer')
+				$table->foreign('customer_id_116', 'fk01_012_116_order')->references('id_301')->on('009_301_customer')
 					->onDelete('restrict')->onUpdate('cascade');
-				$table->foreign('status_116', 'fk02_012_116_order')->references('id_114')->on('012_114_order_status')
+				$table->foreign('status_id_116', 'fk02_012_116_order')->references('id_114')->on('012_114_order_status')
 					->onDelete('restrict')->onUpdate('cascade');
-				$table->foreign('payment_method_116', 'fk03_012_116_order')->references('id_115')->on('012_115_payment_method')
+				$table->foreign('payment_method_id_116', 'fk03_012_116_order')->references('id_115')->on('012_115_payment_method')
 					->onDelete('restrict')->onUpdate('cascade');
 
 				// invoice relations
