@@ -118,6 +118,9 @@ class OrderController extends Controller
 			->where('active_115', true)
 			->get();
 
+		
+		$parameters['aliasCustomer'] = $parameters['object']->getCustomer->getIdentifierName();
+
 		return $parameters;
 	}
 
@@ -131,10 +134,14 @@ class OrderController extends Controller
 			'gift_from_116'			=> $this->request->has('giftFrom')? $this->request->input('giftFrom') : null,
 			'gift_to_116'			=> $this->request->has('giftTo')? $this->request->input('giftTo') : null,
 			'gift_message_116'		=> $this->request->has('giftMessage')? $this->request->input('giftMessage') : null,
+			'customer_id_116'		=> $this->request->input('customerId'),
 			'customer_company_116'	=> $this->request->has('customerCompany')? $this->request->input('customerCompany') : null,
 			'customer_tin_116'		=> $this->request->has('customerTin')? $this->request->input('customerTin') : null,
 			'customer_name_116'		=> $this->request->has('customerName')? $this->request->input('customerName') : null,
 			'customer_surname_116'	=> $this->request->has('customerSurname')? $this->request->input('customerSurname') : null,
+			'customer_email_116'	=> $this->request->input('customerEmail'),
+			'customer_phone_116'	=> $this->request->has('customerPhone')? $this->request->input('customerPhone') : null,
+			'customer_mobile_116'	=> $this->request->has('customerMobile')? $this->request->input('customerMobile') : null,
 		]);
 	}
 }

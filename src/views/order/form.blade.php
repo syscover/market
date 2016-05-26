@@ -152,6 +152,14 @@
 			$('[name="customer"]').val(value);
 			$('[name="customerId"]').val(data.id_301);
 
+			$('[name="customerCompany"]').val(data.company_301);
+			$('[name="customerTin"]').val(data.tin_301);
+			$('[name="customerName"]').val(data.name_301);
+			$('[name="customerSurname"]').val(data.surname_301);
+			$('[name="customerEmail"]').val(data.email_301);
+			$('[name="customerPhone"]').val(data.phone_301);
+			$('[name="customerMobile"]').val(data.mobile_301);
+
 			$.magnificPopup.close();
 		}
 	</script>
@@ -295,7 +303,7 @@
 		@include('pulsar::includes.html.form_iframe_select_group', [
 			'label' => trans_choice('pulsar::pulsar.customer', 1),
 			'name' => 'customer',
-			'value' => old('customer', isset($object->customer_name_116)? $object->customer_name_116 : null),
+			'value' => old('customer', isset($aliasCustomer)? $aliasCustomer : null),
 			'valueId' => old('customerId', isset($object->customer_id_116)? $object->customer_id_116 : null),
 			'modalUrl' => route('crmCustomer', [
 				'offset' => 0,
@@ -324,6 +332,26 @@
 					'name' => 'customerName',
 					'value' => old('customerName', isset($object->customer_name_116)? $object->customer_name_116 : null)
 				])
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'type' => 'email',
+					'label' => trans_choice('pulsar::pulsar.email', 1),
+					'name' => 'customerEmail',
+					'value' => old('customerEmail', isset($object->customer_email_116)? $object->customer_email_116 : null),
+					'required' => true,
+				])
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.mobile', 1),
+					'name' => 'customerMobile',
+					'value' => old('customerMobile', isset($object->customer_mobile_116)? $object->customer_mobile_116 : null)
+				])
 			</div>
 			<div class="col-md-6">
 				@include('pulsar::includes.html.form_text_group', [
@@ -344,275 +372,19 @@
 					'name' => 'customerSurname',
 					'value' => old('customerSurname', isset($object->customer_surname_116)? $object->customer_surname_116 : null)
 				])
+				@include('pulsar::includes.html.form_text_group', [
+					'labelSize' => 4,
+					'fieldSize' => 8,
+					'maxLength' => '255',
+					'rangeLength' => '2,255',
+					'label' => trans_choice('pulsar::pulsar.phone', 1),
+					'name' => 'customerPhone',
+					'value' => old('customerPhone', isset($object->customer_phone_116)? $object->customer_phone_116 : null)
+				])
 			</div>
 		</div>
-
-
+		@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.shipping', 1), 'icon' => 'fa fa-truck'])
 		@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.invoice', 1), 'icon' => 'fa fa-file-text-o'])
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'tin',
-					'label' => trans('market::pulsar.order_customer_tin'),
-					'value' => old('tin'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '255',
-					'rangeLength' => '2,255'
-				])
-			</div>
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'company',
-					'label' => trans_choice('pulsar::pulsar.company', 1),
-					'value' => old('company'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '255',
-					'rangeLength' => '2,255'
-				])
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'name',
-					'label' => trans('pulsar::pulsar.name'),
-					'value' => old('name'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('pulsar::pulsar.surname'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans_choice('pulsar::pulsar.address', 1),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_zipcode'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_locality'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => 'Provincia',
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-			</div>
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'email',
-					'label' => trans('pulsar::pulsar.email'),
-					'value' => old('email'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50',
-					'type' => 'email',
-					'required' => true
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'phone',
-					'label' => trans_choice('pulsar::pulsar.phone', 1),
-					'value' => old('phone'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'mobile',
-					'label' => trans('pulsar::pulsar.mobile'),
-					'value' => old('mobile'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans_choice('pulsar::pulsar.country', 1),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_latitude'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,100'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_longitude'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,100'
-				])
-			</div>
-		</div>
-
-		@include('pulsar::includes.html.form_section_header', ['label' => '&nbsp; ' . trans('market::pulsar.order_section_shipping_data'), 'icon' => 'fa fa-file-text'])
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'tin',
-					'label' => trans('market::pulsar.order_customer_tin'),
-					'value' => old('tin'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '255',
-					'rangeLength' => '2,255'
-				])
-			</div>
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'company',
-					'label' => trans_choice('pulsar::pulsar.company', 1),
-					'value' => old('company'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '255',
-					'rangeLength' => '2,255'
-				])
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'name',
-					'label' => trans('pulsar::pulsar.name'),
-					'value' => old('name'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('pulsar::pulsar.surname'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_address'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_zipcode'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans('market::pulsar.order_invoice_shipping_locality'),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-			</div>
-			<div class="col-md-6">
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'email',
-					'label' => trans('pulsar::pulsar.email'),
-					'value' => old('email'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50',
-					'type' => 'email',
-					'required' => true
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'phone',
-					'label' => trans_choice('pulsar::pulsar.phone', 1),
-					'value' => old('phone'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'mobile',
-					'label' => trans('pulsar::pulsar.mobile'),
-					'value' => old('mobile'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => trans_choice('pulsar::pulsar.country', 1),
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-				@include('pulsar::includes.html.form_text_group', [
-					'name' => 'surname',
-					'label' => 'Provincia',
-					'value' => old('surname'),
-					'labelSize' => 4,
-					'fieldSize' => 8,
-					'maxLength' => '50',
-					'rangeLength' => '2,50'
-				])
-			</div>
-		</div>
 		<!-- /market::order.create/tab2 -->
 @stop
 
