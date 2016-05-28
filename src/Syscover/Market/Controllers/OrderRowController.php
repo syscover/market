@@ -173,6 +173,7 @@ class OrderRowController extends Controller
 		
 		$orderRow = OrderRow::builder(base_lang())->where('id_117', $parameters['id'])->first();
 
+		return view('market::order.test');
 
 
 		return response()->json([

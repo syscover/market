@@ -38,6 +38,7 @@
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.phone') }}</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.state', 1) }}</th>
+        <th data-hide="phone,tablet">{{ trans_choice('market::pulsar.payment_method', 1) }}</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.amount', 1) }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
