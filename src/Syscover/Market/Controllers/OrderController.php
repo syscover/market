@@ -12,26 +12,25 @@ use Syscover\Market\Models\PaymentMethod;
 
 class OrderController extends Controller
 {
-	protected $routeSuffix  = 'marketOrder';
-	protected $folder	   = 'order';
-	protected $package	  = 'market';
-	protected $aColumns	 = ['id_116', 'date_116', 'date_text_116', 'customer_name_116', 'customer_surname_116', 'customer_email_116', 'customer_phone_116', 'name_114', 'total_116'];
+	protected $routeSuffix	= 'marketOrder';
+	protected $folder	   	= 'order';
+	protected $package	  	= 'market';
+	protected $aColumns	 	= ['id_116', 'date_116', 'date_text_116', 'customer_name_116', 'customer_surname_116', 'customer_email_116', 'customer_phone_116', 'name_114', 'total_116'];
 	protected $nameM		= 'name_116';
 	protected $model		= '\Syscover\Market\Models\Order';
-	protected $icon		 = 'fa fa-shopping-basket';
+	protected $icon		 	= 'fa fa-shopping-basket';
 	protected $objectTrans  = 'order';
 
 	public function customIndex($parameters)
 	{
-		// init record on tap 4
-		$parameters['urlParameters']['tab']	 = 1;
+		$parameters['urlParameters']['tab']	= 2;
 
 		return $parameters;
 	}
 
 	public function customActionUrlParameters($actionUrlParameters, $parameters)
 	{
-		$actionUrlParameters['tab'] = 1;
+		$actionUrlParameters['tab'] = 2;
 
 		return $actionUrlParameters;
 	}
@@ -130,7 +129,7 @@ class OrderController extends Controller
 			'status_id_116'			=> $this->request->input('status'),
 			'payment_method_id_116'	=> $this->request->input('paymentMethod'),
 			'comments_116'			=> $this->request->has('comments')? $this->request->input('comments') : null,
-			'gift_116'				=> $this->request->has('gift'),
+			'has_gift_116'			=> $this->request->has('gift'),
 			'gift_from_116'			=> $this->request->has('giftFrom')? $this->request->input('giftFrom') : null,
 			'gift_to_116'			=> $this->request->has('giftTo')? $this->request->input('giftTo') : null,
 			'gift_message_116'		=> $this->request->has('giftMessage')? $this->request->input('giftMessage') : null,

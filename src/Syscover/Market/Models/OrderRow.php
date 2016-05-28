@@ -44,4 +44,16 @@ class OrderRow extends Model
                 if($lang !== null)  $join->where('012_112_product_lang.lang_112', '=', $lang);
             });
     }
+
+    public function addToGetIndexRecords($request, $parameters)
+    {
+        return $this->builder()
+            ->where('order_117', $parameters['ref']);
+    }
+
+    public function customCount($request, $parameters)
+    {
+        return $this->builder()
+            ->where('order_117', $parameters['ref']);
+    }
 }

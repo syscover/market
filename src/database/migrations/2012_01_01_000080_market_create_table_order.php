@@ -30,7 +30,7 @@ class MarketCreateTableOrder extends Migration
 				$table->text('comments_116')->nullable();
 
 				// gift
-				$table->boolean('gift_116');
+				$table->boolean('has_gift_116');
 				$table->string('gift_from_116')->nullable();
 				$table->string('gift_to_116')->nullable();
 				$table->text('gift_message_116')->nullable();
@@ -56,6 +56,8 @@ class MarketCreateTableOrder extends Migration
 				$table->string('customer_mobile_116')->nullable();
 
 				// invoice data
+				$table->boolean('has_invoice_116');											// check if this order has invoice
+				$table->boolean('invoiced_116')->default(false);							// check if has been created invoice on billing program
 				$table->string('invoice_country_116', 2);
 				$table->string('invoice_territorial_area_1_116', 6)->nullable();
 				$table->string('invoice_territorial_area_2_116', 10)->nullable();
@@ -65,9 +67,7 @@ class MarketCreateTableOrder extends Migration
 				$table->string('invoice_address_116', 150)->nullable();
 				$table->string('invoice_latitude_116', 50)->nullable();
 				$table->string('invoice_longitude_116', 50)->nullable();
-				$table->boolean('has_invoice_116');
-				$table->boolean('invoiced_116')->default(false);
-				
+
 				// shipping data
 				$table->boolean('has_shipping_116');
 				$table->string('shipping_company_116')->nullable();
