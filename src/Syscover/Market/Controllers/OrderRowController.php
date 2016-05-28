@@ -1,10 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Syscover\Market\Models\OrderRow;
 use Syscover\Pulsar\Core\Controller;
-use Syscover\Market\Models\Order;
-use Syscover\Market\Models\OrderStatus;
-use Syscover\Market\Models\PaymentMethod;
+use Syscover\Market\Models\OrderRow;
 
 /**
  * Class OrderRowController
