@@ -277,7 +277,9 @@
 	<!-- market::order.form tab1 -->
 	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.product', 2), 'icon' => 'fa fa-cubes'])
 
+	@if(false)
 	<a href="{{ route('createFormsComment', $urlParameters) }}" class="magnific-popup bs-tooltip btn margin-b10 fl"><i class="fa fa-cubes"></i> {{ trans('pulsar::pulsar.new') }} {{ trans_choice('pulsar::pulsar.product', 1) }}</a>
+	@endif
 	<div class="widget box">
 		<div class="widget-content no-padding">
 			<form id="formView" method="post" action="">

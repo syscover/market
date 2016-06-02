@@ -2,6 +2,7 @@
 
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\OrderRow;
+use Illuminate\Http\Request;
 
 /**
  * Class OrderRowController
@@ -18,6 +19,16 @@ class OrderRowController extends Controller
 	protected $model		= '\Syscover\Market\Models\OrderRow';
 	protected $icon		 	= 'fa fa-shopping-basket';
 	protected $objectTrans  = 'order';
+
+	function __construct(Request $request)
+	{
+		parent::__construct($request);
+
+		// todo, provisional hasta establecer las accioner de la fila de productos
+		$this->viewParameters['editButton']         = false;
+		$this->viewParameters['deleteButton']       = false;
+		$this->viewParameters['deleteSelectButton'] = false;
+	}
 
 	public function customIndex($parameters)
 	{

@@ -117,8 +117,10 @@ class OrderController extends Controller
 			->where('active_115', true)
 			->get();
 
-		
 		$parameters['aliasCustomer'] = $parameters['object']->getCustomer->getIdentifierName();
+
+		// todo, provisional hasta establecer las accioner de la fila de productos
+		$this->viewParameters['deleteSelectButton'] = false;
 
 		return $parameters;
 	}
