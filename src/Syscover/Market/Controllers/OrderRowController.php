@@ -22,14 +22,14 @@ class OrderRowController extends Controller
 	public function customIndex($parameters)
 	{
 		// init record on tap 4
-		$parameters['urlParameters']['tab']	 = 1;
+		//$parameters['urlParameters']['tab']	 = 1;
 
 		return $parameters;
 	}
 
 	public function customActionUrlParameters($actionUrlParameters, $parameters)
 	{
-		$actionUrlParameters['tab'] 	= 1;
+		//$actionUrlParameters['tab'] 	= 1;
 		//$actionUrlParameters['modal']   = true;
 		//$actionUrlParameters['ref']     = $parameters['ref'];
 
@@ -41,7 +41,7 @@ class OrderRowController extends Controller
 		switch ($aColumn['type'])
 		{
 			case 'data':
-				$row[] = ! empty($aObject->{$aColumn['data']})? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"> TEST </a>' : null;
+				$row[] = ! empty($aObject->{$aColumn['data']})? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></a>' : null;
 				break;
 		}
 
@@ -170,12 +170,10 @@ class OrderRowController extends Controller
 		
 		$orderRow = OrderRow::builder(base_lang())->where('id_117', $parameters['id'])->first();
 
-		return view('market::order.test');
+		// get object from json, and convert to array
+		$data = json_decode($orderRow->data_117, true);
 
-
-		return response()->json([
-			'status'        => 'success',
-			'orderRow'    	=> $orderRow
-		]);
+		if(isset($data['info']))
+			return view('market::order.info_modal', $data);
 	}
 }

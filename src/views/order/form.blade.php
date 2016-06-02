@@ -53,9 +53,9 @@
 					'iDisplayStart' : 0,
 					'aaSorting': [[ 0, "desc" ]],
 					'aoColumnDefs': [
-						{ 'bSortable': false, 'aTargets': [3,4]},
-						{ 'sClass': 'checkbox-column', 'aTargets': [3]},
-						{ 'sClass': 'align-center', 'aTargets': [4]}
+						{ 'bSortable': false, 'aTargets': [3,4,5]},
+						{ 'sClass': 'checkbox-column', 'aTargets': [4]},
+						{ 'sClass': 'align-center', 'aTargets': [3,5]}
 					],
 					"bProcessing": true,
 					"bServerSide": true,
@@ -288,7 +288,8 @@
 					<tr>
 						<th data-hide="expand">{{ trans_choice('pulsar::pulsar.product', 1) }}</th>
 						<th>{{ trans_choice('pulsar::pulsar.quantity', 1) }}</th>
-						<th>{{ trans('pulsar::pulsar.subject') }}</th>
+						<th>{{ trans_choice('pulsar::pulsar.subtotal', 1) }}</th>
+						<th>{{ trans('pulsar::pulsar.info') }}</th>
 						<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
 						<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
 					</tr>
