@@ -233,6 +233,13 @@
                 'idSelect' => 'id_115',
                 'nameSelect' => 'name_115',
             ])
+			@include('pulsar::includes.html.form_textarea_group', [
+				'labelSize' => 4,
+                'fieldSize' => 8,
+				'label' => trans_choice('pulsar::pulsar.comment', 2),
+				'name' => 'comments',
+				'value' => old('comments', isset($object->comments_116)? $object->comments_116 : null)
+			])
 		</div>
 		<div class="col-md-6">
 			@include('pulsar::includes.html.form_text_group', [
@@ -263,13 +270,33 @@
                 'value' => old('paymentId', isset($object->payment_id_116)? $object->payment_id_116 : null),
                 'readOnly' => true,
             ])
+			{{--@include('pulsar::includes.html.form_textarea_group', [--}}
+				{{--'labelSize' => 4,--}}
+                {{--'fieldSize' => 8,--}}
+				{{--'label' => trans_choice('pulsar::pulsar.log', 2),--}}
+				{{--'name' => 'comments',--}}
+				{{--'value' => old('comments', isset($object->comments_116)? $object->comments_116 : null)--}}
+			{{--])--}}
+			<div class="form-group textarea-container has-success">
+				<label class="col-md-4 control-label">{{ trans_choice('pulsar::pulsar.log', 2) }}</label>
+				<div class="col-md-8">
+					<div style="max-height: 50px;overflow: auto; border: 1px solid #CCCCCC">
+						<ul>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+							<li>asdfasdfasd</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	@include('pulsar::includes.html.form_textarea_group', [
-        'label' => trans_choice('pulsar::pulsar.comment', 2),
-        'name' => 'comments',
-        'value' => old('comments', isset($object->comments_116)? $object->comments_116 : null)
-    ])
 	<!-- /market::order.form -->
 @stop
 
