@@ -66,7 +66,7 @@
 					{{--var url = '{{ route('showFormsRecord', ['id' => $object->id_403, 'form' => $form, 'offset' => '%offset%', 'tab' => 0]) }}'--}}
 					{{--$('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))--}}
 
-				})
+				});
 			}
 
 			$.getAddress({
@@ -282,25 +282,21 @@
 	@endif
 	<div class="widget box">
 		<div class="widget-content no-padding">
-			<form id="formView" method="post" action="">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="hidden" name="_method" value="DELETE">
-				<table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable-pulsar">
-					<thead>
-					<tr>
-						<th data-hide="expand">{{ trans_choice('pulsar::pulsar.product', 1) }}</th>
-						<th>{{ trans_choice('pulsar::pulsar.quantity', 1) }}</th>
-						<th>{{ trans_choice('pulsar::pulsar.subtotal', 1) }}</th>
-						<th>{{ trans('pulsar::pulsar.info') }}</th>
-						<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
-						<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
-					</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-				<input type="hidden" name="nElementsDataTable">
-				<input type="hidden" name="urlTarget">
-			</form>
+			<table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable-pulsar">
+				<thead>
+				<tr>
+					<th data-hide="expand">{{ trans_choice('pulsar::pulsar.product', 1) }}</th>
+					<th>{{ trans_choice('pulsar::pulsar.quantity', 1) }}</th>
+					<th>{{ trans_choice('pulsar::pulsar.subtotal', 1) }}</th>
+					<th>{{ trans('pulsar::pulsar.info') }}</th>
+					<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
+					<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
+				</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<input type="hidden" name="nElementsDataTable">
+			<input type="hidden" name="urlTarget">
 		</div>
 	</div>
 

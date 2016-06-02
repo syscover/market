@@ -119,7 +119,7 @@ class OrderController extends Controller
 
 		$parameters['aliasCustomer'] = $parameters['object']->getCustomer->getIdentifierName();
 
-		// todo, provisional hasta establecer las accioner de la fila de productos
+		// order form, ca nor contain other form, inside form record
 		$this->viewParameters['deleteSelectButton'] = false;
 
 		return $parameters;
