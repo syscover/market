@@ -92,11 +92,11 @@ class Order extends Model
             if(! isset($dataOrder['log']))
                 $dataOrder['log'] = [];
 
-            $dataOrder['log'][] = [
+            array_unshift($dataOrder['log'], [
                 'time'      => date('U'),
                 'status'    => $order->status_id_116,
                 'message'   => $message
-            ];
+            ]);
 
             $order->data_116 = json_encode($dataOrder);
 

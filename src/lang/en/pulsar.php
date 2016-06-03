@@ -40,6 +40,7 @@ return [
     'marketing'                                     => 'Marketing',
     'maximum_discount_amount'                       => 'Maximum discount amount',
     'maximum_price'                                 => 'Maximum price',
+    'message_user_change_order_status'              => 'The user :user has changed the order status from :oldStatus to :newStatus',
     'minimum_price'                                 => 'Minimum price',
     'order'                                         => 'Order|Orders',
     'order_status'                                  => 'Order status',

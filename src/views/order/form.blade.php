@@ -273,7 +273,7 @@
 			<div class="form-group textarea-container has-success">
 				<label class="col-md-4 control-label">{{ trans_choice('pulsar::pulsar.log', 2) }}</label>
 				<div class="col-md-8">
-					<div style="max-height: 50px;overflow: auto; border: 1px solid #CCCCCC">
+					<div style="height: 50px;overflow: auto; border: 1px solid #CCCCCC">
 						<ul style="margin: 0; padding: 5px 5px 5px 5px">
 							@if(is_array($dataOrder['log']))
 								@foreach($dataOrder['log'] as $action)

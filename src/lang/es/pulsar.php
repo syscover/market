@@ -39,6 +39,7 @@ return [
     'marketing'									    => 'Marketing',
     'maximum_discount_amount'					    => 'Cantidad máxima de descuento',
     'maximum_price'								    => 'Precio máximo',
+    'message_user_change_order_status'              => 'El usuario :user ha cambiado el estado del pedido de :oldStatus a :newStatus',
     'minimum_price'								    => 'Precio mínimo',
     'order'										    => 'Pedido|Pedidos',
     'order_status'								    => 'Estado del pedido',

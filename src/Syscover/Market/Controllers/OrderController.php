@@ -128,6 +128,8 @@ class OrderController extends Controller
 
 	public function updateCustomRecord($parameters)
 	{
+		$order = Order::find($parameters['id']);
+		
 		Order::where('id_116', $parameters['id'])->update([
 			'status_id_116'			=> $this->request->input('status'),
 			'payment_method_id_116'	=> $this->request->input('paymentMethod'),
@@ -152,5 +154,16 @@ class OrderController extends Controller
 			'shipping_phone_116'	=> $this->request->has('shippingPhone')? $this->request->input('shippingPhone') : null,
 			'shipping_mobile_116'	=> $this->request->has('shippingMobile')? $this->request->input('shippingMobile') : null,
 		]);
+
+		// if order status is different that previous status order, we record this change
+		if($order->status_id_116 != (int)$this->request->input('status'))
+		{
+			$orderStatus = OrderStatus::builder()
+				->where('lang_114', session('baseLang')->id_001)
+				->where('active_114', true)
+				->get();
+
+			Order::setOrderLog($parameters['id'], trans('market::pulsar.message_user_change_order_status', ['user' => auth('pulsar')->user()->user_010, 'oldStatus' => $orderStatus->where('id_114', $order->status_id_116)->first()->name_114, 'newStatus' =>  $orderStatus->where('id_114', (int)$this->request->input('status'))->first()->name_114]));
+		}
 	}
 }
