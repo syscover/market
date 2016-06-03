@@ -47,7 +47,6 @@ class OrderController extends Controller
 			->where('active_115', true)
 			->get();
 
-
 		return $parameters;
 	}
 
@@ -118,6 +117,8 @@ class OrderController extends Controller
 			->get();
 
 		$parameters['aliasCustomer'] = $parameters['object']->getCustomer->getIdentifierName();
+
+		$parameters['dataOrder'] = json_decode($parameters['object']->data_116, true);
 
 		// order form, ca nor contain other form, inside form record
 		$this->viewParameters['deleteSelectButton'] = false;

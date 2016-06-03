@@ -184,7 +184,6 @@ class OrderRowController extends Controller
 		// get object from json, and convert to array
 		$data = json_decode($orderRow->data_117, true);
 
-		if(isset($data['info']))
-			return view('market::order.info_modal', $data);
+		return view('market::order.info_modal', $data);
 	}
 }

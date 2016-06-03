@@ -270,27 +270,19 @@
                 'value' => old('paymentId', isset($object->payment_id_116)? $object->payment_id_116 : null),
                 'readOnly' => true,
             ])
-			{{--@include('pulsar::includes.html.form_textarea_group', [--}}
-				{{--'labelSize' => 4,--}}
-                {{--'fieldSize' => 8,--}}
-				{{--'label' => trans_choice('pulsar::pulsar.log', 2),--}}
-				{{--'name' => 'comments',--}}
-				{{--'value' => old('comments', isset($object->comments_116)? $object->comments_116 : null)--}}
-			{{--])--}}
 			<div class="form-group textarea-container has-success">
 				<label class="col-md-4 control-label">{{ trans_choice('pulsar::pulsar.log', 2) }}</label>
 				<div class="col-md-8">
 					<div style="max-height: 50px;overflow: auto; border: 1px solid #CCCCCC">
-						<ul>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
-							<li>asdfasdfasd</li>
+						<ul style="margin: 0; padding: 5px 5px 5px 5px">
+							@if(is_array($dataOrder['log']))
+								@foreach($dataOrder['log'] as $action)
+									<li style="list-style: none; padding-bottom: 8px">
+										<div style="font-size: 11px"><span style="font-weight: bold; color: #9c2123">{{ date(config('pulsar.datePattern') . ' H:i:s', $action['time']) }}</span> | {{ $action['status'] }}</div>
+										<div style="font-size: 12px">{{ $action['message'] }}</div>
+									</li>
+								@endforeach
+							@endif
 						</ul>
 					</div>
 				</div>

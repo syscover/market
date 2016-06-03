@@ -56,9 +56,13 @@
 </style>
 <div id="custom-content" class="white-popup-block">
 	<h1>{{ trans('pulsar::pulsar.additional_information') }}</h1>
-	<ul class="additional-list">
-	@foreach($info as $row)
-		<li><span class="additional-list-label">{{ $row['trans'] }}:</span> {{ is_array($row['value'])? implode($row['value'], ',') : $row['value'] }}</li>
-	@endforeach
-	</ul>
+	@if(is_array($info))
+		<ul class="additional-list">
+		@foreach($info as $row)
+			@if(isset($row['trans']) && isset($row['value']))
+				<li><span class="additional-list-label">{{ $row['trans'] }}:</span> {{ is_array($row['value'])? implode($row['value'], ',') : $row['value'] }}</li>
+			@endif
+		@endforeach
+		</ul>
+	@endif
 </div>
