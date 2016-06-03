@@ -278,7 +278,7 @@
 							@if(is_array($dataOrder['log']))
 								@foreach($dataOrder['log'] as $action)
 									<li style="list-style: none; padding-bottom: 8px">
-										<div style="font-size: 11px"><span style="font-weight: bold; color: #9c2123">{{ date(config('pulsar.datePattern') . ' H:i:s', $action['time']) }}</span> | {{ $action['status'] }}</div>
+										<div style="font-size: 11px; font-weight: bold;"><span style="color: #9c2123">{{ date(config('pulsar.datePattern') . ' H:i:s', $action['time']) }}</span> | {{ $ordersStatus->where('id_114', $action['status'])->first()->name_114  }}</div>
 										<div style="font-size: 12px">{{ $action['message'] }}</div>
 									</li>
 								@endforeach
