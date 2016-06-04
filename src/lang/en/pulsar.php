@@ -45,6 +45,7 @@ return [
     'message_customer_go_to_tpv_error'              => 'Error to go to TPV, Error: :error',
     'message_paypal_payment_successful'             => 'PayPal payment successful',
     'message_tpv_payment_successful'                => 'TPV payment successful',
+    'message_tpv_payment_error'                     => 'TPV payment error, error: :error',
     'message_user_change_order_status'              => 'The user :user has changed the order status from :oldStatus to :newStatus',
     'minimum_price'                                 => 'Minimum price',
     'order'                                         => 'Order|Orders',
