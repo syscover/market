@@ -33,7 +33,7 @@
         'label' => trans('pulsar::pulsar.active'),
         'name' => 'active',
         'value' => 1,
-        'checked' => old('active',  $object->active_114)
+        'checked' => old('active', isset($object->active_114)? $object->active_114 : null)
     ])
     <!-- /.market::order_status.create -->
 @stop
