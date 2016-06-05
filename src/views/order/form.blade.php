@@ -270,23 +270,12 @@
                 'value' => old('paymentId', isset($object->payment_id_116)? $object->payment_id_116 : null),
                 'readOnly' => true,
             ])
-			<div class="form-group textarea-container has-success">
-				<label class="col-md-4 control-label">{{ trans_choice('pulsar::pulsar.log', 2) }}</label>
-				<div class="col-md-8">
-					<div style="height: 50px;overflow: auto; border: 1px solid #CCCCCC">
-						<ul style="margin: 0; padding: 5px 5px 5px 5px">
-							@if(is_array($dataOrder['log']))
-								@foreach($dataOrder['log'] as $action)
-									<li style="list-style: none; padding-bottom: 8px">
-										<div style="font-size: 11px; font-weight: bold;"><span style="color: #9c2123">{{ date(config('pulsar.datePattern') . ' H:i:s', $action['time']) }}</span> | {{ $ordersStatus->where('id_114', $action['status'])->first()->name_114  }}</div>
-										<div style="font-size: 12px">{{ $action['message'] }}</div>
-									</li>
-								@endforeach
-							@endif
-						</ul>
-					</div>
-				</div>
-			</div>
+			@include('pulsar::includes.html.form_overflow_div_group', [
+                'labelSize' => 4,
+                'fieldSize' => 8,
+                'label' => trans_choice('pulsar::pulsar.log', 2),
+                'value' => isset($log)? $log : null
+            ])
 		</div>
 	</div>
 	<!-- /market::order.form -->

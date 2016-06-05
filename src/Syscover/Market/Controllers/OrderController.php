@@ -120,8 +120,21 @@ class OrderController extends Controller
 
 		$parameters['dataOrder'] = json_decode($parameters['object']->data_116, true);
 
+		// set elements to form_overflow_div_group
+		$parameters['log'] = [];
+		if(is_array($parameters['dataOrder']['log']))
+		{
+			foreach ($parameters['dataOrder']['log'] as $action)
+			{
+				$parameters['log'][] = '<div style="font-size: 11px; font-weight: bold;"><span style="color: #9c2123">' . date(config('pulsar.datePattern') . ' H:i:s', $action['time']) . '</span> | ' . $parameters['ordersStatus']->where('id_114', $action['status'])->first()->name_114 . '</div>' .
+					'<div style="font-size: 12px">' . $action['message'] . '</div>';
+			}
+		}
+		
 		// order form, ca nor contain other form, inside form record
 		$this->viewParameters['deleteSelectButton'] = false;
+
+
 
 		return $parameters;
 	}
