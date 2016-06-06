@@ -79,8 +79,10 @@ class Product extends Model
     public static function getCustomReturnIndexRecords($query, $parameters)
     {
         return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
-            ->leftJoin('012_110_category', '012_113_products_categories.category_113', '=', '012_110_category.id_110')
-            ->where('lang_110', base_lang()->id_001)
+            ->leftJoin('012_110_category', function($join){
+                $join->on('012_113_products_categories.category_113', '=', '012_110_category.id_110')
+                    ->where('012_110_category.lang_110', '=', base_lang()->id_001);
+            })
             ->groupBy('id_111')
             ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')]);
     }
@@ -88,7 +90,10 @@ class Product extends Model
     public static function customCountIndexRecords($query, $parameters)
     {
         return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
-            ->leftJoin('012_110_category', '012_113_products_categories.category_113', '=', '012_110_category.id_110')
+            ->leftJoin('012_110_category', function($join){
+                $join->on('012_113_products_categories.category_113', '=', '012_110_category.id_110')
+                    ->where('012_110_category.lang_110', '=', base_lang()->id_001);
+            })
             ->groupBy('id_111')
             ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')])
             ->count();
