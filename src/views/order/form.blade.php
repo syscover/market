@@ -50,16 +50,16 @@
 			if ($.fn.dataTable)
 			{
 				$('.datatable-pulsar').dataTable({
-					'iDisplayStart' : 0,
-					'aaSorting': [[ 0, "desc" ]],
-					'aoColumnDefs': [
-						{ 'bSortable': false, 'aTargets': [3,4,5]},
-						{ 'sClass': 'checkbox-column', 'aTargets': [4]},
-						{ 'sClass': 'align-center', 'aTargets': [3,5]}
+					'displayStart' : 0,
+					'sorting': [[0, 'desc']],
+					'columnDefs': [
+						{ 'sortable': false, 'targets': [3,4,5]},
+						{ 'class': 'checkbox-column', 'targets': [4]},
+						{ 'class': 'align-center', 'targets': [3,5]}
 					],
-					"bProcessing": true,
-					"bServerSide": true,
-					"sAjaxSource": "{{ route('jsonDataMarketOrderRow', ['ref' => $object->id_116, 'modal' => 0]) }}"
+					"processing": true,
+					"serverSide": true,
+					"ajax": "{{ route('jsonDataMarketOrderRow', ['ref' => $object->id_116, 'modal' => 0]) }}"
 				}).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json) {
 
 					// set url to call from modal when submit any action
