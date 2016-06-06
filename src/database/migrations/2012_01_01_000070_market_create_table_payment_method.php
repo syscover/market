@@ -30,6 +30,7 @@ class MarketCreateTablePaymentMethod extends Migration
 				$table->string('data_lang_115')->nullable();
 
 				$table->primary(['id_115', 'lang_115'], 'pk01_012_115_payment_method');
+
 				$table->foreign('lang_115', 'fk01_012_115_payment_method')->references('id_001')->on('001_001_lang')
 					->onDelete('restrict')->onUpdate('cascade');
 				$table->foreign('order_status_successful_id_115', 'fk02_012_115_payment_method')->references('id_114')->on('012_114_order_status')

@@ -89,7 +89,7 @@ class MarketCreateTableOrder extends Migration
 
 				$table->index('payment_id_116', 'ix01_012_116_order');
 
-				// customer relations
+				// order relations
 				$table->foreign('customer_id_116', 'fk01_012_116_order')->references('id_301')->on('009_301_customer')
 					->onDelete('restrict')->onUpdate('cascade');
 				$table->foreign('status_id_116', 'fk02_012_116_order')->references('id_114')->on('012_114_order_status')
