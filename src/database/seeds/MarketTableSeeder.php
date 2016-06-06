@@ -8,16 +8,17 @@ class MarketTableSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
+        
         $this->call(MarketPackageTableSeeder::class);
         $this->call(MarketResourceTableSeeder::class);
         $this->call(MarketAttachmentMimeSeeder::class);
-
+        $this->call(MarketOrderStatusSeeder::class);
+        
         Model::reguard();
     }
 }
 
 /*
  * Command to run:
- * php artisan db:seed --class="MarketTableSeeder"
+ * php artisan db:seed --class="MarketOrderStatusSeeder"
  */
