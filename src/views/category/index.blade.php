@@ -9,15 +9,21 @@
             if ($.fn.dataTable)
             {
                 $('.datatable-pulsar').dataTable({
-                    'displayStart' : {{ $offset }},
-                    'columnDefs': [
-                        { 'sortable': false, 'targets': [3,4]},
-                        { 'class': 'checkbox-column', 'targets': [3]},
-                        { 'class': 'align-center', 'targets': [2,4]}
+                    "displayStart": {{ $offset }},
+                    "columnDefs": [
+                        { "sortable": false, "targets": [3,4]},
+                        { "class": "checkbox-column", "targets": [3]},
+                        { "class": "align-center", "targets": [2,4]}
                     ],
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "{{ route('jsonData' . ucfirst($routeSuffix), [session('baseLang')->id_001]) }}"
+                    "ajax": {
+                        "url": "{{ route('jsonData' . ucfirst($routeSuffix), [session('baseLang')->id_001]) }}",
+                        "type": "POST",
+                        "headers": {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        }
+                    }
                 }).fnSetFilteringDelay();
             }
 

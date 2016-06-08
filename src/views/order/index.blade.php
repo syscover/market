@@ -8,18 +8,24 @@
             if ($.fn.dataTable)
             {
                 $('.datatable-pulsar').dataTable({
-                    'displayStart' : {{ $offset }},
-                    'sorting': [[0, 'desc']],
-                    'columnDefs': [
-                        { 'visible': false, 'searchable': false, 'targets': [1]}, // hidden column 1 and prevents search on column 1
-                        { 'dataSort': 1, 'targets': [2] }, // sort column 2 according hidden column 1 data
-                        { 'sortable': false, 'targets': [9,10]},
-                        { 'class': 'checkbox-column', 'targets': [9]},
-                        { 'class': 'align-center', 'targets': [10]}
+                    "displayStart": {{ $offset }},
+                    "sorting": [[0, "desc"]],
+                    "columnDefs": [
+                        { "visible": false, "searchable": false, "targets": [1]}, // hidden column 1 and prevents search on column 1
+                        { "dataSort": 1, "targets": [2] }, // sort column 2 according hidden column 1 data
+                        { "sortable": false, "targets": [9,10]},
+                        { "class": "checkbox-column", "targets": [9]},
+                        { "class": "align-center", "targets": [10]}
                     ],
                     "processing": true,
                     "serverSide": true,
-                    "ajax": "{{ route('jsonData' . ucfirst($routeSuffix)) }}"
+                    "ajax": {
+                        "url": "{{ route('jsonData' . ucfirst($routeSuffix)) }}",
+                        "type": "POST",
+                        "headers": {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        }
+                    }
                 }).fnSetFilteringDelay();
             }
         });
