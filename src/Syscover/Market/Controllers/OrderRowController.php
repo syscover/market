@@ -16,7 +16,7 @@ class OrderRowController extends Controller
 	protected $package	  	= 'market';
 	protected $aColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', ['type' => 'data', 'data' => 'data_117']];
 	protected $nameM		= 'name_117';
-	protected $model		= '\Syscover\Market\Models\OrderRow';
+	protected $model		= OrderRow::class;
 	protected $icon		 	= 'fa fa-shopping-basket';
 	protected $objectTrans  = 'order';
 

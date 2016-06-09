@@ -33,6 +33,7 @@ return [
     'excluding_tax'                                 => 'Excluding tax',
     'free_shipping'                                 => 'Free shipping',
     'gift'                                          => 'Gift',
+    'group_customer_class_tax'                      => 'Group Customer class tax|Groups Customer class taxes',
     'grouped_product'                               => 'Grouped product|Grouped products',
     'has_coupon'                                    => 'Has coupon?',
     'including_tax'                                 => 'Including tax',

@@ -16,7 +16,7 @@ class PaymentMethodController extends Controller
     protected $package      = 'market';
     protected $aColumns     = ['id_115', 'name_001', 'name_115', 'sorting_115', ['data' => 'active_115', 'type' => 'active']];
     protected $nameM        = 'name_115';
-    protected $model        = '\Syscover\Market\Models\PaymentMethod';
+    protected $model        = PaymentMethod::class;
     protected $icon         = 'fa fa-random';
     protected $objectTrans  = 'payment_method';
 

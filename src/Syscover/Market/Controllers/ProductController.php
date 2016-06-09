@@ -21,8 +21,8 @@ class ProductController extends Controller
     protected $package      = 'market';
     protected $aColumns     = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'price_111', 'sorting_111', 'name_110'];
     protected $nameM        = 'name_112';
-    protected $model        = '\Syscover\Market\Models\Product';
-    protected $langModel    = '\Syscover\Market\Models\ProductLang';
+    protected $model        = Product::class;
+    protected $langModel    = ProductLang::class;
     protected $icon         = 'fa fa-cube';
     protected $objectTrans  = 'product';
 

@@ -15,7 +15,7 @@ class ProductClassTaxController extends Controller
     protected $package      = 'market';
     protected $aColumns     = ['id_101', 'name_101'];
     protected $nameM        = 'name_101';
-    protected $model        = \Syscover\Market\Models\ProductClassTax::class;
+    protected $model        = ProductClassTax::class;
     protected $icon         = 'fa fa-cubes';
     protected $objectTrans  = 'product_class_tax';
 

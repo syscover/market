@@ -33,6 +33,7 @@ return [
     'excluding_tax'								    => 'Sin impuestos',
     'free_shipping'								    => 'Transporte gratuito',
     'gift'                                          => 'Regalo',
+    'group_customer_class_tax'                      => 'Grupo e Impuesto de usuario|Grupos e Impuestos de usuario',
     'grouped_product'                               => 'Producto agrupado|Productos agrupados',
     'has_coupon'								    => '¿Tiene cupón?',
     'including_tax'								    => 'Con impuestos',

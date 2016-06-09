@@ -15,7 +15,7 @@ class CustomerClassTaxController extends Controller
     protected $package      = 'market';
     protected $aColumns     = ['id_100', 'name_100'];
     protected $nameM        = 'name_100';
-    protected $model        = \Syscover\Market\Models\CustomerClassTax::class;
+    protected $model        = CustomerClassTax::class;
     protected $icon         = 'fa fa-users';
     protected $objectTrans  = 'customer_class_tax';
 

@@ -1,4 +1,4 @@
-<li{!! is_current_resource(['market-order','market-product','market-category','market-tax-customer','market-tax-product','market-tax-setting','market-payment-method','market-order-status','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
+<li{!! is_current_resource(['market-order','market-product','market-category','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-setting','market-payment-method','market-order-status','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
     <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
     <ul class="sub-menu">
         <li{!! is_current_resource(['market-order'], true) !!}>
@@ -41,11 +41,14 @@
                 </li>
             </ul>
         </li>
-        <li{!! is_current_resource(['market-tax','market-tax-customer','market-tax-product','market-tax-setting'], true) !!}>
+        <li{!! is_current_resource(['market-tax','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-setting'], true) !!}>
             <a href="javascript:void(0)"><i class="fa fa-calculator"></i>{{ trans_choice('market::pulsar.tax', 2) }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('market-tax-customer', 'access'))
                     <li{!! is_current_resource('market-tax-customer') !!}><a href="{{ route('marketCustomerClassTax') }}"><i class="fa fa-users"></i>{{ trans_choice('market::pulsar.customer_class_tax', 2) }}</a></li>
+                @endif
+                @if(is_allowed('market-tax-customer-group', 'access'))
+                    <li{!! is_current_resource('market-tax-customer-group') !!}><a href="{{ route('marketGroupCustomerClassTax') }}"><i class="fa fa-retweet"></i>{{ trans_choice('market::pulsar.group_customer_class_tax', 2) }}</a></li>
                 @endif
                 @if(is_allowed('market-tax-product', 'access'))
                     <li{!! is_current_resource('market-tax-product') !!}><a href="{{ route('marketProductClassTax') }}"><i class="fa fa-cubes"></i>{{ trans_choice('market::pulsar.product_class_tax', 2) }}</a></li>

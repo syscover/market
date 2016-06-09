@@ -15,7 +15,7 @@ class OrderStatusController extends Controller
     protected $package      = 'market';
     protected $aColumns     = ['id_114', 'name_001', 'name_114', ['data' => 'active_114', 'type' => 'active']];
     protected $nameM        = 'name_114';
-    protected $model        = '\Syscover\Market\Models\OrderStatus';
+    protected $model        = OrderStatus::class;
     protected $icon         = 'fa fa-refresh';
     protected $objectTrans  = 'order_status';
 

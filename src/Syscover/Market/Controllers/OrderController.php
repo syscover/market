@@ -17,7 +17,7 @@ class OrderController extends Controller
 	protected $package	  	= 'market';
 	protected $aColumns	 	= ['id_116', 'date_116', 'date_text_116', 'customer_name_116', 'customer_surname_116', ['type' => 'email', 'data' => 'customer_email_116'], 'customer_phone_116', 'name_114', 'name_115', 'total_116'];
 	protected $nameM		= 'name_116';
-	protected $model		= '\Syscover\Market\Models\Order';
+	protected $model		= Order::class;
 	protected $icon		 	= 'fa fa-shopping-basket';
 	protected $objectTrans  = 'order';
 

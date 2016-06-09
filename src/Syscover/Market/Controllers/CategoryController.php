@@ -15,7 +15,7 @@ class CategoryController extends Controller
     protected $package      = 'market';
     protected $aColumns     = ['id_110', 'name_110', ['data' => 'active_110', 'type' => 'active']];
     protected $nameM        = 'name_110';
-    protected $model        = '\Syscover\Market\Models\Category';
+    protected $model        = Category::class;
     protected $icon         = 'fa fa-cubes';
     protected $objectTrans  = 'category';
 
