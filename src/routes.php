@@ -164,6 +164,20 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | TAX RATE ZONE
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/tax/rate/zone/{offset?}',                                        ['as'=>'marketTaxRateZone',                     'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@index',                      'resource' => 'market-tax-rate-zone',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/tax/rate/zone/json/data',                                        ['as'=>'jsonDataMarketTaxRateZone',             'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@jsonData',                   'resource' => 'market-tax-rate-zone',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/tax/rate/zone/create/{offset}',                                  ['as'=>'createMarketTaxRateZone',               'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@createRecord',               'resource' => 'market-tax-rate-zone',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/tax/rate/zone/store/{offset}',                                  ['as'=>'storeMarketTaxRateZone',                'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@storeRecord',                'resource' => 'market-tax-rate-zone',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/tax/rate/zone/{id}/edit/{offset}',                               ['as'=>'editMarketTaxRateZone',                 'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@editRecord',                 'resource' => 'market-tax-rate-zone',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/tax/rate/zone/update/{id}/{offset}',                             ['as'=>'updateMarketTaxRateZone',               'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@updateRecord',               'resource' => 'market-tax-rate-zone',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/tax/rate/zone/delete/{id}/{offset}',                             ['as'=>'deleteMarketTaxRateZone',               'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@deleteRecord',               'resource' => 'market-tax-rate-zone',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/tax/rate/zone/delete/select/records',                         ['as'=>'deleteSelectMarketTaxRateZone',         'uses'=>'Syscover\Market\Controllers\TaxRateZoneController@deleteRecordsSelect',        'resource' => 'market-tax-rate-zone',        'action' => 'delete']);
+
+    /*
+    |--------------------------------------------------------------------------
     | SETTING TAXES
     |--------------------------------------------------------------------------
     */
