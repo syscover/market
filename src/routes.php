@@ -178,6 +178,21 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | TAX RULE
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/tax/rule/{offset?}',                                        ['as'=>'marketTaxRule',                     'uses'=>'Syscover\Market\Controllers\TaxRuleController@index',                      'resource' => 'market-tax-rule',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/tax/rule/json/data',                                        ['as'=>'jsonDataMarketTaxRule',             'uses'=>'Syscover\Market\Controllers\TaxRuleController@jsonData',                   'resource' => 'market-tax-rule',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/tax/rule/create/{offset}',                                  ['as'=>'createMarketTaxRule',               'uses'=>'Syscover\Market\Controllers\TaxRuleController@createRecord',               'resource' => 'market-tax-rule',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/tax/rule/store/{offset}',                                  ['as'=>'storeMarketTaxRule',                'uses'=>'Syscover\Market\Controllers\TaxRuleController@storeRecord',                'resource' => 'market-tax-rule',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/tax/rule/{id}/edit/{offset}',                               ['as'=>'editMarketTaxRule',                 'uses'=>'Syscover\Market\Controllers\TaxRuleController@editRecord',                 'resource' => 'market-tax-rule',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/tax/rule/update/{id}/{offset}',                             ['as'=>'updateMarketTaxRule',               'uses'=>'Syscover\Market\Controllers\TaxRuleController@updateRecord',               'resource' => 'market-tax-rule',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/tax/rule/delete/{id}/{offset}',                             ['as'=>'deleteMarketTaxRule',               'uses'=>'Syscover\Market\Controllers\TaxRuleController@deleteRecord',               'resource' => 'market-tax-rule',        'action' => 'delete']);
+    Route::delete(config('pulsar.appName') . '/market/tax/rule/delete/select/records',                         ['as'=>'deleteSelectMarketTaxRule',         'uses'=>'Syscover\Market\Controllers\TaxRuleController@deleteRecordsSelect',        'resource' => 'market-tax-rule',        'action' => 'delete']);
+
+
+    /*
+    |--------------------------------------------------------------------------
     | SETTING TAXES
     |--------------------------------------------------------------------------
     */

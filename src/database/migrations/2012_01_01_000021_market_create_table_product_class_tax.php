@@ -16,6 +16,7 @@ class MarketCreateTableProductClassTax extends Migration {
         {
             Schema::create('012_101_product_class_tax', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
+                
                 $table->increments('id_101')->unsigned();
                 $table->string('name_101');
             });

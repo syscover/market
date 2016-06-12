@@ -16,6 +16,7 @@ class MarketCreateTableProductsCategories extends Migration {
 		{
 			Schema::create('012_113_products_categories', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
+				
 				$table->integer('product_113')->unsigned();
 				$table->integer('category_113')->unsigned();
 

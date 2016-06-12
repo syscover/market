@@ -16,6 +16,7 @@ class MarketCreateTableProduct extends Migration
 		{
 			Schema::create('012_111_product', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
+				
 				$table->increments('id_111')->unsigned();
 				$table->integer('custom_field_group_111')->unsigned()->nullable();
 

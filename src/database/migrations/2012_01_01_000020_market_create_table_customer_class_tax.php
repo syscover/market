@@ -16,6 +16,7 @@ class MarketCreateTableCustomerClassTax extends Migration {
         {
             Schema::create('012_100_customer_class_tax', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
+                
                 $table->increments('id_100')->unsigned();
                 $table->string('name_100');
             });
