@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MarketCreateTableTaxRulesCustomerClassTaxes extends Migration {
+class MarketCreateTableTaxRulesProductClassTaxes extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -20,8 +20,7 @@ class MarketCreateTableTaxRulesCustomerClassTaxes extends Migration {
 				$table->integer('tax_rule_id_107')->unsigned();
 				$table->integer('product_class_tax_id_107')->unsigned();
 
-				$table->primary(['tax_rule_id_107', 'product_class_tax_id_107']);
-
+				$table->primary(['tax_rule_id_107', 'product_class_tax_id_107'], 'pk01_012_107_tax_rules_product_class_taxes');
 			});
 		}
 	}

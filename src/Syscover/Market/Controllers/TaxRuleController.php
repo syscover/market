@@ -1,7 +1,10 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
+use Syscover\Market\Models\TaxRule;
 use Syscover\Market\Models\TaxRateZone;
+use Syscover\Market\Models\CustomerClassTax;
+use Syscover\Market\Models\ProductClassTax;
 
 /**
  * Class TaxRuleController
@@ -10,38 +13,58 @@ use Syscover\Market\Models\TaxRateZone;
 
 class TaxRuleController extends Controller
 {
-    protected $routeSuffix  = 'marketTaxRateZone';
+    protected $routeSuffix  = 'marketTaxRule';
     protected $folder       = 'tax_rule';
     protected $package      = 'market';
-    protected $aColumns     = ['id_103', 'name_103', 'name_002', 'rate_percent_103'];
-    protected $nameM        = 'name_103';
-    protected $model        = TaxRateZone::class;
+    protected $aColumns     = ['id_104', 'name_104', 'priority_104', 'sort_order_104'];
+    protected $nameM        = 'name_104';
+    protected $model        = TaxRule::class;
     protected $icon         = 'fa fa-random';
     protected $objectTrans  = 'tax_rule';
 
+    public function createCustomRecord($parameters)
+    {
+        $parameters['taxRateZones']         = TaxRateZone::builder()->get();
+        $parameters['customerClassTaxes']   = CustomerClassTax::builder()->get();
+        $parameters['productClassTaxes']    = ProductClassTax::builder()->get();
+
+        return $parameters;
+    }
+
     public function storeCustomRecord($parameters)
     {
-        TaxRateZone::create([
-            'name_103'                  => $this->request->input('name'),
-            'country_id_103'            => $this->request->input('country'),
-            'territorial_area_1_id_103' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_id_103' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_id_103' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_103'                    => $this->request->has('cp')? $this->request->input('cp') : null,
-            'rate_percent_103'          => $this->request->input('ratePercent'),
+        $taxRule = TaxRule::create([
+            'name_104'          => $this->request->input('name'),
+            'priority_104'      => $this->request->input('priority'),
+            'sort_order_104'    => $this->request->input('sortOrder')
         ]);
+
+        $taxRule->getTaxRateZones()->sync($this->request->input('taxRateZones'));
+        $taxRule->getCustomerClassTaxes()->sync($this->request->input('customerClassTaxes'));
+        $taxRule->getProductClassTaxes()->sync($this->request->input('productClassTaxes'));
+    }
+
+    public function editCustomRecord($parameters)
+    {
+        $parameters['taxRateZones']         = TaxRateZone::builder()->get();
+        $parameters['customerClassTaxes']   = CustomerClassTax::builder()->get();
+        $parameters['productClassTaxes']    = ProductClassTax::builder()->get();
+
+        return $parameters;
     }
 
     public function updateCustomRecord($parameters)
     {
-        TaxRateZone::where('id_103', $parameters['id'])->update([
-            'name_103'                  => $this->request->input('name'),
-            'country_id_103'            => $this->request->input('country'),
-            'territorial_area_1_id_103' => $this->request->has('territorialArea1')? $this->request->input('territorialArea1') : null,
-            'territorial_area_2_id_103' => $this->request->has('territorialArea2')? $this->request->input('territorialArea2') : null,
-            'territorial_area_3_id_103' => $this->request->has('territorialArea3')? $this->request->input('territorialArea3') : null,
-            'cp_103'                    => $this->request->has('cp')? $this->request->input('cp') : null,
-            'rate_percent_103'          => $this->request->input('ratePercent'),
+        TaxRule::where('id_104', $parameters['id'])->update([
+            'name_104'          => $this->request->input('name'),
+            'priority_104'      => $this->request->input('priority'),
+            'sort_order_104'    => $this->request->input('sortOrder')
         ]);
+
+        $taxRule = TaxRule::find($parameters['id']);
+
+        $taxRule->getTaxRateZones()->sync($this->request->input('taxRateZones'));
+        $taxRule->getCustomerClassTaxes()->sync($this->request->input('customerClassTaxes'));
+        $taxRule->getProductClassTaxes()->sync($this->request->input('productClassTaxes'));
     }
 }
