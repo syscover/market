@@ -145,7 +145,7 @@ class CouponLibrary
         }
 
         // check if is a free shipping and there isn't shipping and cart price rule, haven't any discount
-        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_120 == 1 && !$cart->hasShipping())
+        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_120 == 1 && ! $cart->hasShipping())
         {
             $errors[] = [
                 'status'    => 'error',

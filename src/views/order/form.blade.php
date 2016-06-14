@@ -441,10 +441,10 @@
 			@include('pulsar::includes.html.form_checkbox_group', [
 				'labelSize' => 4,
 				'fieldSize' => 8,
-				'name' => 'shipping',
+				'name' => 'hasShipping',
 				'label' => trans_choice('pulsar::pulsar.shipping', 1),
 				'value' => 1,
-				'checked' => old('shipping', isset($object->has_shipping_116)? $object->has_shipping_116 : null)
+				'checked' => old('hasShipping', isset($object->has_shipping_116)? $object->has_shipping_116 : null)
 			])
 		</div>
 	</div>
