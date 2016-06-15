@@ -25,8 +25,8 @@ class CustomerDiscountHistory extends Model
     protected $fillable     = ['id_126', 'date_126', 'customer_126', 'order_126', 'discount_family_126', 'has_coupon_126', 'coupon_code_126', 'rule_126', 'discount_126', 'name_text_126', 'description_text_126', 'name_text_value_126', 'description_text_value_126', 'discount_type_126', 'discount_fixed_amount_126', 'discount_percentage_126', 'maximum_discount_amount_126', 'apply_shipping_amount_126', 'free_shipping_126', 'rules_126'];
     protected $maps         = [];
     protected $relationMaps = [
-        'customer_126'  => \Syscover\Crm\Models\Customer::class,
-        'order_126'     => \Syscover\Market\Models\Order::class
+        'customer'  => \Syscover\Crm\Models\Customer::class,
+        'order'     => \Syscover\Market\Models\Order::class
     ];
     private static $rules   = [];
 
@@ -39,5 +39,17 @@ class CustomerDiscountHistory extends Model
     {
         return $query->join('009_301_customer', '012_126_customer_discount_history.customer_126', '=', '009_301_customer.id_301')
             ->join('012_116_order', '012_126_customer_discount_history.order_126', '=', '012_116_order.id_116');
+    }
+
+    public function addToGetIndexRecords($request, $parameters)
+    {
+        return $this->builder()
+            ->where('order_126', $parameters['ref']);
+    }
+
+    public function customCount($request, $parameters)
+    {
+        return $this->builder()
+            ->where('order_126', $parameters['ref']);
     }
 }

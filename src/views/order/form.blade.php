@@ -78,25 +78,19 @@
 					"displayStart": 0,
 					"sorting": [[0, "desc"]],
 					"columnDefs": [
-						{ "sortable": false, "targets": [3,4,5]},
+						//{ "sortable": false, "targets": [3,4,5]},
 						{ "class": "checkbox-column", "targets": [4]},
 						{ "class": "align-center", "targets": [3,5]}
 					],
 					"processing": true,
 					"serverSide": true,
 					"ajax": {
-						"url": "{{ route('jsonDataMarketOrderRow', ['ref' => $object->id_116, 'modal' => 0]) }}",
+						"url": "{{ route('jsonDataMarketCustomerDiscountHistory', ['order' => $object->id_116]) }}",
 						"type": "POST",
 						"headers": {
 							"X-CSRF-TOKEN": "{{ csrf_token() }}"
 						}
 					}
-				}).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json) {
-
-					// set url to call from modal when submit any action
-					{{--var url = '{{ route('showFormsRecord', ['id' => $object->id_403, 'form' => $form, 'offset' => '%offset%', 'tab' => 0]) }}'--}}
-					{{--$('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))--}}
-
 				});
 			}
 

@@ -122,6 +122,13 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
 
     /*
     |--------------------------------------------------------------------------
+    | CUSTOMER DISCOUNT HISTORY
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/customer/discount/history/json/data/{ref}',                 ['as'=>'jsonDataMarketCustomerDiscountHistory',            'uses'=>'Syscover\Market\Controllers\CustomerDiscountHistoryController@jsonData',      'resource' => 'market-order',        'action' => 'access']);
+    
+    /*
+    |--------------------------------------------------------------------------
     | CUSTOMER CLASS TAX
     |--------------------------------------------------------------------------
     */
