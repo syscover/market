@@ -73,6 +73,31 @@
 					{{--$('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))--}}
 
 				});
+
+				$('.datatable-pulsar-02').dataTable({
+					"displayStart": 0,
+					"sorting": [[0, "desc"]],
+					"columnDefs": [
+						{ "sortable": false, "targets": [3,4,5]},
+						{ "class": "checkbox-column", "targets": [4]},
+						{ "class": "align-center", "targets": [3,5]}
+					],
+					"processing": true,
+					"serverSide": true,
+					"ajax": {
+						"url": "{{ route('jsonDataMarketOrderRow', ['ref' => $object->id_116, 'modal' => 0]) }}",
+						"type": "POST",
+						"headers": {
+							"X-CSRF-TOKEN": "{{ csrf_token() }}"
+						}
+					}
+				}).fnSetFilteringDelay().on('xhr.dt', function (e, settings, json) {
+
+					// set url to call from modal when submit any action
+					{{--var url = '{{ route('showFormsRecord', ['id' => $object->id_403, 'form' => $form, 'offset' => '%offset%', 'tab' => 0]) }}'--}}
+					{{--$('[name="urlTarget"]').val(url.replace('%offset%', settings._iDisplayStart))--}}
+
+				});
 			}
 
 			$.getAddress({
@@ -314,6 +339,28 @@
 		</div>
 	</div>
 
+	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.cart_price_rule', 2), 'icon' => 'fa fa-shopping-cart'])
+	<div class="widget box">
+		<div class="widget-content no-padding">
+			<table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable-pulsar-02">
+				<thead>
+				<tr>
+					<th data-hide="expand">{{ trans_choice('pulsar::pulsar.product', 1) }}</th>
+					<th>{{ trans_choice('pulsar::pulsar.quantity', 1) }}</th>
+					<th>{{ trans_choice('pulsar::pulsar.subtotal', 1) }}</th>
+					<th>{{ trans('pulsar::pulsar.info') }}</th>
+					<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
+					<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
+				</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<input type="hidden" name="nElementsDataTable">
+			<input type="hidden" name="urlTarget">
+		</div>
+	</div>
+
+	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.amount', 2), 'icon' => 'fa fa-usd'])
 	<div class="row">
 		<div class="col-md-6">
 			@include('pulsar::includes.html.form_text_group', [

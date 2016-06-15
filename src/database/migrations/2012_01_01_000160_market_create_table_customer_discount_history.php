@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MarketCreateTableCustomerDiscountUsed extends Migration
+class MarketCreateTableCustomerDiscountHistory extends Migration
 {
 	/**
 	 * Tabla que contabiliza en número de veces que se ha usado un descuento por cliente
@@ -12,9 +12,9 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 	 */
 	public function up()
 	{
-		if (! Schema::hasTable('012_126_customer_discount_used'))
+		if (! Schema::hasTable('012_126_customer_discount_history'))
 		{
-			Schema::create('012_126_customer_discount_used', function (Blueprint $table) {
+			Schema::create('012_126_customer_discount_history', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_126')->unsigned();
@@ -72,14 +72,13 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 				// reglas que se han tenido en cuenta para aplicar el descuento en caso de haberlas
 				$table->text('rules_126')->nullable();
 
-				$table->index('rule_126', 'ix01_012_126_customer_discount_used');
-				// ix02_012_126 no existe, fue borrado
-				$table->index('coupon_code_126', 'ix03_012_126_customer_discount_used');
-				$table->index('active_126', 'ix04_012_126_customer_discount_used');
+				$table->index('rule_126', 'ix01_012_126_customer_discount_history');
+				$table->index('coupon_code_126', 'ix02_012_126_customer_discount_history');
+				$table->index('active_126', 'ix03_012_126_customer_discount_history');
 
-				$table->foreign('customer_126', 'fk01_012_126_customer_discount_used')->references('id_301')->on('009_301_customer')
+				$table->foreign('customer_126', 'fk01_012_126_customer_discount_history')->references('id_301')->on('009_301_customer')
 					->onDelete('restrict')->onUpdate('cascade');
-				$table->foreign('order_126', 'fk02_012_126_customer_discount_used')->references('id_116')->on('012_116_order')
+				$table->foreign('order_126', 'fk02_012_126_customer_discount_history')->references('id_116')->on('012_116_order')
 					->onDelete('restrict')->onUpdate('cascade');
 			});
 		}
@@ -92,9 +91,9 @@ class MarketCreateTableCustomerDiscountUsed extends Migration
 	 */
 	public function down()
 	{
-		if (Schema::hasTable('012_126_customer_discount_used'))
+		if (Schema::hasTable('012_126_customer_discount_history'))
 		{
-			Schema::drop('012_126_customer_discount_used');
+			Schema::drop('012_126_customer_discount_history');
 		}
 	}
 }

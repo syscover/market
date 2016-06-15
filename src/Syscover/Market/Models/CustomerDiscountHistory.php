@@ -6,7 +6,7 @@ use Sofa\Eloquence\Mappable;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Class CustomerDiscountUsed
+ * Class CustomerDiscountHistory
  *
  * Model with properties
  * <br><b>[id, date, customer, order, discount_family, has_coupon, coupon_code, rule, discount, name_text, description_text, name_text_value, description_text_value, discount_type, discount_amount, discount_percentage, maximum_discount_amount, apply_shipping_amount, free_shipping, rules]</b>
@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Validator;
  * @package     Syscover\Market\Models
  */
 
-class CustomerDiscountUsed extends Model
+class CustomerDiscountHistory extends Model
 {
     use Eloquence, Mappable;
 
-	protected $table        = '012_126_customer_discount_used';
+	protected $table        = '012_126_customer_discount_history';
     protected $primaryKey   = 'id_126';
     protected $suffix       = '126';
     public $timestamps      = false;
@@ -37,7 +37,7 @@ class CustomerDiscountUsed extends Model
 
     public function scopeBuilder($query)
     {
-        return $query->join('009_301_customer', '012_126_customer_discount_used.customer_126', '=', '009_301_customer.id_301')
-            ->join('012_116_order', '012_126_customer_discount_used.order_126', '=', '012_116_order.id_116');
+        return $query->join('009_301_customer', '012_126_customer_discount_history.customer_126', '=', '009_301_customer.id_301')
+            ->join('012_116_order', '012_126_customer_discount_history.order_126', '=', '012_116_order.id_116');
     }
 }
