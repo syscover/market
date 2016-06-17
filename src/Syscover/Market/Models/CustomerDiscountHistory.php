@@ -22,7 +22,7 @@ class CustomerDiscountHistory extends Model
     protected $primaryKey   = 'id_126';
     protected $suffix       = '126';
     public $timestamps      = false;
-    protected $fillable     = ['id_126', 'date_126', 'customer_126', 'order_126', 'discount_family_126', 'has_coupon_126', 'coupon_code_126', 'rule_126', 'discount_126', 'name_text_126', 'description_text_126', 'name_text_value_126', 'description_text_value_126', 'discount_type_126', 'discount_fixed_amount_126', 'discount_percentage_126', 'maximum_discount_amount_126', 'apply_shipping_amount_126', 'free_shipping_126', 'rules_126'];
+    protected $fillable     = ['id_126', 'date_126', 'customer_126', 'order_126', 'rule_family_126', 'has_coupon_126', 'coupon_code_126', 'rule_126', 'discount_126', 'name_text_126', 'description_text_126', 'name_text_value_126', 'description_text_value_126', 'discount_type_126', 'discount_fixed_amount_126', 'discount_percentage_126', 'maximum_discount_amount_126', 'apply_shipping_amount_126', 'free_shipping_126', 'rules_126'];
     protected $maps         = [];
     protected $relationMaps = [
         'customer'  => \Syscover\Crm\Models\Customer::class,

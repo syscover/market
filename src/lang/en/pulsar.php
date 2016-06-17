@@ -9,6 +9,7 @@ return [
     'combinable'                                    => 'Combinable',
     'coupon'                                        => 'Coupon|Coupons',
     'customer_class_tax'                            => 'Customer class tax|Customer class taxes',
+    'customer_discount'                             => 'Customer discount|Customer discounts',
     'discount_amount'                               => 'Discount amount',
     'discount_percentage'                           => 'Discount percentage',
     'discount_type'                                 => 'Discount type',

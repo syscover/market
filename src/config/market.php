@@ -95,4 +95,13 @@ return [
         (object)['id' => 2,      'name' => 'market::pulsar.discount_type_percentage'],
         (object)['id' => 3,      'name' => 'market::pulsar.discount_fixed_amount'],
     ],
+
+    //******************************************************************************************************************
+    //***   Discount families
+    //******************************************************************************************************************
+    'ruleFamilies'                => [
+        (object)['id' => 1,      'name' => 'market::pulsar.cart_price_rule'],
+        (object)['id' => 2,      'name' => 'market::pulsar.catalog_price_rule'],
+        (object)['id' => 3,      'name' => 'market::pulsar.customer_price_rule'],
+    ],
 ];

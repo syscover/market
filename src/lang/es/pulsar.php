@@ -9,6 +9,7 @@ return [
     'combinable'								    => 'Combinable',
     'coupon'									    => 'Cupón|Cupones',
     'customer_class_tax'							=> 'Impuesto de usuario|Impuestos de usuario',
+    'customer_discount'                             => 'Descuento de usuario|Descuentos de usuario',
     'discount_amount'							    => 'Cantidad de descuento',
     'discount_percentage'						    => 'Porcentaje de descuento',
     'discount_type'								    => 'Tipo de descuento',

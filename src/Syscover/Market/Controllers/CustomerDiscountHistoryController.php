@@ -11,22 +11,33 @@ use Illuminate\Http\Request;
 
 class CustomerDiscountHistoryController extends Controller
 {
-	protected $routeSuffix	= 'marketOrder';
-	protected $folder	   	= 'order';
+	protected $routeSuffix	= 'marketCustomerDiscountHistory';
+	protected $folder	   	= 'customer_discount_history';
 	protected $package	  	= 'market';
-	protected $aColumns	 	= ['id_126', 'coupon_code_126', 'free_shipping_126'];
+	protected $aColumns	 	= ['id_126', 'coupon_code_126', 'name_text_value_126', 'discount_percentage_126', 'discount_fixed_amount_126', ['data' => 'free_shipping_126', 'type' => 'check']];
 	protected $nameM		= 'coupon_code_126';
 	protected $model		= CustomerDiscountHistory::class;
-	protected $icon		 	= 'fa fa-shopping-basket';
-	protected $objectTrans  = 'order';
+	protected $icon		 	= 'fa fa-shopping-cart';
+	protected $objectTrans  = 'customer_discount';
 
 	function __construct(Request $request)
 	{
 		parent::__construct($request);
 
-		// todo, provisional hasta establecer las accioner de la fila de productos
 		$this->viewParameters['editButton']         = false;
 		$this->viewParameters['deleteButton']       = false;
 		$this->viewParameters['deleteSelectButton'] = false;
+		$this->viewParameters['cancelButton'] 		= false;
+		$this->viewParameters['showButton'] 		= true;
+	}
+
+	public function showCustomRecord($parameters)
+	{
+		$parameters['discountFamilies'] = array_map(function($object) {
+			$object->name = trans($object->name);
+			return $object;
+		}, config('market.discountFamilies'));
+		
+		return $parameters;
 	}
 }

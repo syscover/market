@@ -94,15 +94,8 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | ORDER ROW
     |--------------------------------------------------------------------------
     */
-  //  Route::any(config('pulsar.appName') . '/market/order/ROW/{offset?}',                                            ['as'=>'marketOrder',                     'uses'=>'Syscover\Market\Controllers\OrderController@index',                      'resource' => 'market-order',        'action' => 'access']);
     Route::any(config('pulsar.appName') . '/market/order/row/json/data/{ref}/{modal}',                          ['as'=>'jsonDataMarketOrderRow',            'uses'=>'Syscover\Market\Controllers\OrderRowController@jsonData',              'resource' => 'market-order',        'action' => 'access']);
-    //Route::get(config('pulsar.appName') . '/market/order/create/{offset}/{tab}',                                ['as'=>'createMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@createRecord',               'resource' => 'market-order',        'action' => 'create']);
-    //Route::post(config('pulsar.appName') . '/market/order/store/{offset}/{tab}',                                ['as'=>'storeMarketOrder',                'uses'=>'Syscover\Market\Controllers\OrderController@storeRecord',                'resource' => 'market-order',        'action' => 'create']);
-    //Route::get(config('pulsar.appName') . '/market/order/{id}/edit/{offset}/{tab}',                             ['as'=>'editMarketOrder',                 'uses'=>'Syscover\Market\Controllers\OrderController@editRecord',                 'resource' => 'market-order',        'action' => 'access']);
-    //Route::put(config('pulsar.appName') . '/market/order/update/{id}/{offset}/{tab}',                           ['as'=>'updateMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@updateRecord',               'resource' => 'market-order',        'action' => 'edit']);
-    //Route::get(config('pulsar.appName') . '/market/order/delete/{id}/{offset}',                                 ['as'=>'deleteMarketOrder',               'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecord',               'resource' => 'market-order',        'action' => 'delete']);
-    //Route::delete(config('pulsar.appName') . '/market/order/delete/select/records',                             ['as'=>'deleteSelectMarketOrder',         'uses'=>'Syscover\Market\Controllers\OrderController@deleteRecordsSelect',        'resource' => 'market-order',        'action' => 'delete']);
-    Route::get(config('pulsar.appName') . '/market/order/row/get/data/row/{id}',                               ['as'=>'apiGetDataMarketOrderRow',          'uses'=>'Syscover\Market\Controllers\OrderRowController@apiGetDataRow',         'resource' => 'market-order',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/order/row/get/data/row/{id}',                                ['as'=>'apiGetDataMarketOrderRow',          'uses'=>'Syscover\Market\Controllers\OrderRowController@apiGetDataRow',         'resource' => 'market-order',        'action' => 'access']);
     
     /*
     |--------------------------------------------------------------------------
@@ -125,7 +118,8 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | CUSTOMER DISCOUNT HISTORY
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/customer/discount/history/json/data/{ref}',                 ['as'=>'jsonDataMarketCustomerDiscountHistory',            'uses'=>'Syscover\Market\Controllers\CustomerDiscountHistoryController@jsonData',      'resource' => 'market-order',        'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/customer/discount/history/json/data/{ref}/{modal}',          ['as'=>'jsonDataMarketCustomerDiscountHistory',            'uses'=>'Syscover\Market\Controllers\CustomerDiscountHistoryController@jsonData',        'resource' => 'market-order',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/customer/discount/history/{id}/show/{offset}/{modal}',       ['as'=>'showMarketCustomerDiscountHistory',                'uses'=>'Syscover\Market\Controllers\CustomerDiscountHistoryController@showRecord',      'resource' => 'market-order',        'action' => 'access']);
     
     /*
     |--------------------------------------------------------------------------
