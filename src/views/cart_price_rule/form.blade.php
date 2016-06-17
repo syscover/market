@@ -2,18 +2,8 @@
 
 @section('head')
     @parent
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/attachment/css/attachment-library.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.css') }}">
-    <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/css/getfile.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
 
-    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.min.js') }}"></script>
-    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/mobiledetect/mdetect.min.js') }}"></script>
-    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.min.js') }}"></script>
-    <script src="{{ asset('packages/syscover/pulsar/vendor/getfile/js/jquery.getfile.js') }}"></script>
-    <script src="{{ asset('packages/syscover/pulsar/vendor/attachment/js/attachment-library.js') }}"></script>
-    <script src="{{ asset('packages/syscover/pulsar/vendor/speakingurl/speakingurl.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/moment.min.js') }}"></script>
     <script src="{{ asset('packages/syscover/pulsar/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
@@ -118,7 +108,7 @@
 @stop
 
 @section('rows')
-    <!-- market::cart_price_rule.create -->
+    <!-- market::cart_price_rule.form -->
     <div class="row">
         <div class="col-md-6">
             @include('pulsar::includes.html.form_text_group', [
@@ -244,7 +234,7 @@
     </div>
 
     @include('pulsar::includes.html.form_section_header', [
-        'label' => trans('pulsar::pulsar.access'),
+        'label' => trans('pulsar::pulsar.available'),
         'icon' => 'fa fa-calendar-check-o'
     ])
     <div class="row">
@@ -354,5 +344,5 @@
         'checked' => old('freeShipping', isset($object)? $object->free_shipping_120 : null),
         'disabled' => $action == 'update' || $action == 'store'? false : true
     ])
-    <!-- /.market::cart_price_rule.create -->
+    <!-- /market::cart_price_rule.form -->
 @stop

@@ -30,19 +30,16 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
 				// 1 - descuento procedente de, cart_price_rule
 				// 2 - descuento procedente de, catalog_price_rule
 				// 3 - descuento procedente de, customer_rule_discount
-				//$table->tinyInteger('discount_family_126')->unsigned();
 				$table->tinyInteger('rule_family_126')->unsigned();
+
+				// id del decuento en el caso de proceder de customer discount
+				//$table->integer('customer_discount_id_126')->unsigned()->nullable();
 
 				// id de la regla que procede el descuento
 				$table->integer('rule_126')->unsigned();
 				
 				$table->boolean('has_coupon_126')->default(false);
 				$table->string('coupon_code_126')->nullable();
-
-				
-
-				// id del decuento en el caso de proceder de customer discount
-				//$table->integer('customer_discount_id_126')->unsigned()->nullable();
 
 				// referencia a la tabla 001_017_text
 				$table->integer('name_text_126')->unsigned();
@@ -72,7 +69,7 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
 				// este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_126');
 
-				// reglas que se han tenido en cuenta para aplicar el descuento en caso de haberlas
+				// reglas que se han tenido en cuenta para aplicar el descuento en caso de haberlas, ¿?
 				$table->text('rules_126')->nullable();
 
 				$table->index('rule_126', 'ix01_012_126_customer_discount_history');

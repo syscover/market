@@ -33,10 +33,15 @@ class CustomerDiscountHistoryController extends Controller
 
 	public function showCustomRecord($parameters)
 	{
-		$parameters['discountFamilies'] = array_map(function($object) {
+		$parameters['ruleFamilies'] = array_map(function($object) {
+			$object->name = trans_choice($object->name, 1);
+			return $object;
+		}, config('market.ruleFamilies'));
+
+		$parameters['discountTypes'] = array_map(function($object) {
 			$object->name = trans($object->name);
 			return $object;
-		}, config('market.discountFamilies'));
+		}, config('market.discountTypes'));
 		
 		return $parameters;
 	}
