@@ -222,6 +222,7 @@
             ])
         </div>
     </div>
+
     @include('pulsar::includes.html.form_section_header', [
         'label' => trans('market::pulsar.prices_taxes'),
         'icon' => 'fa fa-usd'
@@ -251,6 +252,17 @@
         <div class="col-md-6">
         </div>
     </div>
+    @include('pulsar::includes.html.form_select_group', [
+        'fieldSize' => 3,
+        'label' => trans_choice('market::pulsar.product_class_tax', 1),
+        'name' => 'productClassTax',
+        'value' => old('productClassTax', isset($object->product_class_tax_id_111)? $object->product_class_tax_id_111 : null),
+        'objects' => $productClassTaxes,
+        'idSelect' => 'id_101',
+        'nameSelect' => 'name_101',
+        'disabled' => $action == 'update' || $action == 'store'? false : true
+    ])
+
     @include('pulsar::includes.html.form_section_header', [
         'label' => trans_choice('pulsar::pulsar.custom_field', 2),
         'icon' => 'fa fa-align-left',

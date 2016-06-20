@@ -33,11 +33,16 @@ class MarketCreateTableProduct extends Migration
 				$table->tinyInteger('price_type_111')->unsigned(); // single price or undefined
 				$table->decimal('price_111', 10, 2)->nullable();
 
+				// taxes
+				$table->integer('product_class_tax_id_111')->unsigned()->nullable();
+
 				$table->string('data_lang_111', 255)->nullable();
 				$table->text('data_111')->nullable();
 
 				$table->foreign('custom_field_group_111', 'fk01_012_111_product')->references('id_025')->on('001_025_field_group')
 						->onDelete('restrict')->onUpdate('cascade');
+				$table->foreign('custom_field_group_111', 'fk02_012_111_product')->references('id_101')->on('012_101_product_class_tax')
+					->onDelete('restrict')->onUpdate('cascade');
 			});
 		}
 	}

@@ -7,6 +7,7 @@ use Syscover\Pulsar\Models\AttachmentFamily;
 use Syscover\Pulsar\Models\CustomFieldGroup;
 use Syscover\Market\Models\Product;
 use Syscover\Market\Models\ProductLang;
+use Syscover\Market\Models\ProductClassTax;
 use Syscover\Market\Models\Category;
 
 /**
@@ -56,7 +57,9 @@ class ProductController extends Controller
             return $object;
         },config('market.priceTypes'));
 
-        $parameters['parentsProducts']      = Product::builder()
+        $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
+
+        $parameters['parentsProducts'] = Product::builder()
             ->where('lang_112', base_lang()->id_001)
             ->whereNull('parent_product_id_111')
             ->get();
@@ -102,6 +105,7 @@ class ProductController extends Controller
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
             'price_type_111'            => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
+            'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
             'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
             'data_lang_111'             => Product::addLangDataRecord($this->request->input('lang'), $idLang),
@@ -146,6 +150,8 @@ class ProductController extends Controller
             return $object;
         },config('market.priceTypes'));
 
+        $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
+
         $parameters['parentsProducts']      = Product::builder()
             ->where('lang_112', base_lang()->id_001)
             ->where('id_111', '<>', $parameters['id'])
@@ -168,6 +174,7 @@ class ProductController extends Controller
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
             'price_type_111'            => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
+            'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
             'active_111'                => $this->request->input('active', false),
             'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
