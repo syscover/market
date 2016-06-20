@@ -17,8 +17,11 @@ class MarketUpdateV20 extends Migration
             Schema::table('012_111_product', function (Blueprint $table) {
                 $table->integer('product_class_tax_id_111')->unsigned()->nullable()->after('price_111');
 
-                $table->foreign('custom_field_group_111', 'fk02_012_111_product')->references('id_101')->on('012_101_product_class_tax')
-                    ->onDelete('restrict')->onUpdate('cascade');
+                $table->foreign('product_class_tax_id_111', 'fk02_012_111_product')
+                    ->references('id_101')
+                    ->on('012_101_product_class_tax')
+                    ->onDelete('restrict')
+                    ->onUpdate('cascade');
             });
         }
     }
