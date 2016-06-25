@@ -41,7 +41,7 @@ class TaxRateZone extends Model
     {
         return $query->join('001_002_country', function ($join) {
             $join->on('012_103_tax_rate_zone.country_id_103', '=', '001_002_country.id_002')
-                ->where('001_002_country.lang_002', '=', base_lang()->id_001);
+                ->where('001_002_country.lang_id_002', '=', base_lang()->id_001);
         });
     }
 }

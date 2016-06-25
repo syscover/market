@@ -64,11 +64,11 @@ class Order extends Model
             /*
             ->join('001_002_country', function ($join) {
                 $join->on('012_116_order.invoice_country_116', '=', '001_002_country.id_002')
-                    ->on('001_002_country.lang_002', '=', '001_001_lang.id_001');
+                    ->on('001_002_country.lang_id_002', '=', '001_001_lang.id_001');
             })
             ->join('001_002_country', function ($join) {
                 $join->on('012_116_order.shipping_country_116', '=', '001_002_country.id_002')
-                    ->on('001_002_country.lang_002', '=', '001_001_lang.id_001');
+                    ->on('001_002_country.lang_id_002', '=', '001_001_lang.id_001');
             });
             */
 
