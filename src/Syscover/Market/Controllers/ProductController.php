@@ -65,7 +65,7 @@ class ProductController extends Controller
             ->get();
 
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_id_015' => 'market-product']);
-        $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_025', 'market-product')->get();
+        $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_id_025', 'market-product')->get();
         $parameters['attachmentsInput']     = json_encode([]);
 
         if(isset($parameters['id']))
@@ -159,7 +159,7 @@ class ProductController extends Controller
             ->get();
 
         $attachments                        = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
-        $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_025', 'market-product')->get();
+        $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_id_025', 'market-product')->get();
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_id_015' => 'market-product']);
         $parameters                         = array_merge($parameters, $attachments);
 
