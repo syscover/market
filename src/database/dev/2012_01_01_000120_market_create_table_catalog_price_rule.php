@@ -20,8 +20,8 @@ class MarketCreateTableCatalogPriceRule extends Migration
 				$table->increments('id_122')->unsigned();
 
 				// referencia a la tabla 001_017_text
-				$table->integer('name_text_122')->unsigned();
-				$table->integer('description_text_122')->unsigned()->nullable();
+				$table->integer('name_text_id_122')->unsigned();
+				$table->integer('description_text_id_122')->unsigned()->nullable();
 
 				$table->boolean('status_122');
 
@@ -36,16 +36,20 @@ class MarketCreateTableCatalogPriceRule extends Migration
 				// 2 - Importe fijo de descuento
 				// 3 - Importe fijo de descuento para todo el carrito
 				// 4 - Compre X y consigua Y gratis
-				$table->tinyInteger('apply_122')->unsigned()->nullable();
+				$table->tinyInteger('apply_id_122')->unsigned()->nullable();
 
 				// cantidad fija de descuento
 				$table->decimal('discount_amount_122', 10, 2)->nullable();
+				
 				// Porcentaje de descuento sobre una cantidad
 				$table->decimal('discount_percentage_122', 10, 2)->nullable();
+				
 				// máxima cantidad a descontar
 				$table->decimal('maximum_discount_amount_122', 10, 2)->nullable();
+				
 				// se aplica el descuento al precio de transporte
 				$table->boolean('apply_shipping_amount_122');
+				
 				// este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_122');
 

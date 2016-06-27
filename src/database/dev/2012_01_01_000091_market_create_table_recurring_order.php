@@ -18,9 +18,9 @@ class MarketCreateTableRecurringOrder extends Migration
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_117')->unsigned();
-				$table->string('lang_117', 2)->nullable();
-				$table->integer('order_117')->unsigned();
-				$table->integer('product_117')->nullable()->unsigned();
+				$table->string('lang_id_117', 2)->nullable();
+				$table->integer('order_id_117')->unsigned();
+				$table->integer('product_id_117')->nullable()->unsigned();
 
 				$table->string('name_117')->nullable();
 				$table->text('description_117')->nullable();
@@ -41,11 +41,11 @@ class MarketCreateTableRecurringOrder extends Migration
 				$table->string('gift_to_117')->nullable();
 				$table->text('gift_message_117')->nullable();
 
-				$table->foreign('lang_117', 'fk01_012_117_order_row')->references('id_001')->on('001_001_lang')
+				$table->foreign('lang_id_117', 'fk01_012_117_order_row')->references('id_001')->on('001_001_lang')
 					->onDelete('restrict')->onUpdate('cascade');
-				$table->foreign('order_117', 'fk02_012_117_order_row')->references('id_116')->on('012_116_order')
+				$table->foreign('order_id_117', 'fk02_012_117_order_row')->references('id_116')->on('012_116_order')
 					->onDelete('cascade')->onUpdate('cascade');
-				$table->foreign('product_117', 'fk03_012_117_order_row')->references('id_111')->on('012_111_product')
+				$table->foreign('product_id_117', 'fk03_012_117_order_row')->references('id_111')->on('012_111_product')
 					->onDelete('set null')->onUpdate('cascade');
 			});
 		}

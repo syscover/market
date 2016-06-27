@@ -16,16 +16,15 @@ class MarketCreateTableWarehouse extends Migration
 				$table->string('name_130');
 
 				// geolocation data
-				$table->string('country_130', 2);
-				$table->string('territorial_area_1_130', 6)->nullable();
-				$table->string('territorial_area_2_130', 10)->nullable();
-				$table->string('territorial_area_3_130', 10)->nullable();
+				$table->string('country_id_130', 2);
+				$table->string('territorial_area_1_id_130', 6)->nullable();
+				$table->string('territorial_area_2_id_130', 10)->nullable();
+				$table->string('territorial_area_3_id_130', 10)->nullable();
 				$table->string('cp_130')->nullable();
 				$table->string('locality_130')->nullable();
 				$table->string('address_130')->nullable();
 				$table->string('latitude_130')->nullable();
 				$table->string('longitude_130')->nullable();
-				
 				$table->boolean('active_130');
 			});
 		}

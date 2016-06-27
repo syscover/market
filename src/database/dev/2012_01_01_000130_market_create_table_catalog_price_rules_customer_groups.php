@@ -17,14 +17,14 @@ class MarketCreateTableCatalogPriceRulesCustomerGroups extends Migration
 			Schema::create('012_123_catalog_price_rules_customer_groups', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
-				$table->integer('catalog_price_rule_123')->unsigned();
-				$table->integer('customer_group_123')->unsigned();
+				$table->integer('catalog_price_rule_id_123')->unsigned();
+				$table->integer('customer_group_id_123')->unsigned();
 
-				$table->primary(['catalog_price_rule_123', 'customer_group_123']);
+				$table->primary(['catalog_price_rule_123', 'customer_group_123'], 'pk01_012_123_catalog_price_rules_customer_groups');
 
-				$table->foreign('catalog_price_rule_123', 'fk01_012_123_catalog_price_rules_customer_groups')->references('id_122')->on('012_122_catalog_price_rule')
+				$table->foreign('catalog_price_rule_id_123', 'fk01_012_123_catalog_price_rules_customer_groups')->references('id_122')->on('012_122_catalog_price_rule')
 					->onDelete('cascade')->onUpdate('cascade');
-				$table->foreign('customer_group_123', 'fk02_012_123_catalog_price_rules_customer_groups')->references('id_300')->on('009_300_group')
+				$table->foreign('customer_group_id_123', 'fk02_012_123_catalog_price_rules_customer_groups')->references('id_300')->on('009_300_group')
 					->onDelete('cascade')->onUpdate('cascade');
 			});
 		}

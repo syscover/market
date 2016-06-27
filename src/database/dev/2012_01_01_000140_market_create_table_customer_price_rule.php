@@ -22,8 +22,8 @@ class MarketCreateTableCustomerPriceRule extends Migration
 				$table->increments('id_124')->unsigned();
 
 				// referencia a la tabla 001_017_text
-				$table->integer('name_text_124')->unsigned();
-				$table->integer('description_text_124')->unsigned()->nullable();
+				$table->integer('name_text_id_124')->unsigned();
+				$table->integer('description_text_id_124')->unsigned()->nullable();
 
 				// activada o no
 				$table->boolean('status_124');
@@ -33,8 +33,10 @@ class MarketCreateTableCustomerPriceRule extends Migration
 
 				// fecha desde la que se generan descuentos
 				$table->integer('enable_from_124')->unsigned()->nullable();
+				
 				// fecha hasta la que se generan descuentos
 				$table->integer('enable_to_124')->unsigned()->nullable();
+				
 				// caducidad del descuento generado en días
 				$table->integer('expiration_124')->unsigned()->nullable();
 
@@ -42,16 +44,20 @@ class MarketCreateTableCustomerPriceRule extends Migration
 				// 2 - Importe fijo de descuento
 				// 3 - Importe fijo de descuento para todo el carrito
 				// 4 - Compre X y consigua Y gratis
-				$table->tinyInteger('apply_124')->unsigned()->nullable();
+				$table->tinyInteger('apply_id_124')->unsigned()->nullable();
 
 				// cantidad fija de descuento
 				$table->decimal('discount_amount_124', 10, 2)->nullable();
+				
 				// Porcentaje de descuento sobre una cantidad
 				$table->decimal('discount_percentage_124', 10, 2)->nullable();
+				
 				// máxima cantidad a descontar
 				$table->decimal('maximum_discount_amount_124', 10, 2)->nullable();
+				
 				// se aplica el descuento al precio de transporte
 				$table->boolean('apply_shipping_amount_124');
+				
 				// este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_124');
 			});

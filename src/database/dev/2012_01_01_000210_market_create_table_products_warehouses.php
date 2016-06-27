@@ -17,11 +17,11 @@ class MarketCreateTableProductsWarehouses extends Migration {
 			Schema::create('012_131_products_warehouses', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 
-				$table->integer('product_131')->unsigned();
-				$table->integer('warehouse_131')->unsigned();
+				$table->integer('product_id_131')->unsigned();
+				$table->integer('warehouse_id_131')->unsigned();
 				$table->decimal('quantity_131', 10, 2); // number units
 
-				$table->primary(['product_131', 'warehouse_131']);
+				$table->primary(['product_id_131', 'warehouse_id_131'], 'pk01_012_131_products_warehouses');
 			});
 		}
 	}
