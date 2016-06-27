@@ -63,7 +63,7 @@
         'fieldSize' => 5,
         'label' => trans_choice('market::pulsar.parent_category', 1),
         'name' => 'parent',
-        'value' => old('parent', isset($object->parent_110)? $object->parent_110 : null),
+        'value' => old('parent', isset($object->parent_id_110)? $object->parent_id_110 : null),
         'objects' => $categories,
         'idSelect' => 'id_110',
         'nameSelect' => 'name_110',

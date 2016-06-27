@@ -18,9 +18,12 @@ class MarketCreateTableProduct extends Migration
 				$table->engine = 'InnoDB';
 				
 				$table->increments('id_111')->unsigned();
-				$table->integer('custom_field_group_111')->unsigned()->nullable();
+				$table->integer('field_group_id_111')->unsigned()->nullable();
 
-				$table->tinyInteger('product_type_111')->unsigned(); // downloaded, transportable, downloaded and transportable
+				// 1 - downloaded
+				// 2 - transportable
+				// 3 - downloaded and transportable
+				$table->tinyInteger('type_id_111')->unsigned();
 
 				// set parent product and config like subproduct
 				$table->increments('parent_product_id_111')->unsigned()->nullable();
@@ -29,8 +32,9 @@ class MarketCreateTableProduct extends Migration
 				$table->boolean('active_111');
 				$table->integer('sorting_111')->unsigned()->nullable();
 
-				// prices, tax and format
-				$table->tinyInteger('price_type_111')->unsigned(); // single price or undefined
+				// 1 - single price
+				// 2 - undefined price
+				$table->tinyInteger('price_type_id_111')->unsigned(); // single price or undefined
 				$table->decimal('price_111', 10, 2)->nullable();
 
 				// taxes
@@ -39,7 +43,7 @@ class MarketCreateTableProduct extends Migration
 				$table->string('data_lang_111', 255)->nullable();
 				$table->text('data_111')->nullable();
 
-				$table->foreign('custom_field_group_111', 'fk01_012_111_product')
+				$table->foreign('field_group_id_111', 'fk01_012_111_product')
 					->references('id_025')
 					->on('001_025_field_group')
 					->onDelete('restrict')

@@ -57,7 +57,7 @@
         'fieldSize' => 4,
         'label' => trans_choice('market::pulsar.rule_family', 1),
         'name' => 'ruleFamily',
-        'value' => $object->rule_family_126,
+        'value' => $object->rule_family_id_126,
         'objects' => $ruleFamilies,
         'idSelect' => 'id',
         'nameSelect' => 'name',
@@ -111,14 +111,14 @@
         'fieldSize' => 4,
         'label' => trans_choice('market::pulsar.discount_type', 1),
         'name' => 'discountType',
-        'value' => $object->discount_type_126,
+        'value' => $object->discount_type_id_126,
         'required' => true,
         'objects' => $discountTypes,
         'idSelect' => 'id',
         'nameSelect' => 'name',
         'disabled' => true
     ])
-    @if($object->discount_type_126 == 2)
+    @if($object->discount_type_id_126 == 2)
         <div class="row" id="percentageAmountSection">
             <div class="col-md-6">
                 @include('pulsar::includes.html.form_text_group', [
@@ -151,7 +151,7 @@
             'disabled' => true
         ])
     @endif
-    @if($object->discount_type_126 == 3)
+    @if($object->discount_type_id_126 == 3)
         <div class="row">
             <div class="col-md-6">
                 @include('pulsar::includes.html.form_text_group', [

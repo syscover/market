@@ -66,14 +66,14 @@
                 @if(!$object->has_coupon_120)
                     $("#couponSection").hide();
                 @endif
-                @if($object->discount_type_120 === null || $object->discount_type_120 === 1)
+                @if($object->discount_type_id_120 === null || $object->discount_type_id_120 === 1)
                     $("#percentageAmountSection, #applyShippingAmountLayer").hide()
                     $("#fixedAmountSection").hide()
                 @endif
-                @if($object->discount_type_120 === 2)
+                @if($object->discount_type_id_120 === 2)
                     $("#fixedAmountSection").hide()
                 @endif
-                @if($object->discount_type_120 === 3)
+                @if($object->discount_type_id_120 === 3)
                     $("#percentageAmountSection, #applyShippingAmountLayer").hide()
                 @endif
             @endif
@@ -142,7 +142,7 @@
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'idName',
-        'value' => isset($object->name_text_120)? $object->name_text_120 : null
+        'value' => isset($object->name_text_id_120)? $object->name_text_id_120 : null
     ])
     @include('pulsar::includes.html.form_wysiwyg_group', [
         'labelSize' => 2,
@@ -153,7 +153,7 @@
     ])
     @include('pulsar::includes.html.form_hidden', [
         'name' => 'idDescription',
-        'value' => isset($object->description_text_120)? $object->description_text_120 : null
+        'value' => isset($object->description_text_id_120)? $object->description_text_id_120 : null
     ])
     @include('pulsar::includes.html.form_checkbox_group', [
         'label' => trans('pulsar::pulsar.active'),
@@ -276,7 +276,7 @@
         'fieldSize' => 4,
         'label' => trans_choice('market::pulsar.discount_type', 1),
         'name' => 'discountType',
-        'value' => old('discountType', isset($object)? $object->discount_type_120 : null),
+        'value' => old('discountType', isset($object)? $object->discount_type_id_120 : null),
         'required' => true,
         'objects' => $discountTypes,
         'idSelect' => 'id',

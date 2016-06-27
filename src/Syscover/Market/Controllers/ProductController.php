@@ -45,7 +45,7 @@ class ProductController extends Controller
 
     public function createCustomRecord($parameters)
     {
-        $parameters['categories'] = Category::where('lang_110', $parameters['lang']->id_001)->get();
+        $parameters['categories'] = Category::where('lang_id_110', $parameters['lang']->id_001)->get();
 
         $parameters['productTypes'] = array_map(function($object){
             $object->name = trans($object->name);
@@ -60,7 +60,7 @@ class ProductController extends Controller
         $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
 
         $parameters['parentsProducts'] = Product::builder()
-            ->where('lang_112', base_lang()->id_001)
+            ->where('lang_id_112', base_lang()->id_001)
             ->whereNull('parent_product_id_111')
             ->get();
 
@@ -100,10 +100,10 @@ class ProductController extends Controller
         }
 
         Product::where('id_111', $id)->update([
-            'custom_field_group_111'    => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
-            'product_type_111'          => $this->request->input('productType'),
+            'field_group_id_111'        => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
+            'type_id_111'               => $this->request->input('productType'),
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
-            'price_type_111'            => $this->request->input('priceType'),
+            'price_type_id_111'         => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
@@ -113,7 +113,7 @@ class ProductController extends Controller
 
         ProductLang::create([
             'id_112'            => $id,
-            'lang_112'          => $this->request->input('lang'),
+            'lang_id_112'       => $this->request->input('lang'),
             'name_112'          => $this->request->input('name'),
             'slug_112'          => $this->request->input('slug'),
             'description_112'   => $this->request->input('description'),
@@ -138,7 +138,7 @@ class ProductController extends Controller
 
     public function editCustomRecord($parameters)
     {
-        $parameters['categories']           = Category::where('lang_110', $parameters['lang']->id_001)->get();
+        $parameters['categories']           = Category::where('lang_id_110', $parameters['lang']->id_001)->get();
 
         $parameters['productTypes']         = array_map(function($object){
             $object->name = trans($object->name);
@@ -153,7 +153,7 @@ class ProductController extends Controller
         $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
 
         $parameters['parentsProducts']      = Product::builder()
-            ->where('lang_112', base_lang()->id_001)
+            ->where('lang_id_112', base_lang()->id_001)
             ->where('id_111', '<>', $parameters['id'])
             ->whereNull('parent_product_id_111')
             ->get();
@@ -169,10 +169,10 @@ class ProductController extends Controller
     public function updateCustomRecord($parameters)
     {
         Product::where('id_111', $parameters['id'])->update([
-            'custom_field_group_111'    => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
-            'product_type_111'          => $this->request->input('productType'),
+            'field_group_id_111'        => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
+            'type_id_111'               => $this->request->input('productType'),
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
-            'price_type_111'            => $this->request->input('priceType'),
+            'price_type_id_111'         => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
@@ -180,7 +180,7 @@ class ProductController extends Controller
             'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
         ]);
 
-        ProductLang::where('id_112', $parameters['id'])->where('lang_112', $this->request->input('lang'))->update([
+        ProductLang::where('id_112', $parameters['id'])->where('lang_id_112', $this->request->input('lang'))->update([
             'name_112'          => $this->request->input('name'),
             'slug_112'          => $this->request->input('slug'),
             'description_112'   => $this->request->input('description'),
@@ -216,8 +216,8 @@ class ProductController extends Controller
     public function deleteCustomTranslationRecord($object)
     {
         // delete all attachments from lang object
-        AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_112);
-        CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->lang_112);
+        AttachmentLibrary::deleteAttachment($this->package, 'market-product', $object->id_112, $object->lang_id_112);
+        CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $object->id_112, $object->lang_id_112);
     }
 
     public function deleteCustomRecordsSelect($ids)

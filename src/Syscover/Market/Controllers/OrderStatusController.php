@@ -43,7 +43,7 @@ class OrderStatusController extends Controller
 
         OrderStatus::create([
             'id_114'                => $id,
-            'lang_114'              => $this->request->input('lang'),
+            'lang_id_114'           => $this->request->input('lang'),
             'name_114'              => $this->request->input('name'),
             'active_114'            => $this->request->has('active'),
             'data_lang_114'         => OrderStatus::addLangDataRecord($this->request->input('lang'), $idLang)
@@ -52,7 +52,7 @@ class OrderStatusController extends Controller
 
     public function updateCustomRecord($parameters)
     {
-        OrderStatus::where('id_114', $parameters['id'])->where('lang_114', $this->request->input('lang'))->update([
+        OrderStatus::where('id_114', $parameters['id'])->where('lang_id_114', $this->request->input('lang'))->update([
             'name_114'              => $this->request->input('name'),
             'active_114'            => $this->request->has('active'),
         ]);

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
  * Class Product
  *
  * Model with properties
- * <br><b>[id, custom_field_group, product_type, parent_product_id, weight, active, sorting, price_type, price, data_lang, data]</b>
+ * <br><b>[id, field_group_id, type_id, parent_product_id, weight, active, sorting, price_type_id, price, data_lang, data]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -23,7 +23,7 @@ class Product extends Model
     protected $primaryKey   = 'id_111';
     protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'custom_field_group_111', 'product_type_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_111', 'price_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'field_group_id_111', 'type_id_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_id_111', 'price_111', 'data_lang_111', 'data_111'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'          => \Syscover\Pulsar\Models\Lang::class,
@@ -42,46 +42,46 @@ class Product extends Model
     public function scopeBuilder($query)
     {
         return $query->join('012_112_product_lang', '012_111_product.id_111', '=', '012_112_product_lang.id_112')
-            ->join('001_001_lang', '012_112_product_lang.lang_112', '=', '001_001_lang.id_001');
+            ->join('001_001_lang', '012_112_product_lang.lang_id_112', '=', '001_001_lang.id_001');
     }
 
     public function scopeProductsByCategories($query, $categories)
     {
         return $query->builder()
             ->whereIn('id_111', function($query) use ($categories) {
-                $query->select('product_113')
+                $query->select('product_id_113')
                     ->from('012_113_products_categories')
-                    ->whereIn('category_113', $categories)
-                    ->groupBy('product_113')
+                    ->whereIn('category_id_113', $categories)
+                    ->groupBy('product_id_113')
                     ->get();
             });
     }
 
     public function getLang()
     {
-        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_112');
+        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_id_112');
     }
 
     public function getCategories()
     {
-        return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_113', 'category_113');
+        return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_id_113', 'category_id_113');
     }
 
     public function addToGetIndexRecords($request, $parameters)
     {
         $query = $this->builder();
 
-        if(isset($parameters['lang'])) $query->where('lang_112', $parameters['lang']);
+        if(isset($parameters['lang'])) $query->where('lang_id_112', $parameters['lang']);
 
         return $query;
     }
 
     public static function getCustomReturnIndexRecords($query, $parameters)
     {
-        return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
+        return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_id_113')
             ->leftJoin('012_110_category', function($join){
-                $join->on('012_113_products_categories.category_113', '=', '012_110_category.id_110')
-                    ->where('012_110_category.lang_110', '=', base_lang()->id_001);
+                $join->on('012_113_products_categories.category_id_113', '=', '012_110_category.id_110')
+                    ->where('012_110_category.lang_id_110', '=', base_lang()->id_001);
             })
             ->groupBy('id_111')
             ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')]);
@@ -89,41 +89,13 @@ class Product extends Model
 
     public static function customCountIndexRecords($query, $parameters)
     {
-        return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_113')
+        return $query->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_id_113')
             ->leftJoin('012_110_category', function($join){
-                $join->on('012_113_products_categories.category_113', '=', '012_110_category.id_110')
-                    ->where('012_110_category.lang_110', '=', base_lang()->id_001);
+                $join->on('012_113_products_categories.category_id_113', '=', '012_110_category.id_110')
+                    ->where('012_110_category.lang_id_110', '=', base_lang()->id_001);
             })
             ->groupBy('id_111')
             ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')])
             ->count();
-    }
-
-    /**
-     * @deprecated
-     * @param $parameters
-     * @return mixed
-     */
-    public static function getTranslationRecord($parameters)
-    {
-        return Product::builder()
-            ->where('id_111', $parameters['id'])->where('lang_112', $parameters['lang'])
-            ->first();
-    }
-
-    /**
-     * @deprecated
-     * @param $parameters
-     * @return mixed
-     */
-    public static function getRecords($parameters)
-    {
-        $query = Product::builder();
-
-        if(isset($parameters['active_111'])) $query->where('active_111', $parameters['active_111']);
-        if(isset($parameters['slug_112'])) $query->where('slug_112', $parameters['slug_112']);
-        if(isset($parameters['lang_112'])) $query->where('lang_112', $parameters['lang_112']);
-
-        return $query->get();
     }
 }

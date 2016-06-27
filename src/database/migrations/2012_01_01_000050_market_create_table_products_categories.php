@@ -17,10 +17,10 @@ class MarketCreateTableProductsCategories extends Migration {
 			Schema::create('012_113_products_categories', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
 				
-				$table->integer('product_113')->unsigned();
-				$table->integer('category_113')->unsigned();
+				$table->integer('product_id_113')->unsigned();
+				$table->integer('category_id_113')->unsigned();
 
-				$table->primary(['product_113', 'category_113']);
+				$table->primary(['product_id_113', 'category_id_113'], 'pk01_012_113_products_categories');
 			});
 		}
 	}

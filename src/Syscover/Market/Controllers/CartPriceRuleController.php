@@ -65,8 +65,8 @@ class CartPriceRuleController extends Controller
         if(!$this->request->has('id'))
         {
             CartPriceRule::create([
-                'name_text_120'                 => $idName,
-                'description_text_120'          => $idDescription,
+                'name_text_id_120'              => $idName,
+                'description_text_id_120'       => $idDescription,
                 'active_120'                    => $this->request->has('active'),
                 'has_coupon_120'                => $this->request->has('hasCoupon'),
                 'coupon_code_120'               => $this->request->has('couponCode') ? $this->request->input('couponCode') : null,
@@ -78,7 +78,7 @@ class CartPriceRuleController extends Controller
                 'enable_from_text_120'          => $this->request->has('enableFrom')? $this->request->input('enableFrom') : null,
                 'enable_to_120'                 => $this->request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $this->request->input('enableTo'))->getTimestamp() : null,
                 'enable_to_text_120'            => $this->request->has('enableTo')? $this->request->input('enableTo') : null,
-                'discount_type_120'             => $this->request->has('discountType') ? $this->request->input('discountType') : null,
+                'discount_type_id_120'          => $this->request->has('discountType') ? $this->request->input('discountType') : null,
                 'discount_fixed_amount_120'     => $this->request->has('discountFixedAmount') ? $this->request->input('discountFixedAmount') : null,
                 'discount_percentage_120'       => $this->request->has('discountPercentage') ? $this->request->input('discountPercentage') : null,
                 'maximum_discount_amount_120'   => $this->request->has('maximumDiscountAmount') ? $this->request->input('maximumDiscountAmount') : null,
@@ -132,7 +132,7 @@ class CartPriceRuleController extends Controller
             'enable_from_text_120'          => $this->request->has('enableFrom')? $this->request->input('enableFrom') : null,
             'enable_to_120'                 => $this->request->has('enableTo')? \DateTime::createFromFormat(config('pulsar.datePattern') . ' H:i', $this->request->input('enableTo'))->getTimestamp() : null,
             'enable_to_text_120'            => $this->request->has('enableTo')? $this->request->input('enableTo') : null,
-            'discount_type_120'             => $this->request->has('discountType')? $this->request->input('discountType') : null,
+            'discount_type_id_120'          => $this->request->has('discountType')? $this->request->input('discountType') : null,
             'discount_fixed_amount_120'     => $this->request->has('discountFixedAmount')? $this->request->input('discountFixedAmount') : null,
             'discount_percentage_120'       => $this->request->has('discountPercentage')? $this->request->input('discountPercentage') : null,
             'maximum_discount_amount_120'   => $this->request->has('maximumDiscountAmount')? $this->request->input('maximumDiscountAmount') : null,
@@ -153,8 +153,8 @@ class CartPriceRuleController extends Controller
     public function deleteCustomRecord($object)
     {
         // delete texts
-        Text::where('id_017', $object->name_text_120)->delete();
-        Text::where('id_017', $object->description_text_120)->delete();
+        Text::where('id_017', $object->name_text_id_120)->delete();
+        Text::where('id_017', $object->description_text_id_120)->delete();
     }
 
     public function deleteCustomTranslationRecord($object)
@@ -162,8 +162,8 @@ class CartPriceRuleController extends Controller
         $parameters = $this->request->route()->parameters();
 
         // delete texts
-        Text::where('id_017', $object->name_text_120)->where('lang_id_017', $parameters['lang'])->delete();
-        Text::where('id_017', $object->description_text_120)->where('lang_id_017', $parameters['lang'])->delete();
+        Text::where('id_017', $object->name_text_id_120)->where('lang_id_017', $parameters['lang'])->delete();
+        Text::where('id_017', $object->description_text_id_120)->where('lang_id_017', $parameters['lang'])->delete();
     }
 
     public function deleteCustomRecordsSelect($ids)
@@ -173,8 +173,8 @@ class CartPriceRuleController extends Controller
         foreach($cartPriceRules as $cartPriceRule)
         {
             // delete texts
-            Text::where('id_017', $cartPriceRule->name_text_120)->delete();
-            Text::where('id_017', $cartPriceRule->description_text_120)->delete();
+            Text::where('id_017', $cartPriceRule->name_text_id_120)->delete();
+            Text::where('id_017', $cartPriceRule->description_text_id_120)->delete();
         }
     }
 

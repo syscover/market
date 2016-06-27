@@ -38,12 +38,12 @@ class OrderController extends Controller
 	public function createCustomRecord($parameters)
 	{
 		$parameters['ordersStatus'] = OrderStatus::builder()
-			->where('lang_114', session('baseLang')->id_001)
+			->where('lang_id_114', session('baseLang')->id_001)
 			->where('active_114', true)
 			->get();
 
 		$parameters['paymentsMethod'] = PaymentMethod::builder()
-			->where('lang_115', session('baseLang')->id_001)
+			->where('lang_id_115', session('baseLang')->id_001)
 			->where('active_115', true)
 			->get();
 
@@ -84,9 +84,9 @@ class OrderController extends Controller
 //		]);
 //
 //		OrderRow::create([
-//			'lang_117'					=> '',
-//			'order_117'					=> '',
-//			'product_117'				=> '',
+//			'lang_id_117'				=> '',
+//			'order_id_117'				=> '',
+//			'product_id_117'			=> '',
 //			'name_117'					=> '',
 //			'description_117'			=> '',
 //			'data_117'					=> '',
@@ -107,12 +107,12 @@ class OrderController extends Controller
 	public function editCustomRecord($parameters)
 	{
 		$parameters['ordersStatus'] = OrderStatus::builder()
-			->where('lang_114', session('baseLang')->id_001)
+			->where('lang_id_114', session('baseLang')->id_001)
 			->where('active_114', true)
 			->get();
 
 		$parameters['paymentsMethod'] = PaymentMethod::builder()
-			->where('lang_115', session('baseLang')->id_001)
+			->where('lang_id_115', session('baseLang')->id_001)
 			->where('active_115', true)
 			->get();
 
@@ -173,7 +173,7 @@ class OrderController extends Controller
 		if($order->status_id_116 != (int)$this->request->input('status'))
 		{
 			$orderStatus = OrderStatus::builder()
-				->where('lang_114', session('baseLang')->id_001)
+				->where('lang_id_114', session('baseLang')->id_001)
 				->where('active_114', true)
 				->get();
 

@@ -18,14 +18,18 @@ class MarketCreateTableOrderStatus extends Migration
 				$table->engine = 'InnoDB';
 
 				$table->integer('id_114')->unsigned();
-				$table->string('lang_114', 2);
+				$table->string('lang_id_114', 2);
 				$table->string('name_114');
 				$table->boolean('active_114');
 				$table->string('data_lang_114')->nullable();
+				
+				$table->foreign('lang_id_114', 'fk01_012_114_order_status')
+					->references('id_001')
+					->on('001_001_lang')
+					->onDelete('restrict')
+					->onUpdate('cascade');
 
-				$table->primary(['id_114', 'lang_114'], 'pk01_012_114_order_status');
-				$table->foreign('lang_114', 'fk01_012_114_order_status')->references('id_001')->on('001_001_lang')
-					->onDelete('restrict')->onUpdate('cascade');
+				$table->primary(['id_114', 'lang_id_114'], 'pk01_012_114_order_status');
 			});
 		}
 	}

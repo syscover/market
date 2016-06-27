@@ -30,7 +30,7 @@ class PaymentMethodController extends Controller
     public function createCustomRecord($parameters)
     {
         $parameters['orderStatus'] = OrderStatus::builder()
-            ->where('lang_114', $parameters['lang']->id_001)
+            ->where('lang_id_114', $parameters['lang']->id_001)
             ->where('active_114', true)
             ->get();
 
@@ -54,7 +54,7 @@ class PaymentMethodController extends Controller
 
         PaymentMethod::create([
             'id_115'                            => $id,
-            'lang_115'                          => $this->request->input('lang'),
+            'lang_id_115'                       => $this->request->input('lang'),
             'name_115'                          => $this->request->input('name'),
             'order_status_successful_id_115'    => $this->request->has('orderStatusSuccessful')? $this->request->input('orderStatusSuccessful') : null,
             'minimum_price_115'                 => $this->request->has('minimumPrice')? $this->request->input('minimumPrice') : null,
@@ -69,7 +69,7 @@ class PaymentMethodController extends Controller
     public function editCustomRecord($parameters)
     {
         $parameters['orderStatus'] = OrderStatus::builder()
-            ->where('lang_114', $parameters['object']->lang_id)
+            ->where('lang_id_114', $parameters['object']->lang_id)
             ->where('active_114', true)
             ->get();
 
@@ -78,7 +78,7 @@ class PaymentMethodController extends Controller
 
     public function updateCustomRecord($parameters)
     {
-        PaymentMethod::where('id_115', $parameters['id'])->where('lang_115', $this->request->input('lang'))->update([
+        PaymentMethod::where('id_115', $parameters['id'])->where('lang_id_115', $this->request->input('lang'))->update([
             'name_115'                          => $this->request->input('name'),
             'order_status_successful_id_115'    => $this->request->has('orderStatusSuccessful')? $this->request->input('orderStatusSuccessful') : null,
             'minimum_price_115'                 => $this->request->has('minimumPrice')? $this->request->input('minimumPrice') : null,

@@ -20,19 +20,22 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->increments('id_120')->unsigned();
 
 				// referencia a la tabla 001_017_text
-				$table->integer('name_text_120')->unsigned();
-				$table->integer('description_text_120')->unsigned()->nullable();
-
+				$table->integer('name_text_id_120')->unsigned();
+				$table->integer('description_text_id_120')->unsigned()->nullable();
 				$table->boolean('active_120');
+				
 				// define si este regla se puede combiar con otras
 				$table->boolean('combinable_120');
 
 				$table->boolean('has_coupon_120');
 				$table->string('coupon_code_120')->nullable();
+				
 				// veces que el cupon se puede usar por usuario
 				$table->integer('uses_customer_120')->unsigned()->nullable();
+				
 				// veces que el cupon se puede usar
 				$table->integer('uses_coupon_120')->unsigned()->nullable();
+				
 				// total de veces que el descuento ha sido usado
 				$table->integer('total_used_120')->unsigned();
 
@@ -45,7 +48,7 @@ class MarketCreateTableCartPriceRule extends Migration
 				// 1 - Sin descuento
 				// 2 - Porcentaje de descuento
 				// 3 - Importe fijo de descuento
-				$table->smallInteger('discount_type_120')->unsigned()->nullable();
+				$table->tinyInteger('discount_type_id_120')->unsigned()->nullable();
 
 				// cantidad fija de descuento
 				$table->decimal('discount_fixed_amount_120', 10, 2)->nullable();
@@ -66,7 +69,6 @@ class MarketCreateTableCartPriceRule extends Migration
 
 				// índice para mejorar las búsquedas de los códigos de cupón
 				$table->index('coupon_code_120', 'ix01_012_120_cart_price_rule');
-
 			});
 		}
 	}

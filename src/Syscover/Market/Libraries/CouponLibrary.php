@@ -63,7 +63,7 @@ class CouponLibrary
                     ]
                 ];
             }
-            elseif(CustomerDiscountHistory::builder()->where('customer_126', auth('crm')->user()->id_301)->where('coupon_code_126', $couponCode)->where('active_126', true)->count() >= $cartPriceRule->uses_customer_120)
+            elseif(CustomerDiscountHistory::builder()->where('customer_id_126', auth('crm')->user()->id_301)->where('coupon_code_126', $couponCode)->where('active_126', true)->count() >= $cartPriceRule->uses_customer_120)
             {
                 $errors[] = [
                     'status'    => 'error',
@@ -145,7 +145,7 @@ class CouponLibrary
         }
 
         // check if is a free shipping and there isn't shipping and cart price rule, haven't any discount
-        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_120 == 1 && ! $cart->hasShipping())
+        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_id_120 == 1 && ! $cart->hasShipping())
         {
             $errors[] = [
                 'status'    => 'error',

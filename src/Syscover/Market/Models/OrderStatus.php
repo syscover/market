@@ -22,7 +22,7 @@ class OrderStatus extends Model
     protected $primaryKey   = 'id_114';
     protected $suffix       = '114';
     public $timestamps      = false;
-    protected $fillable     = ['id_114', 'lang_114', 'name_114', 'active_114', 'data_lang_114'];
+    protected $fillable     = ['id_114', 'lang_id_114', 'name_114', 'active_114', 'data_lang_114'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'  => \Syscover\Pulsar\Models\Lang::class
@@ -38,25 +38,25 @@ class OrderStatus extends Model
 
     public function scopeBuilder($query)
     {
-        return $query->join('001_001_lang', '012_114_order_status.lang_114', '=', '001_001_lang.id_001');
+        return $query->join('001_001_lang', '012_114_order_status.lang_id_114', '=', '001_001_lang.id_001');
     }
 
     public function getLang()
     {
-        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_114');
+        return $this->belongsTo('Syscover\Pulsar\Models\Lang', 'lang_id_114');
     }
 
     public function addToGetIndexRecords($request, $parameters)
     {
         $query = $this->builder();
 
-        if(isset($parameters['lang'])) $query->where('lang_114', $parameters['lang']);
+        if(isset($parameters['lang'])) $query->where('lang_id_114', $parameters['lang']);
 
         return $query;
     }
 
     public static function customCount($request, $parameters)
     {
-        return OrderStatus::where('lang_114', $parameters['lang'])->getQuery();
+        return OrderStatus::where('lang_id_114', $parameters['lang'])->getQuery();
     }
 }

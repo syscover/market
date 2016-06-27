@@ -50,8 +50,8 @@ class CategoryController extends Controller
 
         Category::create([
             'id_110'            => $id,
-            'lang_110'          => $this->request->input('lang'),
-            'parent_110'        => empty($this->request->input('parent'))? null : $this->request->input('parent'),
+            'lang_id_110'       => $this->request->input('lang'),
+            'parent_id_110'     => empty($this->request->input('parent'))? null : $this->request->input('parent'),
             'name_110'          => $this->request->input('name'),
             'slug_110'          => $this->request->input('slug'),
             'active_110'        => $this->request->input('active', false),
@@ -69,8 +69,8 @@ class CategoryController extends Controller
     
     public function updateCustomRecord($parameters)
     {
-        Category::where('id_110', $parameters['id'])->where('lang_110', $this->request->input('lang'))->update([
-            'parent_110'        => $this->request->input('parent'),
+        Category::where('id_110', $parameters['id'])->where('lang_id_110', $this->request->input('lang'))->update([
+            'parent_id_110'     => $this->request->input('parent'),
             'name_110'          => $this->request->input('name'),
             'slug_110'          => $this->request->input('slug'),
             'active_110'        => $this->request->input('active', false),
