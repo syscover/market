@@ -106,6 +106,8 @@ class PayPalController extends Controller
         $discounts = $order->getDiscounts;
         foreach ($discounts as $discount)
         {
+            $discountAmount = 0;
+                
             // discount with percentage
             if($discount->discount_type_id_126 == 2)
             {
