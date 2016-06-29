@@ -107,7 +107,7 @@ class PayPalController extends Controller
         foreach ($discounts as $discount)
         {
             $discountAmount = 0;
-                
+
             // discount with percentage
             if($discount->discount_type_id_126 == 2)
             {
@@ -125,7 +125,7 @@ class PayPalController extends Controller
                 $item->setName($discount->name_text_value_126)
                     ->setCurrency('EUR')                        // currency
                     ->setQuantity(1)                            // quantity
-                    ->setPrice($discount->shipping_116);        // price
+                    ->setPrice($discountAmount);                // price
 
                 $products[] = $item;
             }
