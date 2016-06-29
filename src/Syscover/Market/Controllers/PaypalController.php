@@ -101,6 +101,33 @@ class PayPalController extends Controller
 
             $products[] = $item;
         }
+        
+        // set discounts
+        $discounts = $order->getDiscounts;
+        foreach ($discounts as $discount)
+        {
+            // discount with percentage
+            if($discount->discount_type_id_126 == 2)
+            {
+                $discountAmount = $discount->discount_percentage_amount_126 * -1;
+            }
+            // discount with fixed amount
+            elseif ($discount->discount_type_id_126 == 3)
+            {
+                $discountAmount = $discount->discount_fixed_amount_126 * -1;
+            }
+
+            if($discountAmount < 0)
+            {
+                $item = new Item();
+                $item->setName($discount->name_text_value_126)
+                    ->setCurrency('EUR')                        // currency
+                    ->setQuantity(1)                            // quantity
+                    ->setPrice($discount->shipping_116);        // price
+
+                $products[] = $item;
+            }
+        }
 
         // products list
         $itemList = new ItemList();
