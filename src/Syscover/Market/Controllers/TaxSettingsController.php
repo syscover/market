@@ -41,6 +41,12 @@ class TaxSettingsController extends Controller
         }, config('market.shippingPrices'));
         $parameters['shippingPricesValue']      = Preference::getValue('marketTaxShippingPrices', 12);
 
+//        $parameters['shippingPrices']       = array_map(function($object){
+//            $object->name = trans($object->name);
+//            return $object;
+//        }, config('market.shippingPrices'));
+//        $parameters['shippingPricesValue']      = Preference::getValue('marketTaxShippingPrices', 12);
+
         return $parameters;
     }
     

@@ -75,6 +75,14 @@ class Product extends Model
 
         return $query;
     }
+    
+    public static function getTranslationRecord($parameters)
+    {
+        return Product::builder()->where('lang_id_112', $parameters['lang'])
+            ->where('lang_id_112', $parameters['lang'])
+            ->where('id_111', $parameters['id'])
+            ->first();
+    }
 
     public static function getCustomReturnIndexRecords($query, $parameters)
     {

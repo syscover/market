@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class Product
  *
  * Model with properties
- * <br><b>[id, lang, name, slug]</b>
+ * <br><b>[id, lang_id, name, slug, description]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -20,7 +20,7 @@ class ProductLang extends Model
 
 	protected $table        = '012_112_product_lang';
     protected $primaryKey   = 'id_112';
-    protected $suffix        = '112';
+    protected $suffix       = '112';
     public $timestamps      = false;
     protected $fillable     = ['id_112', 'lang_id_112', 'name_112', 'slug_112', 'description_112'];
     protected $maps         = [];
@@ -33,6 +33,11 @@ class ProductLang extends Model
     {
         return Validator::make($data, static::$rules);
 	}
+
+    public function scopeBuilder($query)
+    {
+        return $query;
+    }
 
     public function getLang()
     {
