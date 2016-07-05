@@ -1,7 +1,6 @@
 <?php namespace Syscover\Market\Controllers;
 
 use Syscover\Market\Libraries\TaxLibrary;
-use Syscover\Market\Models\Product;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\TaxRule;
 use Syscover\Market\Models\TaxRateZone;
