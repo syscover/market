@@ -16,7 +16,7 @@ class MarketCreateTableWarehouse extends Migration
 				$table->string('name_130');
 
 				// geolocation data
-				$table->string('country_id_130', 2);
+				$table->string('country_id_130', 2)->nullable();
 				$table->string('territorial_area_1_id_130', 6)->nullable();
 				$table->string('territorial_area_2_id_130', 10)->nullable();
 				$table->string('territorial_area_3_id_130', 10)->nullable();
@@ -26,6 +26,27 @@ class MarketCreateTableWarehouse extends Migration
 				$table->string('latitude_130')->nullable();
 				$table->string('longitude_130')->nullable();
 				$table->boolean('active_130');
+
+				$table->foreign('country_id_130', 'fk01_012_130_warehouse')
+					->references('id_002')
+					->on('001_002_country')
+					->onDelete('restrict')
+					->onUpdate('cascade');
+				$table->foreign('territorial_area_1_id_130', 'fk02_012_130_warehouse')
+					->references('id_003')
+					->on('001_003_territorial_area_1')
+					->onDelete('restrict')
+					->onUpdate('cascade');
+				$table->foreign('territorial_area_2_id_130', 'fk03_012_130_warehouse')
+					->references('id_004')
+					->on('001_004_territorial_area_2')
+					->onDelete('restrict')
+					->onUpdate('cascade');
+				$table->foreign('territorial_area_3_id_130', 'fk04_012_130_warehouse')
+					->references('id_005')
+					->on('001_005_territorial_area_3')
+					->onDelete('restrict')
+					->onUpdate('cascade');
 			});
 		}
 	}
