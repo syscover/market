@@ -1,5 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Market\Libraries\TaxLibrary;
+use Syscover\Market\Models\Product;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\TaxRule;
 use Syscover\Market\Models\TaxRateZone;
@@ -66,5 +68,26 @@ class TaxRuleController extends Controller
         $taxRule->getTaxRateZones()->sync($this->request->input('taxRateZones'));
         $taxRule->getCustomerClassTaxes()->sync($this->request->input('customerClassTaxes'));
         $taxRule->getProductClassTaxes()->sync($this->request->input('productClassTaxes'));
+    }
+
+    public function apiGetProductTaxes($price, $productClassTax)
+    {
+        $taxRules = TaxRule::builder()
+            ->where('country_id_103', config('market.taxDefaultCountry'))
+            ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+            ->where('product_class_tax_id_107', $productClassTax)
+            ->orderBy('priority_104', 'asc')
+            ->get();
+
+
+        $taxes = TaxLibrary::taxCalculate($price, $taxRules);
+        
+        $response = [
+            'success'       => true,
+            'taxes'         => $taxes,
+            'totalTax'      => $taxes->sum('taxAmount')
+        ];
+
+        return response()->json($response);
     }
 }

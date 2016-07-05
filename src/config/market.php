@@ -10,7 +10,6 @@ return [
     |
     */
 
-    //
     'libraryFolder'                 => '/packages/syscover/market/storage/library',
     'tmpFolder'                     => '/packages/syscover/market/storage/tmp',
     'attachmentFolder'              => '/packages/syscover/market/storage/attachment',
@@ -37,22 +36,6 @@ return [
         (object)['id' => 2,      'name' => 'market::pulsar.transportable'],
         (object)['id' => 3,      'name' => 'market::pulsar.transportable_downloadable'],
         (object)['id' => 4,      'name' => 'market::pulsar.service'],
-    ],
-
-    //******************************************************************************************************************
-    //***   Product prices tax
-    //******************************************************************************************************************
-    'productPrices'                 => [
-        (object)['id' => 1,      'name' => 'market::pulsar.excluding_tax'],
-        (object)['id' => 2,      'name' => 'market::pulsar.including_tax']
-    ],
-
-    //******************************************************************************************************************
-    //***   Shipping prices tax
-    //******************************************************************************************************************
-    'shippingPrices'                => [
-        (object)['id' => 1,      'name' => 'market::pulsar.excluding_tax'],
-        (object)['id' => 2,      'name' => 'market::pulsar.including_tax']
     ],
 
     //******************************************************************************************************************
@@ -104,4 +87,22 @@ return [
         (object)['id' => 2,      'name' => 'market::pulsar.catalog_price_rule'],
         (object)['id' => 3,      'name' => 'market::pulsar.customer_price_rule'],
     ],
+
+    //******************************************************************************************************************
+    //***   Tax values
+    //******************************************************************************************************************
+    'productPricesValues'           => [
+        (object)['id' => 1,      'name' => 'market::pulsar.excluding_tax'],
+        (object)['id' => 2,      'name' => 'market::pulsar.including_tax']
+    ],
+    'shippingPricesValues'          => [
+        (object)['id' => 1,      'name' => 'market::pulsar.excluding_tax'],
+        (object)['id' => 2,      'name' => 'market::pulsar.including_tax']
+    ],
+
+    // Tax default values
+    'taxDefaultCountry'             => env('TAX_DEFAULT_COUNTRY', 'ES'),
+    'taxDefaultCustomerClass'       => env('TAX_DEFAULT_CUSTOMER_CLASS', 1),
+    'taxProductPrices'              => env('TAX_PRODUCT_PRICES', 1),
+    'taxShippingPrices'             => env('TAX_SHIPPING_PRICES', 1),
 ];

@@ -1,5 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
+use Syscover\Market\Libraries\TaxLibrary;
+use Syscover\Market\Models\TaxRule;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
 use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
@@ -138,26 +140,35 @@ class ProductController extends Controller
 
     public function editCustomRecord($parameters)
     {
-        $parameters['categories']           = Category::where('lang_id_110', $parameters['lang']->id_001)->get();
+        $parameters['categories'] = Category::where('lang_id_110', $parameters['lang']->id_001)->get();
 
-        $parameters['productTypes']         = array_map(function($object){
+        $parameters['productTypes'] = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         },config('market.productTypes'));
 
-        $parameters['priceTypes']           = array_map(function($object){
+        $parameters['priceTypes'] = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         },config('market.priceTypes'));
 
         $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
 
-        $parameters['parentsProducts']      = Product::builder()
+        $parameters['parentsProducts'] = Product::builder()
             ->where('lang_id_112', base_lang()->id_001)
             ->where('id_111', '<>', $parameters['id'])
             ->whereNull('parent_product_id_111')
             ->get();
 
+        $taxRules = TaxRule::builder()
+            ->where('country_id_103', config('market.taxDefaultCountry'))
+            ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+            ->where('product_class_tax_id_107', $parameters['object']->product_class_tax_id_111)
+            ->orderBy('priority_104', 'asc')
+            ->get();
+
+        $parameters['taxes'] = TaxLibrary::taxCalculate($parameters['object']->price_111, $taxRules);
+        
         $attachments                        = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
         $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_id_025', 'market-product')->get();
         $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_id_015' => 'market-product']);

@@ -1,4 +1,4 @@
-<li{!! is_current_resource(['market-order','market-product','market-category','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-rate-zone','market-tax-rule','market-tax-setting','market-payment-method','market-order-status','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
+<li{!! is_current_resource(['market-order','market-product','market-category','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-rate-zone','market-tax-rule','market-payment-method','market-order-status','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
     <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
     <ul class="sub-menu">
         <li{!! is_current_resource(['market-order'], true) !!}>
@@ -41,7 +41,7 @@
                 </li>
             </ul>
         </li>
-        <li{!! is_current_resource(['market-tax','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-rate-zone','market-tax-rule','market-tax-setting'], true) !!}>
+        <li{!! is_current_resource(['market-tax','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-rate-zone','market-tax-rule'], true) !!}>
             <a href="javascript:void(0)"><i class="fa fa-calculator"></i>{{ trans_choice('market::pulsar.tax', 2) }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('market-tax-customer', 'access'))
@@ -58,9 +58,6 @@
                 @endif
                 @if(is_allowed('market-tax-rule', 'access'))
                     <li{!! is_current_resource('market-tax-rule') !!}><a href="{{ route('marketTaxRule') }}"><i class="fa fa-random"></i>{{ trans_choice('market::pulsar.tax_rule', 2) }}</a></li>
-                @endif
-                @if(is_allowed('market-tax-setting', 'access'))
-                    <li{!! is_current_resource('market-tax-setting') !!}><a href="{{ route('marketTaxSettings') }}"><i class="fa fa-cog"></i>{{ trans_choice('pulsar::pulsar.setting', 2) }}</a></li>
                 @endif
             </ul>
         </li>

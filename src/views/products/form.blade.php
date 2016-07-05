@@ -56,6 +56,25 @@
                 }
             });
 
+            // check tax value
+            $('[name=productClassTax], [name=price]').on('change', function() {
+
+                if($('[name=price]').val() != '' && $('[name=productClassTax]').val() != '')
+                {
+                    var url = '{{ route('apiGetProductTaxesMarketTaxRule', ['price' => '%price%', 'productClassTax' => '%productClassTax%']) }}';
+                    $.ajax({
+                        dataType: 'json',
+                        type: "GET",
+                        url: url.replace('%productClassTax%', $('[name=productClassTax]').val()).replace('%price%', $('[name=price]').val()),
+                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                        success: function(data)
+                        {
+                            $('[name=tax]').val(data.totalTax);
+                        }
+                    });
+                }
+            });
+
             // set tab active
             $('.tabbable li:eq({{ $tab }}) a').tab('show')
 
@@ -227,41 +246,58 @@
         'label' => trans('market::pulsar.prices_taxes'),
         'icon' => 'fa fa-usd'
     ])
-    @include('pulsar::includes.html.form_select_group', [
-        'fieldSize' => 3,
-        'label' => trans('market::pulsar.price_type'),
-        'name' => 'priceType',
-        'value' => old('priceType', isset($object->price_type_id_111)? $object->price_type_id_111 : null),
-        'objects' => $priceTypes,
-        'idSelect' => 'id',
-        'nameSelect' => 'name',
-        'required' => true,
-        'disabled' => $action == 'update' || $action == 'store'? false : true
+
+    @include('pulsar::includes.html.form_hidden', [
+        'name'  => 'productPricesValues',
+        'value' => config('market.taxProductPrices')
     ])
     <div class="row">
+        <div class="col-md-6">
+            @include('pulsar::includes.html.form_select_group', [
+                'labelSize' => 4,
+                'fieldSize' => 6,
+                'label' => trans('market::pulsar.price_type'),
+                'name' => 'priceType',
+                'value' => old('priceType', isset($object->price_type_id_111)? $object->price_type_id_111 : null),
+                'objects' => $priceTypes,
+                'idSelect' => 'id',
+                'nameSelect' => 'name',
+                'required' => true,
+                'disabled' => $action == 'update' || $action == 'store'? false : true
+            ])
+            @include('pulsar::includes.html.form_select_group', [
+                'labelSize' => 4,
+                'fieldSize' => 6,
+                'label' => trans_choice('market::pulsar.product_class_tax', 1),
+                'name' => 'productClassTax',
+                'value' => old('productClassTax', isset($object->product_class_tax_id_111)? $object->product_class_tax_id_111 : null),
+                'objects' => $productClassTaxes,
+                'idSelect' => 'id_101',
+                'nameSelect' => 'name_101',
+                'disabled' => $action == 'update' || $action == 'store'? false : true
+            ])
+        </div>
         <div class="col-md-6">
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
+                'type' => 'number',
                 'label' => trans_choice('pulsar::pulsar.price', 1),
                 'name' => 'price',
                 'value' => old('price', isset($object->price_111)? $object->price_111 : null),
                 'readOnly' => $action == 'update' || $action == 'store'? false : true
             ])
-        </div>
-        <div class="col-md-6">
+            @include('pulsar::includes.html.form_text_group', [
+                'labelSize' => 4,
+                'fieldSize' => 6,
+                'label' => trans_choice('market::pulsar.tax', 1),
+                'name' => 'tax',
+                'value' => isset($taxes)? $taxes->sum('taxAmount') : null,
+                'readOnly' => true
+            ])
         </div>
     </div>
-    @include('pulsar::includes.html.form_select_group', [
-        'fieldSize' => 3,
-        'label' => trans_choice('market::pulsar.product_class_tax', 1),
-        'name' => 'productClassTax',
-        'value' => old('productClassTax', isset($object->product_class_tax_id_111)? $object->product_class_tax_id_111 : null),
-        'objects' => $productClassTaxes,
-        'idSelect' => 'id_101',
-        'nameSelect' => 'name_101',
-        'disabled' => $action == 'update' || $action == 'store'? false : true
-    ])
+
 
     @include('pulsar::includes.html.form_section_header', [
         'label' => trans_choice('pulsar::pulsar.custom_field', 2),

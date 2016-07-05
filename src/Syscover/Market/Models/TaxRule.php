@@ -34,7 +34,12 @@ class TaxRule extends Model
 
     public function scopeBuilder($query)
     {
-        return $query;
+        return $query->join('012_105_tax_rules_tax_rates_zones', '012_104_tax_rule.id_104', '=', '012_105_tax_rules_tax_rates_zones.tax_rule_id_105')
+            ->join('012_106_tax_rules_customer_class_taxes', '012_104_tax_rule.id_104', '=', '012_106_tax_rules_customer_class_taxes.tax_rule_id_106')
+            ->join('012_107_tax_rules_product_class_taxes', '012_104_tax_rule.id_104', '=', '012_107_tax_rules_product_class_taxes.tax_rule_id_107')
+            ->join('012_103_tax_rate_zone', '012_105_tax_rules_tax_rates_zones.tax_rate_zone_id_105', '=', '012_103_tax_rate_zone.id_103')
+            ->join('012_100_customer_class_tax', '012_106_tax_rules_customer_class_taxes.customer_class_tax_id_106', '=', '012_100_customer_class_tax.id_100')
+            ->join('012_101_product_class_tax', '012_107_tax_rules_product_class_taxes.product_class_tax_id_107', '=', '012_101_product_class_tax.id_101');
     }
 
     public function getTaxRateZones()
