@@ -14,7 +14,7 @@ class PaymentMethodController extends Controller
     protected $routeSuffix  = 'marketPaymentMethod';
     protected $folder       = 'payment_method';
     protected $package      = 'market';
-    protected $aColumns     = ['id_115', 'name_001', 'name_115', 'sorting_115', ['data' => 'active_115', 'type' => 'active']];
+    protected $indexColumns     = ['id_115', 'name_001', 'name_115', 'sorting_115', ['data' => 'active_115', 'type' => 'active']];
     protected $nameM        = 'name_115';
     protected $model        = PaymentMethod::class;
     protected $icon         = 'fa fa-random';

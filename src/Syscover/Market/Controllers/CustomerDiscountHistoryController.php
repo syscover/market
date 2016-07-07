@@ -14,7 +14,7 @@ class CustomerDiscountHistoryController extends Controller
 	protected $routeSuffix	= 'marketCustomerDiscountHistory';
 	protected $folder	   	= 'customer_discount_history';
 	protected $package	  	= 'market';
-	protected $aColumns	 	= ['id_126', 'coupon_code_126', 'name_text_value_126', 'discount_percentage_126', 'discount_fixed_amount_126', ['data' => 'free_shipping_126', 'type' => 'check']];
+	protected $indexColumns	 	= ['id_126', 'coupon_code_126', 'name_text_value_126', 'discount_percentage_126', 'discount_fixed_amount_126', ['data' => 'free_shipping_126', 'type' => 'check']];
 	protected $nameM		= 'coupon_code_126';
 	protected $model		= CustomerDiscountHistory::class;
 	protected $icon		 	= 'fa fa-shopping-cart';

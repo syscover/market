@@ -14,7 +14,7 @@ class OrderRowController extends Controller
 	protected $routeSuffix	= 'marketOrder';
 	protected $folder	   	= 'order';
 	protected $package	  	= 'market';
-	protected $aColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', ['type' => 'data', 'data' => 'data_117']];
+	protected $indexColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', ['type' => 'data', 'data' => 'data_117']];
 	protected $nameM		= 'name_117';
 	protected $model		= OrderRow::class;
 	protected $icon		 	= 'fa fa-shopping-basket';
@@ -47,12 +47,12 @@ class OrderRowController extends Controller
 		return $actionUrlParameters;
 	}
 
-	public function customColumnType($row, $aColumn, $aObject)
+	public function customColumnType($row, $indexColumn, $aObject)
 	{
-		switch ($aColumn['type'])
+		switch ($indexColumn['type'])
 		{
 			case 'data':
-				$row[] = ! empty($aObject->{$aColumn['data']})? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></a>' : null;
+				$row[] = ! empty($aObject->{$indexColumn['data']})? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></a>' : null;
 				break;
 		}
 
