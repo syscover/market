@@ -15,7 +15,7 @@ class CartPriceRuleController extends Controller
     protected $routeSuffix  = 'cartPriceRule';
     protected $folder       = 'cart_price_rule';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_120', ['data' => 'text1.text_017', 'alias' => 'name_text_value', 'type' => 'alias'], 'coupon_code_120', 'enable_from_text_120', 'enable_to_text_120', 'total_used_120', ['data' => 'active_120', 'type' => 'active']];
+    protected $indexColumns = ['id_120', ['data' => 'text1.text_017', 'alias' => 'name_text_value', 'type' => 'alias'], 'coupon_code_120', 'enable_from_text_120', 'enable_to_text_120', 'total_used_120', ['data' => 'active_120', 'type' => 'active']];
     protected $nameM        = 'name_110';
     protected $model        = CartPriceRule::class;
     protected $icon         = 'fa fa-shopping-cart';

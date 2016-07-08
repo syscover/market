@@ -13,7 +13,7 @@ class TaxRateZoneController extends Controller
     protected $routeSuffix  = 'marketTaxRateZone';
     protected $folder       = 'tax_rate_zone';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_103', 'name_103', 'name_002', 'rate_percent_103'];
+    protected $indexColumns = ['id_103', 'name_103', 'name_002', 'rate_percent_103'];
     protected $nameM        = 'name_103';
     protected $model        = TaxRateZone::class;
     protected $icon         = 'fa fa-globe';

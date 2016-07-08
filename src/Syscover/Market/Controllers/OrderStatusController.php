@@ -13,7 +13,7 @@ class OrderStatusController extends Controller
     protected $routeSuffix  = 'marketOrderStatus';
     protected $folder       = 'order_status';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_114', 'name_001', 'name_114', ['data' => 'active_114', 'type' => 'active']];
+    protected $indexColumns = ['id_114', 'name_001', 'name_114', ['data' => 'active_114', 'type' => 'active']];
     protected $nameM        = 'name_114';
     protected $model        = OrderStatus::class;
     protected $icon         = 'fa fa-refresh';

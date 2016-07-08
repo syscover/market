@@ -15,7 +15,7 @@ class PayPalSettingsController extends Controller
     protected $routeSuffix  = 'marketPayPalSettings';
     protected $folder       = 'paypal_setting';
     protected $package      = 'market';
-    protected $indexColumns     = [];
+    protected $indexColumns = [];
     protected $nameM        = null;
     protected $model        = Preference::class;
     protected $icon         = 'fa fa-paypal';

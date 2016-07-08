@@ -17,7 +17,7 @@ class TaxRuleController extends Controller
     protected $routeSuffix  = 'marketTaxRule';
     protected $folder       = 'tax_rule';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_104', 'name_104', 'priority_104', 'sort_order_104'];
+    protected $indexColumns = ['id_104', 'name_104', 'priority_104', 'sort_order_104'];
     protected $nameM        = 'name_104';
     protected $model        = TaxRule::class;
     protected $icon         = 'fa fa-random';

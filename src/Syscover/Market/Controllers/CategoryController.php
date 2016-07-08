@@ -13,7 +13,7 @@ class CategoryController extends Controller
     protected $routeSuffix  = 'marketCategory';
     protected $folder       = 'category';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_110', 'name_110', ['data' => 'active_110', 'type' => 'active']];
+    protected $indexColumns = ['id_110', 'name_110', ['data' => 'active_110', 'type' => 'active']];
     protected $nameM        = 'name_110';
     protected $model        = Category::class;
     protected $icon         = 'fa fa-cubes';

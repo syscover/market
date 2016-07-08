@@ -13,7 +13,7 @@ class ProductClassTaxController extends Controller
     protected $routeSuffix  = 'marketProductClassTax';
     protected $folder       = 'product_class_tax';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_101', 'name_101'];
+    protected $indexColumns = ['id_101', 'name_101'];
     protected $nameM        = 'name_101';
     protected $model        = ProductClassTax::class;
     protected $icon         = 'fa fa-cubes';

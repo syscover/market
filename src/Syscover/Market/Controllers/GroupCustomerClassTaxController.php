@@ -15,7 +15,7 @@ class GroupCustomerClassTaxController extends Controller
     protected $routeSuffix  = 'marketGroupCustomerClassTax';
     protected $folder       = 'group_customer_class_tax';
     protected $package      = 'market';
-    protected $indexColumns     = ['name_300', 'name_100'];
+    protected $indexColumns = ['name_300', 'name_100'];
     protected $nameM        = 'name_221';
     protected $model        = GroupCustomerClassTax::class;
     protected $icon         = 'fa fa-retweet';

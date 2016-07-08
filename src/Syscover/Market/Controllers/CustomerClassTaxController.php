@@ -13,7 +13,7 @@ class CustomerClassTaxController extends Controller
     protected $routeSuffix  = 'marketCustomerClassTax';
     protected $folder       = 'customer_class_tax';
     protected $package      = 'market';
-    protected $indexColumns     = ['id_100', 'name_100'];
+    protected $indexColumns = ['id_100', 'name_100'];
     protected $nameM        = 'name_100';
     protected $model        = CustomerClassTax::class;
     protected $icon         = 'fa fa-users';
