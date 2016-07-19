@@ -8,8 +8,8 @@ class MarketAttachmentMimeSeeder extends Seeder
     public function run()
     {
         AttachmentMime::insert([
-            ['resource_id_019' => 'cms-article', 'mime_019' => 'image/jpeg'],
-            ['resource_id_019' => 'cms-article', 'mime_019' => 'image/png']
+            ['resource_id_019' => 'market-product', 'mime_019' => 'image/jpeg'],
+            ['resource_id_019' => 'market-product', 'mime_019' => 'image/png']
         ]);
     }
 }

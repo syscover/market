@@ -26,7 +26,7 @@ class MarketCreateTableProduct extends Migration
 				$table->tinyInteger('type_id_111')->unsigned();
 
 				// set parent product and config like subproduct
-				$table->increments('parent_product_id_111')->unsigned()->nullable();
+				$table->integer('parent_product_id_111')->unsigned()->nullable();
 
 				$table->decimal('weight_111', 10, 3)->nullable();
 				$table->boolean('active_111');
