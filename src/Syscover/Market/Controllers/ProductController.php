@@ -52,12 +52,12 @@ class ProductController extends Controller
         $parameters['productTypes'] = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
-        },config('market.productTypes'));
+        }, config('market.productTypes'));
 
         $parameters['priceTypes'] = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
-        },config('market.priceTypes'));
+        }, config('market.priceTypes'));
 
         $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
 
