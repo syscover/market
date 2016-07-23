@@ -31,7 +31,7 @@ class Product extends Model
     ];
     private static $rules   = [
         'priceType'     => 'required',
-        'productType'   => 'required'
+        'productType'   => 'required',
     ];
 
     public static function validate($data)

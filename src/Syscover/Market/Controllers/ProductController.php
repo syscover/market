@@ -108,7 +108,7 @@ class ProductController extends Controller
             'price_type_id_111'         => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
-            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
+            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
             'data_lang_111'             => Product::addLangDataRecord($this->request->input('lang'), $idLang),
         ]);
@@ -186,7 +186,7 @@ class ProductController extends Controller
             'price_type_id_111'         => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
-            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : null,
+            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'active_111'                => $this->request->input('active', false),
             'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
         ]);
