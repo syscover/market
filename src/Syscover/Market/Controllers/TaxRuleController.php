@@ -17,7 +17,7 @@ class TaxRuleController extends Controller
     protected $routeSuffix  = 'marketTaxRule';
     protected $folder       = 'tax_rule';
     protected $package      = 'market';
-    protected $indexColumns = ['id_104', 'name_104', 'priority_104', 'sort_order_104'];
+    protected $indexColumns = ['id_104', 'name_104', 'translation_104', 'priority_104', 'sort_order_104'];
     protected $nameM        = 'name_104';
     protected $model        = TaxRule::class;
     protected $icon         = 'fa fa-random';
@@ -36,6 +36,7 @@ class TaxRuleController extends Controller
     {
         $taxRule = TaxRule::create([
             'name_104'          => $this->request->input('name'),
+            'translation_104'   => $this->request->has('translation')? $this->request->input('translation') : null,
             'priority_104'      => $this->request->input('priority'),
             'sort_order_104'    => $this->request->input('sortOrder')
         ]);
@@ -58,6 +59,7 @@ class TaxRuleController extends Controller
     {
         TaxRule::where('id_104', $parameters['id'])->update([
             'name_104'          => $this->request->input('name'),
+            'translation_104'   => $this->request->has('translation')? $this->request->input('translation') : null,
             'priority_104'      => $this->request->input('priority'),
             'sort_order_104'    => $this->request->input('sortOrder')
         ]);

@@ -10,9 +10,9 @@
                 $('.datatable-pulsar').dataTable({
                     "displayStart": {{ $offset }},
                     "columnDefs": [
-                        { "sortable": false, "targets": [4,5]},
-                        { "class": "checkbox-column", "targets": [4]},
-                        { "class": "align-center", "targets": [5]}
+                        { "sortable": false, "targets": [5,6]},
+                        { "class": "checkbox-column", "targets": [5]},
+                        { "class": "align-center", "targets": [6]}
                     ],
                     "processing": true,
                     "serverSide": true,
@@ -35,8 +35,9 @@
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
-        <th>{{ trans_choice('pulsar::pulsar.country', 1) }}</th>
-        <th>{{ trans('market::pulsar.rate_percent') }}</th>
+        <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.translation', 1) }}</th>
+        <th>{{ trans('market::pulsar.priority') }}</th>
+        <th>{{ trans('market::pulsar.sort_order') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>

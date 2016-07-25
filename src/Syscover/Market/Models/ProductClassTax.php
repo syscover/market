@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class ProductClassTax
  *
  * Model with properties
- * <br><b>[id, name, translation]</b>
+ * <br><b>[id, name]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -22,7 +22,7 @@ class ProductClassTax extends Model
     protected $primaryKey   = 'id_101';
     protected $suffix       = '101';
     public $timestamps      = false;
-    protected $fillable     = ['id_101', 'name_101', 'translation_101'];
+    protected $fillable     = ['id_101', 'name_101'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [

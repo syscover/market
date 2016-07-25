@@ -16,10 +16,10 @@ class MarketUpdateV22 extends Migration
         // change rate_percent_103
         DBLibrary::renameColumn('012_103_tax_rate_zone', 'rate_percent_103', 'tax_rate_103', 'DECIMAL', '10,2', false, true);
 
-        if(! Schema::hasColumn('012_101_product_class_tax', 'translation_101'))
+        if(! Schema::hasColumn('012_104_tax_rule', 'translation_104'))
         {
-            Schema::table('012_101_product_class_tax', function (Blueprint $table) {
-                $table->string('translation_101')->nullable()->after('name_101');
+            Schema::table('012_104_tax_rule', function (Blueprint $table) {
+                $table->string('translation_104')->nullable()->after('name_104');
             });
         }
     }

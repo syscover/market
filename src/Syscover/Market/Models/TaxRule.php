@@ -4,12 +4,13 @@ use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Lang;
 
 /**
  * Class TaxRule
  *
  * Model with properties
- * <br><b>[id, name, priority, sort_order]</b>
+ * <br><b>[id, name, translation, priority, sort_order]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -22,7 +23,7 @@ class TaxRule extends Model
     protected $primaryKey   = 'id_104';
     protected $suffix       = '104';
     public $timestamps      = false;
-    protected $fillable     = ['id_104', 'name_104', 'priority_104', 'sort_order_104'];
+    protected $fillable     = ['id_104', 'name_104', 'translation_104', 'priority_104', 'sort_order_104'];
     protected $maps         = [];
     protected $relationMaps = [];
     private static $rules   = [];
@@ -42,7 +43,18 @@ class TaxRule extends Model
             ->join('012_101_product_class_tax', '012_107_tax_rules_product_class_taxes.product_class_tax_id_107', '=', '012_101_product_class_tax.id_101');
     }
 
+    /**
+     * Get taxRule with format for syscover/shoppingcart
+     *
+     * @return array
+     */
+    public function getTaxRuleToShoppingCart()
+    {
+        return ['name' => Lang::has($this->translation_104) ? trans($this->translation_104) : $this->name_104, 'priority' => $this->priority_104, 'sortOrder' => $this->sort_order_104, 'taxRate' => $this->tax_rate_103];
+    }
+
     public function getTaxRateZones()
+
     {
         return $this->belongsToMany('Syscover\Market\Models\TaxRateZone', '012_105_tax_rules_tax_rates_zones', 'tax_rule_id_105', 'tax_rate_zone_id_105');
     }

@@ -19,7 +19,6 @@ class MarketCreateTableProductClassTax extends Migration {
                 
                 $table->increments('id_101')->unsigned();
                 $table->string('name_101');
-                $table->string('translation_101')->nullable();
             });
         }
     }

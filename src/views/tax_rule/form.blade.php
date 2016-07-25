@@ -17,6 +17,13 @@
         'rangeLength' => '2,255',
         'required' => true
     ])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans_choice('pulsar::pulsar.translation', 1),
+        'name' => 'translation',
+        'value' => old('translation', isset($object)? $object->translation_104 : null),
+        'maxLength' => '255',
+        'rangeLength' => '2,255'
+    ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 6,
         'label' => trans_choice('market::pulsar.tax_rate_zone', 1),
