@@ -108,7 +108,7 @@
         'type' => 'number',
         'label' => trans('market::pulsar.rate_percent'),
         'name' => 'ratePercent',
-        'value' => old('ratePercent', isset($object->rate_percent_103)? $object->rate_percent_103 : null),
+        'value' => old('ratePercent', isset($object->tax_rate_103)? $object->tax_rate_103 : null),
         'readOnly' => $action == 'update' || $action == 'store'? false : true
     ])
     <!-- /market::tax_rate_zone.form -->

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
  * Class TaxRateZone
  *
  * Model with properties
- * <br><b>[id, name, country_id, territorial_area_1_id, territorial_area_2_id, territorial_area_3_id, cp, rate_percent]</b>
+ * <br><b>[id, name, country_id, territorial_area_1_id, territorial_area_2_id, territorial_area_3_id, cp, tax_rate]</b>
  *
  * @package     Syscover\Market\Models
  */
@@ -22,7 +22,7 @@ class TaxRateZone extends Model
     protected $primaryKey   = 'id_103';
     protected $suffix       = '103';
     public $timestamps      = false;
-    protected $fillable     = ['id_103', 'name_103', 'country_id_103', 'territorial_area_1_id_103', 'territorial_area_2_id_103', 'territorial_area_3_id_103', 'cp_103', 'rate_percent_103'];
+    protected $fillable     = ['id_103', 'name_103', 'country_id_103', 'territorial_area_1_id_103', 'territorial_area_2_id_103', 'territorial_area_3_id_103', 'cp_103', 'tax_rate_103'];
     protected $maps         = [];
     protected $relationMaps = [
         'country'               => \Syscover\Pulsar\Models\Country::class,

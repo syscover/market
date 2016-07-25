@@ -23,7 +23,7 @@ class TaxLibrary
 
             for ($i = 0; $i < count($taxRules); $i++)
             {
-                $taxRate = $taxRules[$i]->rate_percent_103 / 100;
+                $taxRate = $taxRules[$i]->tax_rate_103 / 100;
 
                 // check priority
                 if($taxRules[$i]->priority_104 > $priority)
@@ -55,7 +55,7 @@ class TaxLibrary
 
             for ($i = count($taxRules)-1; $i >= 0; $i--)
             {
-                $taxRate = $taxRules[$i]->rate_percent_103 / 100;
+                $taxRate = $taxRules[$i]->tax_rate_103 / 100;
 
                 // check priority
                 if($taxRules[$i]->priority_104 < $priority || ($priority === 0 && $taxRules[$i]->priority_104 > 0))
