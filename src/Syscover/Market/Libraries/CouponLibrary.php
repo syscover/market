@@ -2,7 +2,7 @@
 
 use Syscover\Market\Models\CartPriceRule;
 use Syscover\Market\Models\CustomerDiscountHistory;
-use Syscover\Shoppingcart\Facades\CartProvider;
+use Syscover\ShoppingCart\Facades\CartProvider;
 
 class CouponLibrary
 {
@@ -175,7 +175,7 @@ class CouponLibrary
     }
 
     /**
-     * @param \Syscover\Shoppingcart\Libraries\Cart $cart
+     * @param \Syscover\ShoppingCart\Cart           $cart
      * @param string                                $couponCode
      * @param string                                $lang           add coupon code from this language
      * @param \Illuminate\Auth\SessionGuard         $sessionGuard   request session guard to check if user is authenticated, for cases necessary
@@ -190,6 +190,8 @@ class CouponLibrary
         if($response['status'] == 'success')
         {
             $cartPriceRule  = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
+
+
 
             // add discount to cart
             $cart->addCartPriceRule($cartPriceRule);

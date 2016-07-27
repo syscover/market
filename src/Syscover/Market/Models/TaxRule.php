@@ -43,18 +43,19 @@ class TaxRule extends Model
             ->join('012_101_product_class_tax', '012_107_tax_rules_product_class_taxes.product_class_tax_id_107', '=', '012_101_product_class_tax.id_101');
     }
 
-    /**
-     * Get taxRule with format for syscover/shoppingcart
-     *
-     * @return array
-     */
-    public function getTaxRuleToShoppingCart()
+    public static function getCustomReturnIndexRecords($query, $parameters)
     {
-        return ['name' => Lang::has($this->translation_104) ? trans($this->translation_104) : $this->name_104, 'priority' => $this->priority_104, 'sortOrder' => $this->sort_order_104, 'taxRate' => $this->tax_rate_103];
+        return $query->groupBy('id_104')->get();
+    }
+
+    public static function customCountIndexRecords($query, $parameters)
+    {
+        return $query->groupBy('id_104')
+            ->get()     // without get, don't count correctly, count group number
+            ->count();
     }
 
     public function getTaxRateZones()
-
     {
         return $this->belongsToMany('Syscover\Market\Models\TaxRateZone', '012_105_tax_rules_tax_rates_zones', 'tax_rule_id_105', 'tax_rate_zone_id_105');
     }
