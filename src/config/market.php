@@ -74,9 +74,11 @@ return [
     //***   Discount type on shopping cart
     //******************************************************************************************************************
     'discountTypes'                => [
-        (object)['id' => 1,      'name' => 'market::pulsar.without_discount_amount'],
-        (object)['id' => 2,      'name' => 'market::pulsar.discount_type_percentage'],
-        (object)['id' => 3,      'name' => 'market::pulsar.discount_fixed_amount'],
+        (object)['id' => 1,      'name' => 'market::pulsar.without_discount'],
+        (object)['id' => 2,      'name' => 'market::pulsar.discount_percentage_subtotal'],
+        (object)['id' => 3,      'name' => 'market::pulsar.discount_fixed_amount_subtotal'],
+        (object)['id' => 4,      'name' => 'market::pulsar.discount_percentage_subtotal'],
+        (object)['id' => 5,      'name' => 'market::pulsar.discount_fixed_amount_subtotal'],
     ],
 
     //******************************************************************************************************************

@@ -23,7 +23,7 @@ class Product extends Model
     protected $primaryKey   = 'id_111';
     protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'field_group_id_111', 'type_id_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_id_111', 'price_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'field_group_id_111', 'type_id_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_id_111', 'price_111', 'subtotal_111', 'tax_amount_111', 'total_111', 'data_lang_111', 'data_111'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'          => \Syscover\Pulsar\Models\Lang::class,
@@ -105,5 +105,57 @@ class Product extends Model
             ->groupBy('id_111')
             ->get(['*', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110')])
             ->count();
+    }
+
+    /**
+     * Returns formatted product price.
+     *
+     * @param   int       $decimals
+     * @param   string    $decimalPoint
+     * @param   string    $thousandSeperator
+     * @return  string
+     */
+    public function getPrice($decimals = 2, $decimalPoint = ',', $thousandSeperator = '.')
+    {
+        return number_format($this->price_111, $decimals, $decimalPoint, $thousandSeperator);
+    }
+
+    /**
+     * Returns formatted product subtotal.
+     *
+     * @param   int       $decimals
+     * @param   string    $decimalPoint
+     * @param   string    $thousandSeperator
+     * @return  string
+     */
+    public function getSubtotal($decimals = 2, $decimalPoint = ',', $thousandSeperator = '.')
+    {
+        return number_format($this->subtotal_111, $decimals, $decimalPoint, $thousandSeperator);
+    }
+
+    /**
+     * Returns formatted product tax amount.
+     *
+     * @param   int       $decimals
+     * @param   string    $decimalPoint
+     * @param   string    $thousandSeperator
+     * @return  string
+     */
+    public function getTaxAmount($decimals = 2, $decimalPoint = ',', $thousandSeperator = '.')
+    {
+        return number_format($this->tax_amount_111, $decimals, $decimalPoint, $thousandSeperator);
+    }
+
+    /**
+     * Returns formatted product total amount.
+     *
+     * @param   int       $decimals
+     * @param   string    $decimalPoint
+     * @param   string    $thousandSeperator
+     * @return  string
+     */
+    public function getTotal($decimals = 2, $decimalPoint = ',', $thousandSeperator = '.')
+    {
+        return number_format($this->total_111, $decimals, $decimalPoint, $thousandSeperator);
     }
 }

@@ -70,6 +70,16 @@
                         success: function(data)
                         {
                             $('[name=tax]').val(data.totalTax);
+                            $('[name=taxAmount]').val(data.totalTax);
+
+                            @if((int)config('market.taxProductPrices') == 1)
+                                $('[name=subtotal]').val($('[name=price]').val());
+                                $('[name=total]').val($('[name=price]').val() + data.totalTax);
+                            @endif
+                            @if((int)config('market.taxProductPrices') == 2)
+                                $('[name=subtotal]').val($('[name=price]').val() - data.totalTax);
+                                $('[name=total]').val($('[name=price]').val());
+                            @endif
                         }
                     });
                 }
@@ -297,6 +307,19 @@
             ])
         </div>
     </div>
+
+    @include('pulsar::includes.html.form_hidden', [
+        'name'  => 'subtotal',
+        'value' => old('subtotal', isset($object->subtotal_111)? $object->subtotal_111 : null)
+    ])
+    @include('pulsar::includes.html.form_hidden', [
+        'name'  => 'taxAmount',
+        'value' => old('taxAmount', isset($object->tax_amount_111)? $object->tax_amount_111 : null)
+    ])
+    @include('pulsar::includes.html.form_hidden', [
+        'name'  => 'total',
+        'value' => old('taxAmount', isset($object->total_111)? $object->total_111 : null)
+    ])
 
 
     @include('pulsar::includes.html.form_section_header', [
