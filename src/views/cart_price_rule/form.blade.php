@@ -45,15 +45,15 @@
             })
 
             $("[name=discountType]").on('change', function() {
-                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '2')
-                    $('#percentageAmountSection, #applyShippingAmountLayer').fadeIn()
+                if(($(this).val() != '1' || $(this).val() == '') && ($(this).val() == '2' || $(this).val() == '4'))
+                    $('#percentageAmountSection, #applyShippingAmountLayer').fadeIn();
                 else
-                    $('#percentageAmountSection, #applyShippingAmountLayer').hide()
+                    $('#percentageAmountSection, #applyShippingAmountLayer').hide();
 
-                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3')
-                    $('#fixedAmountSection').fadeIn()
+                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3' || $(this).val() == '5')
+                    $('#fixedAmountSection').fadeIn();
                 else
-                    $('#fixedAmountSection').hide()
+                    $('#fixedAmountSection').hide();
             })
 
             // set disable to false, because is a required property
