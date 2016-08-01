@@ -17,8 +17,6 @@ return [
     'discount_type'								    => 'Tipo de descuento',
     'discount_fixed_amount_subtotal'                => 'Cantidad fija de descuento sobre el subtotal',
     'discount_fixed_amount_total'                   => 'Cantidad fija de descuento sobre el total',
-    'discount_percentage_subtotal'					=> 'Porcentaje de descuento sobre el subtotal',
-    'discount_percentage_total'					    => 'Porcentaje de descuento sobre el total',
     'discount_buy_and_get'						    => 'Compra y consigue Y gratis (la cantidad de descuento es Y)',
     'downloadable'								    => 'Descargable',
     'enable_from'								    => 'Activado desde',

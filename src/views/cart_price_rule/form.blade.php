@@ -45,12 +45,12 @@
             })
 
             $("[name=discountType]").on('change', function() {
-                if(($(this).val() != '1' || $(this).val() == '') && ($(this).val() == '2' || $(this).val() == '4'))
+                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '2')
                     $('#percentageAmountSection, #applyShippingAmountLayer').fadeIn();
                 else
                     $('#percentageAmountSection, #applyShippingAmountLayer').hide();
 
-                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3' || $(this).val() == '5')
+                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3' || $(this).val() == '4')
                     $('#fixedAmountSection').fadeIn();
                 else
                     $('#fixedAmountSection').hide();
@@ -73,7 +73,7 @@
                 @if($object->discount_type_id_120 === 2)
                     $("#fixedAmountSection").hide()
                 @endif
-                @if($object->discount_type_id_120 === 3)
+                @if($object->discount_type_id_120 === 3 ||$object->discount_type_id_120 === 4)
                     $("#percentageAmountSection, #applyShippingAmountLayer").hide()
                 @endif
             @endif
