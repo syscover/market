@@ -75,9 +75,10 @@ return [
     //******************************************************************************************************************
     'discountTypes'                => [
         (object)['id' => 1,      'name' => 'market::pulsar.without_discount'],
-        (object)['id' => 2,      'name' => 'market::pulsar.discount_percentage'],
+        (object)['id' => 2,      'name' => 'market::pulsar.discount_percentage_subtotal'],
         (object)['id' => 3,      'name' => 'market::pulsar.discount_fixed_amount_subtotal'],
-        (object)['id' => 4,      'name' => 'market::pulsar.discount_fixed_amount_total'],
+        (object)['id' => 4,      'name' => 'market::pulsar.discount_percentage_total'],
+        (object)['id' => 5,      'name' => 'market::pulsar.discount_fixed_amount_total'],
     ],
 
     //******************************************************************************************************************

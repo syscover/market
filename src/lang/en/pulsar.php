@@ -17,6 +17,8 @@ return [
     'discount_type'                                 => 'Discount type',
     'discount_fixed_amount_subtotal'                => 'Discount fixed amount over subtotal',
     'discount_fixed_amount_total'                   => 'Discount fixed amount over total',
+    'discount_percentage_subtotal'                  => 'Discount percentage over subtotal',
+    'discount_percentage_total'                     => 'Discount percentage over total',
     'discount_buy_and_get'                          => 'Buy X get Y free (discount amount is Y)',
     'downloadable'                                  => 'Downloadable',
     'enable_from'                                   => 'Enable from',

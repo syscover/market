@@ -31,58 +31,58 @@
                 return false
             });
 
-            $("[name=hasCoupon]").on('click', function() {
+            $('[name=hasCoupon]').on('click', function() {
 
-                if($(this).is(":checked"))
+                if($(this).is(':checked'))
                 {
-                    $('#couponSection').fadeIn()
-                    $.getCouponCode()
+                    $('#couponSection').fadeIn();
+                    $.getCouponCode();
                 }
                 else
                 {
-                    $('#couponSection').fadeOut()
+                    $('#couponSection').fadeOut();
                 }
-            })
+            });
 
-            $("[name=discountType]").on('change', function() {
-                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '2')
+            $('[name=discountType]').on('change', function() {
+                if(($(this).val() != '1' || $(this).val() == '') && ($(this).val() == '2' || $(this).val() == '4'))
                     $('#percentageAmountSection, #applyShippingAmountLayer').fadeIn();
                 else
                     $('#percentageAmountSection, #applyShippingAmountLayer').hide();
 
-                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3' || $(this).val() == '4')
+                if(($(this).val() != '1' || $(this).val() == '') && $(this).val() == '3' || $(this).val() == '5')
                     $('#fixedAmountSection').fadeIn();
                 else
                     $('#fixedAmountSection').hide();
             })
 
             // set disable to false, because is a required property
-            $("#recordForm").on('submit', function() {
-                $("[name=discountType]").prop("disabled", false)
+            $('#recordForm').on('submit', function() {
+                $('[name=discountType]').prop('disabled', false);
             })
 
             // edit option
             @if(isset($object->has_coupon_120))
                 @if(!$object->has_coupon_120)
-                    $("#couponSection").hide();
+                    $('#couponSection').hide();
                 @endif
                 @if($object->discount_type_id_120 === null || $object->discount_type_id_120 === 1)
-                    $("#percentageAmountSection, #applyShippingAmountLayer").hide()
-                    $("#fixedAmountSection").hide()
+                    $('#percentageAmountSection, #applyShippingAmountLayer').hide()
+                    $('#fixedAmountSection').hide();
                 @endif
-                @if($object->discount_type_id_120 === 2)
-                    $("#fixedAmountSection").hide()
+                @if($object->discount_type_id_120 === 2 || $object->discount_type_id_120 === 4)
+                    $('#fixedAmountSection').hide();
                 @endif
-                @if($object->discount_type_id_120 === 3 ||$object->discount_type_id_120 === 4)
-                    $("#percentageAmountSection, #applyShippingAmountLayer").hide()
+                @if($object->discount_type_id_120 === 3 || $object->discount_type_id_120 === 5)
+                    $('#percentageAmountSection, #applyShippingAmountLayer').hide();
                 @endif
             @endif
 
             // create option and create lang
             @if(! isset($object) || (isset($object) && ! $object->has_coupon_120))
-                $("#couponSection").hide()
-                $('#percentageAmountSection, #applyShippingAmountLayer').hide()
-                $('#fixedAmountSection').hide()
+                $('#couponSection').hide();
+                $('#percentageAmountSection, #applyShippingAmountLayer').hide();
+                $('#fixedAmountSection').hide();
             @endif
         })
 
@@ -99,10 +99,10 @@
                 },
                 success:  function(data)
                 {
-                    $("[name=couponCode]").val(data.couponCode)
+                    $('[name=couponCode]').val(data.couponCode);
                 }
-            })
-        }
+            });
+        };
         // TODO: mediante ajax falta comprobar que el código de cupón no existe
     </script>
 @stop
