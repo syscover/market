@@ -1,6 +1,6 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Syscover\Market\Libraries\TaxLibrary;
+use Syscover\Market\Libraries\TaxRuleLibrary;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Market\Models\TaxRule;
 use Syscover\Market\Models\TaxRateZone;
@@ -81,7 +81,7 @@ class TaxRuleController extends Controller
             ->get();
 
 
-        $taxes = TaxLibrary::taxCalculate($price, $taxRules);
+        $taxes = TaxRuleLibrary::taxCalculate($price, $taxRules);
         
         $response = [
             'success'       => true,

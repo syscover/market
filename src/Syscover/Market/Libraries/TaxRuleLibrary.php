@@ -1,8 +1,11 @@
 <?php namespace Syscover\Market\Libraries;
 
 
-class TaxLibrary
+class TaxRuleLibrary
 {
+    const PRICE_WITHOUT_TAX = 1;
+    const PRICE_WITH_TAX    = 2;
+
     /**
      * @param   float                               $price
      * @param   \Syscover\Market\Models\TaxRule[]   $taxRules
@@ -13,7 +16,7 @@ class TaxLibrary
         // taxProductPrices
 
         // 1 excluding tax
-        if((int)config('market.taxProductPrices') == 1)
+        if((int)config('market.taxProductPrices') == self::PRICE_WITHOUT_TAX)
         {
             $priority       = 0;
             $totalTax       = 0;
@@ -45,7 +48,7 @@ class TaxLibrary
         }
         
         // 2 including tax
-        if((int)config('market.taxProductPrices') == 2)
+        if((int)config('market.taxProductPrices') == self::PRICE_WITH_TAX)
         {
             $priority       = 0;
             $totalTax       = 0;

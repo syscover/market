@@ -5,6 +5,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Syscover\Market\Libraries\TaxRuleLibrary;
 
 /**
  * Class Product
@@ -23,7 +24,7 @@ class Product extends Model
     protected $primaryKey   = 'id_111';
     protected $suffix        = '111';
     public $timestamps      = false;
-    protected $fillable     = ['id_111', 'field_group_id_111', 'type_id_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_id_111', 'price_111', 'subtotal_111', 'tax_amount_111', 'total_111', 'data_lang_111', 'data_111'];
+    protected $fillable     = ['id_111', 'field_group_id_111', 'type_id_111', 'parent_product_id_111', 'weight_111', 'active_111', 'sorting_111', 'price_type_id_111', 'price_111', 'product_class_tax_id_111', 'data_lang_111', 'data_111'];
     protected $maps         = [];
     protected $relationMaps = [
         'lang'          => \Syscover\Pulsar\Models\Lang::class,
@@ -33,6 +34,128 @@ class Product extends Model
         'priceType'     => 'required',
         'productType'   => 'required',
     ];
+
+    // custom properties
+    private $taxRules   = null;
+    private $subtotal   = null;
+    private $taxAmount  = null;
+
+    /**
+     * Dynamically access route parameters.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        // subtotal property
+        if($key === 'subtotal' || $key === 'subtotal_111')
+        {
+            if($this->subtotal !== null)
+            {
+                return $this->subtotal;
+            }
+            elseif(config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITHOUT_TAX)
+            {
+                $this->subtotal = $this->price_111;
+                return $this->subtotal;
+            }
+            if(config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITH_TAX)
+            {
+                if($this->taxAmount !== null)
+                {
+                    $this->subtotal = $this->price_111 - $this->taxAmount;
+
+                    return $this->subtotal;
+                }
+
+                if($this->taxRules === null)
+                {
+                    $this->taxRules = TaxRule::builder()
+                        ->where('country_id_103', config('market.taxDefaultCountry'))
+                        ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+                        ->where('product_class_tax_id_107', $this->product_class_tax_id_111)
+                        ->orderBy('priority_104', 'asc')
+                        ->get();
+                }
+
+                $taxes              = TaxRuleLibrary::taxCalculate($this->price_111, $this->taxRules->where('product_class_tax_id_107', $this->product_class_tax_id_111));
+                $this->taxAmount    = $taxes->sum('taxAmount');
+                $this->subtotal     = $this->price_111 - $this->taxAmount;
+
+                return $this->subtotal;
+            }
+            return null;
+        }
+
+        // total property
+        if($key === 'total' || $key === 'total_111')
+        {
+            if($this->total !== null)
+            {
+                return $this->total;
+            }
+            elseif(config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITH_TAX)
+            {
+                $this->total = $this->price_111;
+                return $this->total;
+            }
+            elseif(config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITHOUT_TAX)
+            {
+                if($this->taxAmount !== null)
+                {
+                    $this->total = $this->price_111 + $this->taxAmount;
+
+                    return $this->total;
+                }
+
+                if($this->taxRules === null)
+                {
+                    $this->taxRules = TaxRule::builder()
+                        ->where('country_id_103', config('market.taxDefaultCountry'))
+                        ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+                        ->where('product_class_tax_id_107', $this->product_class_tax_id_111)
+                        ->orderBy('priority_104', 'asc')
+                        ->get();
+                }
+
+                $taxes              = TaxRuleLibrary::taxCalculate($this->price_111, $this->taxRules->where('product_class_tax_id_107', $this->product_class_tax_id_111));
+                $this->taxAmount    = $taxes->sum('taxAmount');
+                $this->total        = $this->price_111 + $this->taxAmount;
+
+                return $this->total;
+            }
+        }
+
+        // taxAmount property
+        if($key === 'taxAmount' || $key === 'tax_amount' || $key === 'tax_amount_111')
+        {
+            if($this->taxAmount !== null)
+            {
+                return $this->taxAmount;
+            }
+            else
+            {
+                if($this->taxRules === null)
+                {
+                    $this->taxRules = TaxRule::builder()
+                        ->where('country_id_103', config('market.taxDefaultCountry'))
+                        ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+                        ->where('product_class_tax_id_107', $this->product_class_tax_id_111)
+                        ->orderBy('priority_104', 'asc')
+                        ->get();
+                }
+
+                $taxes              = TaxRuleLibrary::taxCalculate($this->price_111, $this->taxRules->where('product_class_tax_id_107', $this->product_class_tax_id_111));
+                $this->taxAmount    = $taxes->sum('taxAmount');
+
+                return $this->taxAmount;
+            }
+        }
+
+        // call parent method in model
+        return parent::getAttribute($key);
+    }
 
     public static function validate($data)
     {

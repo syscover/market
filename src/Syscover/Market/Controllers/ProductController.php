@@ -1,6 +1,6 @@
 <?php namespace Syscover\Market\Controllers;
 
-use Syscover\Market\Libraries\TaxLibrary;
+use Syscover\Market\Libraries\TaxRuleLibrary;
 use Syscover\Market\Models\TaxRule;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
@@ -107,9 +107,6 @@ class ProductController extends Controller
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
             'price_type_id_111'         => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
-            'subtotal_111'              => $this->request->has('subtotal')? $this->request->input('subtotal') : null,
-            'tax_amount_111'            => $this->request->has('taxAmount')? $this->request->input('taxAmount') : null,
-            'total_111'                 => $this->request->has('total')? $this->request->input('total') : null,
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
@@ -170,7 +167,7 @@ class ProductController extends Controller
             ->orderBy('priority_104', 'asc')
             ->get();
 
-        $parameters['taxes'] = TaxLibrary::taxCalculate($parameters['object']->price_111, $taxRules);
+        $parameters['taxes'] = TaxRuleLibrary::taxCalculate($parameters['object']->price_111, $taxRules);
         
         $attachments                        = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
         $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_id_025', 'market-product')->get();
@@ -188,9 +185,6 @@ class ProductController extends Controller
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
             'price_type_id_111'         => $this->request->input('priceType'),
             'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
-            'subtotal_111'              => $this->request->has('subtotal')? $this->request->input('subtotal') : null,
-            'tax_amount_111'            => $this->request->has('taxAmount')? $this->request->input('taxAmount') : null,
-            'total_111'                 => $this->request->has('total')? $this->request->input('total') : null,
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'active_111'                => $this->request->input('active', false),
