@@ -2,36 +2,48 @@
 
 ## Installation
 
-####1 - After install Laravel framework, insert on file composer.json, inside require object this value
+**1 - After install Laravel framework, insert on file composer.json, inside require object this value**
 ```
 "syscover/market": "dev-master"
 ```
 and execute on console:
 ```
-composer update
+composer install
 ```
 
-####2 - Register service provider, on file config/app.php add to providers array
+**2 - Register service provider, on file config/app.php add to providers array**
 
 ```
 Syscover\Market\MarketServiceProvider::class,
 
 ```
 
-*####3 - To publish package and migrate
+**3 - Run publish command**
 
-and execute composer update again:
 ```
-composer update
+php artisan vendor:publish --force
 ```
 
-####4 - Run seed database
+**4 - Run migrate command**
+
+```
+php artisan migrate
+```
+
+**5 - Register middleware pulsar.taxRule on file app/Http/Kernel.php add to routeMiddleware array**
+
+```
+'pulsar.taxRule' => \Syscover\Market\Middleware\TaxRule::class,
+
+```
+
+**6 - Run seed database**
 
 ```
 php artisan db:seed --class="MarketTableSeeder"
 ```
 
-####5 - Activate package
+**7 - Activate package**
 
 Access to Pulsar Panel, and go to Administration -> Permissions -> Profiles, and set all permissions to your profile by clicking on the open lock.
 
@@ -49,14 +61,14 @@ ORDER_ID_PREFIX=ORDER
 To set default country to calculate tax, you can use this parameter, for example to change to US, set this value on you .env file
 
 ```
-TAX_DEFAULT_COUNTRY=US
+TAX_COUNTRY=US
 ```
 
 ##### Default customer class tax [default value 1]
 Set default ID customer class value for calculate tax amount of products
 
 ```
-TAX_DEFAULT_CUSTOMER_CLASS=1
+TAX_CUSTOMER_CLASS=1
 ```
 
 ##### Set product price tax [default value 1]
@@ -80,3 +92,20 @@ Set prices from shipping concerning to taxes, you have two options
 ```
 TAX_SHIPPING_PRICES=1
 ```
+
+##### Set tax rules values for each customer
+When a customer is login on your web application, you need know your country and customer group to calculate tax rules for all products.
+You have a Middleware who is responsible to do this actions.
+
+```
+Route::group(['middleware' => ['pulsar.taxRule']], function() {
+
+    // write here your routes
+
+});
+
+```
+
+This middleware set market.taxCountry and market.taxCustomerClass if customer has country ann customer group id defined
+
+
