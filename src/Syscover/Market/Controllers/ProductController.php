@@ -106,7 +106,7 @@ class ProductController extends Controller
             'type_id_111'               => $this->request->input('productType'),
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
             'price_type_id_111'         => $this->request->input('priceType'),
-            'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
+            'subtotal_111'              => $this->getSubtotalOverTotal(),
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
@@ -161,18 +161,20 @@ class ProductController extends Controller
             ->get();
 
         $taxRules = TaxRule::builder()
-            ->where('country_id_103', config('market.taxDefaultCountry'))
-            ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+            ->where('country_id_103', config('market.taxCountry'))
+            ->where('customer_class_tax_id_106', config('market.taxCustomerClass'))
             ->where('product_class_tax_id_107', $parameters['object']->product_class_tax_id_111)
             ->orderBy('priority_104', 'asc')
             ->get();
 
-        $parameters['taxes'] = TaxRuleLibrary::taxCalculate($parameters['object']->price_111, $taxRules);
-        
-        $attachments                        = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
-        $parameters['customFieldGroups']    = CustomFieldGroup::builder()->where('resource_id_025', 'market-product')->get();
-        $parameters['attachmentFamilies']   = AttachmentFamily::getAttachmentFamilies(['resource_id_015' => 'market-product']);
-        $parameters                         = array_merge($parameters, $attachments);
+        $taxes = TaxRuleLibrary::taxCalculateOverSubtotal($parameters['object']->subtotal_111, $taxRules);
+        $parameters['object']->tax_amount_111   = $taxes->sum('taxAmount');
+        $parameters['object']->total_111        = $parameters['object']->subtotal_111 + $parameters['object']->tax_amount_111;
+
+        $attachments                            = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['object']->id_111, $parameters['lang']->id_001);
+        $parameters['customFieldGroups']        = CustomFieldGroup::builder()->where('resource_id_025', 'market-product')->get();
+        $parameters['attachmentFamilies']       = AttachmentFamily::getAttachmentFamilies(['resource_id_015' => 'market-product']);
+        $parameters                             = array_merge($parameters, $attachments);
 
         return $parameters;
     }
@@ -184,7 +186,7 @@ class ProductController extends Controller
             'type_id_111'               => $this->request->input('productType'),
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
             'price_type_id_111'         => $this->request->input('priceType'),
-            'price_111'                 => $this->request->has('price')? $this->request->input('price') : null,
+            'subtotal_111'              => $this->getSubtotalOverTotal(),
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'active_111'                => $this->request->input('active', false),
@@ -215,6 +217,37 @@ class ProductController extends Controller
             CustomFieldResultLibrary::deleteCustomFieldResults('market-product', $parameters['id'], $this->request->input('lang'));
             CustomFieldResultLibrary::storeCustomFieldResults($this->request, $this->request->input('customFieldGroup'), 'market-product', $parameters['id'], $this->request->input('lang'));
         }
+    }
+
+    protected function getSubtotalOverTotal()
+    {
+        $subtotal = null;
+        if($this->request->has('price'))
+        {
+            if($this->request->has('productClassTax'))
+            {
+                // get tax rurles from product
+                $taxRules = TaxRule::builder()
+                    ->where('country_id_103', config('market.taxCountry'))
+                    ->where('customer_class_tax_id_106', config('market.taxCustomerClass'))
+                    ->where('product_class_tax_id_107', $this->request->input('productClassTax'))
+                    ->orderBy('priority_104', 'asc')
+                    ->get();
+
+                if((int)config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITH_TAX)
+                {
+                    $taxes      = TaxRuleLibrary::taxCalculateOverTotal((float)$this->request->input('price'), $taxRules);
+                    $taxAmount  = $taxes->sum('taxAmount');
+                }
+                $subtotal = (float)$this->request->input('price') - $taxAmount;
+            }
+            else
+            {
+                $subtotal = $this->request->input('price');
+            }
+        }
+
+        return $subtotal;
     }
 
     public function deleteCustomRecord($object)

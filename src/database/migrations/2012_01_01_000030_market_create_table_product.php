@@ -35,7 +35,8 @@ class MarketCreateTableProduct extends Migration
 				// 1 - single price
 				// 2 - undefined price
 				$table->tinyInteger('price_type_id_111')->unsigned(); // single price or undefined
-				$table->decimal('price_111', 10, 2)->nullable();
+
+				$table->decimal('subtotal_111', 12, 4)->nullable();
 
 				// taxes
 				$table->integer('product_class_tax_id_111')->unsigned()->nullable();

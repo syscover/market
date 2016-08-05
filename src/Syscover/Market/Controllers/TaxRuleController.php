@@ -74,19 +74,38 @@ class TaxRuleController extends Controller
     public function apiGetProductTaxes($price, $productClassTax)
     {
         $taxRules = TaxRule::builder()
-            ->where('country_id_103', config('market.taxDefaultCountry'))
-            ->where('customer_class_tax_id_106', config('market.taxDefaultCustomerClass'))
+            ->where('country_id_103', config('market.taxCountry'))
+            ->where('customer_class_tax_id_106', config('market.taxCustomerClass'))
             ->where('product_class_tax_id_107', $productClassTax)
             ->orderBy('priority_104', 'asc')
             ->get();
 
+        if((int)config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITHOUT_TAX)
+        {
+            $taxes      = TaxRuleLibrary::taxCalculateOverSubtotal($price, $taxRules);
+            $taxAmount  = $taxes->sum('taxAmount');
+            $subtotal   = $price;
+            $total      = $subtotal + $taxAmount;
 
-        $taxes = TaxRuleLibrary::taxCalculate($price, $taxRules);
-        
+        }
+        elseif ((int)config('market.taxProductPrices') == TaxRuleLibrary::PRICE_WITH_TAX)
+        {
+            $taxes      = TaxRuleLibrary::taxCalculateOverTotal($price, $taxRules);
+            $taxAmount  = $taxes->sum('taxAmount');
+            $total      = $price;
+            $subtotal   = $total - $taxAmount;
+        }
+
         $response = [
-            'success'       => true,
-            'taxes'         => $taxes,
-            'totalTax'      => $taxes->sum('taxAmount')
+            'success'           => true,
+            'taxes'             => $taxes,
+            'subtotal'          => $subtotal,
+            'taxAmount'         => $taxAmount,
+            'total'             => $total,
+            'subtotalFormat'    => number_format($subtotal, 2, ',', '.'),
+            'taxAmountFormat'   => number_format($taxAmount, 2, ',', '.'),
+            'totalFormat'       => number_format($total, 2, ',', '.'),
+
         ];
 
         return response()->json($response);

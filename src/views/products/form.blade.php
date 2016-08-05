@@ -69,7 +69,9 @@
                         headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
                         success: function(data)
                         {
-                            $('[name=tax]').val(data.totalTax);
+                            $('[name=subtotal]').val(data.subtotalFormat);
+                            $('[name=taxAmount]').val(data.taxAmountFormat);
+                            $('[name=total]').val(data.totalFormat);
                         }
                     });
                 }
@@ -284,15 +286,31 @@
                 'type' => 'number',
                 'label' => trans_choice('pulsar::pulsar.price', 1),
                 'name' => 'price',
-                'value' => old('price', isset($object->price_111)? $object->price_111 : null),
+                'value' => old('price'),
                 'readOnly' => $action == 'update' || $action == 'store'? false : true
             ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
+                'label' => trans_choice('market::pulsar.subtotal', 1),
+                'name' => 'subtotal',
+                'value' => old('subtotal', isset($object->subtotal_111)? $object->getSubtotal() : null),
+                'readOnly' => true
+            ])
+            @include('pulsar::includes.html.form_text_group', [
+                'labelSize' => 4,
+                'fieldSize' => 6,
                 'label' => trans_choice('market::pulsar.tax', 1),
-                'name' => 'tax',
-                'value' => isset($taxes)? $taxes->sum('taxAmount') : null,
+                'name' => 'taxAmount',
+                'value' => old('taxAmount', isset($object->tax_amount_111)? $object->getTaxAmount() : null),
+                'readOnly' => true
+            ])
+            @include('pulsar::includes.html.form_text_group', [
+                'labelSize' => 4,
+                'fieldSize' => 6,
+                'label' => trans_choice('market::pulsar.total', 1),
+                'name' => 'total',
+                'value' => old('total', isset($object->total_111)? $object->getTotal() : null),
                 'readOnly' => true
             ])
         </div>

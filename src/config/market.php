@@ -103,8 +103,16 @@ return [
     ],
 
     // Tax default values
-    'taxDefaultCountry'             => env('TAX_DEFAULT_COUNTRY', 'ES'),
-    'taxDefaultCustomerClass'       => env('TAX_DEFAULT_CUSTOMER_CLASS', 1),
+    'taxCountry'                    => env('TAX_COUNTRY', 'ES'),        // country from take tax
+    'taxCustomerClass'              => env('TAX_CUSTOMER_CLASS', 1),    // customer group ID to taka for calculate tax
+
+    // Type of prices
     'taxProductPrices'              => env('TAX_PRODUCT_PRICES', 1),
     'taxShippingPrices'             => env('TAX_SHIPPING_PRICES', 1),
+
+    // Display prices
+    'taxProductDisplayPrices'       => env('TAX_PRODUCT_DISPLAY_PRICES', 1),
+    'taxShippingDisplayPrices'      => env('TAX_SHIPPING_DISPLAY_PRICES', 1),
+
+
 ];
