@@ -36,7 +36,7 @@
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.active') }}</th>
-        <th>{{ trans_choice('pulsar::pulsar.price', 2) }}</th>
+        <th>{{ trans('market::pulsar.subtotal') }}</th>
         <th>{{ trans('pulsar::pulsar.sorting') }}</th>
         <th>{{ trans_choice('pulsar::pulsar.category', 2) }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>

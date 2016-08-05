@@ -36,9 +36,9 @@ class Product extends Model
     ];
 
     // custom properties
-    protected $taxRules   = null;
-    protected $taxAmount  = null;
-    protected $total      = null;
+    public $taxRules        = null;
+    protected $taxAmount    = null;
+    protected $total        = null;
 
     /**
      * Dynamically access route parameters.
@@ -90,7 +90,6 @@ class Product extends Model
             $this->total        = $this->subtotal_111 + $this->taxAmount;
 
             return $this->total;
-
         }
 
         // taxAmount property
@@ -110,7 +109,6 @@ class Product extends Model
                         ->where('product_class_tax_id_107', $this->product_class_tax_id_111)
                         ->orderBy('priority_104', 'asc')
                         ->get();
-
                 }
 
                 $taxes              = TaxRuleLibrary::taxCalculateOverSubtotal($this->subtotal_111, $this->taxRules->where('product_class_tax_id_107', $this->product_class_tax_id_111));

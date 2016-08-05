@@ -1,6 +1,9 @@
 <?php namespace Syscover\Market\Libraries;
 
-
+/**
+ * Class TaxRuleLibrary
+ * @package Syscover\Market\Libraries
+ */
 class TaxRuleLibrary
 {
     const PRICE_WITHOUT_TAX = 1;
@@ -18,15 +21,14 @@ class TaxRuleLibrary
         $response       = collect();
         $priorityPrice  = $price;
 
-
-        for ($i = 0; $i < count($taxRules); $i++)
+        foreach ($taxRules as $taxRule)
         {
-            $taxRate = $taxRules[$i]->tax_rate_103 / 100;
+            $taxRate = $taxRule->tax_rate_103 / 100;
 
             // check priority
-            if($taxRules[$i]->priority_104 > $priority)
+            if($taxRule->priority_104 > $priority)
             {
-                $priority       = $taxRules[$i]->priority_104;
+                $priority       = $taxRule->priority_104;
                 $priorityPrice  += $totalTax;
             }
 
@@ -34,7 +36,7 @@ class TaxRuleLibrary
             $totalTax   += $taxAmount;
 
             $response->push([
-                'taxRule'   => $taxRules[$i],
+                'taxRule'   => $taxRule,
                 'taxAmount' => $taxAmount
             ]);
         }
@@ -54,15 +56,14 @@ class TaxRuleLibrary
         $response       = collect();
         $priorityPrice  = $price;
 
-
-        for ($i = count($taxRules)-1; $i >= 0; $i--)
+        foreach ($taxRules->reverse() as $taxRule)
         {
-            $taxRate = $taxRules[$i]->tax_rate_103 / 100;
+            $taxRate = $taxRule->tax_rate_103 / 100;
 
             // check priority
-            if($taxRules[$i]->priority_104 < $priority || ($priority === 0 && $taxRules[$i]->priority_104 > 0))
+            if($taxRule->priority_104 < $priority || ($priority === 0 && $taxRule->priority_104 > 0))
             {
-                $priority       = $taxRules[$i]->priority_104;
+                $priority       = $taxRule->priority_104;
                 $priorityPrice  -= $totalTax;
             }
 
@@ -70,7 +71,7 @@ class TaxRuleLibrary
             $totalTax   +=  $taxAmount;
 
             $response->push([
-                'taxRule'   => $taxRules[$i],
+                'taxRule'   => $taxRule,
                 'taxAmount' => $taxAmount
             ]);
         }
