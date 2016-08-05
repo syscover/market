@@ -22,7 +22,7 @@ class ProductController extends Controller
     protected $routeSuffix  = 'marketProduct';
     protected $folder       = 'products';
     protected $package      = 'market';
-    protected $indexColumns = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'price_111', 'sorting_111', 'name_110'];
+    protected $indexColumns = ['id_111', 'name_112', ['data' => 'active_111', 'type' => 'active'], 'subtotal_111', 'sorting_111', 'name_110'];
     protected $nameM        = 'name_112';
     protected $model        = Product::class;
     protected $langModel    = ProductLang::class;

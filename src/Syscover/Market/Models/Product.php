@@ -53,11 +53,11 @@ class Product extends Model
         {
             if(config('market.taxProductDisplayPrices') == TaxRuleLibrary::PRICE_WITHOUT_TAX)
             {
-                return $this->subtotal_111;
+                return round($this->subtotal_111, 2);
             }
             elseif(config('market.taxProductDisplayPrices') == TaxRuleLibrary::PRICE_WITH_TAX)
             {
-                return $this->total_111;
+                return round($this->total_111, 2);
             }
         }
 
