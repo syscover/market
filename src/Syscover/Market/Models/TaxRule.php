@@ -5,6 +5,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Lang;
+use Syscover\ShoppingCart\TaxRule as TaxRuleShoppingCart;
 
 /**
  * Class TaxRule
@@ -68,5 +69,15 @@ class TaxRule extends Model
     public function getProductClassTaxes()
     {
         return $this->belongsToMany('Syscover\Market\Models\ProductClassTax', '012_107_tax_rules_product_class_taxes', 'tax_rule_id_107', 'product_class_tax_id_107');
+    }
+
+    public function getTaxRuleShoppingCart()
+    {
+        return new TaxRuleShoppingCart(
+            Lang::has($this->translation_104) ? trans($this->translation_104) : $this->name_104,
+            $this->tax_rate_103,
+            $this->priority_104,
+            $this->sort_order_104
+        );
     }
 }

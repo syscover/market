@@ -113,6 +113,4 @@ return [
     // Display prices
     'taxProductDisplayPrices'       => env('TAX_PRODUCT_DISPLAY_PRICES', 1),
     'taxShippingDisplayPrices'      => env('TAX_SHIPPING_DISPLAY_PRICES', 1),
-
-
 ];
