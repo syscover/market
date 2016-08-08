@@ -62,12 +62,12 @@ class OrderRowController extends Controller
 //	public function createCustomRecord($parameters)
 //	{
 //		$parameters['ordersStatus'] = OrderStatus::builder()
-//			->where('lang_id_114', session('baseLang')->id_001)
+//			->where('lang_id_114', base_lang()->id_001)
 //			->where('active_114', true)
 //			->get();
 //
 //		$parameters['paymentsMethod'] = PaymentMethod::builder()
-//			->where('lang_id_115', session('baseLang')->id_001)
+//			->where('lang_id_115', base_lang()->id_001)
 //			->where('active_115', true)
 //			->get();
 //
@@ -132,12 +132,12 @@ class OrderRowController extends Controller
 //	public function editCustomRecord($parameters)
 //	{
 //		$parameters['ordersStatus'] = OrderStatus::builder()
-//			->where('lang_id_114', session('baseLang')->id_001)
+//			->where('lang_id_114', base_lang()->id_001)
 //			->where('active_114', true)
 //			->get();
 //
 //		$parameters['paymentsMethod'] = PaymentMethod::builder()
-//			->where('lang_id_115', session('baseLang')->id_001)
+//			->where('lang_id_115', base_lang()->id_001)
 //			->where('active_115', true)
 //			->get();
 //

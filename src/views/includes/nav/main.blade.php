@@ -13,10 +13,10 @@
             <a href="javascript:void(0)"><i class="fa fa-cube"></i>{{ trans('market::pulsar.catalog') }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('market-product', 'access'))
-                    <li{!! is_current_resource('market-product') !!}><a href="{{ route('marketProduct', [session('baseLang')->id_001]) }}"><i class="fa fa-barcode"></i>{{ trans_choice('market::pulsar.product', 2) }}</a></li>
+                    <li{!! is_current_resource('market-product') !!}><a href="{{ route('marketProduct', [base_lang()->id_001]) }}"><i class="fa fa-barcode"></i>{{ trans_choice('market::pulsar.product', 2) }}</a></li>
                 @endif
                 @if(is_allowed('market-category', 'access'))
-                    <li{!! is_current_resource('market-category') !!}><a href="{{ route('marketCategory', [session('baseLang')->id_001]) }}"><i class="fa fa-cubes"></i>{{ trans_choice('market::pulsar.category', 2) }}</a></li>
+                    <li{!! is_current_resource('market-category') !!}><a href="{{ route('marketCategory', [base_lang()->id_001]) }}"><i class="fa fa-cubes"></i>{{ trans_choice('market::pulsar.category', 2) }}</a></li>
                 @endif
             </ul>
         </li>
@@ -24,7 +24,7 @@
             <a href="javascript:void(0)"><i class="fa fa-bullhorn"></i>{{ trans('market::pulsar.marketing') }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('market-cart-price-rule', 'access'))
-                    <li{!! is_current_resource('market-cart-price-rule') !!}><a href="{{ route('cartPriceRule', [session('baseLang')->id_001]) }}"><i class="fa fa-shopping-cart"></i>{{ trans_choice('market::pulsar.cart_price_rule', 2) }}</a></li>
+                    <li{!! is_current_resource('market-cart-price-rule') !!}><a href="{{ route('cartPriceRule', [base_lang()->id_001]) }}"><i class="fa fa-shopping-cart"></i>{{ trans_choice('market::pulsar.cart_price_rule', 2) }}</a></li>
                 @endif
             </ul>
         </li>
@@ -65,10 +65,10 @@
             <a href="javascript:void(0)"><i class="fa fa-cogs"></i>{{ trans_choice('pulsar::pulsar.preference', 2) }}</a>
             <ul class="sub-menu">
                 @if(is_allowed('market-payment-method', 'access'))
-                    <li{!! is_current_resource('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [session('baseLang')->id_001]) }}"><i class="fa fa-random"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
+                    <li{!! is_current_resource('market-payment-method') !!}><a href="{{ route('marketPaymentMethod', [base_lang()->id_001]) }}"><i class="fa fa-random"></i>{{ trans_choice('market::pulsar.payment_method', 2) }}</a></li>
                 @endif
                 @if(is_allowed('market-order-status', 'access'))
-                    <li{!! is_current_resource('market-order-status') !!}><a href="{{ route('marketOrderStatus', [session('baseLang')->id_001]) }}"><i class="fa fa-refresh"></i>{{ trans_choice('market::pulsar.order_status', 2) }}</a></li>
+                    <li{!! is_current_resource('market-order-status') !!}><a href="{{ route('marketOrderStatus', [base_lang()->id_001]) }}"><i class="fa fa-refresh"></i>{{ trans_choice('market::pulsar.order_status', 2) }}</a></li>
                 @endif
             </ul>
         </li>

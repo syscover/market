@@ -31,7 +31,7 @@ class ProductController extends Controller
 
     public function customIndex($parameters)
     {
-        $parameters['urlParameters']['lang']    = session('baseLang')->id_001;
+        $parameters['urlParameters']['lang']    = base_lang()->id_001;
         // init record on tap 3
         $parameters['urlParameters']['tab']     = 3;
 
@@ -73,7 +73,7 @@ class ProductController extends Controller
         if(isset($parameters['id']))
         {
             // get attachments from base lang
-            $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['id'], session('baseLang')->id_001, true);
+            $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['id'], base_lang()->id_001, true);
 
             // merge parameters and attachments array
             $parameters  = array_merge($parameters, $attachments);
