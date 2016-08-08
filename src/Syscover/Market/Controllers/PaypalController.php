@@ -166,7 +166,7 @@ class PayPalController extends Controller
         catch(Exception $ex)
         {
             ResultPrinter::printError("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", null, $payment, $ex);
-            exit(1);
+            exit;
         }
 
         foreach($payment->getLinks() as $link)
