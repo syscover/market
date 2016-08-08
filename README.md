@@ -48,7 +48,7 @@ php artisan db:seed --class="MarketTableSeeder"
 Access to Pulsar Panel, and go to Administration -> Permissions -> Profiles, and set all permissions to your profile by clicking on the open lock.
 
 
-## Configuration
+## General configuration environment values
 We indicate configuration variables available, to change them what you should do from the file environment variables .env
 
 ### Order id prefix [default value empty]
@@ -73,8 +73,8 @@ TAX_CUSTOMER_CLASS=1
 
 ### Set product price tax [default value 1]
 Set prices types from products concerning to taxes, you have two options:
-* Value: 1, Excluding tax
-* Value: 2, Including tax
+* Value: 1 *Excluding tax*
+* Value: 2 *Including tax*
 
 ```
 TAX_PRODUCT_PRICES=1
@@ -82,13 +82,35 @@ TAX_PRODUCT_PRICES=1
 
 ### Set shipping price tax [default value 1]
 Set prices from shipping concerning to taxes, you have two options
-* Value: 1, Excluding tax
-* Value: 2, Including tax
+* Value: 1 *Excluding tax*
+* Value: 2 *Including tax*
 
 ```
 TAX_SHIPPING_PRICES=1
 ```
 
+## PayPal environment values
+
+### Set PayPal mode
+* Value: sandbox *for testndbing or development environments* 
+* Value: live *for production environments* 
+```
+PAYPAL_MODE=sandbox
+```
+
+### PayPal sandbox values
+```
+PAYPAL_SANDBOX_WEB_PROFILE=XX-XXXX-XXXX-XXXX-XXXX
+PAYPAL_SANDBOX_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PAYPAL_SANDBOX_SECRET=xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
+```
+
+### PayPal live values
+```
+PAYPAL_LIVE_WEB_PROFILE=XX-XXXX-XXXX-XXXX-XXXX
+PAYPAL_LIVE_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PAYPAL_LIVE_SECRET_KEY=xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
+```
 
 ## Other concepts 
 
