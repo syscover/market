@@ -8,7 +8,7 @@ class PayPalLibrary
     public static function executeRedirection()
     {
         echo PayPalLibrary::createForm();
-        echo '<script>document.forms["paypal_form"].submit();</script>';
+        echo '<script>document.forms["paypalForm"].submit();</script>';
     }
 
     /**
@@ -19,7 +19,7 @@ class PayPalLibrary
     public static function createForm($order)
     {
         $form='
-            <form id="paypal_form" action="' . route('createMarketPayPalPayment') . '" method="post">
+            <form id="paypalForm" action="' . route('createMarketPayPalPayment') . '" method="post">
                 <input type="hidden" name="_token" value="' . csrf_token() . '"/>
                 <input type="hidden" name="_order" value="' . $order . '"/>
             </form>
