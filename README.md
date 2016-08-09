@@ -72,7 +72,8 @@ TAX_CUSTOMER_CLASS=1
 ```
 
 ### Set product price tax [default value 1]
-Set prices types from products concerning to taxes, you have two options:
+Defines the types of prices that are introduced in products, this option is consulted when you create or update a product
+You have this values:
 * Value: 1 *Excluding tax*
 * Value: 2 *Including tax*
 
@@ -81,12 +82,31 @@ TAX_PRODUCT_PRICES=1
 ```
 
 ### Set shipping price tax [default value 1]
-Set prices from shipping concerning to taxes, you have two options
+Defines the types of prices that are introduced in shipping prices, this option is consulted when you create or update a shipping price
 * Value: 1 *Excluding tax*
 * Value: 2 *Including tax*
 
 ```
 TAX_SHIPPING_PRICES=1
+```
+
+### Set product display price tax [default value 1]
+Defines how you want display product prices
+You have this values:
+* Value: 1 *Excluding tax*
+* Value: 2 *Including tax*
+
+```
+TAX_PRODUCT_DISPLAY_PRICES=1
+```
+
+### Set shipping display price tax [default value 1]
+Defines how you want display shipping prices
+* Value: 1 *Excluding tax*
+* Value: 2 *Including tax*
+
+```
+TAX_SHIPPING_DISPLAY_PRICES=1
 ```
 
 ## PayPal environment values
