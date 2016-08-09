@@ -15,6 +15,7 @@ class MarketTableSeeder extends Seeder
         $this->call(MarketOrderStatusSeeder::class);
         $this->call(MarketProductClassTaxSeeder::class);
         $this->call(MarketCustomerClassTaxSeeder::class);
+        $this->call(MarketPaymentMethodSeeder::class);
         
         Model::reguard();
     }

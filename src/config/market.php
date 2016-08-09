@@ -57,18 +57,18 @@ return [
     //******************************************************************************************************************
     //***   RedSys settings
     //******************************************************************************************************************
-    // RedSys mode, test | live
-    'redSysEnviroment'              => env('REDSYS_ENVIROMENT', ''),
+    // Redsys mode, test | live
+    'redsysMode'                    => env('REDSYS_MODE', ''),
 
     // TEST
-    'redSysTestMerchantName'        => env('REDSYS_TEST_MERCHANT_NAME', ''),
-    'redSysTestMerchantCode'        => env('REDSYS_TEST_MERCHANT_CODE', ''),
-    'redSysTestKey'                 => env('REDSYS_TEST_KEY', ''),
+    'redsysTestMerchantName'        => env('REDSYS_TEST_MERCHANT_NAME', ''),
+    'redsysTestMerchantCode'        => env('REDSYS_TEST_MERCHANT_CODE', ''),
+    'redsysTestKey'                 => env('REDSYS_TEST_KEY', ''),
 
     // LIVE
-    'redSysLiveMerchantName'        => env('REDSYS_LIVE_MERCHANT_NAME', ''),
-    'redSysLiveMerchantCode'        => env('REDSYS_LIVE_MERCHANT_CODE', ''),
-    'redSysLiveKey'                 => env('REDSYS_LIVE_KEY', ''),
+    'redsysLiveMerchantName'        => env('REDSYS_LIVE_MERCHANT_NAME', ''),
+    'redsysLiveMerchantCode'        => env('REDSYS_LIVE_MERCHANT_CODE', ''),
+    'redsysLiveKey'                 => env('REDSYS_LIVE_KEY', ''),
 
     //******************************************************************************************************************
     //***   Discount type on shopping cart
