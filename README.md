@@ -92,7 +92,7 @@ TAX_SHIPPING_PRICES=1
 ## PayPal environment values
 
 ### Set PayPal mode
-* Value: sandbox *for testndbing or development environments* 
+* Value: sandbox *for testing or development environments* 
 * Value: live *for production environments* 
 ```
 PAYPAL_MODE=sandbox
@@ -110,6 +110,29 @@ PAYPAL_SANDBOX_SECRET=xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
 PAYPAL_LIVE_WEB_PROFILE=XX-XXXX-XXXX-XXXX-XXXX
 PAYPAL_LIVE_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 PAYPAL_LIVE_SECRET_KEY=xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
+```
+
+## Redsys environment values
+
+### Set Redsys mode
+* Value: test *for testing or development environments* 
+* Value: live *for production environments* 
+```
+REDSYS_MODE=test
+```
+
+### Redsys test values
+```
+REDSYS_TEST_MERCHANT_NAME="MERCHANT NAME (TEST)"
+REDSYS_TEST_MERCHANT_CODE=xxxxxxxxx
+REDSYS_TEST_KEY=xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
+```
+
+### Redsys live values
+```
+REDSYS_LIVE_MERCHANT_NAME="MERCHANT NAME"
+REDSYS_LIVE_MERCHANT_CODE=xxxxxxxxx
+REDSYS_LIVE_KEY=xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
 ```
 
 ## Other concepts 
