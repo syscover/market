@@ -123,8 +123,20 @@ class Product extends Model
             return $this->taxRules;
         }
 
-        // call parent method in model
-        return parent::getAttribute($key);
+        // check if property is mapped
+        if(isset($this->maps[$key]))
+        {
+            return $this->{$this->maps[$key]};
+        }
+
+        // call parent method in model to know if return any value
+        $modelAttribute = parent::getAttribute($key);
+        if($modelAttribute !== null)
+        {
+            return $modelAttribute;
+        }
+
+        return null;
     }
 
     /**
