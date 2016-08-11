@@ -85,6 +85,7 @@ class MarketCreateTableOrder extends Migration
 				$table->string('shipping_cp_116', 10)->nullable();
 				$table->string('shipping_locality_116', 100)->nullable();
 				$table->string('shipping_address_116', 150)->nullable();
+                $table->text('shipping_comments_116')->nullable();
 				$table->string('shipping_latitude_116', 50)->nullable();
 				$table->string('shipping_longitude_116', 50)->nullable();
 				
