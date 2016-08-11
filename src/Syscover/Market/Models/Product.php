@@ -129,14 +129,8 @@ class Product extends Model
             return $this->{$this->maps[$key]};
         }
 
-        // call parent method in model to know if return any value
-        $modelAttribute = parent::getAttribute($key);
-        if($modelAttribute !== null)
-        {
-            return $modelAttribute;
-        }
-
-        return null;
+        // call parent method in model
+        return parent::getAttribute($key);
     }
 
     /**
