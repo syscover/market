@@ -224,7 +224,7 @@
                 'label' => trans('pulsar::pulsar.active'),
                 'name' => 'active',
                 'value' => 1,
-                'checked' => old('active', $object->active_111),
+                'checked' => old('active', isset($object)? $object->active_111 : null),
                 'disabled' => $action == 'update' || $action == 'store'? false : true
             ])
         </div>
