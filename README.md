@@ -1,5 +1,7 @@
 # Market for Laravel 5.2
 
+[![Total Downloads](https://poser.pugx.org/syscover/market/downloads)](https://packagist.org/packages/syscover/market)
+
 ## Installation
 
 **1 - After install Laravel framework, insert on file composer.json, inside require object this value**
