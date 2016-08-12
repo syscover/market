@@ -4,7 +4,7 @@
 
 **1 - After install Laravel framework, insert on file composer.json, inside require object this value**
 ```
-"syscover/market": "dev-master"
+"syscover/market": "~1.0"
 ```
 and execute on console:
 ```
@@ -171,7 +171,3 @@ Route::group(['middleware' => ['pulsar.taxRule']], function() {
 ```
 
 This middleware set market.taxCountry and market.taxCustomerClass if customer has country ann customer group id defined
-
-
-
-
