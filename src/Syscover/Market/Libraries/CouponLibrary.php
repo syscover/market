@@ -13,10 +13,14 @@ class CouponLibrary
      * @param   \Illuminate\Auth\SessionGuard   $sessionGuard   request session guard to check if user is authenticated, for cases necessary
      * @return array
      */
-    public static function checkCouponCode($couponCode, $lang, $sessionGuard = null, $instance = 'main')
+    public static function checkCouponCode($couponCode, $lang, $sessionGuard = null, $instance = 'default')
     {
-        $cart           = CartProvider::instance($instance);
-        $cartPriceRule  = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
+
+
+        $shoppingCart   = CartProvider::instance($instance);
+        $cartPriceRule  = CartPriceRule::builder($lang)
+            ->where('coupon_code_120', 'like', $couponCode)
+            ->first();
         $errors         = [];
 
         if($cartPriceRule == null)
@@ -116,7 +120,7 @@ class CouponLibrary
             ];
         }
 
-        if($cartPriceRule != null && $cartPriceRule->combinable_120 == false && $cart->hasCartPriceRuleNotCombinable() == true)
+        if($cartPriceRule != null && $cartPriceRule->combinable_120 == false && $shoppingCart->hasCartPriceRuleNotCombinable() == true)
         {
             $errors[] = [
                 'status'    => 'error',
@@ -125,13 +129,13 @@ class CouponLibrary
                 'trans'     => trans('market::pulsar.error_coupon_code_07'),
                 'data'      => [
                     'couponCode'                    => $couponCode,
-                    'priceRuleInCartNotCombinable'  => $cart->getCartPriceRuleNotCombinable()->toArray()
+                    'priceRuleInCartNotCombinable'  => $shoppingCart->getCartPriceRuleNotCombinable()->toArray()
                 ]
             ];
         }
 
         // check if exist this cart price rule in cart
-        if($cartPriceRule != null && $cart->hasCartPriceRule($cartPriceRule))
+        if($cartPriceRule != null && $shoppingCart->getPriceRules()->has($cartPriceRule->id))
         {
             $errors[] = [
                 'status'    => 'error',
@@ -145,7 +149,7 @@ class CouponLibrary
         }
 
         // check if is a free shipping and there isn't shipping and cart price rule, haven't any discount
-        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_id_120 == 1 && ! $cart->hasShipping())
+        if($cartPriceRule != null && $cartPriceRule->free_shipping_120 && $cartPriceRule->discount_type_id_120 == 1 && ! $shoppingCart->hasShipping())
         {
             $errors[] = [
                 'status'    => 'error',
@@ -175,13 +179,13 @@ class CouponLibrary
     }
 
     /**
-     * @param \Syscover\ShoppingCart\Cart           $cart
+     * @param \Syscover\ShoppingCart\Cart           $shoppingCart
      * @param string                                $couponCode
      * @param string                                $lang           add coupon code from this language
      * @param \Illuminate\Auth\SessionGuard         $sessionGuard   request session guard to check if user is authenticated, for cases necessary
      * @return null | \Syscover\Market\Models\CartPriceRule
      */
-    public static function addCouponCode($cart, $couponCode, $lang, $sessionGuard = null)
+    public static function addCouponCode($shoppingCart, $couponCode, $lang, $sessionGuard = null)
     {
         $response       = CouponLibrary::checkCouponCode($couponCode, $lang, $sessionGuard);
         $cartPriceRule  = null;
@@ -194,7 +198,7 @@ class CouponLibrary
 
 
             // add discount to cart
-            $cart->addCartPriceRule($cartPriceRule);
+            $shoppingCart->addCartPriceRule($cartPriceRule);
         }
 
         return $cartPriceRule;
