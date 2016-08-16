@@ -2,7 +2,9 @@
 
 use Syscover\Market\Models\CartPriceRule;
 use Syscover\Market\Models\CustomerDiscountHistory;
+use Syscover\ShoppingCart\Exceptions\ShoppingCartNotCombinablePriceRuleException;
 use Syscover\ShoppingCart\Facades\CartProvider;
+use Syscover\ShoppingCart\PriceRule;
 
 class CouponLibrary
 {
@@ -193,12 +195,39 @@ class CouponLibrary
         // check that rule its ok
         if($response['status'] == 'success')
         {
-            $cartPriceRule  = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
+            $cartPriceRule = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
 
-
-
-            // add discount to cart
-            $shoppingCart->addCartPriceRule($cartPriceRule);
+            if($cartPriceRule != null)
+            {
+                try
+                {
+                    CartProvider::instance()->addCartPriceRule(
+                        new PriceRule(
+                            $cartPriceRule->name_text_value,
+                            $cartPriceRule->description_text_value,
+                            $cartPriceRule->discount_type_id_120,
+                            $cartPriceRule->free_shipping_120,
+                            $cartPriceRule->discount_fixed_amount_120,
+                            $cartPriceRule->discount_percentage_120,
+                            $cartPriceRule->maximum_discount_amount_120,
+                            $cartPriceRule->apply_shipping_amount_120,
+                            $cartPriceRule->combinable_120
+                        )
+                    );
+                }
+                catch (ShoppingCartNotCombinablePriceRuleException $e)
+                {
+                    dd($e->getMessage());
+                }
+                catch (\Exception $e)
+                {
+                    dd($e->getMessage());
+                }
+            }
+            else
+            {
+                dd("this coupon number not exist");
+            }
         }
 
         return $cartPriceRule;
