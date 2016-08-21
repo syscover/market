@@ -17,8 +17,6 @@ class CouponLibrary
      */
     public static function checkCouponCode($couponCode, $lang, $sessionGuard = null, $instance = 'default')
     {
-
-
         $shoppingCart   = CartProvider::instance($instance);
         $cartPriceRule  = CartPriceRule::builder($lang)
             ->where('coupon_code_120', 'like', $couponCode)
@@ -195,6 +193,7 @@ class CouponLibrary
         // check that rule its ok
         if($response['status'] == 'success')
         {
+            // get price rule from database
             $cartPriceRule = CartPriceRule::builder($lang)->where('coupon_code_120', 'like', $couponCode)->first();
 
             if($cartPriceRule != null)

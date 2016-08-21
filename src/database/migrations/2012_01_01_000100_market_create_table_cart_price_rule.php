@@ -45,9 +45,12 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->integer('enable_to_120')->unsigned()->nullable();
 				$table->string('enable_to_text_120')->nullable();
 
-				// 1 - Sin descuento
-				// 2 - Porcentaje de descuento
-				// 3 - Importe fijo de descuento
+                // see config/market.php section Discount type on shopping cart
+                // 1 - without discount
+                // 2 - discount percentage subtotal
+                // 3 - discount fixed amount subtotal
+                // 4 - discount percentage total
+                // 5 - discount fixed amount total
 				$table->tinyInteger('discount_type_id_120')->unsigned()->nullable();
 
 				// cantidad fija de descuento

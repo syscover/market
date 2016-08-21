@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 class MarketCreateTableCustomerDiscountHistory extends Migration
 {
 	/**
-	 * Tabla que contabiliza en número de veces que se ha usado un descuento por cliente
+	 * Table to registry each discount used for customer
 	 *
 	 * @return void
 	 */
@@ -18,42 +18,44 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
 				$table->engine = 'InnoDB';
 
 				$table->increments('id_126')->unsigned();
-				
-				// fecha de registro
-				$table->integer('date_126')->unsigned();
+
+				$table->integer('date_126')->unsigned();            // registry date
 				$table->integer('customer_id_126')->unsigned();
 				$table->integer('order_id_126')->unsigned();
 
-				// se pueden desactivar los descuentos en caso de anulación de pedido
-				$table->boolean('active_126')->default(true);
+                // if order is canceled, you can deactivate discounts
+                $table->boolean('active_126')->default(true);
 
-				// 1 - descuento procedente de, cart_price_rule
-				// 2 - descuento procedente de, catalog_price_rule
-				// 3 - descuento procedente de, customer_rule_discount
+                // see config/market.php section Discounts rules families
+				// 1 - discount from, cart price rule
+				// 2 - discount from, catalog price rule
+				// 3 - discount from, customer rule discount
 				$table->tinyInteger('rule_family_id_126')->unsigned();
 
-				// id del decuento en el caso de proceder de customer discount
+				// discount ID should come from customer discount
 				//$table->integer('customer_discount_id_126')->unsigned()->nullable();
 
-				// id de la regla que procede el descuento
+                // id of the rule applicable discount
 				$table->integer('rule_id_126')->unsigned();
 				
 				$table->boolean('has_coupon_126')->default(false);
 				$table->string('coupon_code_126')->nullable();
 
-				// referencia a la tabla 001_017_text
+				// reference to table 001_017_text
 				$table->integer('name_text_id_126')->unsigned();
 				$table->integer('description_text_id_126')->nullable()->unsigned();
 
-				// valores de la tabla 001_017_text en el idioma en que ha canjeado el descuento
-				// se recoje el valor en el idioma del usuario para tener una referencia en caso de borrado
-				// del registro de la tabla 001_017_text
+				// 001_017_text table values in the language that has exchanged the discount,
+				// get the value in the user's language to have a reference in case of delete from the table 001_017_text
 				$table->string('name_text_value_126');
 				$table->text('description_text_value_126')->nullable();
 
-				// 1 - Sin descuento
-				// 2 - Porcentaje de descuento
-				// 3 - Importe fijo de descuento
+                // see config/market.php section Discount type on shopping cart
+                // 1 - without discount
+                // 2 - discount percentage subtotal
+                // 3 - discount fixed amount subtotal
+                // 4 - discount percentage total
+                // 5 - discount fixed amount total
 				$table->tinyInteger('discount_type_id_126')->unsigned()->nullable();
 
 				// cantidad fija de descuento
@@ -71,7 +73,7 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
 				// se aplica el descuento al precio de transporte
 				$table->boolean('apply_shipping_amount_126');
 				
-				// este descuento dispone de transporte gratuito
+				// this discount has free shipping
 				$table->boolean('free_shipping_126');
 
 				// reglas que se han tenido en cuenta para aplicar el descuento en caso de haberlas, ¿?

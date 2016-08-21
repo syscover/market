@@ -27,15 +27,24 @@ class MarketCreateTableOrderRow extends Migration
 				$table->text('data_117')->nullable();
 
 				// amounts
-				$table->decimal('price_117', 10, 2); 								// unit price
-				$table->decimal('quantity_117', 10, 2); 							// number units
-				$table->decimal('subtotal_117', 10, 2);								// subtotal without tax
-				$table->decimal('discount_percentage_117', 10, 2)->nullable();
-				$table->decimal('discount_amount_117', 10, 2);
-				$table->decimal('tax_percentage_117', 10, 2);
-				$table->decimal('tax_amount_117', 10, 2);
+				$table->decimal('price_117', 12, 4); 								        // unit price
+				$table->decimal('quantity_117', 12, 4); 							        // number of units
+				$table->decimal('subtotal_117', 12, 4);								        // subtotal without tax
 
-				// gift
+                // discounts over row
+				$table->decimal('discount_subtotal_percentage_117', 12, 4);
+                $table->decimal('discount_total_percentage_117', 12, 4);
+                $table->decimal('discount_subtotal_percentage_amount_117', 12, 4);
+                $table->decimal('discount_total_percentage_amount_117', 12, 4);
+                $table->decimal('discount_subtotal_fixed_amount_117', 12, 4);
+                $table->decimal('discount_total_fixed_amount_117', 12, 4);
+				$table->decimal('discount_amount_117', 12, 4);                              // total amount to discount, fixed plus percentage discounts
+
+                // taxes
+                $table->text('tax_rules_117');                                              // json that contain array with tax rules
+                $table->decimal('tax_amount_117', 12, 4);                                   // Tax amount over this row
+
+				// fields if this row is to gift
 				$table->boolean('gift_117');
 				$table->string('gift_from_117')->nullable();
 				$table->string('gift_to_117')->nullable();

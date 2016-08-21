@@ -43,9 +43,9 @@ class MarketCreateTableOrder extends Migration
 				$table->decimal('total_discount_amount_116', 10, 2);						// without tax
 				$table->decimal('tax_amount_116', 10, 2);
 
-				$table->decimal('shipping_116', 10, 2);										// shipping amount ?? with tax
-				$table->decimal('subtotal_116', 10, 2);										// amount without tax and without shipping
-				$table->decimal('total_116', 10, 2);										// amount with tax and shipping
+				$table->decimal('shipping_116', 12, 4);										// shipping amount ?? with tax
+				$table->decimal('subtotal_116', 12, 4);										// amount without tax and without shipping
+				$table->decimal('total_116', 12, 4);										// subtotal and shipping amount with tax
 
 				// customer data
 				$table->integer('customer_id_116')->unsigned()->nullable();
@@ -64,11 +64,11 @@ class MarketCreateTableOrder extends Migration
 				$table->string('invoice_territorial_area_1_id_116', 6)->nullable();
 				$table->string('invoice_territorial_area_2_id_116', 10)->nullable();
 				$table->string('invoice_territorial_area_3_id_116', 10)->nullable();
-				$table->string('invoice_cp_116', 10)->nullable();
-				$table->string('invoice_locality_116', 100)->nullable();
-				$table->string('invoice_address_116', 150)->nullable();
-				$table->string('invoice_latitude_116', 50)->nullable();
-				$table->string('invoice_longitude_116', 50)->nullable();
+				$table->string('invoice_cp_116')->nullable();
+				$table->string('invoice_locality_116')->nullable();
+				$table->string('invoice_address_116')->nullable();
+				$table->string('invoice_latitude_116')->nullable();
+				$table->string('invoice_longitude_116')->nullable();
 
 				// shipping data
 				$table->boolean('has_shipping_116');
@@ -82,12 +82,12 @@ class MarketCreateTableOrder extends Migration
 				$table->string('shipping_territorial_area_1_id_116', 6)->nullable();
 				$table->string('shipping_territorial_area_2_id_116', 10)->nullable();
 				$table->string('shipping_territorial_area_3_id_116', 10)->nullable();
-				$table->string('shipping_cp_116', 10)->nullable();
-				$table->string('shipping_locality_116', 100)->nullable();
-				$table->string('shipping_address_116', 150)->nullable();
+				$table->string('shipping_cp_116')->nullable();
+				$table->string('shipping_locality_116')->nullable();
+				$table->string('shipping_address_116')->nullable();
                 $table->text('shipping_comments_116')->nullable();
-				$table->string('shipping_latitude_116', 50)->nullable();
-				$table->string('shipping_longitude_116', 50)->nullable();
+				$table->string('shipping_latitude_116')->nullable();
+				$table->string('shipping_longitude_116')->nullable();
 				
 				// order relations
 				$table->foreign('customer_id_116', 'fk01_012_116_order')
