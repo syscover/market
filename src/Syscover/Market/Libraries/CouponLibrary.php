@@ -200,7 +200,7 @@ class CouponLibrary
             {
                 try
                 {
-                    CartProvider::instance()->addCartPriceRule(
+                    $shoppingCart->addCartPriceRule(
                         new PriceRule(
                             $cartPriceRule->name_text_value,
                             $cartPriceRule->description_text_value,
@@ -210,7 +210,10 @@ class CouponLibrary
                             $cartPriceRule->discount_percentage_120,
                             $cartPriceRule->maximum_discount_amount_120,
                             $cartPriceRule->apply_shipping_amount_120,
-                            $cartPriceRule->combinable_120
+                            $cartPriceRule->combinable_120,
+                            [
+                                'priceRule' => $cartPriceRule
+                            ]
                         )
                     );
                 }
