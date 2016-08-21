@@ -58,22 +58,22 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
                 // 5 - discount fixed amount total
 				$table->tinyInteger('discount_type_id_126')->unsigned()->nullable();
 
-				// cantidad fija de descuento
+                // fixed amount to discount over shopping cart
 				$table->decimal('discount_fixed_amount_126', 10, 2)->nullable();
-				
-				// Porcentaje de descuento sobre una cantidad
+
+                // percentage to discount over shopping cart
 				$table->decimal('discount_percentage_126', 10, 2)->nullable();
-				
-				// Cantidad de descuento calculado con el procentaje de descuento
-				$table->decimal('discount_percentage_amount_126', 10, 2)->nullable();
-				
-				// máxima cantidad a descontar
+
+                // limit amount to discount, if the discount is a percentage
 				$table->decimal('maximum_discount_amount_126', 10, 2)->nullable();
-				
-				// se aplica el descuento al precio de transporte
+
+                // Cantidad de descuento calculado con el procentaje de descuento
+				$table->decimal('discount_percentage_amount_126', 10, 2)->nullable();
+
+				// check if apply discount to shipping amount
 				$table->boolean('apply_shipping_amount_126');
 				
-				// this discount has free shipping
+				// check if this discount has free shipping
 				$table->boolean('free_shipping_126');
 
 				// reglas que se han tenido en cuenta para aplicar el descuento en caso de haberlas, ¿?
