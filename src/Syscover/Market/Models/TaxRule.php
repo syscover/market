@@ -13,7 +13,7 @@ use Syscover\ShoppingCart\TaxRule as TaxRuleShoppingCart;
  * Model with properties
  * <br><b>[id, name, translation, priority, sort_order]</b>
  *
- * @package     Syscover\Market\Models
+ * @package Syscover\Market\Models
  */
 
 class TaxRule extends Model

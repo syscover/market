@@ -19,6 +19,7 @@ class MarketCreateTableTaxRule extends Migration {
 
 				$table->increments('id_104')->unsigned();
 				$table->string('name_104');
+                $table->string('translation_104')->nullable();
 
 				// si apunta a varias reglas, se establezce la prioridad de aplicación sobre el producto
 				$table->smallInteger('priority_104')->unsigned();
