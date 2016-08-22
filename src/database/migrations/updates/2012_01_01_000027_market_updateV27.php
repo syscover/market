@@ -16,7 +16,7 @@ class MarketUpdateV27 extends Migration
         if(! Schema::hasColumn('012_111_product', 'subtotal_111'))
         {
             Schema::table('012_111_product', function (Blueprint $table) {
-                $table->decimal('subtotal_111')->nullable()->after('price_type_id_111');
+                $table->decimal('subtotal_111', 12, 4)->nullable()->after('price_type_id_111');
             });
         }
     }
