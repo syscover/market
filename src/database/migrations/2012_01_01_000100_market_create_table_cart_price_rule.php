@@ -54,14 +54,18 @@ class MarketCreateTableCartPriceRule extends Migration
 				$table->tinyInteger('discount_type_id_120')->unsigned()->nullable();
 
                 // fixed amount to discount over shopping cart
-				$table->decimal('discount_fixed_amount_120', 10, 2)->nullable();
+				$table->decimal('discount_fixed_amount_120', 12, 4)->nullable();
+
 				// Porcentaje de descuento sobre una cantidad
-				$table->decimal('discount_percentage_120', 10, 2)->nullable();
-				// máxima cantidad a descontar
-				$table->decimal('maximum_discount_amount_120', 10, 2)->nullable();
-				// se aplica el descuento al precio de transporte
+				$table->decimal('discount_percentage_120', 12, 4)->nullable();
+
+                // máxima cantidad a descontar
+				$table->decimal('maximum_discount_amount_120', 12, 4)->nullable();
+
+                // se aplica el descuento al precio de transporte
 				$table->boolean('apply_shipping_amount_120');
-				// este descuento dispone de transporte gratuito
+
+                // este descuento dispone de transporte gratuito
 				$table->boolean('free_shipping_120');
 
 				// reglas, campo para una futura implementación de reglas

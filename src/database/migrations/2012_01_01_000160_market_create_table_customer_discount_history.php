@@ -59,16 +59,16 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
 				$table->tinyInteger('discount_type_id_126')->unsigned()->nullable();
 
                 // fixed amount to discount over shopping cart
-				$table->decimal('discount_fixed_amount_126', 10, 2)->nullable();
+				$table->decimal('discount_fixed_amount_126', 12, 4)->nullable();
 
                 // percentage to discount over shopping cart
-				$table->decimal('discount_percentage_126', 10, 2)->nullable();
+				$table->decimal('discount_percentage_126', 12, 4)->nullable();
 
                 // limit amount to discount, if the discount is a percentage
-				$table->decimal('maximum_discount_amount_126', 10, 2)->nullable();
+				$table->decimal('maximum_discount_amount_126', 12, 4)->nullable();
 
-                // Cantidad de descuento calculado con el procentaje de descuento
-				$table->decimal('discount_percentage_amount_126', 10, 2)->nullable();
+                // discount amount percentage calculate
+				$table->decimal('discount_percentage_amount_126', 12, 4)->nullable();
 
 				// check if apply discount to shipping amount
 				$table->boolean('apply_shipping_amount_126');
@@ -76,7 +76,7 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
 				// check if this discount has free shipping
 				$table->boolean('free_shipping_126');
 
-				// reglas que se han tenido en cuenta para aplicar el descuento en caso de haberlas, ¿?
+				// price rules apply over shopping cart, this column has rule in json format
 				$table->text('rules_126')->nullable();
 				
 				$table->foreign('customer_id_126', 'fk01_012_126_customer_discount_history')

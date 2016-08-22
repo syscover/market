@@ -23,8 +23,8 @@ class MarketCreateTablePaymentMethod extends Migration
 				
 				// new order status
 				$table->integer('order_status_successful_id_115')->nullable()->unsigned();
-				$table->decimal('minimum_price_115', 10, 2)->nullable();
-				$table->decimal('maximum_price_115', 10, 2)->nullable();
+				$table->decimal('minimum_price_115', 12, 4)->nullable();
+				$table->decimal('maximum_price_115', 12, 4)->nullable();
 				$table->text('instructions_115')->nullable();
 				$table->integer('sorting_115')->unsigned()->nullable();
 				$table->boolean('active_115');

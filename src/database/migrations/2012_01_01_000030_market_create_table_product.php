@@ -28,7 +28,7 @@ class MarketCreateTableProduct extends Migration
 				// set parent product and config like subproduct
 				$table->integer('parent_product_id_111')->unsigned()->nullable();
 
-				$table->decimal('weight_111', 10, 3)->nullable();
+				$table->decimal('weight_111', 11, 3)->default(0);
 				$table->boolean('active_111');
 				$table->integer('sorting_111')->unsigned()->nullable();
 
@@ -41,7 +41,7 @@ class MarketCreateTableProduct extends Migration
 				// taxes
 				$table->integer('product_class_tax_id_111')->unsigned()->nullable();
 
-				$table->string('data_lang_111', 255)->nullable();
+				$table->string('data_lang_111')->nullable();
 				$table->text('data_111')->nullable();
 
 				$table->foreign('field_group_id_111', 'fk01_012_111_product')
