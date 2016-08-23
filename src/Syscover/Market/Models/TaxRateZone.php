@@ -44,4 +44,17 @@ class TaxRateZone extends Model
                 ->where('001_002_country.lang_id_002', '=', base_lang()->id_001);
         });
     }
+
+    /**
+     * Returns formatted tax rate.
+     *
+     * @param   int       $decimals
+     * @param   string    $decimalPoint
+     * @param   string    $thousandSeperator
+     * @return  string
+     */
+    public function getTaxRate($decimals = 0, $decimalPoint = ',', $thousandSeperator = '.')
+    {
+        return number_format($this->tax_rate_103, $decimals, $decimalPoint, $thousandSeperator);
+    }
 }

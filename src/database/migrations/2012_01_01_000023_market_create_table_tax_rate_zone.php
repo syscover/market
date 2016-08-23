@@ -24,7 +24,7 @@ class MarketCreateTableTaxRateZone extends Migration {
 				$table->string('territorial_area_2_id_103', 10)->nullable();
 				$table->string('territorial_area_3_id_103', 10)->nullable();
 				$table->string('cp_103')->nullable();
-                $table->decimal('tax_rate_103', 12, 4)->default(0);
+                $table->decimal('tax_rate_103', 10, 2)->default(0);
 
 				$table->foreign('country_id_103', 'fk01_012_103_tax_rate_zone')
 					->references('id_002')

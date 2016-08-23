@@ -80,4 +80,17 @@ class TaxRule extends Model
             $this->sort_order_104
         );
     }
+
+    /**
+     * Returns formatted tax rate.
+     *
+     * @param   int       $decimals
+     * @param   string    $decimalPoint
+     * @param   string    $thousandSeperator
+     * @return  string
+     */
+    public function getTaxRate($decimals = 0, $decimalPoint = ',', $thousandSeperator = '.')
+    {
+        return number_format($this->tax_rate_103, $decimals, $decimalPoint, $thousandSeperator);
+    }
 }
