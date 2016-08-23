@@ -49,6 +49,7 @@ return [
     'message_customer_go_to_tpv'                    => 'El cliente entra en la TPV',
     'message_customer_go_to_tpv_error'              => 'Error to go to TPV, Error: :error',
     'message_paypal_payment_successful'             => 'Pago en PayPal correcto',
+    'message_paypal_payment_failure'                => 'Error en el pago en PayPal',
     'message_tpv_payment_successful'                => 'Pago en TPV correcto',
     'message_tpv_payment_error'                     => 'Error en el pago por TPV, error: :error',
     'message_user_change_order_status'              => 'El usuario :user ha cambiado el estado del pedido de :oldStatus a :newStatus',
