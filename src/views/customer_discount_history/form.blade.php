@@ -137,8 +137,8 @@
                     'fieldSize' => 5,
                     'type' => 'number',
                     'label' => trans('market::pulsar.discount_amount'),
-                    'name' => 'discountPercentageAmount',
-                    'value' => $object->discount_percentage_amount_126,
+                    'name' => 'discountAmount',
+                    'value' => $object->discount_amount_126,
                     'readOnly' => true
                 ])
             </div>

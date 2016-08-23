@@ -28,6 +28,13 @@ class MarketUpdateV28 extends Migration
                 $table->dropColumn('total_discount_percentage_116');
             });
         }
+
+        // delete column total_discount_percentage_116
+        if(Schema::hasColumn('012_126_customer_discount_history', 'discount_percentage_amount_126'))
+        {
+            // discount_percentage_amount_126
+            DBLibrary::renameColumn('012_126_customer_discount_history', 'discount_percentage_amount_126', 'discount_amount_126', 'DECIMAL', '12,4', false, true);
+        }
     }
 
     /**

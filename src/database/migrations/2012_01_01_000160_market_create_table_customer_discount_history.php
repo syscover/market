@@ -67,8 +67,8 @@ class MarketCreateTableCustomerDiscountHistory extends Migration
                 // limit amount to discount, if the discount is a percentage
 				$table->decimal('maximum_discount_amount_126', 12, 4)->nullable();
 
-                // discount amount percentage calculate
-				$table->decimal('discount_percentage_amount_126', 12, 4)->nullable();
+                // total discount amount apply with this rule
+				$table->decimal('discount_amount_126', 12, 4)->nullable();
 
 				// check if apply discount to shipping amount
 				$table->boolean('apply_shipping_amount_126');
