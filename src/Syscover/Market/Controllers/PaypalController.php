@@ -106,21 +106,8 @@ class PayPalController extends Controller
         $discounts = $order->getDiscounts;
         foreach ($discounts as $discount)
         {
-            $discountAmount = 0;
-
-
-            // todo, con el campo discount_amount_126 nos dice el total a descontar ya sea fixed o percentage
-            // discount with percentage
-            if($discount->discount_type_id_126 == 2)
-            {
-                $discountAmount = $discount->discount_amount_126 * -1;
-            }
-            // discount with fixed amount
-            elseif ($discount->discount_type_id_126 == 3)
-            {
-                $discountAmount = $discount->discount_fixed_amount_126 * -1;
-            }
-
+            $discountAmount = $discount->discount_amount_126 * -1;
+            
             if($discountAmount < 0)
             {
                 $item = new Item();
