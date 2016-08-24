@@ -14,6 +14,7 @@ class MarketTableSeeder extends Seeder
         $this->call(MarketAttachmentMimeSeeder::class);
         $this->call(MarketOrderStatusSeeder::class);
         $this->call(MarketCustomerClassTaxSeeder::class);
+        $this->call(MarketGroupCustomerClassTaxSeeder::class);
         $this->call(MarketProductClassTaxSeeder::class);
         $this->call(MarketTaxRateZoneSeeder::class);
         $this->call(MarketPaymentMethodSeeder::class);
