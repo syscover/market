@@ -40,9 +40,15 @@ class MarketCreateTableOrderRow extends Migration
                 $table->decimal('discount_total_fixed_amount_117', 12, 4);
 				$table->decimal('discount_amount_117', 12, 4);                              // total amount to discount, fixed plus percentage discounts
 
+                // subtotal with discounts
+                $table->decimal('subtotal_with_discounts_117', 12, 4);
+
                 // taxes
                 $table->text('tax_rules_117');                                              // json that contain array with tax rules
-                $table->decimal('tax_amount_117', 12, 4);                                   // Tax amount over this row
+                $table->decimal('tax_amount_117', 12, 4);                                   // tax amount over this row with discounts apply
+
+                // total
+                $table->decimal('total_117', 12, 4);                                        // with tax and discounts
 
 				// fields if this row is to gift
 				$table->boolean('gift_117');

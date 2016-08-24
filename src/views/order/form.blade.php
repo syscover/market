@@ -49,13 +49,13 @@
 
 			if ($.fn.dataTable)
 			{
-				$('.datatable-pulsar').dataTable({
+				$('#dataTableOrderRows').dataTable({
 					"displayStart": 0,
 					"sorting": [[0, "desc"]],
 					"columnDefs": [
-						{ "sortable": false, "targets": [3,4,5]},
-						{ "class": "checkbox-column", "targets": [4]},
-						{ "class": "align-center", "targets": [3,5]}
+						{ "sortable": false, "targets": [7,8,9]},
+						{ "class": "checkbox-column", "targets": [8]},
+						{ "class": "align-center", "targets": [7,9]}
 					],
 					"processing": true,
 					"serverSide": true,
@@ -318,12 +318,16 @@
 	@endif
 	<div class="widget box">
 		<div class="widget-content no-padding">
-			<table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable-pulsar">
+			<table id="dataTableOrderRows" class="table table-striped table-bordered table-hover table-checkable table-responsive">
 				<thead>
 				<tr>
 					<th data-hide="expand">{{ trans_choice('pulsar::pulsar.product', 1) }}</th>
 					<th>{{ trans_choice('pulsar::pulsar.quantity', 1) }}</th>
 					<th>{{ trans_choice('pulsar::pulsar.subtotal', 1) }}</th>
+					<th>{{ trans_choice('pulsar::pulsar.discount', 2) }}</th>
+					<th>{{ trans('market::pulsar.subtotal_discounts') }}</th>
+					<th>{{ trans_choice('market::pulsar.tax', 2) }}</th>
+					<th>{{ trans_choice('pulsar::pulsar.total', 1) }}</th>
 					<th>{{ trans('pulsar::pulsar.info') }}</th>
 					<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
 					<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
@@ -339,7 +343,7 @@
 	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.cart_price_rule', 2), 'icon' => 'fa fa-shopping-cart'])
 	<div class="widget box">
 		<div class="widget-content no-padding">
-			<table id="dataTableCustomerDiscountHistory" class="table table-striped table-bordered table-hover table-checkable table-responsive datatable-pulsar-02">
+			<table id="dataTableCustomerDiscountHistory" class="table table-striped table-bordered table-hover table-checkable table-responsive">
 				<thead>
 				<tr>
 					<th data-hide="phone,tablet">ID.</th>

@@ -14,7 +14,7 @@ class OrderRowController extends Controller
 	protected $routeSuffix	= 'marketOrder';
 	protected $folder	   	= 'order';
 	protected $package	  	= 'market';
-	protected $indexColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', ['type' => 'data', 'data' => 'data_117']];
+	protected $indexColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', 'discount_amount_117', 'subtotal_with_discounts_117', 'tax_amount_117', 'total_117', ['type' => 'data', 'data' => 'data_117']];
 	protected $nameM		= 'name_117';
 	protected $model		= OrderRow::class;
 	protected $icon		 	= 'fa fa-shopping-basket';

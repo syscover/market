@@ -81,6 +81,7 @@ return [
     'single_price'								    => 'Precio único',
     'sort_order'                                    => 'Sort order',
     'subtotal'                                      => 'Subtotal',
+    'subtotal_discounts'                            => 'Subtotal + descuentos',
     'success_route'								    => 'Ruta de éxito (route)',
     'tax'										    => 'Impuesto|Impuestos',
     'tax_included'                                  => 'Impuestos incluidos|Impuestos incluidos',
