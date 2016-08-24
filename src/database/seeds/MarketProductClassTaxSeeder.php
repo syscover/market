@@ -10,7 +10,8 @@ class MarketProductClassTaxSeeder extends Seeder
         ProductClassTax::insert([
             ['id_101' => 1, 'name_101' => 'Producto IVA General'],
             ['id_101' => 2, 'name_101' => 'Producto IVA Reducido'],
-            ['id_101' => 3, 'name_101' => 'Producto IVA Superreducido']
+            ['id_101' => 3, 'name_101' => 'Producto IVA Superreducido'],
+            ['id_101' => 4, 'name_101' => 'Producto Exento de IVA']
         ]);
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Syscover\Pulsar\Models\Package;
 
-class MarketPackageTableSeeder extends Seeder
+class MarketPackageSeeder extends Seeder
 {
     public function run()
     {
@@ -15,5 +15,5 @@ class MarketPackageTableSeeder extends Seeder
 
 /*
  * Command to run:
- * php artisan db:seed --class="MarketPackageTableSeeder"
+ * php artisan db:seed --class="MarketPackageSeeder"
  */

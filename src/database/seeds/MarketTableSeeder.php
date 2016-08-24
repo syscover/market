@@ -9,12 +9,13 @@ class MarketTableSeeder extends Seeder
     {
         Model::unguard();
         
-        $this->call(MarketPackageTableSeeder::class);
-        $this->call(MarketResourceTableSeeder::class);
+        $this->call(MarketPackageSeeder::class);
+        $this->call(MarketResourceSeeder::class);
         $this->call(MarketAttachmentMimeSeeder::class);
         $this->call(MarketOrderStatusSeeder::class);
-        $this->call(MarketProductClassTaxSeeder::class);
         $this->call(MarketCustomerClassTaxSeeder::class);
+        $this->call(MarketProductClassTaxSeeder::class);
+        $this->call(MarketTaxRateZoneSeeder::class);
         $this->call(MarketPaymentMethodSeeder::class);
         
         Model::reguard();
@@ -23,5 +24,5 @@ class MarketTableSeeder extends Seeder
 
 /*
  * Command to run:
- * php artisan db:seed --class="MarketOrderStatusSeeder"
+ * php artisan db:seed --class="MarketTableSeeder"
  */
