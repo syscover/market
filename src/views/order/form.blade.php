@@ -383,6 +383,15 @@
 				'labelSize' => 4,
 				'fieldSize' => 4,
 				'type' => 'number',
+				'label' => trans('market::pulsar.total_discount'),
+				'name' => 'subtotal',
+				'value' => old('subtotal', isset($object->total_discount_amount_116)? $object->total_discount_amount_116 : null),
+				'readOnly' => true,
+			])
+			@include('pulsar::includes.html.form_text_group', [
+				'labelSize' => 4,
+				'fieldSize' => 4,
+				'type' => 'number',
 				'label' => trans_choice('pulsar::pulsar.total', 1),
 				'name' => 'total',
 				'value' => old('total', isset($object->total_116)? $object->total_116 : null),

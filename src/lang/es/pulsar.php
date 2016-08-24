@@ -88,6 +88,7 @@ return [
     'tax_rate_zone'                                 => 'Zona de tasa de impuesto|Zonas de tasa de impuestos',
     'tax_rule'                                      => 'Regla de impuesto|Reglas de impuesto',
     'total'								            => 'Total',
+    'total_discount'                                => 'Descuento total',
     'total_used'								    => 'Total de usos',
     'tpv'										    => 'TPV|TPVs',
     'transportable'								    => 'Transportable',

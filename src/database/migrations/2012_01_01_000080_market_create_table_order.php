@@ -38,7 +38,7 @@ class MarketCreateTableOrder extends Migration
 				$table->text('gift_message_116')->nullable();
 
 				// amounts
-				$table->decimal('total_discount_amount_116', 10, 2);
+				$table->decimal('total_discount_amount_116', 12, 4)->default(0);
 				$table->decimal('tax_amount_116', 10, 2);
 
 				$table->decimal('shipping_116', 12, 4);										// shipping amount ?? with tax
