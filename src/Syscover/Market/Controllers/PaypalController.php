@@ -107,7 +107,7 @@ class PayPalController extends Controller
         foreach ($discounts as $discount)
         {
             $discountAmount = $discount->discount_amount_126 * -1;
-            
+
             if($discountAmount < 0)
             {
                 $item = new Item();
