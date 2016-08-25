@@ -39,11 +39,7 @@ class MarketCreateTableOrder extends Migration
                 $table->decimal('cart_items_total_without_discounts_116', 12, 4);			// total of cart items. Amount with tax, without discount and without shipping
 				$table->decimal('shipping_amount_116', 12, 4);							    // shipping amount
                 $table->decimal('total_116', 12, 4);										// subtotal and shipping amount with tax
-
-
-                //cartItemsTotalWithoutDiscounts
-
-
+                
                 // gift
                 $table->boolean('has_gift_116');
                 $table->string('gift_from_116')->nullable();
