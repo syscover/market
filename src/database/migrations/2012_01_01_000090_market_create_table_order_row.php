@@ -33,8 +33,8 @@ class MarketCreateTableOrderRow extends Migration
                 $table->decimal('total_without_discounts_117', 12, 4);                      // total from row without discounts
 
                 // discounts over row
-				$table->decimal('discount_subtotal_percentage_117', 12, 4);
-                $table->decimal('discount_total_percentage_117', 12, 4);
+				$table->decimal('discount_subtotal_percentage_117', 10, 2);
+                $table->decimal('discount_total_percentage_117', 10, 2);
                 $table->decimal('discount_subtotal_percentage_amount_117', 12, 4);
                 $table->decimal('discount_total_percentage_amount_117', 12, 4);
                 $table->decimal('discount_subtotal_fixed_amount_117', 12, 4);
