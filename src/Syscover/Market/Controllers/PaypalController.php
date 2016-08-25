@@ -91,13 +91,13 @@ class PayPalController extends Controller
         }
 
         // shipping
-        if($order->shipping_116 > 0)
+        if($order->shipping_amount_116 > 0)
         {
             $item = new Item();
             $item->setName(trans($this->preferences->where('id_018', 'marketPayPalShippingDescription')->first()->value_018))
             ->setCurrency('EUR')                        // currency
             ->setQuantity(1)                            // quantity
-            ->setPrice($order->shipping_116);           // price
+            ->setPrice($order->shipping_amount_116);    // price
 
             $products[] = $item;
         }

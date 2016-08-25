@@ -36,7 +36,7 @@ class MarketCreateTableRecurringOrder extends Migration
 				$table->decimal('tax_amount_117', 10, 2);
 
 				// gift
-				$table->boolean('gift_117');
+				$table->boolean('has_gift_117');
 				$table->string('gift_from_117')->nullable();
 				$table->string('gift_to_117')->nullable();
 				$table->text('gift_message_117')->nullable();

@@ -38,6 +38,7 @@ class MarketCreateTableOrderRow extends Migration
                 $table->decimal('discount_total_percentage_amount_117', 12, 4);
                 $table->decimal('discount_subtotal_fixed_amount_117', 12, 4);
                 $table->decimal('discount_total_fixed_amount_117', 12, 4);
+
 				$table->decimal('discount_amount_117', 12, 4);                              // total amount to discount, fixed plus percentage discounts
 
                 // subtotal with discounts
@@ -51,7 +52,7 @@ class MarketCreateTableOrderRow extends Migration
                 $table->decimal('total_117', 12, 4);                                        // with tax and discounts
 
 				// fields if this row is to gift
-				$table->boolean('gift_117');
+				$table->boolean('has_gift_117');
 				$table->string('gift_from_117')->nullable();
 				$table->string('gift_to_117')->nullable();
 				$table->text('gift_message_117')->nullable();

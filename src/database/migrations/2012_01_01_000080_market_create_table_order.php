@@ -31,21 +31,21 @@ class MarketCreateTableOrder extends Migration
 				$table->string('payment_id_116');
 				$table->text('comments_116')->nullable();
 
-				// gift
-				$table->boolean('has_gift_116');
-				$table->string('gift_from_116')->nullable();
-				$table->string('gift_to_116')->nullable();
-				$table->text('gift_message_116')->nullable();
-
 				// amounts
-				$table->decimal('total_discount_amount_116', 12, 4)->default(0);
-				$table->decimal('tax_amount_116', 10, 2);
-
-				$table->decimal('shipping_116', 12, 4);										// shipping amount ?? with tax
 				$table->decimal('subtotal_116', 12, 4);										// amount without tax and without shipping
+                $table->decimal('discount_amount_116', 12, 4);                              // total amount to discount, fixed plus percentage discounts
+				$table->decimal('subtotal_with_discounts_116', 12, 4);                      // subtotal with discounts applied
+                $table->decimal('tax_amount_116', 12, 4);                                   // total tax amount
+				$table->decimal('shipping_amount_116', 12, 4);							    // shipping amount
 				$table->decimal('total_116', 12, 4);										// subtotal and shipping amount with tax
 
-				// customer data
+                // gift
+                $table->boolean('has_gift_116');
+                $table->string('gift_from_116')->nullable();
+                $table->string('gift_to_116')->nullable();
+                $table->text('gift_message_116')->nullable();
+
+				// customer and invoice data, if is required
 				$table->integer('customer_id_116')->unsigned()->nullable();
 				$table->string('customer_company_116')->nullable();
 				$table->string('customer_tin_116')->nullable();

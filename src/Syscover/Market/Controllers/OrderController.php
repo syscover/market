@@ -15,7 +15,7 @@ class OrderController extends Controller
 	protected $routeSuffix	= 'marketOrder';
 	protected $folder	   	= 'order';
 	protected $package	  	= 'market';
-	protected $indexColumns	 	= ['id_116', 'date_116', 'date_text_116', 'customer_name_116', 'customer_surname_116', ['type' => 'email', 'data' => 'customer_email_116'], 'customer_phone_116', 'name_114', 'name_115', 'total_116'];
+	protected $indexColumns	= ['id_116', 'date_116', 'date_text_116', 'customer_name_116', 'customer_surname_116', ['type' => 'email', 'data' => 'customer_email_116'], 'customer_phone_116', 'name_114', 'name_115', 'total_116'];
 	protected $nameM		= 'name_116';
 	protected $model		= Order::class;
 	protected $icon		 	= 'fa fa-shopping-basket';
@@ -97,7 +97,7 @@ class OrderController extends Controller
 //			'discount_percentage_117'	=> '',
 //			'discount_amount_117'		=> '',
 //			'tax_amount_117'			=> '',
-//			'gift_117'					=> '',
+//			'has_gift_117'				=> '',
 //			'gift_from_117'				=> '',
 //			'gift_to_117'				=> '',
 //			'gift_message_117'			=> '',
@@ -147,11 +147,13 @@ class OrderController extends Controller
 			'status_id_116'			=> $this->request->input('status'),
 			'payment_method_id_116'	=> $this->request->input('paymentMethod'),
 			'comments_116'			=> $this->request->has('comments')? $this->request->input('comments') : null,
-			'has_gift_116'			=> $this->request->has('gift'),
+
+            'has_gift_116'			=> $this->request->has('gift'),
 			'gift_from_116'			=> $this->request->has('giftFrom')? $this->request->input('giftFrom') : null,
 			'gift_to_116'			=> $this->request->has('giftTo')? $this->request->input('giftTo') : null,
 			'gift_message_116'		=> $this->request->has('giftMessage')? $this->request->input('giftMessage') : null,
-			'customer_id_116'		=> $this->request->input('customerId'),
+
+            'customer_id_116'		=> $this->request->input('customerId'),
 			'customer_company_116'	=> $this->request->has('customerCompany')? $this->request->input('customerCompany') : null,
 			'customer_tin_116'		=> $this->request->has('customerTin')? $this->request->input('customerTin') : null,
 			'customer_name_116'		=> $this->request->has('customerName')? $this->request->input('customerName') : null,
@@ -159,14 +161,15 @@ class OrderController extends Controller
 			'customer_email_116'	=> $this->request->input('customerEmail'),
 			'customer_phone_116'	=> $this->request->has('customerPhone')? $this->request->input('customerPhone') : null,
 			'customer_mobile_116'	=> $this->request->has('customerMobile')? $this->request->input('customerMobile') : null,
-			'has_shipping_116'		=> $this->request->has('hasShipping'),
+
+            'has_shipping_116'		=> $this->request->has('hasShipping'),
 			'shipping_company_116'	=> $this->request->has('shippingCompany')? $this->request->input('shippingCompany') : null,
 			'shipping_name_116'		=> $this->request->has('shippingName')? $this->request->input('shippingName') : null,
 			'shipping_surname_116'	=> $this->request->has('shippingSurname')? $this->request->input('shippingSurname') : null,
 			'shipping_email_116'	=> $this->request->has('shippingEmail')? $this->request->input('shippingEmail') : null,
 			'shipping_phone_116'	=> $this->request->has('shippingPhone')? $this->request->input('shippingPhone') : null,
 			'shipping_mobile_116'	=> $this->request->has('shippingMobile')? $this->request->input('shippingMobile') : null,
-			'shipping_116'			=> $this->request->has('shipping')? $this->request->input('shipping') : 0
+			'shipping_amount_116'	=> $this->request->has('shippingAmount')? $this->request->input('shippingAmount') : 0
 		]);
 
 		// if order status is different that previous status order, we record this change

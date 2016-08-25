@@ -122,7 +122,7 @@ class OrderRowController extends Controller
 //			'discount_percentage_117'	=> '',
 //			'discount_amount_117'		=> '',
 //			'tax_amount_117'			=> '',
-//			'gift_117'					=> '',
+//			'has_gift_117'			    => '',
 //			'gift_from_117'				=> '',
 //			'gift_to_117'				=> '',
 //			'gift_message_117'			=> '',
