@@ -90,6 +90,7 @@ return [
     'tax_rule'                                      => 'Regla de impuesto|Reglas de impuesto',
     'total'								            => 'Total',
     'total_discount'                                => 'Descuento total',
+    'total_items_without_discount'                  => 'Total sin descuentos',
     'total_used'								    => 'Total de usos',
     'tpv'										    => 'TPV|TPVs',
     'transportable'								    => 'Transportable',

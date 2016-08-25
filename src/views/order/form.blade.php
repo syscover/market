@@ -379,11 +379,22 @@
 				'labelSize' => 4,
 				'fieldSize' => 4,
 				'type' => 'number',
-				'label' => trans('market::pulsar.total_discount'),
+				'label' => trans_choice('pulsar::pulsar.subtotal', 1),
 				'name' => 'subtotal',
-				'value' => old('subtotal', isset($object->discount_amount_116)? $object->discount_amount_116 : null),
+				'value' => old('subtotal', isset($object->subtotal_116)? $object->subtotal_116 : null),
 				'readOnly' => true,
 			])
+			@include('pulsar::includes.html.form_text_group', [
+				'labelSize' => 4,
+				'fieldSize' => 4,
+				'type' => 'number',
+				'label' => trans('market::pulsar.total_items_without_discount'),
+				'name' => 'cartItemsTotalWithoutDiscounts',
+				'value' => old('subtotal', isset($object->cart_items_total_without_discounts_116)? $object->cart_items_total_without_discounts_116 : null),
+				'readOnly' => true,
+			])
+		</div>
+		<div class="col-md-6">
 			@include('pulsar::includes.html.form_text_group', [
 				'labelSize' => 4,
 				'fieldSize' => 4,
@@ -393,9 +404,15 @@
 				'value' => old('subtotal', isset($object->subtotal_with_discounts_116)? $object->subtotal_with_discounts_116 : null),
 				'readOnly' => true,
 			])
-
-		</div>
-		<div class="col-md-6">
+			@include('pulsar::includes.html.form_text_group', [
+				'labelSize' => 4,
+				'fieldSize' => 4,
+				'type' => 'number',
+				'label' => trans_choice('market::pulsar.tax', 2),
+				'name' => 'taxAmount',
+				'value' => old('subtotal', isset($object->tax_amount_116)? $object->tax_amount_116 : null),
+				'readOnly' => true,
+			])
 			@include('pulsar::includes.html.form_text_group', [
 				'labelSize' => 4,
 				'fieldSize' => 4,
