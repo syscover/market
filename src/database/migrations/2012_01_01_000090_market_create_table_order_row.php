@@ -30,6 +30,7 @@ class MarketCreateTableOrderRow extends Migration
 				$table->decimal('price_117', 12, 4); 								        // unit price
 				$table->decimal('quantity_117', 12, 4); 							        // number of units
 				$table->decimal('subtotal_117', 12, 4);								        // subtotal without tax
+                $table->decimal('total_without_discounts_117', 12, 4);                      // total from row without discounts
 
                 // discounts over row
 				$table->decimal('discount_subtotal_percentage_117', 12, 4);
