@@ -20,5 +20,5 @@ class MarketPaymentMethodSeeder extends Seeder
 
 /*
  * Command to run:
- * php artisan db:seed --class="MarketProductClassTaxSeeder"
+ * php artisan db:seed --class="MarketPaymentMethodSeeder"
  */
