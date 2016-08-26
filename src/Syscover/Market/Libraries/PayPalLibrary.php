@@ -4,10 +4,12 @@ class PayPalLibrary
 {
     /**
      * Execute redirection to PayPal
+     *
+     * @return string
      */
-    public static function executeRedirection()
+    public static function executeRedirection($order)
     {
-        echo PayPalLibrary::createForm();
+        echo self::createForm($order);
         echo '<script>document.forms["paypalForm"].submit();</script>';
     }
 
