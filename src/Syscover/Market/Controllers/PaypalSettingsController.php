@@ -39,7 +39,7 @@ class PayPalSettingsController extends Controller
 
         return $parameters;
     }
-    
+
     public function updateCustomRecord($parameters)
     {
         Preference::setValue('marketPayPalDescriptionItemList', 12, $this->request->input('marketPayPalDescriptionItemList'));

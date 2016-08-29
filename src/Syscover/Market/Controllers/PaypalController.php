@@ -102,13 +102,13 @@ class PayPalController extends Controller
         {
             $item = new Item();
             $item->setName(trans($this->preferences->where('id_018', 'marketPayPalShippingDescription')->first()->value_018))
-            ->setCurrency('EUR')                        // currency
-            ->setQuantity(1)                            // quantity
-            ->setPrice($order->shipping_amount_116);    // price
+                ->setCurrency('EUR')                        // currency
+                ->setQuantity(1)                            // quantity
+                ->setPrice($order->shipping_amount_116);    // price
 
             $products[] = $item;
         }
-        
+
         // set discounts
         $discounts = $order->getDiscounts;
         foreach ($discounts as $discount)
@@ -319,7 +319,7 @@ class PayPalController extends Controller
             ->setInputFields($inputFields);
 
         // For Sample Purposes Only.
-         $this->request = clone $webProfile;
+        $this->request = clone $webProfile;
 
         try
         {
