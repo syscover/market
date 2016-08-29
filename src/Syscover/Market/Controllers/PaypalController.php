@@ -326,9 +326,9 @@ class PayPalController extends Controller
             // Use this call to create a profile.
             $createProfileResponse = $webProfile->create($this->apiContext);
         }
-        catch (\PayPal\Exception\PPConnectionException $ex)
+        catch (\PayPal\Exception\PayPalConnectionException $ex)
         {
-            ResultPrinter::printError("Created Web Profile", "Web Profile", null,  $this->request, $ex);
+            \ResultPrinter::printError("Created Web Profile", "Web Profile", null,  $this->request, $ex);
             exit(1);
         }
         var_dump($createProfileResponse);
@@ -345,7 +345,7 @@ class PayPalController extends Controller
             // Use this call to create a profile.
             $list = \PayPal\Api\WebProfile::get_list($this->apiContext);
         }
-        catch (\PayPal\Exception\PPConnectionException $ex)
+        catch (\PayPal\Exception\PayPalConnectionException $ex)
         {
             \ResultPrinter::printError("Get List of All Web Profiles", "Web Profiles", null, null, $ex);
             exit(1);
