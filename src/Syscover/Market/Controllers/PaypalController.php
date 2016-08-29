@@ -347,7 +347,7 @@ class PayPalController extends Controller
         }
         catch (\PayPal\Exception\PPConnectionException $ex)
         {
-            ResultPrinter::printError("Get List of All Web Profiles", "Web Profiles", null, null, $ex);
+            \ResultPrinter::printError("Get List of All Web Profiles", "Web Profiles", null, null, $ex);
             exit(1);
         }
 
@@ -356,7 +356,7 @@ class PayPalController extends Controller
             $result .= $object->toJSON(128) . PHP_EOL;
         }
 
-        ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
+        \ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
 
         return $list;
     }
