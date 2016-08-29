@@ -28,6 +28,10 @@ class PayPalController extends Controller
     private $preferences;
     private $webProfile;
 
+    /**
+     * PayPalController constructor.
+     * @param Request $request
+     */
     public function __construct(Request $request)
     {
         parent::__construct($request);
@@ -61,6 +65,9 @@ class PayPalController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function createPayment()
     {
         if( $this->request->has('_order'))
@@ -154,7 +161,7 @@ class PayPalController extends Controller
         }
         catch(Exception $ex)
         {
-            ResultPrinter::printError("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", null, $payment, $ex);
+            \ResultPrinter::printError("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", null, $payment, $ex);
             exit;
         }
 
@@ -181,6 +188,9 @@ class PayPalController extends Controller
             ->with('error', 'Unknown error occurred');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function checkoutPayment()
     {
         $paymentId  =  $this->request->input('paymentId');
@@ -192,9 +202,9 @@ class PayPalController extends Controller
         {
             $response = $payment->execute($execution, $this->apiContext);
         }
-        catch(Exception $ex)
+        catch(\Exception $ex)
         {
-            ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
+            \ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
             exit(1);
         }
 
@@ -233,6 +243,32 @@ class PayPalController extends Controller
         }
     }
 
+    public function indexWebProfile()
+    {
+        try
+        {
+            $list = \PayPal\Api\WebProfile::get_list($this->apiContext);
+        }
+        catch (\PayPal\Exception\PayPalConnectionException $ex)
+        {
+            \ResultPrinter::printError("Get List of All Web Profiles", "Web Profiles", null, null, $ex);
+            exit(1);
+        }
+
+        dd($list);
+
+        $result = '';
+
+        foreach ($list as $object)
+        {
+            $result .= $object->toJSON(128) . PHP_EOL;
+        }
+
+        \ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
+
+        return $list;
+    }
+
     public function createWebProfile()
     {
         // ### Create Web Profile
@@ -242,18 +278,21 @@ class PayPalController extends Controller
         // Lets create an instance of FlowConfig and add
         // landing page type information
         $flowConfig = new \PayPal\Api\FlowConfig();
-        // Type of PayPal page to be displayed when a user lands on the PayPal site for checkout. Allowed values: Billing or Login. When set to Billing, the Non-PayPal account landing page is used. When set to Login, the PayPal account login landing page is used.
+
+        // Type of PayPal page to be displayed when a user lands on the PayPal site for checkout.
+        // Allowed values: Billing or Login. When set to Billing, the Non-PayPal account landing page is used. When set to Login, the PayPal account login landing page is used.
         $flowConfig->setLandingPageType("Login");
+
         // The URL on the merchant site for transferring to after a bank transfer payment.
-        $flowConfig->setBankTxnPendingUrl('http://ruralka.com');
+        $flowConfig->setBankTxnPendingUrl('http://urbansafari.es');
 
         // Parameters for style and presentation.
         $presentation = new \PayPal\Api\Presentation();
 
         // A URL to logo image. Allowed vaues: .gif, .jpg, or .png.
-        $presentation->setLogoImage('http://ruralka.com/images/logo-ruralka-paypal.png')
+        $presentation->setLogoImage('http://urbansafari.es/images/logo-urbansafari-paypal.png')
             //	A label that overrides the business name in the PayPal account on the PayPal pages.
-            ->setBrandName("ruralka.com")
+            ->setBrandName("urbansafari.es")
             //  Locale of pages displayed by PayPal payment experience.
             ->setLocaleCode("ES");
 
@@ -271,7 +310,7 @@ class PayPalController extends Controller
         $webProfile = new \PayPal\Api\WebProfile();
 
         // Name of the web experience profile. Required. Must be unique
-        $webProfile->setName("RURALKA" . uniqid())
+        $webProfile->setName("UBANSAFARI" . uniqid())
             // Parameters for flow configuration.
             ->setFlowConfig($flowConfig)
             // Parameters for style and presentation.

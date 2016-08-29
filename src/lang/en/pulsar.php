@@ -98,5 +98,6 @@ return [
     'undefined_price'                               => 'Undefined price',
     'uses_coupon'                                   => 'Uses per coupon',
     'uses_customer'                                 => 'Uses per customer',
+    'web_profile'					                => 'Web profiles|Web profile',
     'without_discount'                              => 'Without discount amount',
 ];

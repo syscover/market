@@ -197,8 +197,15 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | PAYPAL
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                            ['as'=>'marketPayPalSettings',              'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',        'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                     ['as'=>'updateMarketPayPalSettings',        'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',        'action' => 'edit']);
+    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                            ['as'=>'marketPayPalSettings',              'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',           'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                     ['as'=>'updateMarketPayPalSettings',        'uses'=>'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',           'action' => 'edit']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | PAYPAL WEB PROFILES
+    |--------------------------------------------------------------------------
+    */
+    Route::any(config('pulsar.appName') . '/market/paypal/web/profile',                                         ['as'=>'marketPayPalWebProfile',            'uses'=>'Syscover\Market\Controllers\PayPalController@indexWebProfile',                 'resource' => 'market-tpv-paypal-web-profile',      'action' => 'access']);
 });
 
 Route::group(['middleware' => ['noCsrWeb']], function() {

@@ -1,4 +1,4 @@
-<li{!! is_current_resource(['market-order','market-product','market-category','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-rate-zone','market-tax-rule','market-payment-method','market-order-status','market-tpv','market-tpv-paypal','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
+<li{!! is_current_resource(['market-order','market-product','market-category','market-tax-customer','market-tax-customer-group','market-tax-product','market-tax-rate-zone','market-tax-rule','market-payment-method','market-order-status','market-tpv','market-tpv-paypal','market-tpv-paypal-web-profile','market-tpv-paypal-setting','market-cart-price-rule']) !!}>
     <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>{{ trans('market::pulsar.package_name') }}</a>
     <ul class="sub-menu">
         <li{!! is_current_resource(['market-order'], true) !!}>
@@ -28,12 +28,15 @@
                 @endif
             </ul>
         </li>
-        <li{!! is_current_resource(['market-tpv','market-tpv-paypal','market-tpv-paypal-setting'], true) !!}>
+        <li{!! is_current_resource(['market-tpv','market-tpv-paypal','market-tpv-paypal-web-profile','market-tpv-paypal-setting'], true) !!}>
             <a href="javascript:void(0)"><i class="fa fa-credit-card"></i>{{ trans_choice('market::pulsar.tpv', 2) }}</a>
             <ul class="sub-menu">
                 <li{!! is_current_resource(['market-tpv-paypal','market-tpv-paypal-setting'], true) !!}>
                     <a href="javascript:void(0)"><i class="fa fa-paypal"></i>{{ trans('market::pulsar.paypal') }}</a>
                     <ul class="sub-menu">
+                        @if(is_allowed('market-tpv-paypal-web-profile', 'access'))
+                            <li{!! is_current_resource('market-tpv-paypal-web-profile') !!}><a href="{{ route('marketPayPalWebProfile') }}"><i class="fa fa-users"></i>{{ trans_choice('market::pulsar.web_profile', 2) }}</a></li>
+                        @endif
                         @if(is_allowed('market-tpv-paypal-setting', 'access'))
                             <li{!! is_current_resource('market-tpv-paypal-setting') !!}><a href="{{ route('marketPayPalSettings') }}"><i class="fa fa-cog"></i>{{ trans_choice('pulsar::pulsar.setting', 2) }}</a></li>
                         @endif
