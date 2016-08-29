@@ -255,8 +255,6 @@ class PayPalController extends Controller
             exit(1);
         }
 
-        dd($list);
-
         $result = '';
 
         foreach ($list as $object)
@@ -264,6 +262,7 @@ class PayPalController extends Controller
             $result .= $object->toJSON(128) . PHP_EOL;
         }
 
+        dd($result);
         //\ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
 
         return $list;
