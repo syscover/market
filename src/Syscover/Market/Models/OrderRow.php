@@ -41,7 +41,12 @@ class OrderRow extends Model
         return $query->leftJoin('012_111_product', '012_117_order_row.product_id_117', '=', '012_111_product.id_111')
             ->leftJoin('012_112_product_lang', function($join) use ($lang) {
                 $join->on('012_111_product.id_111', '=', '012_112_product_lang.id_112');
-                if($lang !== null)  $join->where('012_112_product_lang.lang_id_112', '=', $lang);
+                if($lang !== null)
+                    $join->where('012_112_product_lang.lang_id_112', '=', $lang);
+                else
+                    // always need filter by lang, because order form,
+                    // need filter your order rows by lang without pass lang variable
+                    $join->where('012_112_product_lang.lang_id_112', '=', base_lang()->id_001);
             });
     }
 
