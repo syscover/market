@@ -2,7 +2,6 @@
 
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use Syscover\Pulsar\Models\Preference;
 
 /**
