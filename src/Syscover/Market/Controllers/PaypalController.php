@@ -248,6 +248,8 @@ class PayPalController extends Controller
         try
         {
             $list = \PayPal\Api\WebProfile::get_list($this->apiContext);
+            var_dump($list);
+            exit;
         }
         catch (\PayPal\Exception\PayPalConnectionException $ex)
         {
@@ -262,7 +264,6 @@ class PayPalController extends Controller
             $result .= $object->toJSON(128) . PHP_EOL;
         }
 
-        dd($result);
         //\ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
 
         return $list;
