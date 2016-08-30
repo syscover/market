@@ -70,7 +70,7 @@ class PayPalWebProfileController extends Controller
 
         // set viewParamentes on parameters for throw to view
         $response['viewParameters'] = $this->viewParameters;
-        $parameters['resource']     = $this->resource;
+        $response['resource']       = $this->resource;
 
         return view('market::paypal_web_profile.index', $response);
     }
