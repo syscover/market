@@ -134,8 +134,6 @@ class OrderController extends Controller
 		// order form, ca nor contain other form, inside form record
 		$this->viewParameters['deleteSelectButton'] = false;
 
-
-
 		return $parameters;
 	}
 

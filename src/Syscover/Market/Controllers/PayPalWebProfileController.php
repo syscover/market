@@ -1,5 +1,7 @@
 <?php namespace Syscover\Market\Controllers;
 
+use PayPal\Api\WebProfile;
+use PayPal\Exception\PayPalConnectionException;
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
 use PayPal\Rest\ApiContext;
@@ -162,5 +164,34 @@ class PayPalWebProfileController extends Controller
         {
             dd($e);
         }
+    }
+
+    public function editCustomRecord($parameters)
+    {
+        $parameters['landingPageTypes'] = array_map(function($object) {
+            $object->name = trans($object->name);
+            return $object;
+        }, config('market.payPalLandingPageTypes'));
+
+        $parameters['shippingDataTypes'] = array_map(function($object) {
+            $object->name = trans($object->name);
+            return $object;
+        }, config('market.payPalShippingDataTypes'));
+
+        $parameters['displayShippingDataTypes'] = array_map(function($object) {
+            $object->name = trans($object->name);
+            return $object;
+        }, config('market.payPalDisplayShippingDataTypes'));
+
+        try
+        {
+            $parameters['object'] = WebProfile::get($parameters['id'], $apiContext);
+        }
+        catch (PayPalConnectionException $e)
+        {
+            dd($e);
+        }
+
+        return $parameters;
     }
 }
