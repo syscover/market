@@ -188,7 +188,7 @@ class PayPalWebProfileController extends Controller
 
         try
         {
-            $parameters['object'] = WebProfile::get($parameters['id'], $apiContext);
+            $parameters['object'] = WebProfile::get($parameters['id'], $this->apiContext);
         }
         catch (PayPalConnectionException $e)
         {
