@@ -59,6 +59,8 @@ class PayPalWebProfileController extends Controller
 
     public function index()
     {
+
+
         try
         {
             $response['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
@@ -67,11 +69,15 @@ class PayPalWebProfileController extends Controller
         {
             dd($e);
         }
+        
+        // get parameters from url route
+        $parameters = $this->request->route()->parameters();
 
         // set viewParamentes on parameters for throw to view
-        $response['viewParameters'] = $this->viewParameters;
-        $response['resource']       = $this->resource;
-        $response['routeSuffix']    = $this->routeSuffix;
+        $response['viewParameters']     = $this->viewParameters;
+        $response['resource']           = $this->resource;
+        $response['routeSuffix']        = $this->routeSuffix;
+        $response['urlParameters']      = $parameters;
 
         return view('market::paypal_web_profile.index', $response);
     }
