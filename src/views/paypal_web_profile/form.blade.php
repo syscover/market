@@ -84,5 +84,5 @@
         'fieldSize' => 4,
         'required' => true
     ])
-    <!-- /.market::order_status.create -->
+    <!-- /market::order_status.create -->
 @stop
