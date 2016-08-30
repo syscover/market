@@ -99,6 +99,8 @@ return [
     'transportable'                                 => 'Transportable',
     'transportable_downloadable'                    => 'Transportable and downloadable',
     'undefined_price'                               => 'Undefined price',
+    'url_after_bank_transfer'                       => 'URL after bank transfer',
+    'url_logo'                                      => 'URL logo',
     'uses_coupon'                                   => 'Uses per coupon',
     'uses_customer'                                 => 'Uses per customer',
     'web_profile'					                => 'Web profiles|Web profile',

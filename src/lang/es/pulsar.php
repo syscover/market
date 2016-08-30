@@ -99,6 +99,8 @@ return [
     'transportable'								    => 'Transportable',
     'transportable_downloadable'				    => 'Transportable y descargable',
     'undefined_price'							    => 'Precio no definido',
+    'url_after_bank_transfer'                       => 'URL después de transferencia bancaria',
+    'url_logo'                                      => 'URL del logo',
     'uses_coupon'								    => 'Usos por cupón',
     'uses_customer'                                 => 'Usos por cliente',
     'web_profile'					                => 'Web profiles|Web profile',

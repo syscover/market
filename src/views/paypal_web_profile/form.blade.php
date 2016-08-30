@@ -10,9 +10,9 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
-        'value' => old('name', isset($object)? $object->getId() : null),
+        'value' => old('id', isset($object)? $object->getId() : null),
         'readOnly' => true,
-        'fieldSize' => 2
+        'fieldSize' => 7
     ])
     @include('pulsar::includes.html.form_select_group', [
         'label' => trans('market::pulsar.landing_page'),
@@ -22,14 +22,19 @@
         'objects' => $landingPageTypes,
         'idSelect' => 'id',
         'nameSelect' => 'name',
-        'fieldSize' => 3
+        'fieldSize' => 4,
+        'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
-        'label' => trans('pulsar::pulsar.name'),
-        'name' => 'name',
-        'value' => old('name', isset($object->name_114)? $object->name_114 : null),
-        'maxLength' => '50',
-        'rangeLength' => '2,50',
+        'label' => trans('market::pulsar.url_after_bank_transfer'),
+        'name' => 'bankTxnPendingUrl',
+        'value' => old('bankTxnPendingUrl', isset($object)? $object->getFlowConfig()->getBankTxnPendingUrl() : null),
+        'required' => true
+    ])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans('market::pulsar.url_logo'),
+        'name' => 'logoImage',
+        'value' => old('logoImage', isset($object)? $object->getPresentation()->getLogoImage() : null),
         'required' => true
     ])
     @include('pulsar::includes.html.form_checkbox_group', [

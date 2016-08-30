@@ -84,7 +84,7 @@ class PayPalWebProfileController extends Controller
         return $parameters;
     }
 
-    public function createWebProfile()
+    public function storeCustomRecord($parameters)
     {
         // ### Create Web Profile
         // Use the /web-profiles resource to create seamless payment experience profiles. See the payment experience overview for further information about using the /payment resource to create the PayPal payment and pass the experience_profile_id.
@@ -96,20 +96,27 @@ class PayPalWebProfileController extends Controller
 
         // Type of PayPal page to be displayed when a user lands on the PayPal site for checkout.
         // Allowed values: Billing or Login. When set to Billing, the Non-PayPal account landing page is used. When set to Login, the PayPal account login landing page is used.
-        $flowConfig->setLandingPageType("Login");
+        $flowConfig->setLandingPageType($this->request->input('landingPageType'));
 
         // The URL on the merchant site for transferring to after a bank transfer payment.
-        $flowConfig->setBankTxnPendingUrl('http://urbansafari.es');
+        $flowConfig->setBankTxnPendingUrl($this->request->input('bankTxnPendingUrl'));
 
         // Parameters for style and presentation.
         $presentation = new \PayPal\Api\Presentation();
 
         // A URL to logo image. Allowed vaues: .gif, .jpg, or .png.
-        $presentation->setLogoImage('http://urbansafari.es/images/logo-urbansafari-paypal.png')
+        $presentation->setLogoImage($this->request->input('logoImage'))
             //	A label that overrides the business name in the PayPal account on the PayPal pages.
             ->setBrandName("urbansafari.es")
             //  Locale of pages displayed by PayPal payment experience.
             ->setLocaleCode("ES");
+    }
+
+    public function createWebProfile()
+    {
+
+
+
 
         // Parameters for input fields customization.
         $inputFields = new \PayPal\Api\InputFields();
