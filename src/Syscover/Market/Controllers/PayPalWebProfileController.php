@@ -18,6 +18,7 @@ class PayPalWebProfileController extends Controller
     protected $folder	   	= 'paypal_web_profile';
     protected $package	  	= 'market';
     protected $icon		 	= 'fa fa-users';
+    protected $objectTrans  = 'web_profile';
 
     private $apiContext;
     private $preferences;
@@ -57,29 +58,37 @@ class PayPalWebProfileController extends Controller
         ]);
     }
 
-    public function index()
+//    public function index()
+//    {
+//        try
+//        {
+//            $response['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
+//        }
+//        catch (\PayPal\Exception\PayPalConnectionException $e)
+//        {
+//            dd($e);
+//        }
+//
+//        // variables necessary for the controller
+//
+//
+//        return view('market::paypal_web_profile.index', $response);
+//    }
+
+    public function customIndex($parameters)
     {
+        $this->viewParameters['deleteSelectButton'] = false;
+
         try
         {
-            $response['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
+            $parameters['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
         }
         catch (\PayPal\Exception\PayPalConnectionException $e)
         {
             dd($e);
         }
 
-        // variables necessary for the controller
-        $parameters                                         = $this->request->route()->parameters();
-        $response['viewParameters']                         = $this->viewParameters;
-        $response['viewParameters']['deleteSelectButton']   = false; // deactivate button  delete select
-        $response['resource']                               = $this->resource;
-        $response['routeSuffix']                            = $this->routeSuffix;
-        $response['urlParameters']                          = $parameters;
-        $response['package']                                = $this->package;
-        $response['folder']                                 = $this->foder;
-        $response['objectTrans']                            = 'market::pulsar.web_profile';
-
-        return view('market::paypal_web_profile.index', $response);
+        return $parameters;
     }
 
     public function createWebProfile()
