@@ -76,6 +76,8 @@ class PayPalWebProfileController extends Controller
         $response['resource']           = $this->resource;
         $response['routeSuffix']        = $this->routeSuffix;
         $response['urlParameters']      = $parameters;
+        $response['package']            = $this->package;
+        $response['objectTrans']        = 'market::pulsar.web_profile';
 
         return view('market::paypal_web_profile.index', $response);
     }
