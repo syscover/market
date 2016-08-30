@@ -19,6 +19,9 @@ class PayPalWebProfileController extends Controller
     protected $routeSuffix	= 'marketPayPalWebProfile';
     protected $folder	   	= 'paypal_web_profile';
     protected $package	  	= 'market';
+    protected $indexColumns = null;
+    protected $nameM        = null;
+    protected $model        = null;
     protected $icon		 	= 'fa fa-users';
     protected $objectTrans  = 'web_profile';
 
@@ -134,14 +137,14 @@ class PayPalWebProfileController extends Controller
             // When set to 1, PayPal does not display shipping address fields whatsoever.
             // When set to 2, if you do not pass the shipping address, PayPal obtains it from the buyer’s account profile.
             // For digital goods, this field is required, and you must set it to 1.
-            ->setNoShipping(1)
+            ->setNoShipping((int)$this->request->input('shippingDataType'))
 
             // Determines whether or not the PayPal pages should display the shipping address and not the shipping address on file with PayPal for this buyer.
             // Displaying the PayPal street address on file does not allow the buyer to edit that address.
             // Allowed values: 0 or 1.
             // When set to 0, the PayPal pages should not display the shipping address.
             // When set to 1, the PayPal pages should display the shipping address.
-            ->setAddressOverride(0);
+            ->setAddressOverride((int)$this->request->input('displayShippingDataType'));
 
         // #### Payment Web experience profile resource
         $webProfile = new \PayPal\Api\WebProfile();
@@ -193,5 +196,48 @@ class PayPalWebProfileController extends Controller
         }
 
         return $parameters;
+    }
+
+    public function updateCustomRecord($parameters)
+    {
+        try
+        {
+            $webProfile = WebProfile::get($parameters['id'], $this->apiContext);
+
+            $webProfile->getFlowConfig()->setLandingPageType($this->request->input('landingPageType'));
+            $webProfile->getFlowConfig()->setBankTxnPendingUrl($this->request->input('bankTxnPendingUrl'));
+            $webProfile->getPresentation()->setLogoImage($this->request->input('logoImage'));
+            $webProfile->getPresentation()->setBrandName($this->request->input('brandName'));
+            $webProfile->getPresentation()->setLocaleCode($this->request->input('localCode'));
+            $webProfile->getInputFields()->setAllowNote($this->request->has('allowNote'));
+            $webProfile->getInputFields()->setNoShipping((int)$this->request->input('shippingDataType'));
+            $webProfile->getInputFields()->setAddressOverride((int)$this->request->input('displayShippingDataType'));
+            $webProfile->setName($this->request->input('name'));
+
+            if ($webProfile->update($this->apiContext))
+            {
+                WebProfile::get($parameters['id'], $this->apiContext);
+            }
+        }
+        catch (PayPalConnectionException $e)
+        {
+            dd($e);
+        }
+    }
+
+    public function deleteCustomRecord($parameters)
+    {
+        $webProfile = new WebProfile();
+        $webProfile->setId($parameters['id']);
+
+        try
+        {
+            $webProfile->delete($this->apiContext);
+
+        }
+        catch (PayPalConnectionException $e)
+        {
+            dd($e);
+        }
     }
 }
