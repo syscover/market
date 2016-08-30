@@ -62,5 +62,27 @@
         'value' => 1,
         'checked' => old('allowNote', isset($object)? $object->getInputFields()->getAllowNote() : null)
     ])
+    @include('pulsar::includes.html.form_select_group', [
+        'label' => trans('market::pulsar.shipping_data_type'),
+        'name' => 'shippingDataType',
+        'value' => old('shippingDataType', isset($object)? $object->getInputFields()->getNoShipping() : null),
+        'required' => true,
+        'objects' => $shippingDataTypes,
+        'idSelect' => 'id',
+        'nameSelect' => 'name',
+        'fieldSize' => 4,
+        'required' => true
+    ])
+    @include('pulsar::includes.html.form_select_group', [
+        'label' => trans('market::pulsar.display_shipping_data_type'),
+        'name' => 'displayShippingDataType',
+        'value' => old('displayShippingDataType', isset($object)? $object->getInputFields()->getAddressOverride() : null),
+        'required' => true,
+        'objects' => $displayShippingDataTypes,
+        'idSelect' => 'id',
+        'nameSelect' => 'name',
+        'fieldSize' => 4,
+        'required' => true
+    ])
     <!-- /.market::order_status.create -->
 @stop
