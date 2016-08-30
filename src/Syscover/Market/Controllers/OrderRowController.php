@@ -52,7 +52,8 @@ class OrderRowController extends Controller
 		switch ($indexColumn['type'])
 		{
 			case 'data':
-				$row[] = ! empty($aObject->{$indexColumn['data']})? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></a>' : null;
+                $dataRow = json_decode($aObject->{$indexColumn['data']}, true);
+				$row[] = isset($dataRow['info'])? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></a>' : null;
 				break;
             case 'gift':
                 $row[] = $aObject->{$indexColumn['data']}? '<a class="ajax-magnific-popup" href="' . route('apiGetGiftMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-gift fa-lg" aria-hidden="true"></i></a>' : null;
