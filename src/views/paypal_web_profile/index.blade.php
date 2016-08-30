@@ -36,7 +36,6 @@
             <td>{{ $webProfile->getId() }}</td>
             <td>{{ $webProfile->getName() }}</td>
             <td>
-                
                 @if(is_allowed($resource, 'edit'))
                     <a class="btn btn-xs bs-tooltip" href="{{ route('edit' . ucfirst($routeSuffix), ['id' => $webProfile->getId()]) }}" data-original-title="{{ trans('pulsar::pulsar.edit_record') }}"><i class="fa fa-pencil"></i></a>
                 @endif
