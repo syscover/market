@@ -243,30 +243,18 @@ class PayPalController extends Controller
         }
     }
 
-    public function indexWebProfile()
+    public function webProfiles()
     {
         try
         {
-            $list = \PayPal\Api\WebProfile::get_list($this->apiContext);
-            var_dump($list);
-            exit;
+            $response['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
         }
-        catch (\PayPal\Exception\PayPalConnectionException $ex)
+        catch (\PayPal\Exception\PayPalConnectionException $e)
         {
-            //\ResultPrinter::printError("Get List of All Web Profiles", "Web Profiles", null, null, $ex);
-            exit(1);
+            dd($e);
         }
 
-        $result = '';
-
-        foreach ($list as $object)
-        {
-            $result .= $object->toJSON(128) . PHP_EOL;
-        }
-
-        //\ResultPrinter::printResult("Get List of All Web Profiles", "Web Profiles", null, null, $result);
-
-        return $list;
+        return view('market::paypal_web_profile.index', $response);
     }
 
     public function createWebProfile()

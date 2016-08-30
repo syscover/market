@@ -205,7 +205,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | PAYPAL WEB PROFILES
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/paypal/web/profile',                                         ['as' => 'marketPayPalWebProfile',            'uses' => 'Syscover\Market\Controllers\PayPalController@indexWebProfile',                 'resource' => 'market-tpv-paypal-web-profile',      'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/paypal/web/profile',                                         ['as' => 'marketPayPalWebProfile',            'uses' => 'Syscover\Market\Controllers\PayPalController@webProfiles',                     'resource' => 'market-tpv-paypal-web-profile',      'action' => 'access']);
 });
 
 Route::group(['middleware' => ['noCsrWeb']], function() {
