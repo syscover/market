@@ -205,7 +205,12 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | PAYPAL WEB PROFILES
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/paypal/web/profile',                                         ['as' => 'marketPayPalWebProfile',            'uses' => 'Syscover\Market\Controllers\PayPalController@webProfiles',                     'resource' => 'market-tpv-paypal-web-profile',      'action' => 'access']);
+    Route::any(config('pulsar.appName') . '/market/paypal/web/profile',                                         ['as' => 'marketPayPalWebProfile',              'uses' => 'Syscover\Market\Controllers\PayPalController@webProfiles',                     'resource' => 'market-tpv-paypal-web-profile',      'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/tax/rule/create/{offset}',                                   ['as' => 'createMarketPayPalWebProfile',        'uses' => 'Syscover\Market\Controllers\TaxRuleController@createRecord',               'resource' => 'market-tax-rule',        'action' => 'create']);
+    Route::post(config('pulsar.appName') . '/market/tax/rule/store/{offset}',                                   ['as' => 'storeMarketPayPalWebProfile',         'uses' => 'Syscover\Market\Controllers\TaxRuleController@storeRecord',                'resource' => 'market-tax-rule',        'action' => 'create']);
+    Route::get(config('pulsar.appName') . '/market/tax/rule/{id}/edit/{offset}',                                ['as' => 'editMarketPayPalWebProfile',         'uses' => 'Syscover\Market\Controllers\TaxRuleController@editRecord',                 'resource' => 'market-tax-rule',        'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/tax/rule/update/{id}/{offset}',                              ['as' => 'updateMarketPayPalWebProfile',               'uses' => 'Syscover\Market\Controllers\TaxRuleController@updateRecord',               'resource' => 'market-tax-rule',        'action' => 'edit']);
+    Route::get(config('pulsar.appName') . '/market/tax/rule/delete/{id}/{offset}',                              ['as' => 'deleteMarketPayPalWebProfile',               'uses' => 'Syscover\Market\Controllers\TaxRuleController@deleteRecord',               'resource' => 'market-tax-rule',        'action' => 'delete']);
 });
 
 Route::group(['middleware' => ['noCsrWeb']], function() {
