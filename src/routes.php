@@ -96,6 +96,7 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     */
     Route::any(config('pulsar.appName') . '/market/order/row/json/data/{ref}/{modal}',                          ['as' => 'jsonDataMarketOrderRow',            'uses' => 'Syscover\Market\Controllers\OrderRowController@jsonData',              'resource' => 'market-order',        'action' => 'access']);
     Route::get(config('pulsar.appName') . '/market/order/row/get/data/row/{id}',                                ['as' => 'apiGetDataMarketOrderRow',          'uses' => 'Syscover\Market\Controllers\OrderRowController@apiGetDataRow',         'resource' => 'market-order',        'action' => 'access']);
+    Route::get(config('pulsar.appName') . '/market/order/row/get/gift/row/{id}',                                ['as' => 'apiGetGiftMarketOrderRow',          'uses' => 'Syscover\Market\Controllers\OrderRowController@apiGetGiftRow',         'resource' => 'market-order',        'action' => 'access']);
     
     /*
     |--------------------------------------------------------------------------

@@ -14,7 +14,7 @@ class OrderRowController extends Controller
 	protected $routeSuffix	= 'marketOrder';
 	protected $folder	   	= 'order';
 	protected $package	  	= 'market';
-	protected $indexColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', 'discount_amount_117', 'subtotal_with_discounts_117', 'tax_amount_117', 'total_117', ['type' => 'data', 'data' => 'data_117']];
+	protected $indexColumns	 	= ['name_117', 'quantity_117', 'subtotal_117', 'discount_amount_117', 'subtotal_with_discounts_117', 'tax_amount_117', 'total_117', ['type' => 'gift', 'data' => 'has_gift_117'], ['type' => 'data', 'data' => 'data_117']];
 	protected $nameM		= 'name_117';
 	protected $model		= OrderRow::class;
 	protected $icon		 	= 'fa fa-shopping-basket';
@@ -54,6 +54,9 @@ class OrderRowController extends Controller
 			case 'data':
 				$row[] = ! empty($aObject->{$indexColumn['data']})? '<a class="ajax-magnific-popup" href="' . route('apiGetDataMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i></a>' : null;
 				break;
+            case 'gift':
+                $row[] = $aObject->{$indexColumn['data']}? '<a class="ajax-magnific-popup" href="' . route('apiGetGiftMarketOrderRow', ['id' => $aObject->id_117]) . '"><i class="fa fa-gift fa-lg" aria-hidden="true"></i></a>' : null;
+                break;
 		}
 
 		return $row;
@@ -174,6 +177,28 @@ class OrderRowController extends Controller
 //			'shipping_mobile_116'	=> $this->request->has('shippingMobile')? $this->request->input('shippingMobile') : null,
 //		]);
 //	}
+
+    public function apiGetGiftRow()
+    {
+        $parameters = $this->request->route()->parameters();
+
+        $orderRow = OrderRow::builder(base_lang())->where('id_117', $parameters['id'])->first();
+
+        if($orderRow->has_gift_117)
+        {
+            $data = [
+                ['trans' => trans('pulsar::pulsar.from'),       'value' => $orderRow->gift_from_117],
+                ['trans' => trans('pulsar::pulsar.to'),         'value' => $orderRow->gift_to_117],
+                ['trans' => trans('pulsar::pulsar.message'),    'value' => $orderRow->gift_message_117]
+            ];
+        }
+        else
+        {
+            $data = [];
+        }
+
+        return view('market::order.info_modal', ['info' => $data]);
+    }
 
 	public function apiGetDataRow()
 	{
