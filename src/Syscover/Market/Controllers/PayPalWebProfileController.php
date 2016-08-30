@@ -46,7 +46,7 @@ class PayPalWebProfileController extends Controller
         }
 
         // init PayPal API Context
-        $this->apiContext   = new ApiContext(new OAuthTokenCredential($clientID, $secret));
+        $this->apiContext       = new ApiContext(new OAuthTokenCredential($clientID, $secret));
 
         // SDK configuration
         $this->apiContext->setConfig([
@@ -58,26 +58,19 @@ class PayPalWebProfileController extends Controller
         ]);
     }
 
-//    public function index()
-//    {
-//        try
-//        {
-//            $response['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
-//        }
-//        catch (\PayPal\Exception\PayPalConnectionException $e)
-//        {
-//            dd($e);
-//        }
-//
-//        // variables necessary for the controller
-//
-//
-//        return view('market::paypal_web_profile.index', $response);
-//    }
-
     public function customIndex($parameters)
     {
         $this->viewParameters['deleteSelectButton'] = false;
+
+
+        if($this->viewParameters['editButton'])
+            $actions .= is_allowed($this->resource, 'edit')? '<a class="btn btn-xs bs-tooltip' . (isset($actionUrlParameters['modal']) && $actionUrlParameters['modal']? ' magnific-popup' : null) . '" href="' . route('edit' . ucfirst($this->routeSuffix), $actionUrlParameters) . '" data-original-title="' . trans('pulsar::pulsar.edit_record') . '"><i class="fa fa-pencil"></i></a>' : null;
+
+
+        if($this->viewParameters['deleteButton'])
+            $actions .= is_allowed($this->resource, 'delete') ? '<a class="btn btn-xs bs-tooltip delete-record" data-id="' . $aObject[$instance->getKeyName()] . '" data-original-title="' . trans('pulsar::pulsar.delete_record') . '" data-delete-url="' . route('delete' . ucfirst($this->routeSuffix), $actionUrlParameters) . '"><i class="fa fa-trash"></i></a>' : null;
+
+
 
         try
         {
