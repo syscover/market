@@ -61,7 +61,7 @@ class PayPalWebProfileController extends Controller
     public function customIndex($parameters)
     {
         $this->viewParameters['deleteSelectButton'] = false;
-        
+
         try
         {
             $parameters['webProfiles'] = \PayPal\Api\WebProfile::get_list($this->apiContext);
