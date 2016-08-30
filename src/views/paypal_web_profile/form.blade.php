@@ -14,6 +14,12 @@
         'readOnly' => true,
         'fieldSize' => 7
     ])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans_choice('pulsar::pulsar.name', 1),
+        'name' => 'name',
+        'value' => old('name', isset($object)? $object->getName() : null),
+        'required' => true
+    ])
     @include('pulsar::includes.html.form_select_group', [
         'label' => trans('market::pulsar.landing_page'),
         'name' => 'landingPageType',
@@ -37,11 +43,24 @@
         'value' => old('logoImage', isset($object)? $object->getPresentation()->getLogoImage() : null),
         'required' => true
     ])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans('market::pulsar.brand_name'),
+        'name' => 'brandName',
+        'value' => old('brandName', isset($object)? $object->getPresentation()->getBrandName() : null),
+        'required' => true
+    ])
+    @include('pulsar::includes.html.form_text_group', [
+        'label' => trans('market::pulsar.local_code'),
+        'name' => 'localCode',
+        'value' => old('localCode', isset($object)? $object->getPresentation()->getLocaleCode() : null),
+        'fieldSize' => 2,
+        'required' => true
+    ])
     @include('pulsar::includes.html.form_checkbox_group', [
-        'label' => trans('pulsar::pulsar.active'),
-        'name' => 'active',
+        'label' => trans('market::pulsar.allow_note'),
+        'name' => 'allowNote',
         'value' => 1,
-        'checked' => old('active', isset($object->active_114)? $object->active_114 : null)
+        'checked' => old('allowNote', isset($object)? $object->getInputFields()->getAllowNote() : null)
     ])
     <!-- /.market::order_status.create -->
 @stop

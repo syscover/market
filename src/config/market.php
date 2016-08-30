@@ -41,7 +41,7 @@ return [
     //******************************************************************************************************************
     //***   PayPal settings
     //******************************************************************************************************************
-    // PayPal mode, sandbox | live
+    // PAYPAL MODE, sandbox | live
     'payPalMode'                    => env('PAYPAL_MODE', ''),
 
     // SANDBOX
@@ -55,9 +55,20 @@ return [
     'payPalLiveSecret'              => env('PAYPAL_LIVE_SECRET_KEY', ''),
 
     // LADING PAGE TYPES TO PAYPAL WEB PROFILE
-    'payPalLandingPageTypes'              => [
+    'payPalLandingPageTypes'        => [
         (object)['id' => 'Billing',     'name' => 'market::pulsar.billing'],
         (object)['id' => 'Login',       'name' => 'market::pulsar.login'],
+    ],
+
+    'payPalShippingDataTypes'       => [
+        (object)['id' => 0,      'name' => 'market::pulsar.display_shipping_address_fields'],
+        (object)['id' => 1,      'name' => 'market::pulsar.not_display_shipping_address_fields'],
+        (object)['id' => 2,      'name' => 'market::pulsar.get_shipping_address_from_buyer_profile'],
+    ],
+
+    'payPalDisplayShippingDataTypes' => [
+        (object)['id' => 0,      'name' => 'market::pulsar.display_shipping_address'],
+        (object)['id' => 1,      'name' => 'market::pulsar.not_display_shipping_address'],
     ],
 
     //******************************************************************************************************************
