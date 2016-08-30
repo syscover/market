@@ -73,7 +73,7 @@ class PayPalWebProfileController extends Controller
 
         // set viewParamentes on parameters for throw to view
         $response['viewParameters']                         = $this->viewParameters;
-        $response['viewParameters']['deleteSelectButton']   == false; // deactivate button  delete select
+        $response['viewParameters']['deleteSelectButton']   = false; // deactivate button  delete select
         $response['resource']                               = $this->resource;
         $response['routeSuffix']                            = $this->routeSuffix;
         $response['urlParameters']                          = $parameters;
