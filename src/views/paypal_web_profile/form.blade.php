@@ -10,16 +10,9 @@
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
-        'value' => old('name', isset($object->id_114)? $object->id_114 : null),
+        'value' => old('name', isset($object)? $object->getId() : null),
         'readOnly' => true,
         'fieldSize' => 2
-    ])
-    @include('pulsar::includes.html.form_image_group', [
-        'label' => trans_choice('pulsar::pulsar.language', 1),
-        'name' => 'lang',
-        'nameImage' => $lang->name_001,
-        'value' => $lang->id_001,
-        'url' => asset('/packages/syscover/pulsar/storage/langs/' . $lang->image_001)
     ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans('pulsar::pulsar.name'),

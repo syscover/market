@@ -74,6 +74,11 @@ class PayPalWebProfileController extends Controller
         return $parameters;
     }
 
+    public function createCustomRecord($parameters)
+    {
+        return $parameters;
+    }
+
     public function createWebProfile()
     {
         // ### Create Web Profile
