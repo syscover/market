@@ -157,10 +157,9 @@ class PayPalController extends Controller
         {
             $payment->create($this->apiContext);
         }
-        catch(Exception $ex)
+        catch(\Exception $ex)
         {
-            //\ResultPrinter::printError("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", null, $payment, $ex);
-            exit;
+            dd($ex->getMessage());
         }
 
         foreach($payment->getLinks() as $link)
@@ -202,8 +201,7 @@ class PayPalController extends Controller
         }
         catch(\Exception $ex)
         {
-            //\ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
-            exit(1);
+            dd($ex->getMessage());
         }
 
         $order = Order::builder()->where('payment_id_116',  $this->request->input('paymentId'))->first();
