@@ -2,6 +2,7 @@
 
 return [
     'apply_shipping_amount'                         => 'Apply shipping amount',
+    'billing'                                       => 'Billing',
     'catalog'                                       => 'Catalog',
     'cart_price_rule'                               => 'Cart price rule|Cart price rules',
     'catalog_price_rule'                            => 'Catalog price rule|Catalog price rules',
@@ -42,6 +43,8 @@ return [
     'has_coupon'                                    => 'Has coupon?',
     'including_tax'                                 => 'Including tax',
     'items_list_description'                        => 'Items list description',
+    'landing_page'                                  => 'Landing page',
+    'login'                                         => 'Login',
     'marketing'                                     => 'Marketing',
     'maximum_discount_amount'                       => 'Maximum discount amount',
     'maximum_price'                                 => 'Maximum price',

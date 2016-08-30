@@ -76,6 +76,11 @@ class PayPalWebProfileController extends Controller
 
     public function createCustomRecord($parameters)
     {
+        $parameters['landingPageTypes'] = array_map(function($object) {
+            $object->name = trans($object->name);
+            return $object;
+        }, config('market.payPalLandingPageTypes'));
+
         return $parameters;
     }
 

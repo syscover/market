@@ -54,6 +54,12 @@ return [
     'payPalLiveClientId'            => env('PAYPAL_LIVE_CLIENT_ID', ''),
     'payPalLiveSecret'              => env('PAYPAL_LIVE_SECRET_KEY', ''),
 
+    // LADING PAGE TYPES TO PAYPAL WEB PROFILE
+    'payPalLandingPageTypes'              => [
+        (object)['id' => 'Billing',     'name' => 'market::pulsar.billing'],
+        (object)['id' => 'Login',       'name' => 'market::pulsar.login'],
+    ],
+
     //******************************************************************************************************************
     //***   RedSys settings
     //******************************************************************************************************************

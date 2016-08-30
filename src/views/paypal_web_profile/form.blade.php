@@ -14,6 +14,16 @@
         'readOnly' => true,
         'fieldSize' => 2
     ])
+    @include('pulsar::includes.html.form_select_group', [
+        'label' => trans('market::pulsar.landing_page'),
+        'name' => 'landingPageType',
+        'value' => old('landingPageType', isset($object)? $object->getFlowConfig()->getLandingPageType() : null),
+        'required' => true,
+        'objects' => $landingPageTypes,
+        'idSelect' => 'id',
+        'nameSelect' => 'name',
+        'fieldSize' => 3
+    ])
     @include('pulsar::includes.html.form_text_group', [
         'label' => trans('pulsar::pulsar.name'),
         'name' => 'name',

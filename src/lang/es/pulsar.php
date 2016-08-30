@@ -2,6 +2,7 @@
 
 return [
     'apply_shipping_amount'						    => 'Aplicar descuento al transporte',
+    'billing'                                       => 'Facturación',
     'catalog'									    => 'Catálogo',
     'cart_price_rule'							    => 'Regla de carro de compra|Reglas de carro de compra',
     'catalog_price_rule'                            => 'Ragla de catálogo|Raglas de catálogo',
@@ -42,6 +43,8 @@ return [
     'has_coupon'								    => '¿Tiene cupón?',
     'including_tax'								    => 'Con impuestos',
     'items_list_description'					    => 'Descripción lista de elementos',
+    'landing_page'                                  => 'Página de inicio',
+    'login'                                         => 'Acceso',
     'marketing'									    => 'Marketing',
     'maximum_discount_amount'					    => 'Cantidad máxima de descuento',
     'maximum_price'								    => 'Precio máximo',
