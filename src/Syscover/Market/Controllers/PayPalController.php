@@ -2,7 +2,6 @@
 
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
@@ -26,7 +25,7 @@ class PayPalController extends Controller
 {
     private $apiContext;
     private $preferences;
-    
+
     /**
      * PayPalController constructor.
      * @param Request $request

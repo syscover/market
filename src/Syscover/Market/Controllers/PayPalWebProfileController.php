@@ -2,7 +2,6 @@
 
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
@@ -18,25 +17,15 @@ use Syscover\Market\Models\Order;
 use Syscover\Pulsar\Models\Preference;
 
 /**
- * Class PayPalController
+ * Class PayPalWebProfileController
  * @package Syscover\Market\Controllers
  */
 
-class PayPalController extends Controller
+class PayPalWebProfileController extends Controller
 {
     private $apiContext;
     private $preferences;
     private $webProfile;
-    protected $viewParameters = [
-        'newButton'             => true,    // button from index view to create record
-        'cancelButton'          => true,    // button from form view to cancel and return to index
-        'checkBoxColumn'        => true,    // checkbox from index view to select various records
-        'showButton'            => false,   // button from ajax response, to view record
-        'editButton'            => true,    // button from ajax response, to edit record
-        'deleteButton'          => true,    // button from ajax response, to delete record
-        'deleteSelectButton'    => true,    // button delete records when select checkbox on index view
-        'relatedButton'         => false,   // button to related elements, used on modal windows
-    ];
 
     /**
      * PayPalController constructor.
@@ -75,185 +64,7 @@ class PayPalController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function createPayment()
-    {
-        if( $this->request->has('_order'))
-        {
-            $order     = Order::builder()->where('id_116',  $this->request->input('_order'))->first();
-            $orderRows = $order->getOrderRows;
-        }
-        else
-        {
-            // error no hay pedido
-            exit;
-        }
-
-        $payer = new Payer();
-        $payer->setPaymentMethod('paypal');
-
-        // create products
-        $products = [];
-        foreach($orderRows as $row)
-        {
-            $item = new Item();
-            $item->setName($row->name_117)              // product name
-            ->setCurrency('EUR')                        // currency
-            ->setQuantity(intval($row->quantity_117))   // quantity
-            ->setPrice($row->price_117);                // unit price
-
-            $products[] = $item;
-        }
-
-        // shipping
-        if($order->shipping_amount_116 > 0)
-        {
-            $item = new Item();
-            $item->setName(trans($this->preferences->where('id_018', 'marketPayPalShippingDescription')->first()->value_018))
-                ->setCurrency('EUR')                        // currency
-                ->setQuantity(1)                            // quantity
-                ->setPrice($order->shipping_amount_116);    // price
-
-            $products[] = $item;
-        }
-
-        // set discounts
-        $discounts = $order->getDiscounts;
-        foreach ($discounts as $discount)
-        {
-            $discountAmount = $discount->discount_amount_126 * -1;
-
-            if($discountAmount < 0)
-            {
-                $item = new Item();
-                $item->setName($discount->name_text_value_126)
-                    ->setCurrency('EUR')                        // currency
-                    ->setQuantity(1)                            // quantity
-                    ->setPrice($discountAmount);                // price
-
-                $products[] = $item;
-            }
-        }
-
-        // products list
-        $itemList = new ItemList();
-        $itemList->setItems($products);
-
-        // total charge
-        $amount = new Amount();
-        $amount->setCurrency('EUR')
-            ->setTotal($order->total_116);
-
-        // create transaction
-        $transaction = new Transaction();
-        $transaction->setAmount($amount)
-            ->setItemList($itemList)
-            ->setDescription($this->preferences->where('id_018', 'marketPayPalDescriptionItemList')->first()->value_018);
-
-        // config URL request
-        $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl(route('checkoutMarketPayPalPayment'))
-            ->setCancelUrl(route('home'));
-
-        // create payment
-        $payment = new Payment();
-        $payment->setIntent('sale')
-            ->setExperienceProfileId($this->webProfile) // web profile
-            ->setPayer($payer)
-            ->setRedirectUrls($redirectUrls)
-            ->setTransactions([$transaction]);
-
-        try
-        {
-            $payment->create($this->apiContext);
-        }
-        catch(Exception $ex)
-        {
-            //\ResultPrinter::printError("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", null, $payment, $ex);
-            exit;
-        }
-
-        foreach($payment->getLinks() as $link)
-        {
-            if($link->getRel() == 'approval_url')
-            {
-                $redirectUrl = $link->getHref();
-                break;
-            }
-        }
-
-        // record payment id on order
-        $order->payment_id_116 = $payment->getId();
-        $order->save();
-
-
-        if(isset($redirectUrl))
-        {
-            return redirect()->away($redirectUrl);
-        }
-
-        return redirect()->route('home')
-            ->with('error', 'Unknown error occurred');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function checkoutPayment()
-    {
-        $paymentId  =  $this->request->input('paymentId');
-        $payment    = Payment::get($paymentId, $this->apiContext);
-        $execution  = new PaymentExecution();
-        $execution->setPayerId( $this->request->input('PayerID'));
-
-        try
-        {
-            $response = $payment->execute($execution, $this->apiContext);
-        }
-        catch(\Exception $ex)
-        {
-            //\ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
-            exit(1);
-        }
-
-        $order = Order::builder()->where('payment_id_116',  $this->request->input('paymentId'))->first();
-
-        if($response->getState() == 'approved')
-        {
-            if(!empty($order->order_status_successful_id_115))
-            {
-                // set next status to complete payment method
-                $order->status_id_116 = $order->order_status_successful_id_115;
-                $order->save();
-            }
-
-            $viewResponse['html'] = '
-                <form id="redirect_paypal_form" action="' . route($this->preferences->where('id_018', 'marketPayPalSuccessRoute')->first()->value_018) . '" method="post">
-                    <input type="hidden" name="_token" value="' . csrf_token() . '"/>
-                    <input type="hidden" name="order" value="' . $order->id_116 . '"/>
-                </form>
-                <script>document.getElementById("redirect_paypal_form").submit();</script>
-            ';
-
-            return view('pulsar::common.views.html_display', $viewResponse);
-        }
-        else
-        {
-            $viewResponse['html'] = '
-                <form id="redirect_paypal_form" action="' . route($this->preferences->where('id_018', 'marketPayPalErrorRoute')->first()->value_018) . '" method="post">
-                    <input type="hidden" name="_token" value="' . csrf_token() . '"/>
-                    <input type="hidden" name="order" value="' . $order->id_116 . '"/>
-                </form>
-                <script>document.getElementById("redirect_paypal_form").submit();</script>
-            ';
-
-            return view('pulsar::common.views.html_display', $viewResponse);
-        }
-    }
-
-    public function webProfiles()
+    public function index()
     {
         try
         {
