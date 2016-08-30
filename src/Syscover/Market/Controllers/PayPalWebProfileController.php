@@ -16,7 +16,6 @@ class PayPalWebProfileController extends Controller
 {
     private $apiContext;
     private $preferences;
-    private $webProfile;
 
     /**
      * PayPalController constructor.
@@ -31,13 +30,11 @@ class PayPalWebProfileController extends Controller
         // Set mode
         if(config('market.payPalMode') == 'live')
         {
-            $this->webProfile   = config('market.payPalLiveWebProfile');
             $clientID           = config('market.payPalLiveClientId');
             $secret             = config('market.payPalLiveSecret');
         }
         else
         {
-            $this->webProfile   = config('market.payPalSandboxWebProfile');
             $clientID           = config('market.payPalSandboxClientId');
             $secret             = config('market.payPalSandboxSecret');
         }
