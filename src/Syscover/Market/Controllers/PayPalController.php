@@ -27,6 +27,16 @@ class PayPalController extends Controller
     private $apiContext;
     private $preferences;
     private $webProfile;
+    protected $viewParameters = [
+        'newButton'             => true,    // button from index view to create record
+        'cancelButton'          => true,    // button from form view to cancel and return to index
+        'checkBoxColumn'        => true,    // checkbox from index view to select various records
+        'showButton'            => false,   // button from ajax response, to view record
+        'editButton'            => true,    // button from ajax response, to edit record
+        'deleteButton'          => true,    // button from ajax response, to delete record
+        'deleteSelectButton'    => true,    // button delete records when select checkbox on index view
+        'relatedButton'         => false,   // button to related elements, used on modal windows
+    ];
 
     /**
      * PayPalController constructor.
