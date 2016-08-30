@@ -68,16 +68,15 @@ class PayPalWebProfileController extends Controller
             dd($e);
         }
 
-        // get parameters from url route
-        $parameters = $this->request->route()->parameters();
-
-        // set viewParamentes on parameters for throw to view
+        // variables necessary for the controller
+        $parameters                                         = $this->request->route()->parameters();
         $response['viewParameters']                         = $this->viewParameters;
         $response['viewParameters']['deleteSelectButton']   = false; // deactivate button  delete select
         $response['resource']                               = $this->resource;
         $response['routeSuffix']                            = $this->routeSuffix;
         $response['urlParameters']                          = $parameters;
         $response['package']                                = $this->package;
+        $response['folder']                                 = $this->foder;
         $response['objectTrans']                            = 'market::pulsar.web_profile';
 
         return view('market::paypal_web_profile.index', $response);
