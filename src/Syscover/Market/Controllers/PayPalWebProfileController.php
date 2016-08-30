@@ -14,6 +14,11 @@ use Syscover\Pulsar\Models\Preference;
 
 class PayPalWebProfileController extends Controller
 {
+    protected $routeSuffix	= 'marketPayPalWebProfile';
+    protected $folder	   	= 'paypal_web_profile';
+    protected $package	  	= 'market';
+    protected $icon		 	= 'fa fa-users';
+
     private $apiContext;
     private $preferences;
 
@@ -65,6 +70,7 @@ class PayPalWebProfileController extends Controller
 
         // set viewParamentes on parameters for throw to view
         $response['viewParameters'] = $this->viewParameters;
+        $parameters['resource']     = $this->resource;
 
         return view('market::paypal_web_profile.index', $response);
     }

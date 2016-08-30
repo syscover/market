@@ -197,8 +197,8 @@ Route::group(['middleware' => ['web', 'pulsar']], function() {
     | PAYPAL
     |--------------------------------------------------------------------------
     */
-    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                            ['as' => 'marketPayPalSettings',              'uses' => 'Syscover\Market\Controllers\PayPalSettingsController@index',                  'resource' => 'market-tpv-paypal-setting',           'action' => 'access']);
-    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                     ['as' => 'updateMarketPayPalSettings',        'uses' => 'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',           'resource' => 'market-tpv-paypal-setting',           'action' => 'edit']);
+    Route::any(config('pulsar.appName') . '/market/paypal/settings',                                            ['as' => 'marketPayPalSettings',              'uses' => 'Syscover\Market\Controllers\PayPalSettingsController@index',               'resource' => 'market-tpv-paypal-setting',           'action' => 'access']);
+    Route::put(config('pulsar.appName') . '/market/paypal/settings/update',                                     ['as' => 'updateMarketPayPalSettings',        'uses' => 'Syscover\Market\Controllers\PayPalSettingsController@updateRecord',        'resource' => 'market-tpv-paypal-setting',           'action' => 'edit']);
 
     /*
     |--------------------------------------------------------------------------
