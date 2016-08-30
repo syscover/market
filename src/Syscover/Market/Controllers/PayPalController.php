@@ -265,7 +265,7 @@ class PayPalController extends Controller
         }
 
         // set viewParamentes on parameters for throw to view
-        $parameters['viewParameters'] = $this->viewParameters;
+        $response['viewParameters'] = $this->viewParameters;
 
         return view('market::paypal_web_profile.index', $response);
     }
