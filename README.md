@@ -1,4 +1,4 @@
-# Market for Laravel 5.2
+# Market for Laravel 5.3
 
 [![Total Downloads](https://poser.pugx.org/syscover/market/downloads)](https://packagist.org/packages/syscover/market)
 
@@ -6,7 +6,7 @@
 
 **1 - After install Laravel framework, insert on file composer.json, inside require object this value**
 ```
-"syscover/market": "~1.0"
+"syscover/market": "~2.0"
 ```
 and execute on console:
 ```

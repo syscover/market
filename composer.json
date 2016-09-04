@@ -7,10 +7,10 @@
         "email": "info@syscover.com"
     }],
     "require": {
-        "php": ">=5.5.9",
-        "syscover/pulsar": "~1.0",
-        "syscover/crm": "~1.0",
-        "syscover/shopping-cart": "~1.0",
+        "php": ">=5.6.4",
+        "syscover/pulsar": "~2.0",
+        "syscover/crm": "~2.0",
+        "syscover/shopping-cart": "~2.0",
         "sermepa/sermepa": "^1.1",
         "paypal/rest-api-sdk-php": "*"
     },
