@@ -46,12 +46,17 @@ class TaxRule extends Model
 
     public static function getCustomReturnIndexRecords($query, $parameters)
     {
-        return $query->groupBy('id_104')->get();
+        return $query
+            ->select('id_104', 'name_104', 'translation_104', 'priority_104', 'sort_order_104')
+            ->groupBy('id_104', 'name_104', 'translation_104', 'priority_104', 'sort_order_104')
+            ->get();
     }
 
     public static function customCountIndexRecords($query, $parameters)
     {
-        return $query->groupBy('id_104')
+        return $query
+            ->select('id_104')
+            ->groupBy('id_104')
             ->get()     // without get, don't count correctly, count group number
             ->count();
     }

@@ -168,9 +168,11 @@ class Product extends Model
 
     public function scopeProductsByCategories($query, $categories)
     {
-        return $query->builder()
+        return $query
+            ->builder()
             ->whereIn('id_111', function($query) use ($categories) {
-                $query->select('product_id_113')
+                $query
+                    ->select('product_id_113')
                     ->from('012_113_products_categories')
                     ->whereIn('category_id_113', $categories)
                     ->groupBy('product_id_113')
@@ -208,7 +210,7 @@ class Product extends Model
     public static function getCustomReturnIndexRecords($query, $parameters)
     {
         return $query
-            ->select(DB::raw('id_111, name_112, active_111, subtotal_111, sorting_111, data_lang_111, GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110'))
+            ->select('id_111', 'name_112', 'active_111', 'subtotal_111', 'sorting_111', 'data_lang_111', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110'))
             ->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_id_113')
             ->leftJoin('012_110_category', function($join){
                 $join->on('012_113_products_categories.category_id_113', '=', '012_110_category.id_110')
@@ -221,7 +223,7 @@ class Product extends Model
     public static function customCountIndexRecords($query, $parameters)
     {
         return $query
-            ->select(DB::raw('id_111, GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110'))
+            ->select('id_111', DB::raw('GROUP_CONCAT(name_110 SEPARATOR \', \') AS name_110'))
             ->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_id_113')
             ->leftJoin('012_110_category', function($join){
                 $join->on('012_113_products_categories.category_id_113', '=', '012_110_category.id_110')
