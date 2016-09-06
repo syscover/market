@@ -1,6 +1,6 @@
 {
     "name": "syscover/market",
-    "description": "Marklet package",
+    "description": "Market package",
     "keywords": ["syscover","pulsar","laravel","marketplace","market"],
     "authors": [{
         "name": "SYSCOVER SL",
