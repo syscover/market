@@ -5,6 +5,7 @@ use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Market\Models\CartPriceRule;
 use Syscover\Pulsar\Models\Text;
 
+
 /**
  * Class CartPriceRuleController
  * @package Syscover\Market\Controllers
