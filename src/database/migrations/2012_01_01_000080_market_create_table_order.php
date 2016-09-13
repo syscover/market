@@ -48,6 +48,7 @@ class MarketCreateTableOrder extends Migration
 
 				// customer and invoice data, if is required
 				$table->integer('customer_id_116')->unsigned()->nullable();
+                $table->integer('customer_group_id_116')->unsigned()->nullable();
 				$table->string('customer_company_116')->nullable();
 				$table->string('customer_tin_116')->nullable();
 				$table->string('customer_name_116')->nullable();
@@ -104,6 +105,11 @@ class MarketCreateTableOrder extends Migration
 					->on('012_115_payment_method')
 					->onDelete('restrict')
 					->onUpdate('cascade');
+                $table->foreign('customer_group_id_116', 'fk12_012_116_order')
+                    ->references('id_300')
+                    ->on('009_300_group')
+                    ->onDelete('restrict')
+                    ->onUpdate('cascade');
 
 				// invoice relations
 				$table->foreign('invoice_country_id_116', 'fk04_012_116_order')
