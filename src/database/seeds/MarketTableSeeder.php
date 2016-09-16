@@ -13,12 +13,12 @@ class MarketTableSeeder extends Seeder
         $this->call(MarketResourceSeeder::class);
         $this->call(MarketAttachmentMimeSeeder::class);
         $this->call(MarketOrderStatusSeeder::class);
+        $this->call(MarketPaymentMethodSeeder::class);
         $this->call(MarketCustomerClassTaxSeeder::class);
         $this->call(MarketGroupCustomerClassTaxSeeder::class);
         $this->call(MarketProductClassTaxSeeder::class);
         $this->call(MarketTaxRateZoneSeeder::class);
-        $this->call(MarketPaymentMethodSeeder::class);
-        
+
         Model::reguard();
     }
 }
