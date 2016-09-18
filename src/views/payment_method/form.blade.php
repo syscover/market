@@ -81,5 +81,5 @@
         'value' => 1,
         'checked' => old('active', isset($object->active_115)? $object->active_115 : null)
     ])
-    <!-- /.market::payment_method.create -->
+    <!-- /market::payment_method.create -->
 @stop

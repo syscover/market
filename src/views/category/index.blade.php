@@ -35,7 +35,7 @@
             console.log(JSON.stringify(list.nestable('serialize')));
         };
     </script>
-    <!-- /.market::categories.index -->
+    <!-- /market::categories.index -->
 @stop
 
 @section('tHead')
@@ -47,7 +47,7 @@
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /.market::categories.index -->
+    <!-- /market::categories.index -->
 @stop
 
 @section('sideContent')

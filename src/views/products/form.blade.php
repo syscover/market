@@ -100,7 +100,7 @@
     @include('pulsar::includes.js.custom_fields', [
         'resource' => 'market-product'
     ])
-    <!-- /.market::products.create -->
+    <!-- /market::products.create -->
 @stop
 
 @section('layoutTabHeader')
@@ -322,7 +322,7 @@
         'containerId' => 'headerCustomFields'
     ])
     <div id="wrapperCustomFields"></div>
-    <!-- /.market::products.create -->
+    <!-- /market::products.create -->
 @stop
 
 @section('box_tab2')

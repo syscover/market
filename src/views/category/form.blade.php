@@ -97,5 +97,5 @@
         'value' => 1,
         'checked' => old('active', isset($object)? $object->active_110 : null)
     ])
-    <!-- /.market::products.create -->
+    <!-- /market::products.create -->
 @stop

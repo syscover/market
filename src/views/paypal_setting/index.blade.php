@@ -4,7 +4,7 @@
     @parent
     <!-- market::paypal_settings.index -->
     @include('pulsar::includes.js.messages')
-    <!-- /.market::paypal_settings.index -->
+    <!-- /market::paypal_settings.index -->
 @stop
 
 @section('rows')
@@ -36,5 +36,5 @@
         'value' => $marketPayPalShippingDescription,
         'required' => true
     ])
-    <!-- /.market::paypal_settings.index -->
+    <!-- /market::paypal_settings.index -->
 @stop

@@ -35,5 +35,5 @@
         'value' => 1,
         'checked' => old('active', isset($object->active_114)? $object->active_114 : null)
     ])
-    <!-- /.market::order_status.create -->
+    <!-- /market::order_status.create -->
 @stop
