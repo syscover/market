@@ -182,23 +182,18 @@ class ProductController extends Controller
     
     public function updateCustomRecord($parameters)
     {
-        $productToUpdate = [
+        // update product
+        Product::where('id_111', $parameters['id'])->update([
             'field_group_id_111'        => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
             'type_id_111'               => $this->request->input('productType'),
             'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
-            'price_type_id_111'         => $this->request->input('priceType'),
-            'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
             'active_111'                => $this->request->has('active'),
-            'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
-        ];
-
-        $subtotal = $this->getSubtotalOverTotal();
-        if($subtotal != null)
-            $productToUpdate['subtotal_111'] = $subtotal;
-
-        // update product
-        Product::where('id_111', $parameters['id'])->update($productToUpdate);
+            'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
+            'price_type_id_111'         => $this->request->input('priceType'),
+            'subtotal_111'              => $this->getSubtotalOverTotal(),
+            'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
+        ]);
 
         ProductLang::where('id_112', $parameters['id'])->where('lang_id_112', $this->request->input('lang'))->update([
             'name_112'          => $this->request->input('name'),
