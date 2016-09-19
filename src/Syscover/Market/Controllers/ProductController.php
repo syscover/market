@@ -88,7 +88,15 @@ class ProductController extends Controller
         {
             // create new product
             $product = Product::create([
-                'active_111' => $this->request->input('active', false)
+                'field_group_id_111'        => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
+                'type_id_111'               => $this->request->input('productType'),
+                'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
+                'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
+                'active_111'                => $this->request->has('active'),
+                'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
+                'price_type_id_111'         => $this->request->input('priceType'),
+                'subtotal_111'              => $this->getSubtotalOverTotal(),
+                'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             ]);
 
             $id     = $product->id_111;
@@ -96,28 +104,15 @@ class ProductController extends Controller
         }
         else
         {
-            // create product language
+            // create product with other language
             $id     = $this->request->input('id');
             $idLang = $id;
         }
 
-        $productToStore = [
-            'field_group_id_111'        => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
-            'type_id_111'               => $this->request->input('productType'),
-            'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
-            'price_type_id_111'         => $this->request->input('priceType'),
-            'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
-            'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
-            'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
+        // update product with data lang
+        Product::where('id_111', $id)->update([
             'data_lang_111'             => Product::addLangDataRecord($this->request->input('lang'), $idLang),
-        ];
-
-        $subtotal = $this->getSubtotalOverTotal();
-        if($subtotal != null)
-            $productToStore['subtotal_111'] = $subtotal;
-
-        // create product
-        Product::where('id_111', $id)->update($productToStore);
+        ]);
 
         ProductLang::create([
             'id_112'            => $id,
@@ -194,7 +189,7 @@ class ProductController extends Controller
             'price_type_id_111'         => $this->request->input('priceType'),
             'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
             'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
-            'active_111'                => $this->request->input('active', false),
+            'active_111'                => $this->request->has('active'),
             'sorting_111'               => empty($this->request->input('sorting'))? null : $this->request->input('sorting'),
         ];
 

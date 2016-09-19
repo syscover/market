@@ -16,7 +16,7 @@ class MarketCreateTableProduct extends Migration
 		{
 			Schema::create('012_111_product', function (Blueprint $table) {
 				$table->engine = 'InnoDB';
-				
+
 				$table->increments('id_111')->unsigned();
 				$table->integer('field_group_id_111')->unsigned()->nullable();
 
@@ -29,7 +29,7 @@ class MarketCreateTableProduct extends Migration
 				$table->integer('parent_product_id_111')->unsigned()->nullable();
 
 				$table->decimal('weight_111', 11, 3)->default(0);
-				$table->boolean('active_111');
+				$table->boolean('active_111')->default(false);
 				$table->integer('sorting_111')->unsigned()->nullable();
 
 				// 1 - single price
