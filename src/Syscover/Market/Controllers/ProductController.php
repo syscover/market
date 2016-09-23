@@ -5,6 +5,7 @@ use Syscover\Market\Models\TaxRule;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
 use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
+use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Pulsar\Models\AttachmentFamily;
 use Syscover\Pulsar\Models\CustomFieldGroup;
 use Syscover\Market\Models\Product;
@@ -111,7 +112,7 @@ class ProductController extends Controller
 
         // update product with data lang
         Product::where('id_111', $id)->update([
-            'data_lang_111'             => Product::addLangDataRecord($this->request->input('lang'), $idLang),
+            'data_lang_111' => Product::addLangDataRecord($this->request->input('lang'), $idLang),
         ]);
 
         ProductLang::create([
@@ -169,6 +170,8 @@ class ProductController extends Controller
             ->get();
 
         $taxes = TaxRuleLibrary::taxCalculateOverSubtotal($parameters['object']->subtotal_111, $taxRules);
+
+        // ATTENTION! we create custom properties tax_amount_111 and total_111
         $parameters['object']->tax_amount_111   = $taxes->sum('taxAmount');
         $parameters['object']->total_111        = $parameters['object']->subtotal_111 + $parameters['object']->tax_amount_111;
 
@@ -247,6 +250,12 @@ class ProductController extends Controller
             {
                 $subtotal = $this->request->input('price');
             }
+        }
+        else
+        {
+            // if has not price, get precisionSubtotal input
+            // covert possible strign with comma and dots to float val
+            $subtotal = Miscellaneous::tofloat($this->request->input('precisionSubtotal'));
         }
 
         return $subtotal;

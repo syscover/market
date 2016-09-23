@@ -289,6 +289,10 @@
                 'value' => old('price'),
                 'readOnly' => $action == 'update' || $action == 'store'? false : true
             ])
+            @include('pulsar::includes.html.form_hidden', [
+                'name'  => 'precisionSubtotal',
+                'value' => isset($object->subtotal_111)? $object->subtotal_111 : null
+            ])
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
