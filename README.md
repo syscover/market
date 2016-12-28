@@ -175,4 +175,4 @@ Route::group(['middleware' => ['pulsar.taxRule']], function() {
 
 ```
 
-This middleware set market.taxCountry and market.taxCustomerClass if customer has country ann customer group id defined
+This middleware set market.taxCountry and market.taxCustomerClass if customer has country and customer group id defined
