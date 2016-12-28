@@ -47,7 +47,6 @@
             // set disable to false, because is a required property
             $('#recordForm').on('submit', function() {
                 $("[name=priceType],[name=productType],[name=customFieldGroup]").prop("disabled", false);
-                $("[name=subtotal],[name=taxAmount],[name=total]").prop("readonly", false);
             });
 
             $('[name=parentProduct]').on('change', function() {

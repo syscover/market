@@ -244,6 +244,10 @@ class ProductController extends Controller
                     $taxes      = TaxRuleLibrary::taxCalculateOverTotal((float)$this->request->input('price'), $taxRules);
                     $taxAmount  = $taxes->sum('taxAmount');
                 }
+                else
+                {
+                    $taxAmount = 0;
+                }
                 $subtotal = (float)$this->request->input('price') - $taxAmount;
             }
             else
