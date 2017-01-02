@@ -31,7 +31,7 @@
         <li{!! is_current_resource(['market-tpv','market-tpv-paypal','market-tpv-paypal-web-profile','market-tpv-paypal-setting'], true) !!}>
             <a href="javascript:void(0)"><i class="fa fa-credit-card"></i>{{ trans_choice('market::pulsar.tpv', 2) }}</a>
             <ul class="sub-menu">
-                <li{!! is_current_resource(['market-tpv-paypal','market-tpv-paypal-setting'], true) !!}>
+                <li{!! is_current_resource(['market-tpv-paypal','market-tpv-paypal-web-profile','market-tpv-paypal-setting'], true) !!}>
                     <a href="javascript:void(0)"><i class="fa fa-paypal"></i>{{ trans('market::pulsar.paypal') }}</a>
                     <ul class="sub-menu">
                         @if(is_allowed('market-tpv-paypal-web-profile', 'access'))
