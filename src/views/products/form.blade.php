@@ -121,7 +121,7 @@
         'idSelect' => 'id_111',
         'nameSelect' => 'name_112',
         'disabled' => $action == 'update' || $action == 'store'? false : true,
-        'class' => 'col-md-12 select2',
+        'class' => 'col-md-12',
         'data' => [
             'placeholder' => trans('pulsar::pulsar.select_category'),
             'width' => '100%'
