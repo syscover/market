@@ -45,7 +45,7 @@ class OrderStatusController extends Controller
             'id_114'                => $id,
             'lang_id_114'           => $this->request->input('lang'),
             'name_114'              => $this->request->input('name'),
-            'active_114'            => $this->request->has('active'),
+            'active_114'            => $this->request->input('active'),
             'data_lang_114'         => OrderStatus::addLangDataRecord($this->request->input('lang'), $idLang)
         ]);
     }
