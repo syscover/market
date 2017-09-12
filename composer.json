@@ -8,9 +8,9 @@
     }],
     "require": {
         "php": ">=5.6.4",
-        "syscover/pulsar": "~2.0",
-        "syscover/crm": "~2.0",
-        "syscover/shopping-cart": "~2.0",
+        "syscover/pulsar": "dev-master",
+        "syscover/crm": "dev-master",
+        "syscover/shopping-cart": "dev-master",
         "sermepa/sermepa": "^1.1",
         "paypal/rest-api-sdk-php": "*"
     },
