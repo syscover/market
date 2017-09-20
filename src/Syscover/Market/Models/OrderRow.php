@@ -46,7 +46,7 @@ class OrderRow extends Model
                 else
                     // always need filter by lang, because order form,
                     // need filter your order rows by lang without pass lang variable
-                    $join->where('012_112_product_lang.lang_id_112', '=', base_lang()->id_001);
+                    $join->where('012_112_product_lang.lang_id_112', '=', base_lang2()->id_001);
             });
     }
 

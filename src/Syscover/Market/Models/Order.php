@@ -54,11 +54,11 @@ class Order extends Model
         return $query->join('009_301_customer', '012_116_order.customer_id_116', '=', '009_301_customer.id_301')
             ->join('012_115_payment_method', function ($join) {
                  $join->on('012_116_order.payment_method_id_116', '=', '012_115_payment_method.id_115')
-                     ->where('012_115_payment_method.lang_id_115', '=', base_lang()->id_001);
+                     ->where('012_115_payment_method.lang_id_115', '=', base_lang2()->id_001);
             })
             ->join('012_114_order_status', function ($join) {
                 $join->on('012_116_order.status_id_116', '=', '012_114_order_status.id_114')
-                    ->where('012_114_order_status.lang_id_114', '=', base_lang()->id_001);
+                    ->where('012_114_order_status.lang_id_114', '=', base_lang2()->id_001);
             });
 
             /*

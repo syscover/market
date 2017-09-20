@@ -66,12 +66,12 @@ class OrderRowController extends Controller
 //	public function createCustomRecord($parameters)
 //	{
 //		$parameters['ordersStatus'] = OrderStatus::builder()
-//			->where('lang_id_114', base_lang()->id_001)
+//			->where('lang_id_114', base_lang2()->id_001)
 //			->where('active_114', true)
 //			->get();
 //
 //		$parameters['paymentsMethod'] = PaymentMethod::builder()
-//			->where('lang_id_115', base_lang()->id_001)
+//			->where('lang_id_115', base_lang2()->id_001)
 //			->where('active_115', true)
 //			->get();
 //
@@ -136,12 +136,12 @@ class OrderRowController extends Controller
 //	public function editCustomRecord($parameters)
 //	{
 //		$parameters['ordersStatus'] = OrderStatus::builder()
-//			->where('lang_id_114', base_lang()->id_001)
+//			->where('lang_id_114', base_lang2()->id_001)
 //			->where('active_114', true)
 //			->get();
 //
 //		$parameters['paymentsMethod'] = PaymentMethod::builder()
-//			->where('lang_id_115', base_lang()->id_001)
+//			->where('lang_id_115', base_lang2()->id_001)
 //			->where('active_115', true)
 //			->get();
 //
@@ -183,7 +183,7 @@ class OrderRowController extends Controller
     {
         $parameters = $this->request->route()->parameters();
 
-        $orderRow = OrderRow::builder(base_lang())->where('id_117', $parameters['id'])->first();
+        $orderRow = OrderRow::builder(base_lang2())->where('id_117', $parameters['id'])->first();
 
         if($orderRow->has_gift_117)
         {
@@ -205,7 +205,7 @@ class OrderRowController extends Controller
 	{
 		$parameters = $this->request->route()->parameters();
 		
-		$orderRow = OrderRow::builder(base_lang())->where('id_117', $parameters['id'])->first();
+		$orderRow = OrderRow::builder(base_lang2())->where('id_117', $parameters['id'])->first();
 
 		// get object from json, and convert to array
 		$data = json_decode($orderRow->data_117, true);

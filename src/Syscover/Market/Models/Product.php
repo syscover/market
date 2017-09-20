@@ -214,7 +214,7 @@ class Product extends Model
             ->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_id_113')
             ->leftJoin('012_110_category', function($join){
                 $join->on('012_113_products_categories.category_id_113', '=', '012_110_category.id_110')
-                    ->where('012_110_category.lang_id_110', '=', base_lang()->id_001);
+                    ->where('012_110_category.lang_id_110', '=', base_lang2()->id_001);
             })
             ->groupBy('id_111', 'name_112', 'active_111', 'active_111', 'subtotal_111', 'sorting_111', 'data_lang_111')
             ->get();
@@ -227,7 +227,7 @@ class Product extends Model
             ->leftJoin('012_113_products_categories', '012_111_product.id_111', '=', '012_113_products_categories.product_id_113')
             ->leftJoin('012_110_category', function($join){
                 $join->on('012_113_products_categories.category_id_113', '=', '012_110_category.id_110')
-                    ->where('012_110_category.lang_id_110', '=', base_lang()->id_001);
+                    ->where('012_110_category.lang_id_110', '=', base_lang2()->id_001);
             })
             ->groupBy('id_111')
             ->get()

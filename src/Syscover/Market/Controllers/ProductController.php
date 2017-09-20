@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function customIndex($parameters)
     {
-        $parameters['urlParameters']['lang']    = base_lang()->id_001;
+        $parameters['urlParameters']['lang']    = base_lang2()->id_001;
         // init record on tap 3
         $parameters['urlParameters']['tab']     = 3;
 
@@ -63,7 +63,7 @@ class ProductController extends Controller
         $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
 
         $parameters['parentsProducts'] = Product::builder()
-            ->where('lang_id_112', base_lang()->id_001)
+            ->where('lang_id_112', base_lang2()->id_001)
             ->whereNull('parent_product_id_111')
             ->get();
 
@@ -74,7 +74,7 @@ class ProductController extends Controller
         if(isset($parameters['id']))
         {
             // get attachments from base lang
-            $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['id'], base_lang()->id_001, true);
+            $attachments = AttachmentLibrary::getRecords($this->package, 'market-product', $parameters['id'], base_lang2()->id_001, true);
 
             // merge parameters and attachments array
             $parameters  = array_merge($parameters, $attachments);
@@ -157,7 +157,7 @@ class ProductController extends Controller
         $parameters['productClassTaxes'] = ProductClassTax::builder()->get();
 
         $parameters['parentsProducts'] = Product::builder()
-            ->where('lang_id_112', base_lang()->id_001)
+            ->where('lang_id_112', base_lang2()->id_001)
             ->where('id_111', '<>', $parameters['id'])
             ->whereNull('parent_product_id_111')
             ->get();
