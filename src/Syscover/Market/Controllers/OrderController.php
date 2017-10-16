@@ -56,15 +56,15 @@ class OrderController extends Controller
 
 //		Order::create([
 //			'group_116'					=> $this->request->input('group'),
-//			'date_116'					=> $this->request->has('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('date'))->getTimestamp() : $orderDate,
-//			'date_text_116'				=> $this->request->has('date')?  $this->request->input('date') : date(config('pulsar.datePattern') . ' H:i', $orderDate),
+//			'date_116'					=> $this->request->input('date')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('date'))->getTimestamp() : $orderDate,
+//			'date_text_116'				=> $this->request->input('date')?  $this->request->input('date') : date(config('pulsar.datePattern') . ' H:i', $orderDate),
 //			'company_116'				=> empty($this->request->input('company'))? null : $this->request->input('company'),
 //			'tin_116'					=> empty($this->request->input('tin'))? null : $this->request->input('tin'),
 //			'gender_116'				=> empty($this->request->input('gender'))? null : $this->request->input('gender'),
 //			'name_116'					=> empty($this->request->input('name'))? null : $this->request->input('name'),
 //			'surname_116'				=> empty($this->request->input('surname'))? null : $this->request->input('surname'),
 //			'avatar_116'				=> empty($this->request->input('avatar'))? null : $this->request->input('avatar'),
-//			'birth_date_116'			=> $this->request->has('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('birthDate'))->getTimestamp() : null,
+//			'birth_date_116'			=> $this->request->input('birthDate')? \DateTime::createFromFormat(config('pulsar.datePattern'), $this->request->input('birthDate'))->getTimestamp() : null,
 //			'email_116'					=> $this->request->input('email'),
 //			'phone_116'					=> empty($this->request->input('phone'))? null : $this->request->input('phone'),
 //			'mobile_116'				=> empty($this->request->input('phone'))? null : $this->request->input('mobile'),
