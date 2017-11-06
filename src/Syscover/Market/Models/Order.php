@@ -107,7 +107,7 @@ class Order extends Model
             ]);
 
             Order::where('id', $id)->update([
-                'data_116' => json_encode($dataOrder);
+                'data_116' => json_encode($dataOrder)
             ]);
         }
     }
