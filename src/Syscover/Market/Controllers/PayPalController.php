@@ -152,7 +152,6 @@ class PayPalController extends Controller
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
             ->setTransactions([$transaction]);
-
         try
         {
             $payment->create($this->apiContext);
@@ -213,8 +212,10 @@ class PayPalController extends Controller
             if(!empty($order->order_status_successful_id_115))
             {
                 // set next status to complete payment method
-                $order->status_id_116 = $order->order_status_successful_id_115;
-                $order->save();
+                Order::where('id_116', $order->id_116)
+                    ->update([
+                        'status_id_116' => $order->order_status_successful_id_115
+                    ]);
             }
 
             $viewResponse['html'] = '
