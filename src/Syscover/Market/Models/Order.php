@@ -106,9 +106,9 @@ class Order extends Model
                 'message'   => $message
             ]);
 
-            $order->data_116 = json_encode($dataOrder);
-
-            $order->save();
+            Order::where('id', $id)->update([
+                'data_116' => json_encode($dataOrder);
+            ]);
         }
     }
 
