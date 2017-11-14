@@ -62,7 +62,7 @@ class CartPriceRuleController extends Controller
             $idDescription  = $id;
         }
 
-        if(!$this->request->has('id'))
+        if(! $this->request->input('id'))
         {
             CartPriceRule::create([
                 'name_text_id_120'              => $idName,
