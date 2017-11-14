@@ -41,7 +41,7 @@ class CartPriceRuleController extends Controller
     public function storeCustomRecord($parameters)
     {
         // check if there is id
-        if($this->request->has('id'))
+        if($this->request->input('id'))
         {
             // en el caso de que exista un ID, lo recogemos para crear el JSON dentro del campo data_lang_120
             $idLang         = $this->request->input('id');
