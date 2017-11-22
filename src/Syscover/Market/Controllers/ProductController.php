@@ -85,16 +85,16 @@ class ProductController extends Controller
 
     public function storeCustomRecord($parameters)
     {
-        if(! $this->request->has('id'))
+        if(! $this->request->input('id'))
         {
             // create new product
             $product = Product::create([
                 'field_group_id_111'        => $this->request->has('customFieldGroup')? $this->request->input('customFieldGroup') : null,
                 'type_id_111'               => $this->request->input('productType'),
                 'parent_product_id_111'     => $this->request->has('parentProduct')? $this->request->input('parentProduct') : null,
-                'weight_111'                => $this->request->has('weight')? $this->request->input('weight') : 0,
+                'weight_111'                => $this->request->input('weight')? $this->request->input('weight') : 0,
                 'active_111'                => $this->request->has('active'),
-                'sorting_111'               => $this->request->has('sorting')? $this->request->input('sorting') : null,
+                'sorting_111'               => $this->request->input('sorting')? $this->request->input('sorting') : null,
                 'price_type_id_111'         => $this->request->input('priceType'),
                 'subtotal_111'              => $this->getSubtotalOverTotal(),
                 'product_class_tax_id_111'  => $this->request->has('productClassTax')? $this->request->input('productClassTax') : null,
@@ -120,7 +120,7 @@ class ProductController extends Controller
             'lang_id_112'       => $this->request->input('lang'),
             'name_112'          => $this->request->input('name'),
             'slug_112'          => $this->request->input('slug'),
-            'description_112'   => $this->request->input('description'),
+            'description_112'   => $this->request->input('description')?: '',
         ]);
 
         $product = Product::where('id_111', $id)->first();
