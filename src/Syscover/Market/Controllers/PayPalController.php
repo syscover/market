@@ -143,7 +143,7 @@ class PayPalController extends Controller
         // config URL request
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl(route('checkoutMarketPayPalPayment'))
-            ->setCancelUrl(route('home'));
+            ->setCancelUrl(route('web.home'));
 
         // create payment
         $payment = new Payment();
