@@ -202,6 +202,8 @@ class CouponLibrary
                 {
                     $shoppingCart->addCartPriceRule(
                         new PriceRule(
+                            $cartPriceRule->id_120,
+                            get_class($cartPriceRule),
                             $cartPriceRule->name_text_value,
                             $cartPriceRule->description_text_value,
                             $cartPriceRule->discount_type_id_120,
