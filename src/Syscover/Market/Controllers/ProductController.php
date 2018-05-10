@@ -227,9 +227,9 @@ class ProductController extends Controller
     protected function getSubtotalOverTotal()
     {
         $subtotal = null;
-        if($this->request->has('price'))
+        if($this->request->input('price'))
         {
-            if($this->request->has('productClassTax'))
+            if($this->request->input('productClassTax'))
             {
                 // get tax rurles from product
                 $taxRules = TaxRule::builder()
