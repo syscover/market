@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::categories.index -->
+    <!-- market-old::categories.index -->
     <script src="{{ asset('packages/syscover/pulsar/plugins/nestable/jquery.nestable.min.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -35,11 +35,11 @@
             console.log(JSON.stringify(list.nestable('serialize')));
         };
     </script>
-    <!-- /market::categories.index -->
+    <!-- /market-old::categories.index -->
 @stop
 
 @section('tHead')
-    <!-- market::categories.index -->
+    <!-- market-old::categories.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
@@ -47,7 +47,7 @@
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::categories.index -->
+    <!-- /market-old::categories.index -->
 @stop
 
 @section('sideContent')

@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::products.index -->
+    <!-- market-old::products.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -27,20 +27,20 @@
             }
         });
     </script>
-    <!-- /market::products.index -->
+    <!-- /market-old::products.index -->
 @stop
 
 @section('tHead')
-    <!-- market::products.index -->
+    <!-- market-old::products.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone,tablet">{{ trans('pulsar::pulsar.active') }}</th>
-        <th>{{ trans('market::pulsar.subtotal') }}</th>
+        <th>{{ trans('market-old::pulsar.subtotal') }}</th>
         <th>{{ trans('pulsar::pulsar.sorting') }}</th>
         <th>{{ trans_choice('pulsar::pulsar.category', 2) }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::products.index -->
+    <!-- /market-old::products.index -->
 @stop

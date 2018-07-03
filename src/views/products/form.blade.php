@@ -1,13 +1,13 @@
 @extends('pulsar::layouts.tab', ['tabs' => [
-        ['id' => 'box_tab1', 'name' => trans_choice('market::pulsar.product', 1)],
+        ['id' => 'box_tab1', 'name' => trans_choice('market-old::pulsar.product', 1)],
         ['id' => 'box_tab2', 'name' => trans_choice('pulsar::pulsar.description', 2)],
-        ['id' => 'box_tab3', 'name' => trans_choice('market::pulsar.grouped_product', 2)],
+        ['id' => 'box_tab3', 'name' => trans_choice('market-old::pulsar.grouped_product', 2)],
         ['id' => 'box_tab4', 'name' => trans_choice('pulsar::pulsar.attachment', 2)]
     ]])
 
 @section('head')
     @parent
-    <!-- market::products.create -->
+    <!-- market-old::products.create -->
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/attachment/css/attachment-library.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/cropper/cropper.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/syscover/pulsar/vendor/getfile/libs/filedrop/filedrop.css') }}">
@@ -100,7 +100,7 @@
     @include('pulsar::includes.js.custom_fields', [
         'resource' => 'market-product'
     ])
-    <!-- /market::products.create -->
+    <!-- /market-old::products.create -->
 @stop
 
 @section('layoutTabHeader')
@@ -111,10 +111,10 @@
 @stop
 
 @section('box_tab1')
-    <!-- market::products.create -->
+    <!-- market-old::products.create -->
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 5,
-        'label' => trans('market::pulsar.parent_product'),
+        'label' => trans('market-old::pulsar.parent_product'),
         'name' => 'parentProduct',
         'value' => old('parentProduct', isset($object->parent_product_id_111)? $object->parent_product_id_111 : null),
         'objects' => $parentsProducts,
@@ -129,7 +129,7 @@
     ])
 
     @include('pulsar::includes.html.form_section_header', [
-        'label' => trans('market::pulsar.product_details'),
+        'label' => trans('market-old::pulsar.product_details'),
         'icon' => 'fa fa-reorder'
     ])
     <div class="row">
@@ -189,7 +189,7 @@
         'required' => true
     ])
     @include('pulsar::includes.html.form_select_group', [
-        'label' => trans_choice('market::pulsar.product_types', 1),
+        'label' => trans_choice('market-old::pulsar.product_types', 1),
         'name' => 'productType',
         'value' => old('productType', isset($object->type_id_111)? $object->type_id_111 : null),
         'objects' => $productTypes,
@@ -245,7 +245,7 @@
     </div>
 
     @include('pulsar::includes.html.form_section_header', [
-        'label' => trans('market::pulsar.prices_taxes'),
+        'label' => trans('market-old::pulsar.prices_taxes'),
         'icon' => 'fa fa-usd'
     ])
 
@@ -258,7 +258,7 @@
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
-                'label' => trans('market::pulsar.price_type'),
+                'label' => trans('market-old::pulsar.price_type'),
                 'name' => 'priceType',
                 'value' => old('priceType', isset($object->price_type_id_111)? $object->price_type_id_111 : null),
                 'objects' => $priceTypes,
@@ -270,7 +270,7 @@
             @include('pulsar::includes.html.form_select_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
-                'label' => trans_choice('market::pulsar.product_class_tax', 1),
+                'label' => trans_choice('market-old::pulsar.product_class_tax', 1),
                 'name' => 'productClassTax',
                 'value' => old('productClassTax', isset($object->product_class_tax_id_111)? $object->product_class_tax_id_111 : null),
                 'objects' => $productClassTaxes,
@@ -296,7 +296,7 @@
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
-                'label' => trans_choice('market::pulsar.subtotal', 1),
+                'label' => trans_choice('market-old::pulsar.subtotal', 1),
                 'name' => 'subtotal',
                 'value' => old('subtotal', isset($object->subtotal_111)? $object->getSubtotal() : null),
                 'readOnly' => true
@@ -304,7 +304,7 @@
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
-                'label' => trans_choice('market::pulsar.tax', 1),
+                'label' => trans_choice('market-old::pulsar.tax', 1),
                 'name' => 'taxAmount',
                 'value' => old('taxAmount', isset($object->tax_amount_111)? $object->getTaxAmount() : null),
                 'readOnly' => true
@@ -312,7 +312,7 @@
             @include('pulsar::includes.html.form_text_group', [
                 'labelSize' => 4,
                 'fieldSize' => 6,
-                'label' => trans_choice('market::pulsar.total', 1),
+                'label' => trans_choice('market-old::pulsar.total', 1),
                 'name' => 'total',
                 'value' => old('total', isset($object->total_111)? $object->getTotal() : null),
                 'readOnly' => true
@@ -326,7 +326,7 @@
         'containerId' => 'headerCustomFields'
     ])
     <div id="wrapperCustomFields"></div>
-    <!-- /market::products.create -->
+    <!-- /market-old::products.create -->
 @stop
 
 @section('box_tab2')

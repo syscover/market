@@ -1,7 +1,7 @@
 @extends('pulsar::layouts.form')
 
 @section('rows')
-    <!-- market::product_class_tax.form -->
+    <!-- market-old::product_class_tax.form -->
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
@@ -17,5 +17,5 @@
         'rangeLength' => '2,255',
         'required' => true
     ])
-    <!-- /market::product_class_tax.form -->
+    <!-- /market-old::product_class_tax.form -->
 @stop

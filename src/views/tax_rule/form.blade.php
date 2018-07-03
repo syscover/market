@@ -1,7 +1,7 @@
 @extends('pulsar::layouts.form')
 
 @section('rows')
-    <!-- market::tax_rule.form -->
+    <!-- market-old::tax_rule.form -->
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 2,
         'label' => 'ID',
@@ -26,7 +26,7 @@
     ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 6,
-        'label' => trans_choice('market::pulsar.tax_rate_zone', 1),
+        'label' => trans_choice('market-old::pulsar.tax_rate_zone', 1),
         'name' => 'taxRateZones[]',
         'value' => old('taxRateZones', isset($object)? $object->getTaxRateZones : null),
         'objects' => $taxRateZones,
@@ -37,7 +37,7 @@
     ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 6,
-        'label' => trans_choice('market::pulsar.customer_class_tax', 1),
+        'label' => trans_choice('market-old::pulsar.customer_class_tax', 1),
         'name' => 'customerClassTaxes[]',
         'value' => old('customerClassTaxes', isset($object)? $object->getCustomerClassTaxes : null),
         'objects' => $customerClassTaxes,
@@ -48,7 +48,7 @@
     ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 6,
-        'label' => trans_choice('market::pulsar.product_class_tax', 1),
+        'label' => trans_choice('market-old::pulsar.product_class_tax', 1),
         'name' => 'productClassTaxes[]',
         'value' => old('productClassTaxes', isset($object)? $object->getProductClassTaxes : null),
         'objects' => $productClassTaxes,
@@ -60,16 +60,16 @@
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 2,
         'type' => 'number',
-        'label' => trans('market::pulsar.priority'),
+        'label' => trans('market-old::pulsar.priority'),
         'name' => 'priority',
         'value' => old('priority', isset($object->priority_104)? $object->priority_104 : 0),
     ])
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 2,
         'type' => 'number',
-        'label' => trans('market::pulsar.sort_order'),
+        'label' => trans('market-old::pulsar.sort_order'),
         'name' => 'sortOrder',
         'value' => old('sortOrder', isset($object->sort_order_104)? $object->sort_order_104 : 0)
     ])
-    <!-- /market::tax_rule.form -->
+    <!-- /market-old::tax_rule.form -->
 @stop

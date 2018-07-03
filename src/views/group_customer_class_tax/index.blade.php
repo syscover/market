@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::group_customer_class_tax.index -->
+    <!-- market-old::group_customer_class_tax.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -27,16 +27,16 @@
             }
         });
     </script>
-    <!-- /market::group_customer_class_tax.index -->
+    <!-- /market-old::group_customer_class_tax.index -->
 @stop
 
 @section('tHead')
-    <!-- market::group_customer_class_tax.index -->
+    <!-- market-old::group_customer_class_tax.index -->
     <tr>
         <th data-class="expand">{{ trans_choice('pulsar::pulsar.group', 1) }}</th>
-        <th>{{ trans_choice('market::pulsar.customer_class_tax', 1) }}</th>
+        <th>{{ trans_choice('market-old::pulsar.customer_class_tax', 1) }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::group_customer_class_tax.index -->
+    <!-- /market-old::group_customer_class_tax.index -->
 @stop

@@ -30,7 +30,7 @@
 @stop
 
 @section('rows')
-    <!-- market::customer_discount_history.form -->
+    <!-- market-old::customer_discount_history.form -->
     <div class="row">
         <div class="col-md-6">
             @include('pulsar::includes.html.form_text_group', [
@@ -55,7 +55,7 @@
     </div>
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 4,
-        'label' => trans_choice('market::pulsar.rule_family', 1),
+        'label' => trans_choice('market-old::pulsar.rule_family', 1),
         'name' => 'ruleFamily',
         'value' => $object->rule_family_id_126,
         'objects' => $ruleFamilies,
@@ -83,11 +83,11 @@
         'disabled' => true
     ])
     @include('pulsar::includes.html.form_section_header', [
-        'label' => trans_choice('market::pulsar.coupon', 1),
+        'label' => trans_choice('market-old::pulsar.coupon', 1),
         'icon' => 'fa fa-shopping-basket'
     ])
     @include('pulsar::includes.html.form_checkbox_group', [
-        'label' => trans('market::pulsar.has_coupon'),
+        'label' => trans('market-old::pulsar.has_coupon'),
         'name' => 'hasCoupon',
         'value' => 1,
         'checked' => $object->has_coupon_126,
@@ -96,7 +96,7 @@
     @if($object->has_coupon_126)
         @include('pulsar::includes.html.form_text_group', [
             'fieldSize' => 4,
-            'label' => trans_choice('market::pulsar.coupon', 1),
+            'label' => trans_choice('market-old::pulsar.coupon', 1),
             'name' => 'couponCode',
             'value' => $object->coupon_code_126,
             'readOnly' => true
@@ -109,7 +109,7 @@
     ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 4,
-        'label' => trans_choice('market::pulsar.discount_type', 1),
+        'label' => trans_choice('market-old::pulsar.discount_type', 1),
         'name' => 'discountType',
         'value' => $object->discount_type_id_126,
         'required' => true,
@@ -125,7 +125,7 @@
                     'labelSize' => 4,
                     'fieldSize' => 5,
                     'type' => 'number',
-                    'label' => trans('market::pulsar.discount_percentage'),
+                    'label' => trans('market-old::pulsar.discount_percentage'),
                     'name' => 'discountPercentage',
                     'value' => $object->discount_percentage_126,
                     'readOnly' => true
@@ -136,7 +136,7 @@
                     'labelSize' => 4,
                     'fieldSize' => 5,
                     'type' => 'number',
-                    'label' => trans('market::pulsar.discount_amount'),
+                    'label' => trans('market-old::pulsar.discount_amount'),
                     'name' => 'discountAmount',
                     'value' => $object->discount_amount_126,
                     'readOnly' => true
@@ -144,7 +144,7 @@
             </div>
         </div>
         @include('pulsar::includes.html.form_checkbox_group', [
-            'label' => trans('market::pulsar.apply_shipping_amount'),
+            'label' => trans('market-old::pulsar.apply_shipping_amount'),
             'name' => 'applyShippingAmount',
             'value' => 1,
             'checked' => $object->apply_shipping_amount_126,
@@ -158,7 +158,7 @@
                     'labelSize' => 4,
                     'fieldSize' => 5,
                     'type' => 'number',
-                    'label' => trans('market::pulsar.discount_amount'),
+                    'label' => trans('market-old::pulsar.discount_amount'),
                     'name' => 'discountFixedAmount',
                     'value' => $object->discount_fixed_amount_126,
                     'readOnly' => true
@@ -167,7 +167,7 @@
             <div class="col-md-6"></div>
         </div>
         @include('pulsar::includes.html.form_checkbox_group', [
-            'label' => trans('market::pulsar.apply_shipping_amount'),
+            'label' => trans('market-old::pulsar.apply_shipping_amount'),
             'name' => 'applyShippingAmount',
             'value' => 1,
             'checked' => $object->apply_shipping_amount_126,
@@ -180,11 +180,11 @@
         'icon' => 'fa fa-truck'
     ])
     @include('pulsar::includes.html.form_checkbox_group', [
-        'label' => trans('market::pulsar.free_shipping'),
+        'label' => trans('market-old::pulsar.free_shipping'),
         'name' => 'freeShipping',
         'value' => 1,
         'checked' => old('freeShipping', isset($object)? $object->free_shipping_126 : null),
         'disabled' => $action == 'update' || $action == 'store'? false : true
     ])
-    <!-- /market::customer_discount_history.form -->
+    <!-- /market-old::customer_discount_history.form -->
 @stop

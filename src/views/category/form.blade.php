@@ -35,7 +35,7 @@
 @stop
 
 @section('rows')
-    <!-- market::products.create -->
+    <!-- market-old::products.create -->
     <div class="row">
         <div class="col-md-6">
             @include('pulsar::includes.html.form_text_group', [
@@ -61,7 +61,7 @@
     </div>
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 5,
-        'label' => trans_choice('market::pulsar.parent_category', 1),
+        'label' => trans_choice('market-old::pulsar.parent_category', 1),
         'name' => 'parent',
         'value' => old('parent', isset($object->parent_id_110)? $object->parent_id_110 : null),
         'objects' => $categories,
@@ -97,5 +97,5 @@
         'value' => 1,
         'checked' => old('active', isset($object)? $object->active_110 : null)
     ])
-    <!-- /market::products.create -->
+    <!-- /market-old::products.create -->
 @stop

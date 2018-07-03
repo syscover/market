@@ -19,7 +19,7 @@ class MarketServiceProvider extends ServiceProvider
 		$this->loadViewsFrom(__DIR__ . '/../../views', 'market');
 
         // register translations
-        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'market');
+        $this->loadTranslationsFrom(__DIR__ . '/../../lang', 'market-old');
 
 		// register public files
 		$this->publishes([

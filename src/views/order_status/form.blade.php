@@ -6,7 +6,7 @@
 @stop
 
 @section('rows')
-    <!-- market::order_status.create -->
+    <!-- market-old::order_status.create -->
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
@@ -35,5 +35,5 @@
         'value' => 1,
         'checked' => old('active', isset($object->active_114)? $object->active_114 : null)
     ])
-    <!-- /market::order_status.create -->
+    <!-- /market-old::order_status.create -->
 @stop

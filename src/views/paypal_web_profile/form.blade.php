@@ -6,7 +6,7 @@
 @stop
 
 @section('rows')
-    <!-- market::order_status.create -->
+    <!-- market-old::order_status.create -->
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
@@ -21,7 +21,7 @@
         'required' => true
     ])
     @include('pulsar::includes.html.form_select_group', [
-        'label' => trans('market::pulsar.landing_page'),
+        'label' => trans('market-old::pulsar.landing_page'),
         'name' => 'landingPageType',
         'value' => old('landingPageType', isset($object)? $object->getFlowConfig()->getLandingPageType() : null),
         'required' => true,
@@ -32,38 +32,38 @@
         'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
-        'label' => trans('market::pulsar.url_after_bank_transfer'),
+        'label' => trans('market-old::pulsar.url_after_bank_transfer'),
         'name' => 'bankTxnPendingUrl',
         'value' => old('bankTxnPendingUrl', isset($object)? $object->getFlowConfig()->getBankTxnPendingUrl() : null),
         'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
-        'label' => trans('market::pulsar.url_logo'),
+        'label' => trans('market-old::pulsar.url_logo'),
         'name' => 'logoImage',
         'value' => old('logoImage', isset($object)? $object->getPresentation()->getLogoImage() : null),
         'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
-        'label' => trans('market::pulsar.brand_name'),
+        'label' => trans('market-old::pulsar.brand_name'),
         'name' => 'brandName',
         'value' => old('brandName', isset($object)? $object->getPresentation()->getBrandName() : null),
         'required' => true
     ])
     @include('pulsar::includes.html.form_text_group', [
-        'label' => trans('market::pulsar.local_code'),
+        'label' => trans('market-old::pulsar.local_code'),
         'name' => 'localCode',
         'value' => old('localCode', isset($object)? $object->getPresentation()->getLocaleCode() : null),
         'fieldSize' => 2,
         'required' => true
     ])
     @include('pulsar::includes.html.form_checkbox_group', [
-        'label' => trans('market::pulsar.allow_note'),
+        'label' => trans('market-old::pulsar.allow_note'),
         'name' => 'allowNote',
         'value' => 1,
         'checked' => old('allowNote', isset($object)? $object->getInputFields()->getAllowNote() : null)
     ])
     @include('pulsar::includes.html.form_select_group', [
-        'label' => trans('market::pulsar.shipping_data_type'),
+        'label' => trans('market-old::pulsar.shipping_data_type'),
         'name' => 'shippingDataType',
         'value' => old('shippingDataType', isset($object)? $object->getInputFields()->getNoShipping() : null),
         'required' => true,
@@ -74,7 +74,7 @@
         'required' => true
     ])
     @include('pulsar::includes.html.form_select_group', [
-        'label' => trans('market::pulsar.display_shipping_data_type'),
+        'label' => trans('market-old::pulsar.display_shipping_data_type'),
         'name' => 'displayShippingDataType',
         'value' => old('displayShippingDataType', isset($object)? $object->getInputFields()->getAddressOverride() : null),
         'required' => true,
@@ -84,5 +84,5 @@
         'fieldSize' => 4,
         'required' => true
     ])
-    <!-- /market::order_status.create -->
+    <!-- /market-old::order_status.create -->
 @stop

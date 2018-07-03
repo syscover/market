@@ -6,7 +6,7 @@
 @stop
 
 @section('rows')
-    <!-- market::payment_method.create -->
+    <!-- market-old::payment_method.create -->
     @include('pulsar::includes.html.form_text_group', [
         'label' => 'ID',
         'name' => 'id',
@@ -31,7 +31,7 @@
     ])
     @include('pulsar::includes.html.form_select_group', [
         'fieldSize' => 5,
-        'label' => trans('market::pulsar.order_status_successful'),
+        'label' => trans('market-old::pulsar.order_status_successful'),
         'name' => 'orderStatusSuccessful',
         'value' => old('orderStatusSuccessful', isset($object->order_status_successful_id_115)? $object->order_status_successful_id_115 : null),
         'objects' => $orderStatus,
@@ -44,7 +44,7 @@
                 'labelSize' => 4,
                 'fieldSize' => 8,
                 'type' => 'number',
-                'label' => trans('market::pulsar.minimum_price'),
+                'label' => trans('market-old::pulsar.minimum_price'),
                 'name' => 'minimumPrice',
                 'value' => old('minimumPrice', isset($object->minimum_price_115)? $object->minimum_price_115 : null)
             ])
@@ -54,7 +54,7 @@
                 'labelSize' => 4,
                 'fieldSize' => 8,
                 'type' => 'number',
-                'label' => trans('market::pulsar.maximum_price'),
+                'label' => trans('market-old::pulsar.maximum_price'),
                 'name' => 'maximumPrice',
                 'value' => old('maximumPrice', isset($object->maximum_price_115)? $object->maximum_price_115 : null)
             ])
@@ -81,5 +81,5 @@
         'value' => 1,
         'checked' => old('active', isset($object->active_115)? $object->active_115 : null)
     ])
-    <!-- /market::payment_method.create -->
+    <!-- /market-old::payment_method.create -->
 @stop

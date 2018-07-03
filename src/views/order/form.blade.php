@@ -1,8 +1,8 @@
 @extends('pulsar::layouts.tab', [
 	'tabs' => [
-		['id' => 'box_tab1', 'name' => trans_choice('market::pulsar.order', 1)],
+		['id' => 'box_tab1', 'name' => trans_choice('market-old::pulsar.order', 1)],
 		['id' => 'box_tab2', 'name' => trans_choice('pulsar::pulsar.customer', 1)],
-		['id' => 'box_tab3', 'name' => trans('market::pulsar.gift')],
+		['id' => 'box_tab3', 'name' => trans('market-old::pulsar.gift')],
 	]
 ])
 
@@ -229,7 +229,7 @@
 @stop
 
 @section('commonTabHeaderContent')
-	<!-- market::order.form -->
+	<!-- market-old::order.form -->
 	<div class="row">
 		<div class="col-md-6">
 			@include('pulsar::includes.html.form_text_group', [
@@ -244,7 +244,7 @@
                 'labelSize' => 4,
                 'fieldSize' => 8,
                 'name' => 'status',
-                'label' => trans('market::pulsar.order_status'),
+                'label' => trans('market-old::pulsar.order_status'),
                 'value' => old('status', isset($object->status_id_116)? $object->status_id_116 : null),
                 'objects' => $ordersStatus,
                 'idSelect' => 'id_114',
@@ -255,7 +255,7 @@
                 'labelSize' => 4,
                 'fieldSize' => 8,
                 'name' => 'paymentMethod',
-                'label' => trans_choice('market::pulsar.payment_method', 1),
+                'label' => trans_choice('market-old::pulsar.payment_method', 1),
                 'value' => old('paymentMethod', isset($object->payment_method_id_116)? $object->payment_method_id_116 : null),
                 'objects' => $paymentsMethod,
                 'idSelect' => 'id_115',
@@ -294,7 +294,7 @@
                 'labelSize' => 4,
                 'fieldSize' => 8,
                 'name' => 'paymentId',
-                'label' => trans('market::pulsar.payment_id'),
+                'label' => trans('market-old::pulsar.payment_id'),
                 'value' => old('paymentId', isset($object->payment_id_116)? $object->payment_id_116 : null),
                 'readOnly' => true,
             ])
@@ -306,11 +306,11 @@
             ])
 		</div>
 	</div>
-	<!-- /market::order.form -->
+	<!-- /market-old::order.form -->
 @stop
 
 @section('box_tab1')
-	<!-- market::order.form tab1 -->
+	<!-- market-old::order.form tab1 -->
 	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.product', 2), 'icon' => 'fa fa-cubes'])
 
 	@if(false)
@@ -325,10 +325,10 @@
 					<th>{{ trans_choice('pulsar::pulsar.quantity', 1) }}</th>
 					<th>{{ trans_choice('pulsar::pulsar.subtotal', 1) }}</th>
 					<th>{{ trans_choice('pulsar::pulsar.discount', 2) }}</th>
-					<th>{{ trans('market::pulsar.subtotal_discounts') }}</th>
-					<th>{{ trans_choice('market::pulsar.tax', 2) }}</th>
+					<th>{{ trans('market-old::pulsar.subtotal_discounts') }}</th>
+					<th>{{ trans_choice('market-old::pulsar.tax', 2) }}</th>
 					<th>{{ trans_choice('pulsar::pulsar.total', 1) }}</th>
-					<th>{{ trans('market::pulsar.gift') }}</th>
+					<th>{{ trans('market-old::pulsar.gift') }}</th>
 					<th>{{ trans('pulsar::pulsar.info') }}</th>
 					<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
 					<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
@@ -341,7 +341,7 @@
 		</div>
 	</div>
 
-	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market::pulsar.cart_price_rule', 2), 'icon' => 'fa fa-shopping-cart'])
+	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('market-old::pulsar.cart_price_rule', 2), 'icon' => 'fa fa-shopping-cart'])
 	<div class="widget box">
 		<div class="widget-content no-padding">
 			<table id="dataTableCustomerDiscountHistory" class="table table-striped table-bordered table-hover table-checkable table-responsive">
@@ -349,10 +349,10 @@
 				<tr>
 					<th data-hide="phone,tablet">ID.</th>
 					<th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
-					<th data-hide="phone">{{ trans_choice('market::pulsar.coupon', 1) }}</th>
-					<th>{{ trans('market::pulsar.discount_percentage') }}</th>
-					<th>{{ trans('market::pulsar.discount_amount') }}</th>
-					<th>{{ trans('market::pulsar.free_shipping') }}</th>
+					<th data-hide="phone">{{ trans_choice('market-old::pulsar.coupon', 1) }}</th>
+					<th>{{ trans('market-old::pulsar.discount_percentage') }}</th>
+					<th>{{ trans('market-old::pulsar.discount_amount') }}</th>
+					<th>{{ trans('market-old::pulsar.free_shipping') }}</th>
 					<th class="checkbox-column"><input type="checkbox" class="uniform"></th>
 					<th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
 				</tr>
@@ -389,7 +389,7 @@
 				'labelSize' => 4,
 				'fieldSize' => 4,
 				'type' => 'number',
-				'label' => trans('market::pulsar.total_items_without_discount'),
+				'label' => trans('market-old::pulsar.total_items_without_discount'),
 				'name' => 'cartItemsTotalWithoutDiscounts',
 				'value' => old('subtotal', isset($object->cart_items_total_without_discounts_116)? $object->cart_items_total_without_discounts_116 : null),
 				'readOnly' => true,
@@ -400,7 +400,7 @@
 				'labelSize' => 4,
 				'fieldSize' => 4,
 				'type' => 'number',
-				'label' => trans('market::pulsar.subtotal_discounts'),
+				'label' => trans('market-old::pulsar.subtotal_discounts'),
 				'name' => 'subtotal',
 				'value' => old('subtotal', isset($object->subtotal_with_discounts_116)? $object->subtotal_with_discounts_116 : null),
 				'readOnly' => true,
@@ -409,7 +409,7 @@
 				'labelSize' => 4,
 				'fieldSize' => 4,
 				'type' => 'number',
-				'label' => trans_choice('market::pulsar.tax', 2),
+				'label' => trans_choice('market-old::pulsar.tax', 2),
 				'name' => 'taxAmount',
 				'value' => old('subtotal', isset($object->tax_amount_116)? $object->tax_amount_116 : null),
 				'readOnly' => true,
@@ -433,11 +433,11 @@
 			])
 		</div>
 	</div>
-	<!-- /market::order.form tab1 -->
+	<!-- /market-old::order.form tab1 -->
 @stop
 
 @section('box_tab2')
-	<!-- market::order.form tab2 -->
+	<!-- market-old::order.form tab2 -->
 	@include('pulsar::includes.html.form_section_header', ['label' => trans_choice('pulsar::pulsar.customer', 1), 'icon' => 'fa fa-user'])
 
 	@include('pulsar::includes.html.form_iframe_select_group', [
@@ -602,13 +602,13 @@
 			])
 		</div>
 	</div>
-	<!-- /market::order.form tab2 -->
+	<!-- /market-old::order.form tab2 -->
 @stop
 
 @section('box_tab3')
-	<!-- market::order.form tab3 -->
+	<!-- market-old::order.form tab3 -->
 	@include('pulsar::includes.html.form_section_header', [
-		'label' => trans('market::pulsar.gift'),
+		'label' => trans('market-old::pulsar.gift'),
 		'icon' => 'fa fa-gift'
 	])
 	<div class="row">
@@ -617,7 +617,7 @@
 				'labelSize' => 4,
 				'fieldSize' => 8,
 				'name' => 'gift',
-				'label' => trans('market::pulsar.gift'),
+				'label' => trans('market-old::pulsar.gift'),
 				'value' => 1,
 				'checked' => old('gift', isset($object->has_gift_116)? $object->has_gift_116 : null)
 			])
@@ -653,5 +653,5 @@
 		'value' => old('giftMessage', isset($object->gift_message_116)? $object->gift_message_116 : null),
 		'readOnly' => $action == 'show'
 	])
-	<!-- /market::order.form tab3-->
+	<!-- /market-old::order.form tab3-->
 @stop

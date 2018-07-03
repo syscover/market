@@ -25,7 +25,7 @@
 @stop
 
 @section('rows')
-    <!-- market::tax_rate_zone.form -->
+    <!-- market-old::tax_rate_zone.form -->
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 2,
         'label' => 'ID',
@@ -106,10 +106,10 @@
     @include('pulsar::includes.html.form_text_group', [
         'fieldSize' => 4,
         'type' => 'number',
-        'label' => trans('market::pulsar.rate_percent'),
+        'label' => trans('market-old::pulsar.rate_percent'),
         'name' => 'ratePercent',
         'value' => old('ratePercent', isset($object->tax_rate_103)? $object->tax_rate_103 : null),
         'readOnly' => $action == 'update' || $action == 'store'? false : true
     ])
-    <!-- /market::tax_rate_zone.form -->
+    <!-- /market-old::tax_rate_zone.form -->
 @stop

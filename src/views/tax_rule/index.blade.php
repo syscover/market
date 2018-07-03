@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::tax_rate_zone.index -->
+    <!-- market-old::tax_rate_zone.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -27,19 +27,19 @@
             }
         });
     </script>
-    <!-- /market::tax_rate_zone.index -->
+    <!-- /market-old::tax_rate_zone.index -->
 @stop
 
 @section('tHead')
-    <!-- market::tax_rate_zone.index -->
+    <!-- market-old::tax_rate_zone.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-class="expand">{{ trans('pulsar::pulsar.name') }}</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.translation', 1) }}</th>
-        <th>{{ trans('market::pulsar.priority') }}</th>
-        <th>{{ trans('market::pulsar.sort_order') }}</th>
+        <th>{{ trans('market-old::pulsar.priority') }}</th>
+        <th>{{ trans('market-old::pulsar.sort_order') }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::tax_rate_zone.index -->
+    <!-- /market-old::tax_rate_zone.index -->
 @stop

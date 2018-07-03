@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::order.index -->
+    <!-- market-old::order.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -30,11 +30,11 @@
             }
         });
     </script>
-    <!-- /market::order.index -->
+    <!-- /market-old::order.index -->
 @stop
 
 @section('tHead')
-    <!-- market::order.index -->
+    <!-- market-old::order.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th>{{ trans('cms::pulsar.date') }}</th>
@@ -44,10 +44,10 @@
         <th data-hide="phone">{{ trans('pulsar::pulsar.email') }}</th>
         <th data-hide="phone">{{ trans('pulsar::pulsar.phone') }}</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.state', 1) }}</th>
-        <th data-hide="phone,tablet">{{ trans_choice('market::pulsar.payment_method', 1) }}</th>
+        <th data-hide="phone,tablet">{{ trans_choice('market-old::pulsar.payment_method', 1) }}</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.amount', 1) }}</th>
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::order.index -->
+    <!-- /market-old::order.index -->
 @stop

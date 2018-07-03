@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::order_status.index -->
+    <!-- market-old::order_status.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -27,11 +27,11 @@
             }
         });
     </script>
-    <!-- market::order_status.index -->
+    <!-- market-old::order_status.index -->
 @stop
 
 @section('tHead')
-    <!-- market::order_status.index -->
+    <!-- market-old::order_status.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.language', 1) }}</th>
@@ -40,5 +40,5 @@
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::order_status.index -->
+    <!-- /market-old::order_status.index -->
 @stop

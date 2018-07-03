@@ -2,7 +2,7 @@
 
 @section('head')
     @parent
-    <!-- market::payment_method.index -->
+    <!-- market-old::payment_method.index -->
     <script>
         $(document).ready(function() {
             if ($.fn.dataTable)
@@ -27,11 +27,11 @@
             }
         });
     </script>
-    <!-- /market::payment_method.index -->
+    <!-- /market-old::payment_method.index -->
 @stop
 
 @section('tHead')
-    <!-- market::payment_method.index -->
+    <!-- market-old::payment_method.index -->
     <tr>
         <th data-hide="phone,tablet">ID.</th>
         <th data-hide="phone,tablet">{{ trans_choice('pulsar::pulsar.language', 1) }}</th>
@@ -41,5 +41,5 @@
         <th class="checkbox-column"><input type="checkbox" class="uniform"></th>
         <th>{{ trans_choice('pulsar::pulsar.action', 2) }}</th>
     </tr>
-    <!-- /market::payment_method.index -->
+    <!-- /market-old::payment_method.index -->
 @stop
