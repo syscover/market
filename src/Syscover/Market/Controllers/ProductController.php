@@ -1,17 +1,17 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Market\Libraries\TaxRuleLibrary;
-use Syscover\Market\Models\TaxRule;
+use Syscover\Market\Old\Models\TaxRule;
 use Syscover\Pulsar\Core\Controller;
 use Syscover\Pulsar\Libraries\AttachmentLibrary;
 use Syscover\Pulsar\Libraries\CustomFieldResultLibrary;
 use Syscover\Pulsar\Libraries\Miscellaneous;
 use Syscover\Pulsar\Models\AttachmentFamily;
 use Syscover\Pulsar\Models\CustomFieldGroup;
-use Syscover\Market\Models\Product;
-use Syscover\Market\Models\ProductLang;
-use Syscover\Market\Models\ProductClassTax;
-use Syscover\Market\Models\Category;
+use Syscover\Market\Old\Models\Product;
+use Syscover\Market\Old\Models\ProductLang;
+use Syscover\Market\Old\Models\ProductClassTax;
+use Syscover\Market\Old\Models\Category;
 
 /**
  * Class ProductController

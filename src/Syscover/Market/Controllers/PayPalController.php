@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
-use Syscover\Market\Models\Order;
+use Syscover\Market\Old\Models\Order;
 use Syscover\Pulsar\Models\Preference;
 
 /**

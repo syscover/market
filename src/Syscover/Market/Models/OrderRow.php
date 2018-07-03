@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Models;
+<?php namespace Syscover\Market\Old\Models;
 
 use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
@@ -26,8 +26,8 @@ class OrderRow extends Model
     protected $maps         = [];
     protected $relationMaps = [
         'lang'      => \Syscover\Pulsar\Models\Lang::class,
-        'order'     => \Syscover\Market\Models\Order::class,
-        'product'   => \Syscover\Market\Models\Product::class
+        'order'     => \Syscover\Market\Old\Models\Order::class,
+        'product'   => \Syscover\Market\Old\Models\Product::class
     ];
     private static $rules   = [];
 

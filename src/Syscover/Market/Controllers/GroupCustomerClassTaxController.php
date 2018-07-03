@@ -1,9 +1,9 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
-use Syscover\Crm\Models\Group;
-use Syscover\Market\Models\CustomerClassTax;
-use Syscover\Market\Models\GroupCustomerClassTax;
+use Syscover\Crm\Old\Models\Group;
+use Syscover\Market\Old\Models\CustomerClassTax;
+use Syscover\Market\Old\Models\GroupCustomerClassTax;
 
 /**
  * Class GroupCustomerClassTaxController

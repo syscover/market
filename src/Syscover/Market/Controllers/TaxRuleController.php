@@ -1,11 +1,11 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Market\Libraries\TaxRuleLibrary;
 use Syscover\Pulsar\Core\Controller;
-use Syscover\Market\Models\TaxRule;
-use Syscover\Market\Models\TaxRateZone;
-use Syscover\Market\Models\CustomerClassTax;
-use Syscover\Market\Models\ProductClassTax;
+use Syscover\Market\Old\Models\TaxRule;
+use Syscover\Market\Old\Models\TaxRateZone;
+use Syscover\Market\Old\Models\CustomerClassTax;
+use Syscover\Market\Old\Models\ProductClassTax;
 
 /**
  * Class TaxRuleController

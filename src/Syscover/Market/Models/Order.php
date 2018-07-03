@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Models;
+<?php namespace Syscover\Market\Old\Models;
 
 use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
@@ -26,9 +26,9 @@ class Order extends Model
     protected $fillable     = ['id_116', 'date_116', 'date_text_116', 'status_id_116', 'ip_116', 'data_116', 'payment_method_id_116', 'payment_id_116', 'comments_116', 'subtotal_116', 'discount_amount_116', 'subtotal_with_discounts_116', 'tax_amount_116', 'cart_items_total_without_discounts_116', 'shipping_amount_116', 'total_116', 'has_gift_116', 'gift_from_116', 'gift_to_116', 'gift_message_116', 'customer_id_116', 'customer_group_id_116','customer_company_116', 'customer_tin_116', 'customer_name_116', 'customer_surname_116', 'customer_email_116', 'customer_phone_116', 'customer_mobile_116', 'invoice_country_id_116', 'invoice_territorial_area_1_id_116', 'invoice_territorial_area_2_id_116', 'invoice_territorial_area_3_id_116', 'invoice_cp_116', 'invoice_locality_116', 'invoice_address_116', 'invoice_latitude_116', 'invoice_longitude_116', 'has_invoice_116', 'invoiced_116', 'has_shipping_116', 'shipping_company_116', 'shipping_name_116', 'shipping_surname_116', 'shipping_email_116', 'shipping_phone_116', 'shipping_mobile_116', 'shipping_country_id_116', 'shipping_territorial_area_1_id_116', 'shipping_territorial_area_2_id_116', 'shipping_territorial_area_3_id_116', 'shipping_cp_116', 'shipping_locality_116', 'shipping_address_116', 'shipping_latitude_116', 'shipping_longitude_116'];
     protected $maps         = [];
     protected $relationMaps = [
-        'status'            => \Syscover\Market\Models\OrderStatus::class,
-        'payment_method'    => \Syscover\Market\Models\PaymentMethod::class,
-        'customer'          => \Syscover\Crm\Models\Customer::class
+        'status'            => \Syscover\Market\Old\Models\OrderStatus::class,
+        'payment_method'    => \Syscover\Market\Old\Models\PaymentMethod::class,
+        'customer'          => \Syscover\Crm\Old\Models\Customer::class
     ];
     private static $rules   = [
         'status'            => 'required',

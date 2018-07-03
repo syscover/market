@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market;
+<?php namespace Syscover\Market\Old;
 
 use Illuminate\Support\ServiceProvider;
 

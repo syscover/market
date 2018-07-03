@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Models;
+<?php namespace Syscover\Market\Old\Models;
 
 use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
@@ -25,8 +25,8 @@ class CustomerDiscountHistory extends Model
     protected $fillable     = ['id_126', 'date_126', 'customer_id_126', 'order_id_126', 'rule_family_id_126', 'has_coupon_126', 'coupon_code_126', 'rule_id_126', 'discount_126', 'name_text_id_126', 'description_text_id_126', 'name_text_value_126', 'description_text_value_126', 'discount_type_id_126', 'discount_fixed_amount_126', 'discount_percentage_126', 'maximum_discount_amount_126', 'apply_shipping_amount_126', 'free_shipping_126', 'rules_126'];
     protected $maps         = [];
     protected $relationMaps = [
-        'customer'  => \Syscover\Crm\Models\Customer::class,
-        'order'     => \Syscover\Market\Models\Order::class
+        'customer'  => \Syscover\Crm\Old\Models\Customer::class,
+        'order'     => \Syscover\Market\Old\Models\Order::class
     ];
     private static $rules   = [];
 

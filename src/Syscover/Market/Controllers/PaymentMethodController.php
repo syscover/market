@@ -1,8 +1,8 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
-use Syscover\Market\Models\OrderStatus;
-use Syscover\Market\Models\PaymentMethod;
+use Syscover\Market\Old\Models\OrderStatus;
+use Syscover\Market\Old\Models\PaymentMethod;
 
 /**
  * Class PaymentMethodController

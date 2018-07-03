@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
 use Illuminate\Http\Request;

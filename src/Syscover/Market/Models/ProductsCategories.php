@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Models;
+<?php namespace Syscover\Market\Old\Models;
 
 use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
@@ -26,8 +26,8 @@ class ProductsCategories extends Model
     protected $fillable     = ['product_id_113', 'category_id_113'];
     protected $maps         = [];
     protected $relationMaps = [
-        'product'       => \Syscover\Market\Models\Product::class,
-        'category'      => \Syscover\Market\Models\Category::class
+        'product'       => \Syscover\Market\Old\Models\Product::class,
+        'category'      => \Syscover\Market\Old\Models\Category::class
     ];
     private static $rules   = [];
 

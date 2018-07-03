@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Models;
+<?php namespace Syscover\Market\Old\Models;
 
 use Syscover\Pulsar\Core\Model;
 use Sofa\Eloquence\Eloquence;
@@ -25,8 +25,8 @@ class GroupCustomerClassTax extends Model
     protected $fillable     = ['group_id_102', 'customer_class_tax_id_102'];
     protected $maps         = [];
     protected $relationMaps = [
-        'group'                 => \Syscover\Crm\Models\Group::class,
-        'customer_class_tax'    => \Syscover\Market\Models\CustomerClassTax::class
+        'group'                 => \Syscover\Crm\Old\Models\Group::class,
+        'customer_class_tax'    => \Syscover\Market\Old\Models\CustomerClassTax::class
     ];
     private static $rules   = [
         'group'             => 'required',

@@ -1,7 +1,7 @@
-<?php namespace Syscover\Market\Controllers;
+<?php namespace Syscover\Market\Old\Controllers;
 
 use Syscover\Pulsar\Core\Controller;
-use Syscover\Market\Models\CustomerDiscountHistory;
+use Syscover\Market\Old\Models\CustomerDiscountHistory;
 use Illuminate\Http\Request;
 
 /**
