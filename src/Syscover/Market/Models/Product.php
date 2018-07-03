@@ -187,7 +187,7 @@ class Product extends Model
 
     public function getCategories()
     {
-        return $this->belongsToMany('Syscover\Market\Models\Category', '012_113_products_categories', 'product_id_113', 'category_id_113');
+        return $this->belongsToMany('Syscover\Market\Old\Models\Category', '012_113_products_categories', 'product_id_113', 'category_id_113');
     }
 
     public function addToGetIndexRecords($request, $parameters)
