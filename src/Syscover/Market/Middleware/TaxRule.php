@@ -1,4 +1,4 @@
-<?php namespace Syscover\Market\Middleware;
+<?php namespace Syscover\Market\Old\Middleware;
 
 use Closure;
 
