@@ -28,7 +28,7 @@ class Product extends Model
     protected $maps         = [];
     protected $relationMaps = [
         'lang'          => \Syscover\Pulsar\Models\Lang::class,
-        'product_lang'  => \Syscover\Market\Models\ProductLang::class
+        'product_lang'  => \Syscover\Market\Old\Models\ProductLang::class
     ];
     private static $rules   = [
         'priceType'     => 'required',

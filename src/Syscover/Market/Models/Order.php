@@ -76,17 +76,17 @@ class Order extends Model
 
     public function getOrderRows()
     {
-        return $this->hasMany(\Syscover\Market\Models\OrderRow::class, 'order_id_117');
+        return $this->hasMany(\Syscover\Market\Old\Models\OrderRow::class, 'order_id_117');
     }
 
     public function getDiscounts()
     {
-        return $this->hasMany(\Syscover\Market\Models\CustomerDiscountHistory::class, 'order_id_126');
+        return $this->hasMany(\Syscover\Market\Old\Models\CustomerDiscountHistory::class, 'order_id_126');
     }
 
     public function getCustomer()
     {
-        return $this->belongsTo(\Syscover\Crm\Models\Customer::class, 'customer_id_116');
+        return $this->belongsTo(\Syscover\Crm\Old\Models\Customer::class, 'customer_id_116');
     }
 
     public static function setOrderLog($id, $message)
