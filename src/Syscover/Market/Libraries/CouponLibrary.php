@@ -67,7 +67,7 @@ class CouponLibrary
                     ]
                 ];
             }
-            elseif(CustomerDiscountHistory::builder()->where('customer_id_126', auth('crm')->user()->id_301)->where('coupon_code_126', $couponCode)->where('active_126', true)->count() >= $cartPriceRule->uses_customer_120)
+            elseif(CustomerDiscountHistory::builder()->where('customer_id_126', auth()->guard('crm')->user()->id_301)->where('coupon_code_126', $couponCode)->where('active_126', true)->count() >= $cartPriceRule->uses_customer_120)
             {
                 $errors[] = [
                     'status'    => 'error',

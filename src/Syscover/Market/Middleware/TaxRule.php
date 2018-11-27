@@ -13,9 +13,9 @@ class TaxRule
      */
     public function handle($request, Closure $next)
     {
-        if(auth('crm')->check())
+        if(auth()->guard('crm')->check())
         {
-            $customer = auth('crm')->user();
+            $customer = auth()->guard('crm')->user();
 
             if(! empty($customer->country_id_301))
             {
