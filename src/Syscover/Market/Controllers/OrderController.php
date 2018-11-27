@@ -178,7 +178,7 @@ class OrderController extends Controller
 				->where('active_114', true)
 				->get();
 
-			Order::setOrderLog($parameters['id'], trans('market::pulsar.message_user_change_order_status', ['user' => auth('pulsar')->user()->user_010, 'oldStatus' => $orderStatus->where('id_114', $order->status_id_116)->first()->name_114, 'newStatus' =>  $orderStatus->where('id_114', (int)$this->request->input('status'))->first()->name_114]));
+			Order::setOrderLog($parameters['id'], trans('market::pulsar.message_user_change_order_status', ['user' => auth()->guard('pulsar')->user()->user_010, 'oldStatus' => $orderStatus->where('id_114', $order->status_id_116)->first()->name_114, 'newStatus' =>  $orderStatus->where('id_114', (int)$this->request->input('status'))->first()->name_114]));
 		}
 	}
 }
